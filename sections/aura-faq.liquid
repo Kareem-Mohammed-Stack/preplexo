@@ -1,0 +1,205 @@
+{% comment %}
+  Aura FAQ accordion — dark luxury styling.
+{% endcomment %}
+
+{%- style -%}
+  #AuraFaq-{{ section.id }} {
+    --cream: #2a1f24;
+    --amber: #b86b7a;
+    --muted: rgba(42, 31, 36, 0.72);
+    --hairline: rgba(42, 31, 36, 0.14);
+    background: radial-gradient(90% 60% at 50% 0%, #f8f0eb 0%, #faf6f3 70%);
+    color: var(--cream);
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+  #AuraFaq-{{ section.id }} .aura-faq__inner {
+    width: min(820px, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+  #AuraFaq-{{ section.id }} .aura-faq__header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  #AuraFaq-{{ section.id }} .aura-faq__eyebrow {
+    display: inline-block;
+    margin-bottom: 0.7rem;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+  #AuraFaq-{{ section.id }} .aura-faq__title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    margin: 0;
+  }
+  #AuraFaq-{{ section.id }} details {
+    border-top: 1px solid var(--hairline);
+    padding: 1rem 0;
+  }
+  #AuraFaq-{{ section.id }} details:last-child {
+    border-bottom: 1px solid var(--hairline);
+  }
+  #AuraFaq-{{ section.id }} summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: clamp(20px, 2.5vw, 24px) !important;
+    font-weight: 600;
+    color: var(--cream);
+  }
+  #AuraFaq-{{ section.id }} summary::-webkit-details-marker { display: none; }
+  #AuraFaq-{{ section.id }} summary::after {
+    content: '+';
+    color: var(--amber);
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+  #AuraFaq-{{ section.id }} details[open] summary::after { content: '–'; }
+  #AuraFaq-{{ section.id }} .aura-faq__answer {
+    margin-top: 0.75rem;
+    font-size: clamp(19px, 2.4vw, 22px) !important;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+  #AuraFaq-{{ section.id }} .aura-faq__answer p {
+    font-size: inherit !important;
+  }
+  #AuraFaq-{{ section.id }} .aura-faq__answer p { margin: 0 0 0.65rem; }
+  #AuraFaq-{{ section.id }} .aura-faq__answer p:last-child { margin-bottom: 0; }
+{%- endstyle -%}
+
+<section id="AuraFaq-{{ section.id }}">
+  <div class="aura-faq__inner">
+    <div class="aura-faq__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="aura-faq__eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}
+        <h2 class="aura-faq__title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+    </div>
+    {%- for block in section.blocks -%}
+      <details {{ block.shopify_attributes }}{% if forloop.first and section.settings.open_first %} open{% endif %}>
+        <summary>{{ block.settings.question }}</summary>
+        <div class="aura-faq__answer">{{ block.settings.answer }}</div>
+      </details>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Aura FAQ",
+  "tag": "section",
+  "class": "section-aura-faq",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "QUESTIONS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Aura Light FAQ"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Open first question",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Do I need an electrician?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>No. Aura Light plugs into a standard wall outlet — zero hardwiring.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aura FAQ",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "question": "Do I need an electrician?",
+            "answer": "<p>No. Aura Light plugs into a standard wall outlet — zero hardwiring, no junction box.</p>"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "question": "What plug types are available?",
+            "answer": "<p>Choose US, UK, EU, or AU plug variants so it matches your region’s outlets.</p>"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "question": "How bright is it / what’s the color temperature?",
+            "answer": "<p>Soft dual-beam ambient glow at warm ~2700K — designed for ambience, not overhead task lighting. Under 1.5W.</p>"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "question": "Is there an auto sensor?",
+            "answer": "<p>Select models include dusk-to-dawn style auto behavior so it can glow at night and rest during the day — check your variant details.</p>"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "question": "What’s your returns policy?",
+            "answer": "<p>You can request a return within 14 days for a full refund.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

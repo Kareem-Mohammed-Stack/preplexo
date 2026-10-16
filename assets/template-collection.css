@@ -1,0 +1,258 @@
+@media screen and (max-width: 749px) {
+  .collection .grid__item:only-child {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .collection .slider.slider--tablet {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   PERPLEXO SIGNATURE BLUSH GRADIENT CATALOG BACKGROUND
+   ========================================================================== */
+
+body.template-collection,
+body.template-collection #MainContent,
+.template-collection main,
+.template-collection .gradient,
+.template-collection .collection-hero,
+.template-collection .breadcrumbs-wrapper,
+.template-collection .section-main-collection-product-grid {
+  background-color: #ffffff !important;
+  background-image: linear-gradient(180deg, #ffffff 0%, #fdf9fa 50%, #f7eff1 100%) !important;
+  background-attachment: fixed !important;
+  border: none !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+
+.template-collection .collection-hero__title,
+.template-collection .collection-hero__description,
+.template-collection .breadcrumbs__link,
+.template-collection .breadcrumbs__item {
+  color: #85444C !important;
+}
+
+.template-collection .page-width {
+  background-color: transparent !important;
+}
+
+/* ==========================================================================
+   PERPLEXO DISTINCT BOLD FRAMED FILTER CONTROLS (Blush Theme Visual Hierarchy)
+   ========================================================================== */
+
+.template-collection .facets-container {
+  background: rgba(255, 255, 255, 0.75) !important;
+  border: 1.5px solid rgba(133, 68, 76, 0.22) !important;
+  border-radius: 24px !important;
+  padding: 1.1rem 1.75rem !important;
+  margin-top: 1rem !important;
+  margin-bottom: 2.5rem !important;
+  box-shadow: 0 16px 40px rgba(133, 68, 76, 0.08), inset 0 1.5px 0 rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+.template-collection .facets-container .facets__form {
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* 1. FILTER BUTTON FRAME (Primary Brand Accent #85444C with Bold Text) */
+.template-collection .mobile-facets__open-wrapper,
+.template-collection .mobile-facets__open,
+.template-collection .facets__heading,
+.template-collection summary.facets__summary {
+  background-color: #85444C !important;
+  background: #85444C !important;
+  border: 2px solid #85444C !important;
+  border-radius: 9999px !important;
+  color: #ffffff !important;
+  padding: 0.65rem 1.6rem !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.03em !important;
+  box-shadow: 0 6px 18px rgba(133, 68, 76, 0.35) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  cursor: pointer !important;
+}
+
+.template-collection .mobile-facets__open:hover,
+.template-collection summary.facets__summary:hover {
+  background-color: #6b353b !important;
+  background: #6b353b !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 8px 24px rgba(133, 68, 76, 0.45) !important;
+}
+
+.template-collection .mobile-facets__open-label,
+.template-collection .facets__heading,
+.template-collection .facets__summary span {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.02em !important;
+  opacity: 1 !important;
+}
+
+.template-collection .mobile-facets__open svg,
+.template-collection .facets__summary svg,
+.template-collection .icon-filter {
+  stroke: #ffffff !important;
+  fill: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* 2. SORT BY DROPDOWN FRAME (Crisp White Pill with Brand Text & Bold Font) */
+.template-collection .facet-filters__label {
+  color: #85444C !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.02em !important;
+  margin-right: 0.75rem !important;
+}
+
+.template-collection .facet-filters__sort,
+.template-collection select.facet-filters__sort {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+  border: 2px solid #85444C !important;
+  border-radius: 9999px !important;
+  color: #85444C !important;
+  padding: 0.65rem 2.4rem 0.65rem 1.25rem !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  outline: none !important;
+  box-shadow: 0 6px 18px rgba(133, 68, 76, 0.1) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer !important;
+}
+
+.template-collection .facet-filters__sort:hover {
+  background-color: #fceef0 !important;
+  background: #fceef0 !important;
+  border-color: #85444C !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 8px 22px rgba(133, 68, 76, 0.18) !important;
+}
+
+.template-collection .facet-filters__sort option {
+  background-color: #ffffff !important;
+  color: #85444C !important;
+  font-weight: 700 !important;
+}
+
+.template-collection .facet-filters__sort + svg,
+.template-collection .select svg,
+.template-collection .facet-filters__field .icon-caret {
+  stroke: #85444C !important;
+  color: #85444C !important;
+}
+
+/* 3. PRODUCT COUNT BADGE (Brand Accent Framed Pill with Bold Font) */
+.template-collection .product-count__text {
+  background: #85444C !important;
+  border: 2px solid #85444C !important;
+  border-radius: 9999px !important;
+  padding: 0.5rem 1.25rem !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.02em !important;
+  display: inline-block !important;
+  box-shadow: 0 4px 12px rgba(133, 68, 76, 0.2) !important;
+}
+
+.collection .loading-overlay {
+  position: absolute;
+  z-index: 1;
+  width: 1.8rem;
+}
+
+@media screen and (max-width: 749px) {
+  .collection .loading-overlay {
+    top: 0;
+    right: 0;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .collection .loading-overlay {
+    left: 0;
+  }
+}
+
+.collection .loading-overlay {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  padding: 0 1.5rem;
+  opacity: 0.7;
+}
+
+@media screen and (min-width: 750px) {
+  .collection .loading-overlay {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+.collection.loading .loading-overlay {
+  display: block;
+}
+
+.collection--empty .title-wrapper {
+  margin-top: 10rem;
+  margin-bottom: 15rem;
+}
+
+@media screen and (max-width: 989px) {
+  .collection .slider--tablet.product-grid {
+    scroll-padding-left: 1.5rem;
+  }
+}
+
+.collection__description > * {
+  margin: 0;
+}
+
+.collection__title.title-wrapper {
+  margin-bottom: 2.5rem;
+}
+
+.collection__title .title:not(:only-child) {
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 990px) {
+  .collection__title--desktop-slider .title {
+    margin-bottom: 2.5rem;
+  }
+
+  .collection__title.title-wrapper--self-padded-tablet-down {
+    padding: 0 5rem;
+  }
+
+  .collection slider-component:not(.page-width-desktop) {
+    padding: 0;
+  }
+
+  .collection--full-width slider-component:not(.slider-component-desktop) {
+    padding: 0 1.5rem;
+    max-width: none;
+  }
+}
+
+.collection__view-all a:not(.link) {
+  margin-top: 1rem;
+}

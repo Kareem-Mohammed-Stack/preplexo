@@ -1,0 +1,254 @@
+/* ==========================================================================
+   PERPLEXO PRODUCT PAGE (PDP) ACCORDION FAQ CARDS
+   Modeled precisely after user specification with brand luxury aesthetics
+   ========================================================================== */
+
+.perplexo-pdp-faq {
+  position: relative;
+  background-color: transparent;
+  color: #121212;
+}
+
+.perplexo-pdp-faq__container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.perplexo-pdp-faq__header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.perplexo-pdp-faq__title {
+  font-family: var(--font-heading-family, 'Plus Jakarta Sans', sans-serif);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #121212;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem 0;
+  line-height: 1.25;
+}
+
+@media screen and (min-width: 750px) {
+  .perplexo-pdp-faq__title {
+    font-size: 3.8rem;
+  }
+}
+
+.perplexo-pdp-faq__subtitle {
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 1.7rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- FAQ Cards Stack --- */
+.perplexo-pdp-faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.perplexo-pdp-faq-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1.5px solid #edf0f5;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.025);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  overflow: visible;
+}
+
+.perplexo-pdp-faq-card:hover {
+  border-color: rgba(133, 68, 76, 0.22);
+  box-shadow: 0 6px 18px rgba(133, 68, 76, 0.05);
+}
+
+.perplexo-pdp-faq-card.is-open {
+  border-color: rgba(133, 68, 76, 0.28);
+  box-shadow: 0 8px 24px rgba(133, 68, 76, 0.07);
+}
+
+/* --- Card Header Trigger --- */
+.perplexo-pdp-faq-card__trigger {
+  width: 100%;
+  padding: 2.2rem 2.5rem;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.perplexo-pdp-faq-card__trigger::before {
+  content: "";
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .perplexo-pdp-faq-card__trigger {
+    padding: 1.8rem 1.8rem;
+  }
+}
+
+.perplexo-pdp-faq-card__question {
+  font-family: var(--font-heading-family, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #121212;
+  margin: 0;
+  line-height: 1.35;
+  transition: color 0.25s ease;
+  text-align: center;
+  flex: 1;
+}
+
+@media screen and (max-width: 749px) {
+  .perplexo-pdp-faq-card__question {
+    font-size: 1.65rem;
+  }
+}
+
+/* When open, title switches to brand burgundy */
+.perplexo-pdp-faq-card.is-open .perplexo-pdp-faq-card__question {
+  color: #85444C;
+}
+
+/* --- Circle Icon (+ to ×) --- */
+.perplexo-pdp-faq-card__icon-btn {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  background: #f1f3f7;
+  color: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.perplexo-pdp-faq-card__icon-svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  transition: transform 0.3s ease;
+}
+
+/* When open, circular button turns into solid brand burgundy with white cross */
+.perplexo-pdp-faq-card.is-open .perplexo-pdp-faq-card__icon-btn {
+  background: #85444C;
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(133, 68, 76, 0.3);
+}
+
+.perplexo-pdp-faq-card.is-open .perplexo-pdp-faq-card__icon-svg {
+  transform: rotate(45deg);
+}
+
+/* --- Answer Body with Divider --- */
+.perplexo-pdp-faq-card__content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow: visible;
+}
+
+.perplexo-pdp-faq-card.is-open .perplexo-pdp-faq-card__content {
+  grid-template-rows: 1fr;
+}
+
+.perplexo-pdp-faq-card__inner {
+  overflow: hidden;
+}
+
+.perplexo-pdp-faq-card__divider {
+  height: 1px;
+  background-color: #eef1f6;
+  margin: 0 2.5rem;
+}
+
+@media screen and (max-width: 749px) {
+  .perplexo-pdp-faq-card__divider {
+    margin: 0 1.8rem;
+  }
+}
+
+.perplexo-pdp-faq-card__answer {
+  padding: 2rem 2.5rem 2.5rem 2.5rem;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 1.65rem;
+  line-height: 1.7;
+  color: #4b5563;
+  margin: 0;
+  text-align: center;
+}
+
+@media screen and (max-width: 749px) {
+  .perplexo-pdp-faq-card__answer {
+    padding: 1.6rem 1.8rem 2.2rem 1.8rem;
+    font-size: 1.55rem;
+  }
+}
+
+/* --- Bottom Collapse Chevron Button (Centered at bottom edge) --- */
+.perplexo-pdp-faq-card__bottom-collapse {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid #edf0f5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #555555;
+  transition: all 0.25s ease;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.perplexo-pdp-faq-card.is-open .perplexo-pdp-faq-card__bottom-collapse {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.perplexo-pdp-faq-card__bottom-collapse:hover {
+  background: #85444C;
+  color: #ffffff;
+  border-color: #85444C;
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 6px 16px rgba(133, 68, 76, 0.25);
+}
+
+.perplexo-pdp-faq-card__bottom-collapse svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  fill: none;
+}

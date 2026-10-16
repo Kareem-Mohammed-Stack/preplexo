@@ -1,0 +1,197 @@
+/* ==========================================================================
+   Perplexo DIY Videos — desktop row, mobile horizontal carousel
+   ========================================================================== */
+
+.perplexo-diy-videos {
+  --diy-vid-primary: #85444C;
+  --diy-vid-cream: #eed5b6;
+  --diy-vid-text: #1f1d24;
+  --diy-vid-muted: #5c5557;
+  background: #ffffff;
+  width: 100%;
+  overflow: hidden;
+}
+
+.perplexo-diy-videos__header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 2.4rem;
+  padding-inline: 1.6rem;
+}
+
+.perplexo-diy-videos__eyebrow {
+  display: inline-block;
+  margin: 0 0 1rem;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--diy-vid-primary);
+  line-height: 1.3;
+}
+
+.perplexo-diy-videos__heading {
+  margin: 0 0 0.8rem;
+  font-family: var(--font-heading-family, Georgia, 'Times New Roman', serif);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--diy-vid-text);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.perplexo-diy-videos__subheading {
+  margin: 0;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 1.55rem;
+  line-height: 1.5;
+  color: var(--diy-vid-muted);
+}
+
+.perplexo-diy-videos__scroller {
+  width: 100%;
+  overflow: visible;
+}
+
+.perplexo-diy-videos__track {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-inline: 2rem;
+}
+
+.perplexo-diy-videos__slide {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+  max-width: none;
+}
+
+.perplexo-diy-videos__card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #1a1214;
+  box-shadow: 0 12px 28px rgba(31, 29, 36, 0.12);
+}
+
+.perplexo-diy-videos__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+.perplexo-diy-videos__mute {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.perplexo-diy-videos__mute:hover {
+  background: rgba(133, 68, 76, 0.85);
+  transform: scale(1.06);
+}
+
+.perplexo-diy-videos__mute svg {
+  width: 16px;
+  height: 16px;
+}
+
+.perplexo-diy-videos__mute .icon-unmuted {
+  display: none;
+}
+
+.perplexo-diy-videos__mute.is-unmuted .icon-muted {
+  display: none;
+}
+
+.perplexo-diy-videos__mute.is-unmuted .icon-unmuted {
+  display: block;
+}
+
+.perplexo-diy-videos__hint {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .perplexo-diy-videos__header {
+    margin-bottom: 1.8rem;
+    padding-inline: 1.2rem;
+  }
+
+  .perplexo-diy-videos__heading {
+    font-size: 2.4rem;
+  }
+
+  .perplexo-diy-videos__subheading {
+    font-size: 1.45rem;
+  }
+
+  .perplexo-diy-videos__scroller {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1.2rem;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .perplexo-diy-videos__scroller::-webkit-scrollbar {
+    display: none;
+  }
+
+  .perplexo-diy-videos__track {
+    width: max-content;
+    max-width: none;
+    gap: 0.9rem;
+    padding-inline: 1.2rem 2rem;
+  }
+
+  .perplexo-diy-videos__slide {
+    flex: 0 0 min(72vw, 280px);
+    width: min(72vw, 280px);
+    max-width: none;
+    scroll-snap-align: start;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .perplexo-diy-videos__heading {
+    font-size: 3.6rem;
+  }
+
+  .perplexo-diy-videos__track {
+    gap: 1.4rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .perplexo-diy-videos__track {
+    gap: 1.6rem;
+    padding-inline: 2.4rem;
+  }
+}

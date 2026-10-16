@@ -1,0 +1,302 @@
+{% comment %}
+  DIY PDP offers: quantity tiers (inside buybox form) + FBT companion (call with part: 'fbt' after form).
+  Accepts: product, section, part: 'tiers' | 'fbt' | 'all' (default all)
+{% endcomment %}
+
+{%- liquid
+  assign part = part | default: 'all'
+  assign current_variant = product.selected_or_first_available_variant
+  assign unit_price = current_variant.price
+  assign unit_compare = current_variant.compare_at_price
+  if unit_compare == blank or unit_compare <= unit_price
+    assign unit_compare = unit_price | times: 2
+  endif
+
+  assign price_1 = unit_price
+  assign compare_1 = unit_compare
+  assign price_2 = unit_price | times: 2 | times: 92 | divided_by: 100
+  assign compare_2 = unit_compare | times: 2
+  assign price_3 = unit_price | times: 3 | times: 89 | divided_by: 100
+  assign compare_3 = unit_compare | times: 3
+
+  assign companion = all_products['storybook-favourites-advent-calendar']
+  assign companion_variant = companion.selected_or_first_available_variant
+  if companion != blank
+    assign bundle_sum = unit_price | plus: companion_variant.price
+    assign bundle_price = bundle_sum | times: 83 | divided_by: 100
+  endif
+
+  assign form_id = 'PerplexoPdpForm-' | append: section.id
+-%}
+
+{%- if part == 'tiers' or part == 'all' -%}
+<div class="perplexo-diy" data-perplexo-diy data-product-id="{{ product.id }}" data-variant-id="{{ current_variant.id }}">
+  <div class="perplexo-diy__tiers" role="radiogroup" aria-label="Choose your offer">
+    <label class="perplexo-diy__tier">
+      <input class="perplexo-diy__radio" type="radio" name="perplexo-diy-qty" value="1" data-qty="1" checked>
+      <span class="perplexo-diy__tier-card">
+        <span class="perplexo-diy__tier-left">
+          <span class="perplexo-diy__tier-title-row">
+            <span class="perplexo-diy__tier-title">Buy 1</span>
+            <span class="perplexo-diy__pill">Discounted Price</span>
+          </span>
+          <span class="perplexo-diy__tier-sub">Free Shipping</span>
+        </span>
+        <span class="perplexo-diy__tier-prices">
+          <span class="perplexo-diy__price">{{ price_1 | money }}</span>
+          <span class="perplexo-diy__compare">{{ compare_1 | money }}</span>
+        </span>
+      </span>
+    </label>
+
+    <label class="perplexo-diy__tier">
+      <input class="perplexo-diy__radio" type="radio" name="perplexo-diy-qty" value="2" data-qty="2">
+      <span class="perplexo-diy__tier-card">
+        <span class="perplexo-diy__corner-badge">Most Popular</span>
+        <span class="perplexo-diy__tier-left">
+          <span class="perplexo-diy__tier-title-row">
+            <span class="perplexo-diy__tier-title">Buy 2</span>
+          </span>
+          <span class="perplexo-diy__tier-sub">Free Shipping</span>
+        </span>
+        <span class="perplexo-diy__tier-prices">
+          <span class="perplexo-diy__price">{{ price_2 | money }}</span>
+          <span class="perplexo-diy__compare">{{ compare_2 | money }}</span>
+        </span>
+      </span>
+    </label>
+
+    <label class="perplexo-diy__tier">
+      <input class="perplexo-diy__radio" type="radio" name="perplexo-diy-qty" value="3" data-qty="3">
+      <span class="perplexo-diy__tier-card">
+        <span class="perplexo-diy__corner-badge perplexo-diy__corner-badge--value">Best Value</span>
+        <span class="perplexo-diy__tier-left">
+          <span class="perplexo-diy__tier-title-row">
+            <span class="perplexo-diy__tier-title">Buy 3</span>
+          </span>
+          <span class="perplexo-diy__tier-sub">Free Shipping</span>
+        </span>
+        <span class="perplexo-diy__tier-prices">
+          <span class="perplexo-diy__price">{{ price_3 | money }}</span>
+          <span class="perplexo-diy__compare">{{ compare_3 | money }}</span>
+        </span>
+      </span>
+    </label>
+  </div>
+
+  <button
+    type="button"
+    name="add"
+    class="perplexo-diy__btn perplexo-diy__btn--primary"
+    data-diy-add-to-cart
+    data-variant-id="{{ current_variant.id }}"
+    {% if current_variant.available == false %}disabled{% endif %}
+  >
+    ADD TO CART
+  </button>
+{%- endif -%}
+
+{%- if part == 'fbt' or part == 'all' -%}
+  {%- if companion != blank -%}
+    <div class="perplexo-diy__fbt-wrap" data-companion-id="{{ companion.id }}" data-perplexo-diy-fbt>
+      <div class="perplexo-diy__fbt">
+        <p class="perplexo-diy__fbt-heading">People usually buy these two together</p>
+
+        <div class="perplexo-diy__fbt-row">
+          <div class="perplexo-diy__fbt-media">
+            {%- if product.featured_image != blank -%}
+              {{ product.featured_image | image_url: width: 200 | image_tag: class: 'perplexo-diy__fbt-img', loading: 'lazy', alt: product.title }}
+            {%- endif -%}
+            <span class="perplexo-diy__fbt-plus" aria-hidden="true">+</span>
+            {%- if companion.featured_image != blank -%}
+              {{ companion.featured_image | image_url: width: 200 | image_tag: class: 'perplexo-diy__fbt-img', loading: 'lazy', alt: companion.title }}
+            {%- elsif companion.images.size > 0 -%}
+              {{ companion.images.first | image_url: width: 200 | image_tag: class: 'perplexo-diy__fbt-img', loading: 'lazy', alt: companion.title }}
+            {%- endif -%}
+          </div>
+          <div class="perplexo-diy__fbt-info">
+            <p class="perplexo-diy__fbt-title">Charm kit + storybook calendar</p>
+            <p class="perplexo-diy__fbt-price">{{ bundle_price | money }}</p>
+          </div>
+        </div>
+
+        {%- if companion.variants.size > 1 -%}
+          <div class="perplexo-diy__fbt-variants" role="group" aria-label="Storybook style">
+            {%- for variant in companion.variants -%}
+              <button
+                type="button"
+                class="perplexo-diy__variant-pill{% if forloop.first %} is-active{% endif %}"
+                data-variant-id="{{ variant.id }}"
+                {% unless variant.available %}disabled{% endunless %}
+              >
+                {{ variant.title | escape }}
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <button
+        type="button"
+        class="perplexo-diy__btn perplexo-diy__btn--bundle"
+        data-add-both
+        data-main-variant="{{ current_variant.id }}"
+        data-companion-variant="{{ companion_variant.id }}"
+        {% if current_variant.available == false or companion_variant.available == false %}disabled{% endif %}
+      >
+        ADD BOTH TO CART
+      </button>
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+{%- if part == 'tiers' or part == 'all' -%}
+</div>
+{%- endif -%}
+
+{%- if part == 'all' or part == 'tiers' or part == 'fbt' -%}
+<script>
+  (function () {
+    var form = document.getElementById('{{ form_id }}');
+    var root = document.querySelector('[data-perplexo-diy]');
+    var fbt = document.querySelector('[data-perplexo-diy-fbt]');
+    var rootUrl = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+
+    function openCartAfterAdd(data) {
+      var drawer = document.querySelector('cart-drawer');
+      if (drawer) drawer.classList.remove('is-empty');
+
+      if (drawer && typeof drawer.renderContents === 'function' && data && data.sections && data.sections['cart-drawer']) {
+        drawer.renderContents(data);
+        if (typeof drawer.open === 'function') drawer.open();
+        return;
+      }
+
+      if (drawer && typeof drawer.open === 'function') {
+        drawer.open();
+        return;
+      }
+
+      window.location.href = rootUrl + 'cart';
+    }
+
+    if (root && root.dataset.bound !== '1') {
+      root.dataset.bound = '1';
+      var qtyInput = form && form.querySelector('input[name="quantity"]');
+      root.querySelectorAll('.perplexo-diy__radio').forEach(function (radio) {
+        radio.addEventListener('change', function () {
+          if (!radio.checked || !qtyInput) return;
+          qtyInput.value = radio.value;
+        });
+      });
+
+      var addBtn = root.querySelector('[data-diy-add-to-cart]');
+      if (addBtn) {
+        addBtn.addEventListener('click', function (evt) {
+          evt.preventDefault();
+          evt.stopPropagation();
+          if (addBtn.disabled || addBtn.getAttribute('aria-busy') === 'true') return;
+
+          var checked = root.querySelector('.perplexo-diy__radio:checked');
+          var qty = checked ? Number(checked.value) : 1;
+          if (!qty || qty < 1) qty = 1;
+          if (qtyInput) qtyInput.value = String(qty);
+
+          var variantId = Number(
+            (form && form.querySelector('input[name="id"]') && form.querySelector('input[name="id"]').value) ||
+              addBtn.dataset.variantId
+          );
+          if (!variantId) return;
+
+          addBtn.setAttribute('aria-busy', 'true');
+          addBtn.disabled = true;
+          var prevLabel = addBtn.textContent;
+          addBtn.textContent = 'ADDING…';
+
+          fetch(rootUrl + 'cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({
+              id: variantId,
+              quantity: qty,
+              sections: 'cart-drawer,cart-icon-bubble',
+              sections_url: window.location.pathname
+            })
+          })
+            .then(function (res) {
+              if (!res.ok) throw new Error('Add failed');
+              return res.json();
+            })
+            .then(function (data) {
+              openCartAfterAdd(data);
+            })
+            .catch(function () {
+              if (form) {
+                form.setAttribute('action', rootUrl + 'cart/add');
+                form.submit();
+                return;
+              }
+              alert('Could not add to cart. Please try again.');
+            })
+            .finally(function () {
+              addBtn.removeAttribute('aria-busy');
+              addBtn.disabled = false;
+              addBtn.textContent = prevLabel || 'ADD TO CART';
+            });
+        });
+      }
+    }
+
+    if (fbt && fbt.dataset.bound !== '1') {
+      fbt.dataset.bound = '1';
+      fbt.querySelectorAll('.perplexo-diy__variant-pill').forEach(function (pill) {
+        pill.addEventListener('click', function () {
+          fbt.querySelectorAll('.perplexo-diy__variant-pill').forEach(function (p) {
+            p.classList.remove('is-active');
+          });
+          pill.classList.add('is-active');
+          var btn = fbt.querySelector('[data-add-both]');
+          if (btn) btn.dataset.companionVariant = pill.dataset.variantId;
+        });
+      });
+
+      var addBoth = fbt.querySelector('[data-add-both]');
+      if (addBoth) {
+        addBoth.addEventListener('click', function () {
+          if (addBoth.disabled) return;
+          addBoth.disabled = true;
+          var prevBoth = addBoth.textContent;
+          addBoth.textContent = 'ADDING…';
+
+          fetch(rootUrl + 'cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({
+              items: [
+                { id: Number(addBoth.dataset.mainVariant), quantity: 1 },
+                { id: Number(addBoth.dataset.companionVariant), quantity: 1 }
+              ],
+              sections: 'cart-drawer,cart-icon-bubble',
+              sections_url: window.location.pathname
+            })
+          })
+            .then(function (res) {
+              if (!res.ok) throw new Error('Add failed');
+              return res.json();
+            })
+            .then(function (data) {
+              openCartAfterAdd(data);
+            })
+            .catch(function () {
+              alert('Could not add bundle. Please try again.');
+            })
+            .finally(function () {
+              addBoth.disabled = false;
+              addBoth.textContent = prevBoth || 'ADD BOTH TO CART';
+            });
+        });
+      }
+    }
+  })();
+</script>
+{%- endif -%}

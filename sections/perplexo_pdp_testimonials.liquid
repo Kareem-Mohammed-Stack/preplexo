@@ -1,0 +1,484 @@
+{{ 'perplexo-pdp-testimonials.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    {%- if section.settings.bg_color != blank -%}
+      background-color: {{ section.settings.bg_color }};
+    {%- endif -%}
+    --pdp-marquee-speed: {{ section.settings.speed | default: 42 }}s;
+    --pdp-marquee-speed-mobile: {{ section.settings.speed | default: 42 | times: 1.3 | round: 0 }}s;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="perplexo-pdp-testimonials section-{{ section.id }}-padding" id="PdpTestimonials-{{ section.id }}" data-section-id="{{ section.id }}">
+  <div class="page-width">
+    <div class="perplexo-pdp-testimonials__header scroll-trigger animate--slide-in">
+      {%- if section.settings.badge != blank -%}
+        <span class="perplexo-pdp-testimonials__badge">{{ section.settings.badge | escape }}</span>
+      {%- endif -%}
+
+      <h2 class="perplexo-pdp-testimonials__heading">
+        {%- if section.settings.heading != blank -%}
+          {{ section.settings.heading | escape }}
+        {%- else -%}
+          Loved by People Using {{ product.title }}
+        {%- endif -%}
+      </h2>
+
+      {%- if section.settings.subheading != blank -%}
+        <p class="perplexo-pdp-testimonials__subheading">{{ section.settings.subheading | escape }}</p>
+      {%- endif -%}
+
+      <!-- Social Proof Metrics Scorecard -->
+      <div class="perplexo-pdp-testimonials__scorecard">
+        <div class="perplexo-pdp-testimonials__score-block">
+          <span class="perplexo-pdp-testimonials__score-num">{{ section.settings.rating_score | default: '4.9' }}</span>
+          <div class="perplexo-pdp-testimonials__score-info">
+            <div class="perplexo-pdp-testimonials__stars" aria-label="5 out of 5 stars">
+              {%- for i in (1..5) -%}
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              {%- endfor -%}
+            </div>
+            <span class="perplexo-pdp-testimonials__score-label">
+              {{ section.settings.rating_count_text | default: 'Based on 480+ verified reviews' }}
+            </span>
+          </div>
+        </div>
+
+        <div class="perplexo-pdp-testimonials__metrics-divider"></div>
+
+        <div class="perplexo-pdp-testimonials__metrics-pills">
+          {%- if section.settings.metric_1 != blank -%}
+            <span class="perplexo-pdp-testimonials__metric-chip">{{ section.settings.metric_1 | escape }}</span>
+          {%- endif -%}
+          {%- if section.settings.metric_2 != blank -%}
+            <span class="perplexo-pdp-testimonials__metric-chip">{{ section.settings.metric_2 | escape }}</span>
+          {%- endif -%}
+          {%- if section.settings.metric_3 != blank -%}
+            <span class="perplexo-pdp-testimonials__metric-chip">{{ section.settings.metric_3 | escape }}</span>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contained Continuous Infinite Loop Marquee Container -->
+  <div class="perplexo-pdp-testimonials__container">
+    <div 
+      class="perplexo-pdp-testimonials__marquee-box" 
+      id="PdpMarqueeBox-{{ section.id }}" 
+      role="region" 
+      aria-label="Product Customer Testimonials"
+    >
+      <div class="perplexo-pdp-testimonials__track" id="PdpMarqueeTrack-{{ section.id }}">
+        <!-- Primary List of PDP Testimonial Cards -->
+        <div class="perplexo-pdp-testimonials__list">
+          {%- if section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+              <div class="perplexo-pdp-card" {{ block.shopify_attributes }}>
+                <div class="perplexo-pdp-card__quote-mark">“</div>
+
+                <div class="perplexo-pdp-card__top">
+                  <div class="perplexo-pdp-card__stars-row" aria-label="{{ block.settings.rating }} stars">
+                    {%- assign stars_count = block.settings.rating | default: 5 -%}
+                    {%- for i in (1..stars_count) -%}
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    {%- endfor -%}
+                  </div>
+
+                  <div class="perplexo-pdp-card__badges">
+                    {%- if block.settings.usage_time != blank -%}
+                      <span class="perplexo-pdp-card__usage-badge">{{ block.settings.usage_time | escape }}</span>
+                    {%- endif -%}
+
+                    {%- if block.settings.verified -%}
+                      <div class="perplexo-pdp-card__verified-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Verified Buyer</span>
+                      </div>
+                    {%- endif -%}
+                  </div>
+                </div>
+
+                <div class="perplexo-pdp-card__content">
+                  {%- if block.settings.title != blank -%}
+                    <h3 class="perplexo-pdp-card__title">{{ block.settings.title | escape }}</h3>
+                  {%- endif -%}
+
+                  {%- if block.settings.body != blank -%}
+                    <p class="perplexo-pdp-card__body">{{ block.settings.body | escape }}</p>
+                  {%- endif -%}
+                </div>
+
+                <div class="perplexo-pdp-card__footer">
+                  <div class="perplexo-pdp-card__author">
+                    <div class="perplexo-pdp-card__avatar">
+                      {%- if block.settings.avatar_image != blank -%}
+                        {{ block.settings.avatar_image | image_url: width: 100 | image_tag: loading: 'lazy', alt: block.settings.author_name }}
+                      {%- else -%}
+                        <span>{{ block.settings.avatar_initials | default: 'PR' | escape }}</span>
+                      {%- endif -%}
+                    </div>
+                    <div class="perplexo-pdp-card__author-info">
+                      <strong class="perplexo-pdp-card__name">{{ block.settings.author_name | escape }}</strong>
+                      {%- if block.settings.author_meta != blank -%}
+                        <span class="perplexo-pdp-card__meta">{{ block.settings.author_meta | escape }}</span>
+                      {%- endif -%}
+                    </div>
+                  </div>
+
+                  <div class="perplexo-pdp-card__product-pill" title="{{ product.title | escape }}">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                      <line x1="3" y1="6" x2="21" y2="6"></line>
+                      <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span>{{ product.title | default: 'Signature Collection' | escape }}</span>
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+
+        <!-- Duplicated List for Seamless Infinite Loop -->
+        <div class="perplexo-pdp-testimonials__list" aria-hidden="true">
+          {%- if section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+              <div class="perplexo-pdp-card">
+                <div class="perplexo-pdp-card__quote-mark">“</div>
+
+                <div class="perplexo-pdp-card__top">
+                  <div class="perplexo-pdp-card__stars-row">
+                    {%- assign stars_count = block.settings.rating | default: 5 -%}
+                    {%- for i in (1..stars_count) -%}
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    {%- endfor -%}
+                  </div>
+
+                  <div class="perplexo-pdp-card__badges">
+                    {%- if block.settings.usage_time != blank -%}
+                      <span class="perplexo-pdp-card__usage-badge">{{ block.settings.usage_time | escape }}</span>
+                    {%- endif -%}
+
+                    {%- if block.settings.verified -%}
+                      <div class="perplexo-pdp-card__verified-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Verified Buyer</span>
+                      </div>
+                    {%- endif -%}
+                  </div>
+                </div>
+
+                <div class="perplexo-pdp-card__content">
+                  {%- if block.settings.title != blank -%}
+                    <h3 class="perplexo-pdp-card__title">{{ block.settings.title | escape }}</h3>
+                  {%- endif -%}
+
+                  {%- if block.settings.body != blank -%}
+                    <p class="perplexo-pdp-card__body">{{ block.settings.body | escape }}</p>
+                  {%- endif -%}
+                </div>
+
+                <div class="perplexo-pdp-card__footer">
+                  <div class="perplexo-pdp-card__author">
+                    <div class="perplexo-pdp-card__avatar">
+                      {%- if block.settings.avatar_image != blank -%}
+                        {{ block.settings.avatar_image | image_url: width: 100 | image_tag: loading: 'lazy', alt: block.settings.author_name }}
+                      {%- else -%}
+                        <span>{{ block.settings.avatar_initials | default: 'PR' | escape }}</span>
+                      {%- endif -%}
+                    </div>
+                    <div class="perplexo-pdp-card__author-info">
+                      <strong class="perplexo-pdp-card__name">{{ block.settings.author_name | escape }}</strong>
+                      {%- if block.settings.author_meta != blank -%}
+                        <span class="perplexo-pdp-card__meta">{{ block.settings.author_meta | escape }}</span>
+                      {%- endif -%}
+                    </div>
+                  </div>
+
+                  <div class="perplexo-pdp-card__product-pill" title="{{ product.title | escape }}">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                      <line x1="3" y1="6" x2="21" y2="6"></line>
+                      <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span>{{ product.title | default: 'Signature Collection' | escape }}</span>
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    function initPdpMarqueeTouch() {
+      const sectionId = "{{ section.id }}";
+      const box = document.getElementById("PdpMarqueeBox-" + sectionId);
+      if (!box) return;
+
+      let resumeTimer = null;
+
+      box.addEventListener("click", function(e) {
+        const isPaused = box.classList.toggle("is-paused");
+        if (resumeTimer) clearTimeout(resumeTimer);
+        if (isPaused) {
+          resumeTimer = setTimeout(function() {
+            box.classList.remove("is-paused");
+          }, 7000);
+        }
+      });
+
+      box.addEventListener("touchstart", function() {
+        if (resumeTimer) clearTimeout(resumeTimer);
+        box.classList.add("is-paused");
+      }, { passive: true });
+
+      box.addEventListener("touchend", function() {
+        if (resumeTimer) clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(function() {
+          box.classList.remove("is-paused");
+        }, 5000);
+      }, { passive: true });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initPdpMarqueeTouch);
+    } else {
+      initPdpMarqueeTouch();
+    }
+
+    document.addEventListener("shopify:section:load", function(e) {
+      if (e.detail.sectionId === "{{ section.id }}") {
+        initPdpMarqueeTouch();
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product Reviews (Marquee)",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge Text",
+      "default": "CUSTOMER REVIEWS & RESULTS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Loved by People Using This Formula"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub-heading",
+      "default": "Real feedback and proven skin improvements from verified customers"
+    },
+    {
+      "type": "text",
+      "id": "rating_score",
+      "label": "Score Display",
+      "default": "4.9"
+    },
+    {
+      "type": "text",
+      "id": "rating_count_text",
+      "label": "Scorecard Subtext",
+      "default": "Based on 480+ verified customer reviews"
+    },
+    {
+      "type": "text",
+      "id": "metric_1",
+      "label": "Metric 1 Pill",
+      "default": "98% Noticed Firmer Skin"
+    },
+    {
+      "type": "text",
+      "id": "metric_2",
+      "label": "Metric 2 Pill",
+      "default": "95% Saw Enhanced Radiance"
+    },
+    {
+      "type": "text",
+      "id": "metric_3",
+      "label": "Metric 3 Pill",
+      "default": "99% Would Recommend"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "s",
+      "label": "Marquee Loop Duration (Lower = Faster, Higher = Slower)",
+      "default": 42
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "rgba(255, 255, 255, 0.45)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pdp_testimonial",
+      "name": "Product Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Star Rating",
+          "default": 5
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Show Verified Buyer Badge",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "usage_time",
+          "label": "Usage Duration Tag",
+          "default": "Used for 3 weeks"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review Title",
+          "default": "Best Skincare Investment"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Review Content",
+          "default": "Skin felt deeply nourished and visibly plumper within days. I don't even need foundation anymore!"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Customer Name",
+          "default": "Jessica Vance"
+        },
+        {
+          "type": "text",
+          "id": "author_meta",
+          "label": "Author Details / Location",
+          "default": "Verified Buyer • London, UK"
+        },
+        {
+          "type": "text",
+          "id": "avatar_initials",
+          "label": "Avatar Initials",
+          "default": "JV"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar_image",
+          "label": "Avatar Photo (Optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Reviews (Marquee)",
+      "blocks": [
+        {
+          "type": "pdp_testimonial",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "usage_time": "Used for 3 weeks",
+            "title": "Best Skincare Investment",
+            "body": "Skin felt deeply nourished and visibly plumper within days. I don't even need foundation anymore!",
+            "author_name": "Jessica Vance",
+            "author_meta": "Verified Buyer • London, UK",
+            "avatar_initials": "JV"
+          }
+        },
+        {
+          "type": "pdp_testimonial",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "usage_time": "Used for 1 month",
+            "title": "Gentle & Incredibly Effective",
+            "body": "Pure soothing magic. My skin barrier is stronger, redness is gone, and fine lines have smoothed.",
+            "author_name": "Claire Morel",
+            "author_meta": "Verified Buyer • Montreal, Canada",
+            "avatar_initials": "CM"
+          }
+        },
+        {
+          "type": "pdp_testimonial",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "usage_time": "Used for 6 weeks",
+            "title": "Visible Firming & Bounce",
+            "body": "Noticed real skin elasticity in two weeks. Pores look refined and my complexion stays radiant.",
+            "author_name": "Dr. Miriam Al-Sabah",
+            "author_meta": "Verified Buyer • Dubai, UAE",
+            "avatar_initials": "MA"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

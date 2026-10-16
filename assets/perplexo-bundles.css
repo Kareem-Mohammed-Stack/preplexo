@@ -1,0 +1,339 @@
+/* ==========================================================================
+   PERPLEXO PRODUCT BUNDLES SECTION STYLES
+   - Jakob Nielsen Usability Heuristics Implementation
+   - Visibility of System Status, Recognition over Recall, Aesthetic & Minimalist
+   ========================================================================== */
+
+.perplexo-bundles {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-top: 1px solid rgba(133, 68, 76, 0.1);
+  border-bottom: 1px solid rgba(133, 68, 76, 0.1);
+  color: #85444C;
+  overflow: hidden;
+}
+
+.perplexo-bundles__header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 4rem auto;
+}
+
+.perplexo-bundles__badge {
+  display: inline-block;
+  font-family: var(--font-body-family, 'Transcity', sans-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #85444C;
+  background: rgba(133, 68, 76, 0.1);
+  padding: 0.5rem 1.6rem;
+  border-radius: 9999px;
+  margin-bottom: 1.4rem;
+  border: 1px solid rgba(133, 68, 76, 0.2);
+}
+
+.perplexo-bundles__title {
+  font-family: var(--font-heading-family, 'Transcity', serif);
+  font-size: 3.2rem;
+  font-weight: 500;
+  color: #85444C;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+@media screen and (min-width: 750px) {
+  .perplexo-bundles__title {
+    font-size: 4.4rem;
+  }
+}
+
+.perplexo-bundles__sub-heading {
+  font-family: var(--font-body-family, 'Transcity', sans-serif);
+  font-size: 1.8rem;
+  line-height: 1.6;
+  color: rgba(133, 68, 76, 0.9);
+  margin: 0;
+}
+
+/* Bundles Grid Layout */
+.perplexo-bundles__grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2.5rem;
+  align-items: stretch;
+}
+
+@media screen and (min-width: 850px) {
+  .perplexo-bundles__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+  .perplexo-bundles__grid.perplexo-bundles__grid--1-col {
+    grid-template-columns: 1fr;
+  }
+  .perplexo-bundles__grid.perplexo-bundles__grid--1-col .perplexo-bundle-card {
+    max-width: 960px;
+    margin: 0 auto;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+    padding: 3rem;
+  }
+  .perplexo-bundles__grid.perplexo-bundles__grid--1-col .perplexo-bundle-card__media-wrapper {
+    flex: 1 1 45%;
+    margin-bottom: 0;
+  }
+  .perplexo-bundles__grid.perplexo-bundles__grid--1-col .perplexo-bundle-card__info {
+    flex: 1 1 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* Bundle Card Component */
+.perplexo-bundle-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 2rem;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  border: 2px solid transparent;
+}
+
+.perplexo-bundle-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.16);
+  border-color: var(--color-primary, #85444C);
+}
+
+/* Featured 'Best Value' Card Styling (von Restorff Effect) */
+.perplexo-bundle-card--featured {
+  border-color: #85444C;
+  box-shadow: 0 16px 48px rgba(133, 68, 76, 0.25);
+  background: #ffffff;
+}
+
+@media screen and (min-width: 850px) {
+  .perplexo-bundle-card--featured {
+    transform: scale(1.03);
+  }
+  .perplexo-bundle-card--featured:hover {
+    transform: scale(1.05) translateY(-8px);
+  }
+}
+
+/* Top Banner Badge on Featured Card */
+.perplexo-bundle-card__featured-banner {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #85444C 0%, #6c343b 100%);
+  color: #ffffff;
+  font-family: var(--font-body-family, 'Transcity', sans-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.8rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(133, 68, 76, 0.4);
+  white-space: nowrap;
+  z-index: 5;
+}
+
+/* Bundle Media Box */
+.perplexo-bundle-card__media-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #ffffff;
+  margin-bottom: 1.8rem;
+}
+
+.perplexo-bundle-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.perplexo-bundle-card:hover .perplexo-bundle-card__img {
+  transform: scale(1.06);
+}
+
+/* Save Pill Badge */
+.perplexo-bundle-card__save-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #85444c, #6c343b);
+  color: #ffffff;
+  font-family: var(--font-heading-family, 'Transcity', serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  padding: 0.5rem 1.4rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(133, 68, 76, 0.3);
+  z-index: 4;
+}
+
+/* Bundle Information */
+.perplexo-bundle-card__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.perplexo-bundle-card__title {
+  font-family: var(--font-heading-family, 'Transcity', serif);
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #121212;
+  margin: 0 0 0.8rem 0;
+  line-height: 1.25;
+  text-align: center;
+  width: 100%;
+}
+
+.perplexo-bundle-card__subtitle {
+  font-family: var(--font-body-family, 'Transcity', sans-serif);
+  font-size: 1.55rem;
+  color: #555555;
+  margin: 0 0 1.6rem 0;
+  line-height: 1.5;
+  text-align: center;
+  width: 100%;
+}
+
+/* Included Items Checklist (Nielsen Heuristic #2 & #6) */
+.perplexo-bundle-card__items-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  border-top: 1px dashed #e2e2e2;
+  border-bottom: 1px dashed #e2e2e2;
+  padding: 1.4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.perplexo-bundle-card__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  font-family: var(--font-body-family, 'Transcity', sans-serif);
+  font-size: 1.55rem;
+  color: #2b2b2b;
+  font-weight: 500;
+  text-align: center;
+}
+
+.perplexo-bundle-card__check-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: rgba(133, 68, 76, 0.12);
+  color: var(--color-primary, #85444C);
+  flex-shrink: 0;
+}
+
+/* Pricing Section */
+.perplexo-bundle-card__price-box {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.4rem;
+  width: 100%;
+}
+
+.perplexo-bundle-card__price-compare {
+  font-family: var(--font-heading-family, 'Transcity', serif);
+  font-size: 1.9rem;
+  color: #999999;
+  text-decoration: line-through;
+  font-weight: 600;
+}
+
+.perplexo-bundle-card__price-regular {
+  font-family: var(--font-heading-family, 'Transcity', serif);
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #121212;
+}
+
+.perplexo-bundle-card__savings-tag {
+  font-family: var(--font-body-family, 'Transcity', sans-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #2e7d32;
+  margin-bottom: 1.6rem;
+}
+
+/* Action Buttons (Fitts's Law + Primary Accent) */
+.perplexo-bundle-card__buy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  min-height: 50px;
+  padding: 1.2rem 1.8rem;
+  background-color: var(--color-primary, #85444C);
+  color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  font-family: var(--font-body-family, 'Transcity', sans-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(133, 68, 76, 0.3);
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.perplexo-bundle-card__buy-btn:hover {
+  background-color: #6c343b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(108, 52, 59, 0.4);
+}
+
+.perplexo-bundle-card__buy-btn:active {
+  transform: scale(0.97);
+}
+
+.perplexo-bundle-card__buy-icon {
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.perplexo-bundle-card__buy-btn:hover .perplexo-bundle-card__buy-icon {
+  transform: scale(1.15) rotate(-6deg);
+}

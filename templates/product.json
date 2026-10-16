@@ -1,0 +1,381 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "breadcrumbs_mhcn3t": {
+          "type": "breadcrumbs",
+          "settings": {
+            "title_home": "Home",
+            "padding_top": 0,
+            "padding_top_mb": 0,
+            "padding_bottom": 0,
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "perplexo_buybox": {
+          "type": "perplexo_buybox",
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+            "enable_quantity_discounts": true,
+            "headline": "Choose your offer",
+            "txt_size_head_qb": 18,
+            "sub_headline": "",
+            "txt_size_subhead_qb": 12,
+            "background_top_qb": "#ffffff",
+            "background_top_text_qb": "#121212",
+            "background_qb": "#ffffff",
+            "border_qb": "#121212",
+            "check_bg_qb": "#ffffff",
+            "check_border_qb": "#121212",
+            "check_dot": "#121212",
+            "hover_bg_qb": "#ffffff",
+            "hover_border_qb": "#85444C",
+            "badge_qb": "#121212",
+            "badge_qb_text": "#ffffff",
+            "compare_price": "#8b8d8f",
+            "qb_border_wd": 2,
+            "qb_border": 10,
+            "padding_top": 12,
+            "padding_bottom": 12,
+            "preselected": "option_1",
+            "display_badge": "option_3",
+            "badge_text": "Best value",
+            "option_1_quantity": 1,
+            "option_1_label": "Buy 1",
+            "option_1_benefit": "",
+            "option_1_caption": "",
+            "option_1_discount_type": "none",
+            "option_1_percentage_off": 0,
+            "option_1_fixed_amount_off": "0",
+            "option_2_quantity": 2,
+            "option_2_label": "Buy 2",
+            "option_2_benefit": "Save 10%",
+            "option_2_caption": "",
+            "option_2_discount_type": "percentage",
+            "option_2_percentage_off": 10,
+            "option_2_fixed_amount_off": "0",
+            "option_3_quantity": 3,
+            "option_3_label": "Buy 3",
+            "option_3_benefit": "Save 20%",
+            "option_3_caption": "",
+            "option_3_discount_type": "percentage",
+            "option_3_percentage_off": 20,
+            "option_3_fixed_amount_off": "0",
+            "option_4_quantity": 0,
+            "option_4_label": "",
+            "option_4_benefit": "",
+            "option_4_caption": "",
+            "option_4_discount_type": "none",
+            "option_4_percentage_off": 0,
+            "option_4_fixed_amount_off": "0"
+          }
+        }
+      },
+      "block_order": [
+        "breadcrumbs_mhcn3t",
+        "quantity_selector",
+        "perplexo_buybox"
+      ],
+      "custom_css": [],
+      "settings": {
+        "enable_sticky_info": true,
+        "show_feature_media": false,
+        "color_scheme": "",
+        "show_container": true,
+        "container_radius": 10,
+        "container_padding": 30,
+        "container_color": "#ffffff",
+        "container_border_color": "#ffe7ec",
+        "container_text": "",
+        "container_text_bg": "#212121",
+        "container_text_txt": "#ffffff",
+        "show_container_mb": true,
+        "container_padding_mb": 20,
+        "container_radius_mb": 8,
+        "container_color_mb": "#ffffff",
+        "container_border_color_mb": "#ffe7ec",
+        "media_size": "medium",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail",
+        "thumbnail_size": 70,
+        "thumbnail_radius": 4,
+        "media_position": "left",
+        "image_zoom": "none",
+        "mobile_thumbnails": "show",
+        "show_full_image": true,
+        "first_image_size": 100,
+        "second_image_size": 0,
+        "hide_variants": true,
+        "enable_video_looping": true,
+        "padding_top": 8,
+        "padding_bottom": 76,
+        "padding_top_mb": 0,
+        "padding_bottom_mb": 36
+      }
+    },
+    "ebd38537-357b-4b9d-94d3-8480c1f8694b": {
+      "type": "random-number",
+      "settings": {
+        "layout": "full_bleed",
+        "color_scheme": "background-2",
+        "pill_color": "#0fd68f",
+        "fomo_border": 6,
+        "fomo_border_color": "#ffe7ec",
+        "fomo_min": 8,
+        "fomo_max": 16,
+        "fomo_speed": 3,
+        "fomo_text_before": "<strong>[Limited stock]</strong>",
+        "number_bold": true,
+        "fomo_text_after": "Peoples are checking out right now",
+        "text_alignment": "center",
+        "padding_top": 12,
+        "padding_bottom": 12,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "custom_liquid_QCj3TA": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% assign landing_images = product.metafields.custom.landing_page.value %}\n\n{% if landing_images != blank %}\n<div class=\"landing-images-wrapper\">\n  {% for image in landing_images %}\n    <div class=\"landing-image\">\n      <img\n        src=\"{{ image | image_url: width: 2000 }}\"\n        alt=\"{{ product.title }} - Landing Image {{ forloop.index }}\"\n        loading=\"{% if forloop.first %}eager{% else %}lazy{% endif %}\"\n        width=\"{{ image.width }}\"\n        height=\"{{ image.height }}\"\n      >\n    </div>\n  {% endfor %}\n</div>\n\n<style>\n.landing-images-wrapper{\n    width:100%;\n    margin:0;\n    padding:0;\n}\n\n.landing-image{\n    margin:0;\n    padding:0;\n    line-height:0;\n}\n\n.landing-image img{\n    display:block;\n    width:100%;\n    height:auto;\n    margin:0;\n    padding:0;\n    border:0;\n    border-radius:0;\n    box-shadow:none;\n}\n</style>\n{% endif %}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "collection_text_alignment": "center",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "image_no_crop": true,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_desc": true,
+        "quick_desc_legth": 90,
+        "quick_desc_size": 13,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "perplexo_pdp_testimonials": {
+      "type": "perplexo_pdp_testimonials",
+      "blocks": {
+        "review_1": {
+          "type": "pdp_testimonial",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "usage_time": "Used for 3 weeks",
+            "title": "Best Skincare Investment",
+            "body": "Skin felt deeply nourished and visibly plumper within days. I don't even need foundation anymore!",
+            "author_name": "Jessica Vance",
+            "author_meta": "Verified Buyer • London, UK",
+            "avatar_initials": "JV"
+          }
+        },
+        "review_2": {
+          "type": "pdp_testimonial",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "usage_time": "Used for 1 month",
+            "title": "Gentle & Incredibly Effective",
+            "body": "Pure soothing magic. My skin barrier is stronger, redness is gone, and fine lines have smoothed.",
+            "author_name": "Claire Morel",
+            "author_meta": "Verified Buyer • Montreal, Canada",
+            "avatar_initials": "CM"
+          }
+        },
+        "review_3": {
+          "type": "pdp_testimonial",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "usage_time": "Used for 6 weeks",
+            "title": "Visible Firming & Bounce",
+            "body": "Noticed real skin elasticity in two weeks. Pores look refined and my complexion stays radiant.",
+            "author_name": "Dr. Miriam Al-Sabah",
+            "author_meta": "Verified Buyer • Dubai, UAE",
+            "avatar_initials": "MA"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3"
+      ],
+      "settings": {
+        "badge": "CUSTOMER REVIEWS & RESULTS",
+        "heading": "Loved by People Using This Formula",
+        "subheading": "Real feedback and proven skin improvements from verified customers",
+        "rating_score": "4.9",
+        "rating_count_text": "Based on 480+ verified customer reviews",
+        "metric_1": "98% Noticed Firmer Skin",
+        "metric_2": "95% Saw Enhanced Radiance",
+        "metric_3": "99% Would Recommend",
+        "speed": 42,
+        "bg_color": "rgba(255, 255, 255, 0.45)",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "perplexo_diy_videos": {
+      "type": "perplexo_diy_videos",
+      "settings": {
+        "eyebrow": "SEE IT IN ACTION",
+        "heading": "Make your bracelet",
+        "subheading": "Watch the charms, the guide, and finished looks.",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "perplexo_diy_feature": {
+      "type": "perplexo_diy_feature",
+      "settings": {
+        "product_image_position": 1,
+        "layout": "image_first",
+        "eyebrow": "THE CHARMS",
+        "heading": "Charms with weight, not plastic glitter.",
+        "text_1": "Metal-alloy charms, enamel fills, polished edges. They sit on the cord without spinning like toys.",
+        "text_2": "Enamel character-inspired charms. Stretch cord + spare. Extra beads for mistakes. Fan-inspired — not official licensed merchandise.",
+        "padding_top": 48,
+        "padding_bottom": 24
+      }
+    },
+    "perplexo_diy_feature_guide": {
+      "type": "perplexo_diy_feature",
+      "settings": {
+        "product_image_position": 3,
+        "layout": "text_first",
+        "eyebrow": "THE GUIDE",
+        "heading": "A guide she can follow without you hovering.",
+        "text_1": "Photographed order of beads, not a wall of text. First bracelet is a 20-minute loop: lay out, string, clasp, wear.",
+        "text_2": "Pictured 4-step insert. Sorted compartments. Kid-testable sequence (8+ with an adult).",
+        "padding_top": 24,
+        "padding_bottom": 48
+      }
+    },
+    "perplexo_pdp_faq": {
+      "type": "perplexo_pdp_faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Delivery takes 3–5 business days. You will receive an email with a tracking link as soon as your package ships.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I track my order?",
+            "answer": "<p>Once your order has shipped, you will receive an email confirmation with your unique tracking number and direct tracking link to follow your parcel in real-time.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return & refund policy?",
+            "answer": "<p>You can request a return within 14 days. If you are not completely satisfied, contact preplexo4@gmail.com for a hassle-free exchange or full refund.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are payments safe and secure?",
+            "answer": "<p>Yes, absolutely! We use bank-level 256-bit SSL encryption to ensure that all personal and payment information is 100% protected and secure.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I contact customer support?",
+            "answer": "<p>Our dedicated support team is available 24/7. You can reach out directly via our Contact Us page or email us at preplexo4@gmail.com for prompt assistance.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Have questions? Everything you need to know about our products & service.",
+        "open_first": false,
+        "bg_color": "transparent",
+        "padding_top": 48,
+        "padding_bottom": 56
+      }
+    },
+    "41eff030-bfe6-4439-9af3-bc24e7cb0559": {
+      "type": "custom-fonts",
+      "blocks": {
+        "abd19213-10d7-45b5-b8e0-532450e7ddab": {
+          "type": "image",
+          "settings": {
+            "name": "customfont",
+            "custom_font_weight": "none",
+            "custom_font_style": "none",
+            "custom_font_url": "",
+            "apply_h1": true,
+            "apply_h2": true,
+            "apply_h3": true,
+            "apply_h4": true,
+            "apply_h5": true,
+            "apply_h6": true,
+            "apply_span": true,
+            "apply_p": true,
+            "apply_custom": ""
+          }
+        }
+      },
+      "block_order": [
+        "abd19213-10d7-45b5-b8e0-532450e7ddab"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ebd38537-357b-4b9d-94d3-8480c1f8694b",
+    "custom_liquid_QCj3TA",
+    "perplexo_diy_videos",
+    "perplexo_diy_feature",
+    "perplexo_diy_feature_guide",
+    "perplexo_pdp_faq",
+    "related-products",
+    "perplexo_pdp_testimonials",
+    "41eff030-bfe6-4439-9af3-bc24e7cb0559"
+  ]
+}

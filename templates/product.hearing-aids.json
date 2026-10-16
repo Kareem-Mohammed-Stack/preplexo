@@ -1,0 +1,1354 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "breadcrumbs_mhcn3t": {
+          "type": "breadcrumbs",
+          "settings": {
+            "title_home": "Home",
+            "padding_top": 0,
+            "padding_top_mb": 0,
+            "padding_bottom": 0,
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "testimonial_images_dwVMnc": {
+          "type": "testimonial-images",
+          "settings": {
+            "image_size": 0.8,
+            "image_space": -18,
+            "image": "shopify://shop_images/Testimonial_Image_Review_5.jpg",
+            "hide_img_2": false,
+            "image_2": "shopify://shop_images/Testimonial_Image_Review_3.jpg",
+            "hide_img_3": false,
+            "image_3": "shopify://shop_images/Testimonial_Image_Review_3.jpg",
+            "hide_img_4": false,
+            "image_4": "shopify://shop_images/Testimonial_Image_Review_1.jpg",
+            "hide_img_5": false,
+            "image_5": "shopify://shop_images/Testimonial_Image_Review_4.jpg",
+            "text_block": "<p>★★★★★ Excellent 4.8</p>",
+            "text_size": 13,
+            "text_style": "body"
+          }
+        },
+        "2fead2d5-7a3f-49d9-bacf-1d813be9861e": {
+          "type": "review",
+          "disabled": true,
+          "settings": {
+            "lrw_text": "<strong>4.8 - 1356 Reviews</strong>",
+            "text_size": 14,
+            "star_style": "star",
+            "star_size": 0.7,
+            "star_rating": 4.5,
+            "lrw_star_color": "#000000",
+            "lrw_star_color_disable": "#eeeeee",
+            "lrw_color": "#d50000",
+            "margin_top": 15,
+            "margin_bottom": 10
+          }
+        },
+        "title_JizAxD": {
+          "type": "title",
+          "settings": {
+            "title_size": 28,
+            "title_height": 120,
+            "text_transform": "none"
+          }
+        },
+        "8f8d8903-27e7-4cac-99c4-ec1b60b7f309": {
+          "type": "fomo",
+          "settings": {
+            "fomo_text_before": "<strong>(x) people are looking at this!</strong>",
+            "text_style": "uppercase",
+            "text_size": 10,
+            "color_scheme": "accent-2",
+            "fomo_border_activate": false,
+            "fomo_border": 0,
+            "fomo_border_color": "#ffe7ec",
+            "pill_color": "#00d50b",
+            "fomo_min": 8,
+            "fomo_max": 16,
+            "fomo_speed": 3,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "margin_top": 16,
+            "margin_bottom": 0
+          }
+        },
+        "promo_iRay6a": {
+          "type": "promo",
+          "disabled": true,
+          "settings": {
+            "icon": "return",
+            "icon_width": 20,
+            "content": "<p>100% Satisfaction Guaranteed</p>",
+            "font_size": 90
+          }
+        },
+        "promo_H7CMnc": {
+          "type": "promo",
+          "disabled": true,
+          "settings": {
+            "icon": "chat_bubble",
+            "icon_width": 20,
+            "content": "<p>24/7 Customer Support</p>",
+            "font_size": 90
+          }
+        },
+        "promo_MiFPrA": {
+          "type": "promo",
+          "disabled": true,
+          "settings": {
+            "icon": "lock",
+            "icon_width": 20,
+            "content": "<p>Trusted by Thousands</p>",
+            "font_size": 90
+          }
+        },
+        "promo_EhjWkh": {
+          "type": "promo",
+          "disabled": true,
+          "settings": {
+            "icon": "plant",
+            "icon_width": 20,
+            "content": "<p>Eco-Friendly Packaging</p>",
+            "font_size": 90
+          }
+        },
+        "auto_tabs_epeaKh": {
+          "type": "auto_tabs",
+          "disabled": true,
+          "settings": {
+            "tabs_color_scheme": "scheme-c8c05c75-1914-4148-9446-95aa92ade006",
+            "compact": false,
+            "auto_tab_heading": 13,
+            "padding_top": 16,
+            "padding_bottom": 16
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "price_style": "price",
+            "price_size": 20,
+            "badge_text_1": 13,
+            "price_first": true,
+            "badge_bg_1": "#d50000",
+            "badge_price_1": "#ffffff",
+            "price_size_2": 1,
+            "badge_price": "#8b8d8f",
+            "price_bold_2": false,
+            "sale_price_color": "#d50000",
+            "regular_price_color": "#212121",
+            "price_bold": true,
+            "badge_hide": false,
+            "taxes_hide": false,
+            "shipping_hide": false,
+            "padding_top": 4,
+            "padding_bottom": 4
+          }
+        },
+        "description_7rxnqF": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "label_style": "body",
+            "font_size": 14,
+            "font_style": "normal",
+            "swatchType": "color",
+            "optionName": "Color",
+            "swatchStyle": "round",
+            "swatchSize": 30,
+            "swatchHeight": 30,
+            "size_trigger": "Size",
+            "chart_id": "Size Chart",
+            "size_page": ""
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+            "enable_quantity_discounts": true,
+            "headline": "Choose your offer",
+            "txt_size_head_qb": 18,
+            "sub_headline": "This offer is for limited time only",
+            "txt_size_subhead_qb": 12,
+            "background_top_qb": "#ffffff",
+            "background_top_text_qb": "#212121",
+            "background_qb": "#ffffff",
+            "border_qb": "#000000",
+            "check_bg_qb": "#e9ecef",
+            "check_border_qb": "#000000",
+            "check_dot": "#000000",
+            "hover_bg_qb": "#ffffff",
+            "hover_border_qb": "#000000",
+            "badge_qb": "#000000",
+            "badge_qb_text": "#ffffff",
+            "compare_price": "#000000",
+            "qb_border_wd": 2,
+            "qb_border": 4,
+            "padding_top": 20,
+            "padding_bottom": 20,
+            "preselected": "option_1",
+            "display_badge": "none",
+            "badge_text": "Most Popular",
+            "option_1_quantity": 1,
+            "option_1_label": "",
+            "option_1_benefit": "",
+            "option_1_caption": "You save [amount]",
+            "option_1_discount_type": "none",
+            "option_1_percentage_off": 0,
+            "option_1_fixed_amount_off": "0",
+            "option_2_quantity": 2,
+            "option_2_label": "",
+            "option_2_benefit": "",
+            "option_2_caption": "Only [item_price] per Item",
+            "option_2_discount_type": "none",
+            "option_2_percentage_off": 0,
+            "option_2_fixed_amount_off": "0",
+            "option_3_quantity": 3,
+            "option_3_label": "",
+            "option_3_benefit": "",
+            "option_3_caption": "You save [amount]",
+            "option_3_discount_type": "none",
+            "option_3_percentage_off": 0,
+            "option_3_fixed_amount_off": "0",
+            "option_4_quantity": 4,
+            "option_4_label": "",
+            "option_4_benefit": "",
+            "option_4_caption": "You save [amount]",
+            "option_4_discount_type": "none",
+            "option_4_percentage_off": 0,
+            "option_4_fixed_amount_off": "0"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_full_button": true,
+            "lm_main_button": "#000000",
+            "lm_main_button_gr": "",
+            "lm_main_text": "#ffffff",
+            "lm_button_animation": "soft",
+            "show_gift_card_recipient": true,
+            "skip_cart": true,
+            "cart_text": ""
+          }
+        },
+        "payment_DhF6nK": {
+          "type": "payment",
+          "settings": {
+            "original": "custom",
+            "payment_icon": "visa,master,paypal,apple_pay,shopify-pay,google-pay",
+            "payment_content_alignment": "center"
+          }
+        },
+        "promo_slide_8CpDYK": {
+          "type": "promo-slide",
+          "disabled": true,
+          "settings": {
+            "block_heading": "Nourished and youthful!",
+            "text_1": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store. ★★★★★</p>",
+            "show_slide_2": true,
+            "block_heading_2": "Smooth and refreshed.",
+            "text_2": "<p>This product has transformed my skin! It’s never felt so smooth and refreshed.</p>",
+            "show_slide_3": true,
+            "block_heading_3": "Game-changer",
+            "text_3": "<p>A game-changer for my skincare routine. My complexion is brighter and clearer.</p>",
+            "color_scheme": "accent-2",
+            "slide_padding": 20,
+            "show_border": true,
+            "border_color": "#e4e4e4",
+            "slide_wrapper_radius": 6,
+            "slide_img_size": 60,
+            "slide_img_radius": 100,
+            "head_size": 12,
+            "text_size": 12,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        },
+        "ad4a2bc2-8dd2-4105-9923-5bd7d66f77f3": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "color_scheme": "background-1",
+            "icon_font_size": 11,
+            "icon_1": "box",
+            "heading_1": "<strong>FREE SHIPPING GLOBLY</strong>",
+            "icon_2": "return",
+            "heading_2": "<strong>14 DAY RETURNS</strong>",
+            "icon_3": "chat_bubble",
+            "heading_3": "<strong>24/7 Customer Support</strong>"
+          }
+        },
+        "collapsible_tab_qHQx7f": {
+          "type": "collapsible_tab",
+          "settings": {
+            "open_first_collapsible_row": false,
+            "heading": "Global Tracked Shipping",
+            "icon": "truck",
+            "content": "<p>Get <strong>Free Tracked Worldwide Shipping</strong> on all orders. Delivery takes <strong>3–5 business days</strong>.</p>",
+            "page": ""
+          }
+        },
+        "eb02bfdc-836f-40fa-bc36-a93ccbb6f998": {
+          "type": "collapsible_tab",
+          "settings": {
+            "open_first_collapsible_row": false,
+            "heading": "Love It Or Your Money Back",
+            "icon": "heart",
+            "content": "<p>Here at <strong>Trendora</strong>, we are so confident in our products that if you are still not satisfied with your <strong>TruHear™ | Invisible Behind The Ears Hearing Aids </strong>within <strong>14 days</strong>, simply return it, and we'll <strong>process your refund without any hassle</strong>.</p><p>Seriously, we're committed to ensuring you get the product you deserve.</p>",
+            "page": ""
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "breadcrumbs_mhcn3t",
+        "testimonial_images_dwVMnc",
+        "2fead2d5-7a3f-49d9-bacf-1d813be9861e",
+        "title_JizAxD",
+        "8f8d8903-27e7-4cac-99c4-ec1b60b7f309",
+        "promo_iRay6a",
+        "promo_H7CMnc",
+        "promo_MiFPrA",
+        "promo_EhjWkh",
+        "auto_tabs_epeaKh",
+        "price",
+        "description_7rxnqF",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "payment_DhF6nK",
+        "promo_slide_8CpDYK",
+        "ad4a2bc2-8dd2-4105-9923-5bd7d66f77f3",
+        "collapsible_tab_qHQx7f",
+        "eb02bfdc-836f-40fa-bc36-a93ccbb6f998",
+        "share"
+      ],
+      "custom_css": [],
+      "settings": {
+        "enable_sticky_info": true,
+        "show_feature_media": false,
+        "color_scheme": "",
+        "show_container": true,
+        "container_radius": 10,
+        "container_padding": 30,
+        "container_color": "#ffffff",
+        "container_border_color": "#744c26",
+        "container_text": "",
+        "container_text_bg": "#212121",
+        "container_text_txt": "#ffffff",
+        "show_container_mb": true,
+        "container_padding_mb": 20,
+        "container_radius_mb": 8,
+        "container_color_mb": "#ffffff",
+        "container_border_color_mb": "#000000",
+        "media_size": "medium",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail",
+        "thumbnail_size": 70,
+        "thumbnail_radius": 4,
+        "media_position": "left",
+        "image_zoom": "none",
+        "mobile_thumbnails": "show",
+        "show_full_image": true,
+        "first_image_size": 100,
+        "second_image_size": 0,
+        "hide_variants": true,
+        "enable_video_looping": true,
+        "padding_top": 8,
+        "padding_bottom": 76,
+        "padding_top_mb": 0,
+        "padding_bottom_mb": 36
+      }
+    },
+    "ebd38537-357b-4b9d-94d3-8480c1f8694b": {
+      "type": "random-number",
+      "settings": {
+        "layout": "full_bleed",
+        "color_scheme": "background-2",
+        "pill_color": "#0fd68f",
+        "fomo_border": 6,
+        "fomo_border_color": "#744c26",
+        "fomo_min": 8,
+        "fomo_max": 16,
+        "fomo_speed": 3,
+        "fomo_text_before": "<strong>[Limited stock]</strong>",
+        "number_bold": true,
+        "fomo_text_after": "Peoples are checking out right now",
+        "text_alignment": "center",
+        "padding_top": 12,
+        "padding_bottom": 12,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "rich_text_JGMfGU": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_MjhciH": {
+          "type": "heading",
+          "settings": {
+            "heading": "Tired of Overpaying for Hearing Aids?",
+            "heading_size": "h1"
+          }
+        },
+        "text_wWrN8A": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Get the Same Benefits for a Fraction of the Cost<br/><br/>Big brands charge $5000, even $6000 or more for hearing aids that cost only pennies to make. These brands exploit people who just want to HEAR clearly again.<br/><br/>But you shouldn’t have to choose between emptying your bank or missing your grandkids' voices…<br/><br/>TruHear™ Hearing Aids offer the SAME crystal clear audio and performance for a fraction of the price.</p>"
+          }
+        },
+        "button_bzhi7h": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_MjhciH",
+        "text_wWrN8A",
+        "button_bzhi7h"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_ax9CUA": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_EjHHAp": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/T2_e5816d98-8a1f-44f3-843c-f502e426e8a5.webp",
+            "title": "⭐⭐⭐⭐⭐",
+            "text": "<p><strong>Better Than My $4700 Hearing Aids</strong></p><p>\"When my $4700 hearing aids broke, I tried these affordable ones. The sound is actually better than my old expensive ones! My wife tried 'em too and she liked 'em just fine. I already bought a second pair. Thank you so much.\"<br/><br/><em><strong>- John M.</strong></em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_gNm7wc": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/T3.webp",
+            "title": "⭐⭐⭐⭐⭐",
+            "text": "<p><strong>Easier than the ‘Big Name’ $6K aids</strong></p><p>\"Three years ago I purchased from a well known hearing aid chain a pair of $6K+ aids and the product was okay, BUT not as stellar as the price warranted. I decided to try TruHear and honestly I can say I find NO difference between the expensive ones and these, and at this price point I can live with the inevitable shortfall of hearing aids.\"<br/><br/><em><strong>- Kevin F.</strong></em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_hkqANj": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/T1_df5c45cd-9240-417e-841b-595cc9801ada.webp",
+            "title": "⭐⭐⭐⭐⭐",
+            "text": "<p><strong>Improves hearing and is affordable</strong></p><p>\"I have been using these hearing aids for a year and they have improved the quality of my life. They allow me to enter into conversations. And they are affordable, meaning I am not terrified of losing them. They are rechargeable. No need to replace expensive and tiny batteries.\"<br/><br/><em><strong>- James K.</strong></em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_EjHHAp",
+        "column_gNm7wc",
+        "column_hkqANj"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Here's what customers had to say!",
+        "heading_size": "h1",
+        "heading_center": "center",
+        "image_width": "full",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "navigation_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "comparison_table_nYHpM9": {
+      "type": "comparison-table",
+      "blocks": {
+        "row_QfYmBH": {
+          "type": "row",
+          "settings": {
+            "benefit": "Clear Sound",
+            "us": true,
+            "others": false
+          }
+        },
+        "row_bp979A": {
+          "type": "row",
+          "settings": {
+            "benefit": "Rechargeable",
+            "us": true,
+            "others": false
+          }
+        },
+        "row_AULHhh": {
+          "type": "row",
+          "settings": {
+            "benefit": "Battery Life",
+            "us": true,
+            "others": false
+          }
+        },
+        "row_y4CenR": {
+          "type": "row",
+          "settings": {
+            "benefit": "Easy To Use",
+            "us": true,
+            "others": false
+          }
+        }
+      },
+      "block_order": [
+        "row_QfYmBH",
+        "row_bp979A",
+        "row_AULHhh",
+        "row_y4CenR"
+      ],
+      "name": "Comparison table",
+      "settings": {
+        "title": "What Makes TruHear™ Special",
+        "heading_size": "h1",
+        "text": "<p>Find out why you should choose TruHear™ instead of other Hearing aids brands</p>",
+        "button_label": "",
+        "link": "",
+        "button_style_secondary": false,
+        "layout": "table_second",
+        "color_scheme": "",
+        "logo_width": 90,
+        "mobile_logo_width": 60,
+        "us_label": "TruHear™",
+        "others_label": "Others",
+        "benefit_color_scheme": "",
+        "checkmark_color": "#53af01",
+        "icon_cells_color_scheme": "",
+        "table_corner_radius": 0,
+        "table_shadow_opacity": 15,
+        "table_shadow_horizontal_offset": 0,
+        "table_shadow_vertical_offset": 0,
+        "table_shadow_blur": 0,
+        "table_border_thickness": 1,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_4HGj8t": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_xBtKC4": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_8cvh3d8cvh3d8cvh.webp",
+            "title": "",
+            "text": "<p>Test out our rechargeable Hearing Aids for 14 days. If you're not happy with the crystal clear sound, comfortable fit, adjustable volume modes, and 48 Hours battery life, just let us know. We'll give you every penny back, no questions asked!<br/><br/> On top of that, we include a 1 year warranty free of charge. In the off chance your aids get damaged from drops, spills, or whatnot, we've got you covered. Just <strong>contact our helpful support team.</strong> Give <strong>TruHear™ Hearing Aids </strong>a try without any worries.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_xBtKC4"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "heading_center": "center",
+        "image_width": "forth",
+        "image_ratio": "adapt",
+        "columns_desktop": 1,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "navigation_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_KnRfUR": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_8Ugf4E": {
+          "type": "heading",
+          "settings": {
+            "heading": "Fully Rechargeable - 48 Hours Battery Life",
+            "heading_size": "h1"
+          }
+        },
+        "text_K6mrJp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our hearing aids are FULLY rechargeable so you'll never struggle with battery changes again. Just a 4 hour overnight charge provides 48 hours of continuous, crisp clear sound. Never buy batteries again. Convenient charging gives you 2 full days of unmatched sound quality on one quick overnight charge.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_pp3qRw": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://products/truhear™-invisible-behind-the-ears-hearing-aids",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_8Ugf4E",
+        "text_K6mrJp",
+        "button_pp3qRw"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/I1_683f0906-c123-42fa-8d34-c5c9bda419eb.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_j7zxWc": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_iec489": {
+          "type": "heading",
+          "settings": {
+            "heading": "Discreet, Comfortable Aids",
+            "heading_size": "h1"
+          }
+        },
+        "text_UqFwPW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Even though our hearing aids use a BTE design, they sit real close to your head.<br/><br/>And they're very comfortable and <strong>won't rub against your skin </strong>or <span style=\"text-decoration:underline\"><strong>get in the way of your glasses. </strong></span>The ear domes are made of ultra-soft silicone, which is gentle & comfortable even on the most sensitive skin.<br/><br/>We include 4 sizes of ear tips to get you the just-right fit.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_8qPbDU": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://products/truhear™-invisible-behind-the-ears-hearing-aids",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_iec489",
+        "text_UqFwPW",
+        "button_8qPbDU"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/I2_af3a638b-ed04-497b-8878-7f6fb975959e.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "rich_text_XbNBGQ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_XTnDVP": {
+          "type": "heading",
+          "settings": {
+            "heading": "Hear Your Loved Ones Loud and Clear",
+            "heading_size": "h1"
+          }
+        },
+        "text_qeMC9w": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our hearing aids help you reconnect with the conversations that matter most. No more feeling isolated when you can't understand what loved ones are saying.</p>"
+          }
+        },
+        "button_bhG3BG": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/truhear™-invisible-behind-the-ears-hearing-aids",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_XTnDVP",
+        "text_qeMC9w",
+        "button_bhG3BG"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "image_with_text_qUeqMV": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_zxtCCK": {
+          "type": "heading",
+          "settings": {
+            "heading": "One-On-One Conversations",
+            "heading_size": "h1"
+          }
+        },
+        "text_JKdfia": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Carry on one-on-one chats without having to strain or constantly ask the other person to repeat themselves. Muffled voices will become crystal clear.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_E4gHQh": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/truhear™-invisible-behind-the-ears-hearing-aids",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_zxtCCK",
+        "text_JKdfia",
+        "button_E4gHQh"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/I3_18db1997-ad9a-435d-b3f7-363fb7d3b696.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_TGVy39": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_zfdkCH": {
+          "type": "heading",
+          "settings": {
+            "heading": "Watching TV",
+            "heading_size": "h1"
+          }
+        },
+        "text_HtKcDe": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lower the TV volume and say goodbye to subtitles. Laugh along to your favorite shows and enjoy tunes like it was the good ol' days.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_gA4Hp7": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/truhear™-invisible-behind-the-ears-hearing-aids",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_zfdkCH",
+        "text_HtKcDe",
+        "button_gA4Hp7"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/I4_76e5c255-e15e-4d8b-bfee-1730348f234e.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_qNrKaF": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_3Y93LA": {
+          "type": "heading",
+          "settings": {
+            "heading": "On The Phone",
+            "heading_size": "h1"
+          }
+        },
+        "text_8FL3yj": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Even digital voices and sounds such as phone calls will be easy for you to understand & hear clearly.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_9Fc47p": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/truhear™-invisible-behind-the-ears-hearing-aids",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_3Y93LA",
+        "text_8FL3yj",
+        "button_9Fc47p"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/I5.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_XWwdrc": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_RGz3Fp": {
+          "type": "heading",
+          "settings": {
+            "heading": "Group Conversations",
+            "heading_size": "h1"
+          }
+        },
+        "text_wyJwiN": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Even with multiple voices & tones, our adjustable listening modes make sure you'll be able to enjoy crystal clear conversations with your friends & family.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_mc4BJV": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/truhear™-invisible-behind-the-ears-hearing-aids",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_RGz3Fp",
+        "text_wyJwiN",
+        "button_mc4BJV"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/I6.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_AEFWJF": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_76jAMt": {
+          "type": "heading",
+          "settings": {
+            "heading": "Easy To Use",
+            "heading_size": "h1"
+          }
+        },
+        "text_4cRYNG": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Our aids are easy to use, even with shaky hands.</strong></p><p>The On/Off & listening mode switch are efficiently designed for SIMPLE access.<br/><br/>At the top of each hearing aid, there is a simple to use dial for changing the amount of hearing support needed. Which may be quickly adjusted up to 80 decibels by sliding your finger across it.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_mhKcYx": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/truhear™-invisible-behind-the-ears-hearing-aids",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_76jAMt",
+        "text_4cRYNG",
+        "button_mhKcYx"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/I7.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_gbR4zy": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_piiMj7": {
+          "type": "heading",
+          "settings": {
+            "heading": "What's In The Box",
+            "heading_size": "h1"
+          }
+        },
+        "text_NLfdQ9": {
+          "type": "text",
+          "settings": {
+            "text": "<p>•A complete and in-depth user manual that covers all you need to know about your new hearing aids, including correct setup and care, achieving a perfect in-ear fit, modifying the hearing support to your particular needs, and much more!<br/><br/>• 4 different sizes of ultra-soft ear domes for a comfortable & discreet in-ear fit.<br/><br/>• 2 charging cables.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_QGpWyi": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/truhear™-invisible-behind-the-ears-hearing-aids",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_piiMj7",
+        "text_NLfdQ9",
+        "button_QGpWyi"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/I8.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "lumin_review_8EHAak": {
+      "type": "Lumin-review",
+      "blocks": {
+        "review_x7iYK9": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Alex M. – London, UK",
+            "date_text": "",
+            "review_head": "A Life‑Changer!",
+            "review_text": "“I’ve struggled with mild hearing loss for years, and these hearing aids made a noticeable difference right away. The sound is clear, background noise is reduced, and they’re incredibly comfortable. The rechargeable battery lasts all day—no fiddling with tiny batteries anymore. Worth every penny!”",
+            "like_size": 52,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_LBgTkj": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Maria S. – Toronto, Canada",
+            "date_text": "",
+            "review_head": "Really Impressive for the Price",
+            "review_text": "“These work way better than I expected, especially at this price point. Easy to set up, comfortable to wear, and I can finally hear conversations in noisy environments. Only reason I gave 4 stars is that they took a bit of time to get used to.”",
+            "like_size": 70,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_NXeLe3": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Daniel T. – Berlin, Germany",
+            "date_text": "",
+            "review_head": "Good Comfort & Sound Quality",
+            "review_text": "“I’m pleasantly surprised by the audio quality. Voices sound more natural, and these are much easier to put on than my old pair. The fit could be slightly more secure for very active days, but overall very happy!”",
+            "like_size": 60,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_MJg7DX": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Priya K. – New York, USA",
+            "date_text": "",
+            "review_head": "Decent, But Not Perfect",
+            "review_text": "“The hearing aids do help, but I noticed occasional feedback in crowded spaces. They’re comfortable and recharge easily, but performance changes depending on the environment. Still a good option if you want affordable everyday use.”",
+            "like_size": 42,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_atbEdY": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Jessica L. – Sydney, Australia",
+            "date_text": "",
+            "review_head": "Exceeded Expectations!",
+            "review_text": "“I bought these for my dad, and the improvement has been amazing. He can follow conversations again without straining. Setup was simple, and the battery life lasts far longer than expected. Highly recommend!”",
+            "like_size": 62,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_69rGQa": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Omar R. – Dublin, Ireland",
+            "date_text": "",
+            "review_head": "Mixed Experience",
+            "review_text": "“They do amplify sound, but I struggled with fit and feedback at times. Might work better for mild hearing issues, but not ideal for more serious hearing loss. Customer service was helpful though!”",
+            "like_size": 50,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_mmwK9n": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Samuel W. – Madrid, Spain",
+            "date_text": "",
+            "review_head": "Finally Hearing Clearly Again!",
+            "review_text": "“I was skeptical at first, but these hearing aids truly made a difference. Sounds are crisp and natural, and I don’t struggle with conversations like before. The rechargeable feature is so convenient—no more buying tiny batteries. Highly recommend!”",
+            "like_size": 44,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_Q4wjiT": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Leila D. – Manchester, UK",
+            "date_text": "",
+            "review_head": "Comfortable & Effective",
+            "review_text": "“I love how lightweight they are—they’re comfortable even after hours of wear. They’ve helped me hear better in both quiet and moderately noisy places. Would be perfect if noise filtering was slightly stronger, but overall very satisfied.”",
+            "like_size": 39,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_L9RJxn": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Hiroshi K. – Los Angeles, USA",
+            "date_text": "",
+            "review_head": "Amazing Everyday Hearing Aid!",
+            "review_text": "“These hearing aids exceeded my expectations! They are comfortable to wear all day, easy to recharge, and really help cut down on background noise. I can finally follow conversations without constantly asking people to repeat themselves. Great value for the price!”",
+            "like_size": 35,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        }
+      },
+      "block_order": [
+        "review_x7iYK9",
+        "review_LBgTkj",
+        "review_NXeLe3",
+        "review_MJg7DX",
+        "review_atbEdY",
+        "review_69rGQa",
+        "review_mmwK9n",
+        "review_Q4wjiT",
+        "review_L9RJxn"
+      ],
+      "name": "Lumin Review",
+      "settings": {
+        "editing": true,
+        "color_scheme": "",
+        "header_text": "what our customers say about us",
+        "show_top": true,
+        "rating_text": "4.8",
+        "rating_range": 4.5,
+        "rating_count": "",
+        "review_column_mobile": "1",
+        "review_column_tab": "1",
+        "review_column_desk": "1",
+        "review_load": "4",
+        "load_text": "Load More",
+        "rw_img_size": 140,
+        "rw_img_radius": 0,
+        "block_name_size": 20,
+        "date_size": 16,
+        "block_head_size": 20,
+        "block_text_size": 14,
+        "star_style": "star_bg",
+        "star_size": 1,
+        "feature_svg_color": "#dff80b",
+        "inactive_star_color": "#e2e2e2",
+        "show_border": true,
+        "rw_border": "#f2f2f2",
+        "border_radius": 0,
+        "section_bg3": "#000000",
+        "section_bg2": "#1154f6",
+        "verify_text": "Verified Buyer",
+        "review_bg": "#ffffff",
+        "feature_acc_color": "#000000",
+        "review_pd": 20,
+        "review_pd_m": 20,
+        "show_footer": true,
+        "show_product": true,
+        "like_text": "Was this helpful?",
+        "rw_margin": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collapsible_content_3UiDhf": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_QNi4hr": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How are these hearing aids so affordable? Is there a catch?",
+            "icon": "none",
+            "row_content": "<p>Hearing aid technology doesn't actually cost as much as the big brands charge. The expensive name-brand aids cost only a couple hundred dollars to make, yet are marked up exponentially.<br/><br/>We believe hearing assistance should be accessible and affordable for all. By selling directly to customers and using premium components available at reasonable prices, we're able to offer significant savings compared to other brands.<br/><br/>Our priority is helping people hear better, not maximizing profits. While we may not make as much per sale, making a positive impact matters more. With no hidden fees or gotchas, our affordable pricing means no barriers between you and better hearing.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_4b3NeT": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Will the hearing aids fall out of my ear?",
+            "icon": "none",
+            "row_content": "<p>No, the hearing aids fit snugly in your ear and stay in place comfortably all day.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_GVMWKA": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Will these hearing aids help with my tinnitus?",
+            "icon": "none",
+            "row_content": "<p>Yes, hearing aids can provide relief from tinnitus by amplifying ambient sounds. This helps mask the ringing sound. The extra sound stimulation makes the tinnitus less noticeable.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_jrHLGw": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Why should I buy today?",
+            "icon": "none",
+            "row_content": "<p>Don't put off better hearing. Research shows prolonged untreated hearing loss raises your risk of cognitive decline.<br/><br/>Our comfortable, discreet aids restore conversations and social connections before hearing damage worsens.<br/><br/>And for a limited time, our hearing aids are 80% off - just $99.98 instead of $515.00! Don't miss huge savings to hear clearly again right away.<br/><br/>Act now for your health and relationships. Our sale price makes upgrading your hearing easier than eve</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_YwhPpB": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do i need a hearing test?",
+            "icon": "none",
+            "row_content": "<p><strong>No prescription or hearing test? No problem!</strong></p><p>Our hearing aids are designed for easy self-adjustment, allowing you to enhance your hearing up to 80 dB as needed. If you’re unsure about the level of support you require, simply begin with the minimal setting and slowly increase it until your hearing feels natural again.<br/><br/>Adjusting the device is straightforward and quick, taking just 30 seconds with the included dial and adjustment tool. Plus, if your adjustment tool is ever lost or damaged, we’ll replace it at no cost to you.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_cbxYV9": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you offer a warranty or money-back guarantee?",
+            "icon": "none",
+            "row_content": "<p>Yes, we offer both:<br/><br/><strong>14-Day Money-Back Guarantee</strong>: Fully refund your purchase within 14 days if not 100% satisfied.<br/><br/><strong>1 Year Warranty:</strong>Covers all damage including drops, water damage, etc. Full replacements provided.<br/><br/>Try risk-free for 14 days. If the hearing aids aren't the perfect fit for any reason, return for a full refund. Plus enjoy peace of mind with 1 year warranty coverage for damage.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_QNi4hr",
+        "collapsible_row_4b3NeT",
+        "collapsible_row_GVMWKA",
+        "collapsible_row_jrHLGw",
+        "collapsible_row_YwhPpB",
+        "collapsible_row_cbxYV9"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "Frequently Asked Questions",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "collection_text_alignment": "center",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "image_no_crop": true,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_desc": true,
+        "quick_desc_legth": 90,
+        "quick_desc_size": 13,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "1755084724d90f8696": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ebd38537-357b-4b9d-94d3-8480c1f8694b",
+    "rich_text_JGMfGU",
+    "multicolumn_ax9CUA",
+    "comparison_table_nYHpM9",
+    "multicolumn_4HGj8t",
+    "image_with_text_KnRfUR",
+    "image_with_text_j7zxWc",
+    "rich_text_XbNBGQ",
+    "image_with_text_qUeqMV",
+    "image_with_text_TGVy39",
+    "image_with_text_qNrKaF",
+    "image_with_text_XWwdrc",
+    "image_with_text_AEFWJF",
+    "image_with_text_gbR4zy",
+    "lumin_review_8EHAak",
+    "collapsible_content_3UiDhf",
+    "related-products",
+    "1755084724d90f8696"
+  ]
+}

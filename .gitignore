@@ -1,0 +1,15 @@
+﻿.env
+.env.*
+!.env.example
+**/node_modules/
+**/vendor/
+.shopify/
+.cursor/
+.agents/
+*.pem
+*.key
+*.p12
+*.pfx
+*.tfstate
+.DS_Store
+Thumbs.db

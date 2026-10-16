@@ -1,0 +1,70 @@
+.contact img {
+  max-width: 100%;
+}
+
+.contact .form__message {
+  align-items: flex-start;
+}
+
+.contact .icon-success {
+  margin-top: 0.2rem;
+}
+
+.contact .field {
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .contact .field {
+    margin-bottom: 2rem;
+  }
+}
+
+.contact__button {
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: 750px) {
+  .contact__button {
+    margin-top: 4rem;
+  }
+}
+
+.contact-section,
+.contact {
+  background-color: #ffffff !important;
+}
+
+.contact .field__input,
+.contact .text-area,
+.contact .field input,
+.contact .field textarea,
+.contact .field select {
+  background-color: #f3f3f3 !important;
+  border: 1px solid #e0e0e0 !important;
+  color: #121212 !important;
+  border-radius: 4px;
+}
+
+.contact .field__input:focus,
+.contact .text-area:focus,
+.contact .field input:focus,
+.contact .field textarea:focus {
+  background-color: #ebebeb !important;
+  border-color: #85444c !important;
+  box-shadow: none !important;
+}
+
+.contact__button .button,
+.contact__button button,
+.contact .button {
+  border-radius: 8px !important;
+}
+
+@media screen and (min-width: 750px) {
+  .contact__fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 2rem;
+  }
+}

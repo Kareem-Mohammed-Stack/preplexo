@@ -1,0 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "brand_name": "preplexo",
+        "brand_bio": "From Beauty to You — Elevate Your Skincare Ritual. Thoughtfully curated essentials to nourish your skin and enhance your natural glow.",
+        "show_socials": true,
+        "facebook_url": "https://facebook.com",
+        "instagram_url": "https://www.instagram.com/preplexostore",
+        "info_heading": "Information",
+        "shop_heading": "Shop",
+        "contact_heading": "Need to Get in Touch?",
+        "contact_text": "Have a question about Preplexo?",
+        "contact_email": "preplexo4@gmail.com",
+        "copyright_subtext": "Powered by OrcaAd",
+        "padding_top": 60,
+        "padding_bottom": 32
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

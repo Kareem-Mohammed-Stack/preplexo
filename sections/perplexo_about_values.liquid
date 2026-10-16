@@ -1,0 +1,136 @@
+{{ 'perplexo-about-values.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign card_1_img = section.settings.image_1
+  assign card_2_img = section.settings.image_2
+  assign card_3_img = section.settings.image_3
+-%}
+
+<section class="perplexo-about-values" id="PerplexoAboutValues-{{ section.id }}">
+  <div class="perplexo-about-values__inner page-width">
+    <div class="perplexo-about-values__grid">
+      <article class="perplexo-about-values__card">
+        <div class="perplexo-about-values__media">
+          {%- if card_1_img != blank -%}
+            {{ card_1_img | image_url: width: 900 | image_tag: loading: 'lazy', class: 'perplexo-about-values__img', alt: section.settings.title_1 | escape }}
+          {%- else -%}
+            <img
+              class="perplexo-about-values__img"
+              src="{{ 'about-clean-actives.png' | asset_url }}"
+              alt="{{ section.settings.title_1 | escape }}"
+              width="900"
+              height="900"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+        <h3 class="perplexo-about-values__title">{{ section.settings.title_1 }}</h3>
+        <div class="perplexo-about-values__text rte">{{ section.settings.text_1 }}</div>
+      </article>
+
+      <article class="perplexo-about-values__card">
+        <div class="perplexo-about-values__media">
+          {%- if card_2_img != blank -%}
+            {{ card_2_img | image_url: width: 900 | image_tag: loading: 'lazy', class: 'perplexo-about-values__img', alt: section.settings.title_2 | escape }}
+          {%- else -%}
+            <img
+              class="perplexo-about-values__img"
+              src="{{ 'about-glow-ritual.png' | asset_url }}"
+              alt="{{ section.settings.title_2 | escape }}"
+              width="900"
+              height="900"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+        <h3 class="perplexo-about-values__title">{{ section.settings.title_2 }}</h3>
+        <div class="perplexo-about-values__text rte">{{ section.settings.text_2 }}</div>
+      </article>
+
+      <article class="perplexo-about-values__card">
+        <div class="perplexo-about-values__media">
+          {%- if card_3_img != blank -%}
+            {{ card_3_img | image_url: width: 900 | image_tag: loading: 'lazy', class: 'perplexo-about-values__img', alt: section.settings.title_3 | escape }}
+          {%- else -%}
+            <img
+              class="perplexo-about-values__img"
+              src="{{ 'about-quality.png' | asset_url }}"
+              alt="{{ section.settings.title_3 | escape }}"
+              width="900"
+              height="900"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+        <h3 class="perplexo-about-values__title">{{ section.settings.title_3 }}</h3>
+        <div class="perplexo-about-values__text rte">{{ section.settings.text_3 }}</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Preplexo About Values",
+  "tag": "section",
+  "class": "section-perplexo-about-values",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Card 1 image"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Card 1 title",
+      "default": "Clean & Potent Actives"
+    },
+    {
+      "type": "richtext",
+      "id": "text_1",
+      "label": "Card 1 text",
+      "default": "<p>Formulated with targeted peptides, low-molecular collagen, and botanical antioxidants to deeply nourish and restore skin elasticity.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Card 2 image"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Card 2 title",
+      "default": "The Glow Ritual"
+    },
+    {
+      "type": "richtext",
+      "id": "text_2",
+      "label": "Card 2 text",
+      "default": "<p>Our signature Glow Bundle and Dr. Melaxin Collagen Boost Set work synergistically to lock in deep hydration, tighten fine lines, and awaken youthful radiance.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Card 3 image"
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Card 3 title",
+      "default": "Uncompromising Quality"
+    },
+    {
+      "type": "richtext",
+      "id": "text_3",
+      "label": "Card 3 text",
+      "default": "<p>Every Preplexo formula undergoes strict quality control to guarantee gentle, non-irritating, and deeply transformative skincare for every skin type.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Preplexo About Values"
+    }
+  ]
+}
+{% endschema %}

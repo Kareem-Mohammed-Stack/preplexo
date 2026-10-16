@@ -1,0 +1,160 @@
+{{ 'perplexo-ticker.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<div class="perplexo-ticker-wrapper section-{{ section.id }}-padding{% if section.settings.pause_on_hover %} perplexo-ticker--pause-on-hover{% endif %}" style="--ticker-bg: {{ section.settings.bg_color | default: '#85444C' }}; --ticker-color: {{ section.settings.text_color | default: '#EED5B6' }}; --ticker-speed: {{ section.settings.speed | default: 24 }}s;">
+  <a href="{{ routes.all_products_collection_url }}" class="perplexo-ticker" style="color: inherit; text-decoration: none; display: block;">
+    <div class="perplexo-ticker__track">
+      <div class="perplexo-ticker__list">
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            <div class="perplexo-ticker__item" {{ block.shopify_attributes }}>
+              <span class="perplexo-ticker__text">{{ block.settings.text | escape }}</span>
+              {%- if block.settings.show_separator -%}
+                <span class="perplexo-ticker__separator" aria-hidden="true">✦</span>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <div class="perplexo-ticker__item"><span class="perplexo-ticker__text">Sale 25% On All Products</span><span class="perplexo-ticker__separator" aria-hidden="true">✦</span></div>
+          <div class="perplexo-ticker__item"><span class="perplexo-ticker__text">Buy Now and you will find special offer</span><span class="perplexo-ticker__separator" aria-hidden="true">✦</span></div>
+          <div class="perplexo-ticker__item"><span class="perplexo-ticker__text">Buy Two Get One For Free</span><span class="perplexo-ticker__separator" aria-hidden="true">✦</span></div>
+          <div class="perplexo-ticker__item"><span class="perplexo-ticker__text">Free Express Shipping Available</span><span class="perplexo-ticker__separator" aria-hidden="true">✦</span></div>
+        {%- endif -%}
+      </div>
+
+      <!-- Duplicate list for seamless infinite marquee loop -->
+      <div class="perplexo-ticker__list" aria-hidden="true">
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            <div class="perplexo-ticker__item">
+              <span class="perplexo-ticker__text">{{ block.settings.text | escape }}</span>
+              {%- if block.settings.show_separator -%}
+                <span class="perplexo-ticker__separator">✦</span>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <div class="perplexo-ticker__item"><span class="perplexo-ticker__text">Sale 25% On All Products</span><span class="perplexo-ticker__separator">✦</span></div>
+          <div class="perplexo-ticker__item"><span class="perplexo-ticker__text">Buy Now and you will find special offer</span><span class="perplexo-ticker__separator">✦</span></div>
+          <div class="perplexo-ticker__item"><span class="perplexo-ticker__text">Buy Two Get One For Free</span><span class="perplexo-ticker__separator">✦</span></div>
+          <div class="perplexo-ticker__item"><span class="perplexo-ticker__text">Free Express Shipping Available</span><span class="perplexo-ticker__separator">✦</span></div>
+        {%- endif -%}
+      </div>
+    </div>
+  </a>
+</div>
+
+{% schema %}
+{
+  "name": "Perplexo Marquee Ticker",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#85444C"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#EED5B6"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "unit": "s",
+      "label": "Scroll Speed",
+      "default": 24
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on Hover",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 14
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text Message",
+          "default": "Sale 25% On All Products Buy Now"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_separator",
+          "label": "Show Separator Icon",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Perplexo Marquee Ticker",
+      "blocks": [
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Sale 25% On All Products Buy Now and you will find special offer"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Buy Two Get One For Free"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Free Express Shipping On All Orders"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

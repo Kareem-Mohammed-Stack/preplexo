@@ -1,0 +1,318 @@
+/* ==========================================================================
+   PERPLEXO INFOGRAPHIC SECTION
+   ========================================================================== */
+
+.perplexo-info {
+  background-color: transparent;
+  color: #333333;
+  font-family: var(--font-body-family, sans-serif);
+  overflow: hidden;
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.perplexo-info__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+/* Typography Overrides */
+.perplexo-info h2, .perplexo-info h3, .perplexo-info h4 {
+  margin: 0;
+  font-family: var(--font-heading-family, serif);
+  color: #222;
+}
+
+/* 1. Hero Section */
+.perplexo-info__hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+@media screen and (min-width: 850px) {
+  .perplexo-info__hero {
+    grid-template-columns: 1fr 1.2fr;
+  }
+}
+.perplexo-info__hero-text {
+  max-width: 450px;
+}
+.perplexo-info__hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: #111;
+}
+.perplexo-info__hero-subtitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #7c4c52;
+  margin-bottom: 2rem;
+  line-height: 1.3;
+}
+.perplexo-info__hero-desc {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #555;
+}
+.perplexo-info__hero-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 2. Features Row */
+.perplexo-info__features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #eaeaea;
+}
+.perplexo-info__feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1 1 120px;
+  max-width: 180px;
+}
+.perplexo-info__feature-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 1.5rem;
+  color: #7c4c52;
+}
+.perplexo-info__feature-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.5;
+}
+.perplexo-info__feature-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+/* 3. Products Row */
+.perplexo-info__products-wrapper {
+  text-align: center;
+}
+.perplexo-info__section-title {
+  font-size: 2.8rem;
+  margin-bottom: 3rem;
+  color: #7c4c52;
+}
+.perplexo-info__products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+}
+.perplexo-info__product {
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+.perplexo-info__product-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 1.5rem;
+}
+.perplexo-info__product-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #7c4c52;
+}
+.perplexo-info__product-desc {
+  font-size: 1.45rem;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+.perplexo-info__product-badge {
+  background: #fcf1f3;
+  color: #7c4c52;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  border: 1px solid #f5dce1;
+}
+
+/* 4. Details Grid (Ingredients + How to Use) */
+.perplexo-info__details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+@media screen and (min-width: 850px) {
+  .perplexo-info__details {
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+  }
+}
+.perplexo-info__details-col {
+  background: #ffffff;
+  padding: 3rem;
+  border-radius: 12px;
+  border: 1px solid #eaeaea;
+}
+
+/* Ingredients */
+.perplexo-info__ingredients {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.perplexo-info__ingredient {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+.perplexo-info__ingredient-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #f7f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.perplexo-info__ingredient-icon svg {
+  width: 30px;
+  height: 30px;
+  color: #7c4c52;
+}
+.perplexo-info__ingredient-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.perplexo-info__ingredient-desc {
+  font-size: 1.45rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* How to Use */
+.perplexo-info__steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+@media screen and (min-width: 600px) {
+  .perplexo-info__steps {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+.perplexo-info__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.perplexo-info__step-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #fcf1f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.perplexo-info__step-icon svg {
+  width: 24px;
+  height: 24px;
+  color: #7c4c52;
+}
+.perplexo-info__step-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.perplexo-info__step-desc {
+  font-size: 1.35rem;
+  color: #555;
+  line-height: 1.45;
+}
+
+/* Suitable For */
+.perplexo-info__suitable {
+  background: #fcfcfc;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px dashed #ddd;
+}
+.perplexo-info__suitable-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #7c4c52;
+}
+.perplexo-info__suitable-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.perplexo-info__suitable-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+.perplexo-info__suitable-item svg {
+  width: 16px;
+  height: 16px;
+  color: #7c4c52;
+}
+
+/* 5. Footer Badges */
+.perplexo-info__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background: #7c4c52;
+  padding: 2rem;
+  border-radius: 8px;
+  color: #ffffff;
+  gap: 2rem;
+}
+.perplexo-info__footer-badge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.perplexo-info__footer-badge svg {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 1.5;
+}
+.perplexo-info__footer-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+}

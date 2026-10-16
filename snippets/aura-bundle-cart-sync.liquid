@@ -1,0 +1,487 @@
+{% doc %}
+  Syncs the product form to the selected bundle pack.
+  @param {object} section - Current section
+  @param {object} product - Current product
+  @param {string} product_form_id - Product form id
+  @param {string} [radio_name] - Bundle radio group name
+  @param {string} [cta_label] - Add to cart label
+{% enddoc %}
+
+{%- liquid
+  assign radio_name = radio_name | default: 'aura_bundle_product_select_pdp'
+-%}
+
+<script type="application/json" id="AuraBundleCartConfig-{{ section.id }}">
+{
+  "formId": {{ product_form_id | json }},
+  "sectionId": {{ section.id | json }},
+  "radioName": {{ radio_name | json }},
+  "ctaLabel": {{ cta_label | default: 'Add to cart' | json }},
+  "soldOutLabel": {{ 'products.product.sold_out' | t | json }},
+  "defaultQty": {{ default_bundle_qty | default: 2 | json }},
+  "mainVariants": {
+    {%- for v in product.variants -%}
+      {{ v.option1 | json }}: { "id": {{ v.id }}, "available": {{ v.available | json }} }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  },
+  "packs": {
+    {%- assign pack_sep = false -%}
+    {%- for i in (1..8) -%}
+      {%- liquid
+        assign pack = nil
+        assign pack_qty = 0
+        case i
+          when 1
+            assign pack = bundle_1
+            assign pack_qty = bundle_1_qty
+          when 2
+            assign pack = bundle_2
+            assign pack_qty = bundle_2_qty
+          when 3
+            assign pack = bundle_3
+            assign pack_qty = bundle_3_qty
+          when 4
+            assign pack = bundle_4
+            assign pack_qty = bundle_4_qty
+          when 5
+            assign pack = bundle_5
+            assign pack_qty = bundle_5_qty
+          when 6
+            assign pack = bundle_6
+            assign pack_qty = bundle_6_qty
+          when 7
+            assign pack = bundle_7
+            assign pack_qty = bundle_7_qty
+          when 8
+            assign pack = bundle_8
+            assign pack_qty = bundle_8_qty
+        endcase
+      -%}
+      {%- if pack != blank and pack.variants.size > 0 and pack_qty > 0 -%}
+        {%- if pack_sep -%},{%- endif -%}
+        {%- assign pack_sep = true -%}
+        {{ pack_qty | json }}: {
+          {%- for v in pack.variants -%}
+            {{ v.option1 | json }}: { "id": {{ v.id }}, "available": {{ v.available | json }} }{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        }
+      {%- endif -%}
+    {%- endfor -%}
+  }
+}
+</script>
+
+<script>
+  (function () {
+    var cfgEl = document.getElementById('AuraBundleCartConfig-{{ section.id }}');
+    if (!cfgEl) return;
+    var cfg;
+    try {
+      cfg = JSON.parse(cfgEl.textContent);
+    } catch (e) {
+      return;
+    }
+
+    // Featured product renders this block BEFORE buy-buttons creates the form.
+    // Wait until the form exists, then bind.
+    var tries = 0;
+    var maxTries = 80;
+
+    function findByPlug(map, plug) {
+      if (!map) return null;
+      if (plug && map[plug]) return map[plug];
+      if (plug) {
+        var needle = String(plug).toLowerCase().replace(/\s+/g, ' ').trim();
+        var keys = Object.keys(map);
+        for (var i = 0; i < keys.length; i++) {
+          if (String(keys[i]).toLowerCase().replace(/\s+/g, ' ').trim() === needle) {
+            return map[keys[i]];
+          }
+        }
+      }
+      var first = Object.keys(map)[0];
+      return first ? map[first] : null;
+    }
+
+    function packHasVariants(qty) {
+      var pack = cfg.packs[String(qty)];
+      return pack && Object.keys(pack).length > 0;
+    }
+
+    function buildController(form) {
+      var variantInput = form.querySelector('input.product-variant-id, input[name="id"]');
+      var qtyInput = document.getElementById('Quantity-{{ section.id }}');
+      var submitBtn = document.getElementById('ProductSubmitButton-{{ section.id }}');
+      var root =
+        document.getElementById('AuraProduct-{{ section.id }}') ||
+        document.getElementById('ProductInfo-{{ section.id }}') ||
+        form.closest('.featured-product, .product, section, product-info') ||
+        document;
+      var syncing = false;
+
+      function collectPlugKeys() {
+        var keys = {};
+        function addMap(map) {
+          if (!map) return;
+          Object.keys(map).forEach(function (k) {
+            keys[String(k).toLowerCase().replace(/\s+/g, ' ').trim()] = true;
+          });
+        }
+        addMap(cfg.mainVariants);
+        Object.keys(cfg.packs || {}).forEach(function (q) {
+          addMap(cfg.packs[q]);
+        });
+        return keys;
+      }
+
+      function getSelectedPlug() {
+        var plugKeys = collectPlugKeys();
+        var scope = root.querySelector('variant-radios') || root;
+        var fieldsets = scope.querySelectorAll('fieldset.product-form__input');
+        var i;
+        var checked;
+        var val;
+        var name;
+        var needle;
+
+        // Prefer a checked option whose value matches a known plug/pack key
+        for (i = 0; i < fieldsets.length; i++) {
+          checked = fieldsets[i].querySelector('input[type="radio"]:checked');
+          if (!checked || !checked.value) continue;
+          if ((checked.name || '').indexOf('aura_bundle') !== -1) continue;
+          needle = String(checked.value).toLowerCase().replace(/\s+/g, ' ').trim();
+          if (plugKeys[needle]) return checked.value;
+        }
+
+        // Prefer option named like plug/type
+        for (i = 0; i < fieldsets.length; i++) {
+          checked = fieldsets[i].querySelector('input[type="radio"]:checked');
+          if (!checked || !checked.value) continue;
+          name = String(checked.name || '').toLowerCase();
+          if (name.indexOf('plug') !== -1 || name.indexOf('type') !== -1) {
+            return checked.value;
+          }
+        }
+
+        // Single-option product: first checked non-bundle radio
+        checked = scope.querySelector(
+          'fieldset.product-form__input input[type="radio"]:checked'
+        );
+        if (checked && checked.value && String(checked.name || '').indexOf('aura_bundle') === -1) {
+          return checked.value;
+        }
+
+        var mainKeys = Object.keys(cfg.mainVariants || {});
+        return mainKeys.length ? mainKeys[0] : null;
+      }
+
+      function getBundleRadio() {
+        return (
+          root.querySelector('input[name="' + cfg.radioName + '"]:checked') ||
+          document.querySelector('input[name="' + cfg.radioName + '"]:checked')
+        );
+      }
+
+      function resolveTarget() {
+        var radio = getBundleRadio();
+        var qty = radio ? radio.getAttribute('data-qty') || String(cfg.defaultQty || 2) : String(cfg.defaultQty || 2);
+        var plug = getSelectedPlug();
+        var usePack = packHasVariants(qty);
+
+        if (usePack) {
+          var entry = findByPlug(cfg.packs[String(qty)], plug);
+          return {
+            id: entry && entry.id ? String(entry.id) : null,
+            available: !!(entry && entry.available),
+            quantity: '1',
+            mode: 'product',
+            qty: qty,
+            plug: plug
+          };
+        }
+
+        var main = findByPlug(cfg.mainVariants, plug);
+        return {
+          id: main && main.id ? String(main.id) : null,
+          available: !!(main && main.available),
+          quantity: String(qty),
+          mode: 'qty',
+          qty: qty,
+          plug: plug
+        };
+      }
+
+      function updatePaymentButtons(target) {
+        // Native Shop Pay is bound to the page product — hide it when checking out a pack product.
+        var buttons = root.querySelectorAll('.shopify-payment-button');
+        if (!buttons.length && form) {
+          buttons = form.querySelectorAll('.shopify-payment-button');
+        }
+        var hide = !!(target && target.mode === 'product');
+        buttons.forEach(function (el) {
+          el.style.display = hide ? 'none' : '';
+          if (hide) {
+            el.setAttribute('aria-hidden', 'true');
+          } else {
+            el.removeAttribute('aria-hidden');
+          }
+        });
+      }
+
+      function updateSubmitState(target) {
+        if (!submitBtn) {
+          submitBtn = document.getElementById('ProductSubmitButton-{{ section.id }}');
+        }
+        if (!submitBtn) return;
+        var label = submitBtn.querySelector('span');
+        var canBuy = !!(target && target.id && target.available);
+        if (canBuy) {
+          submitBtn.removeAttribute('disabled');
+          submitBtn.removeAttribute('aria-disabled');
+          if (label) label.textContent = cfg.ctaLabel;
+        } else {
+          submitBtn.setAttribute('disabled', 'disabled');
+          if (label) label.textContent = cfg.soldOutLabel;
+        }
+        updatePaymentButtons(target);
+      }
+
+      function syncCartVariant() {
+        if (!variantInput) {
+          variantInput = form.querySelector('input.product-variant-id, input[name="id"]');
+        }
+        var target = resolveTarget();
+        updateSubmitState(target);
+        if (!target || !target.id || !variantInput) return target;
+
+        syncing = true;
+        variantInput.value = target.id;
+        if (target.available) {
+          variantInput.removeAttribute('disabled');
+        } else {
+          variantInput.setAttribute('disabled', 'disabled');
+        }
+        if (qtyInput) qtyInput.value = target.quantity;
+        syncing = false;
+        return target;
+      }
+
+      function onSelectionChange() {
+        syncCartVariant();
+        requestAnimationFrame(syncCartVariant);
+        setTimeout(syncCartVariant, 0);
+        setTimeout(syncCartVariant, 60);
+      }
+
+      document.querySelectorAll('input[name="' + cfg.radioName + '"]').forEach(function (radio) {
+        radio.addEventListener('change', onSelectionChange);
+      });
+
+      var radios = root.querySelector('variant-radios');
+      if (radios) {
+        radios.addEventListener('change', onSelectionChange);
+        // Beat VariantRadios.updateVariantInput writing the main product id
+        if (typeof radios.updateVariantInput === 'function') {
+          var originalUpdate = radios.updateVariantInput.bind(radios);
+          radios.updateVariantInput = function () {
+            originalUpdate();
+            syncCartVariant();
+          };
+        }
+      }
+
+      if (submitBtn && window.MutationObserver) {
+        new MutationObserver(function () {
+          if (syncing) return;
+          var target = resolveTarget();
+          var shouldEnable = !!(target && target.id && target.available);
+          var isDisabled = submitBtn.hasAttribute('disabled');
+          // Theme JS may disable from main-product availability — restore pack availability.
+          if (shouldEnable && isDisabled) {
+            updateSubmitState(target);
+          } else if (!shouldEnable && !isDisabled) {
+            updateSubmitState(target);
+          }
+        }).observe(submitBtn, { attributes: true, attributeFilter: ['disabled', 'aria-disabled'] });
+      }
+
+      if (variantInput) {
+        variantInput.addEventListener('change', function () {
+          if (syncing) return;
+          var target = resolveTarget();
+          if (target && target.id && String(variantInput.value) !== String(target.id)) {
+            syncCartVariant();
+          }
+        });
+      }
+
+      form.addEventListener(
+        'submit',
+        function (evt) {
+          var target = syncCartVariant();
+          if (!target || !target.id || !target.available) {
+            evt.preventDefault();
+            evt.stopPropagation();
+          }
+        },
+        true
+      );
+
+      // Keep form id in sync before native Shop Pay reads it (qty / main-product mode only).
+      document.addEventListener(
+        'pointerdown',
+        function (event) {
+          if (
+            event.target.closest(
+              '.shopify-payment-button, .shopify-payment-button__button, [data-testid="Checkout-button"], .shopify-payment-button__more-options'
+            )
+          ) {
+            syncCartVariant();
+          }
+        },
+        true
+      );
+
+      function addToCartAjax(target) {
+        if (!target || !target.id) return Promise.reject(new Error('No bundle selected'));
+        if (!target.available) return Promise.reject(new Error(cfg.soldOutLabel || 'Sold out'));
+        var addUrl = (window.routes && window.routes.cart_add_url) || '/cart/add';
+        if (addUrl.indexOf('.js') === -1) addUrl += '.js';
+        var formData = new FormData();
+        formData.append('id', target.id);
+        formData.append('quantity', target.quantity || '1');
+
+        var cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
+        if (cart && typeof cart.getSectionsToRender === 'function') {
+          formData.append(
+            'sections',
+            cart.getSectionsToRender().map(function (s) {
+              return s.id;
+            })
+          );
+          formData.append('sections_url', window.location.pathname);
+        }
+
+        return fetch(addUrl, {
+          method: 'POST',
+          headers: { Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+          body: formData
+        }).then(function (res) {
+          return res.json().then(function (data) {
+            if (!res.ok || data.status) {
+              throw new Error(data.description || data.message || 'Could not add bundle');
+            }
+            if (cart && typeof cart.renderContents === 'function') {
+              cart.renderContents(data);
+            } else if (window.location) {
+              window.location.href = (window.routes && window.routes.cart_url) || '/cart';
+            }
+            return data;
+          });
+        });
+      }
+
+      function submitSelected() {
+        var target = syncCartVariant();
+        if (!target || !target.id || !target.available) return false;
+
+        if (submitBtn) {
+          submitBtn.click();
+          return true;
+        }
+
+        addToCartAjax(target).catch(function (err) {
+          console.error(err);
+          alert(err.message || 'Could not add bundle to cart.');
+        });
+        return true;
+      }
+
+      syncCartVariant();
+      setTimeout(syncCartVariant, 100);
+      setTimeout(syncCartVariant, 400);
+
+      return {
+        cfg: cfg,
+        form: form,
+        resolve: resolveTarget,
+        sync: syncCartVariant,
+        submit: submitSelected,
+        addAjax: function () {
+          return addToCartAjax(syncCartVariant());
+        }
+      };
+    }
+
+    function register(controller) {
+      window.AuraBundleCart = window.AuraBundleCart || {
+        bySection: {},
+        syncAll: function () {
+          Object.keys(this.bySection).forEach(function (id) {
+            var c = window.AuraBundleCart.bySection[id];
+            if (c && c.sync) c.sync();
+          });
+        },
+        submitActive: function () {
+          var ids = Object.keys(this.bySection);
+          var preferred = null;
+          var i;
+          var c;
+          var t;
+          var radio;
+
+          // Prefer controller whose radio group has a checked input in the document
+          for (i = 0; i < ids.length; i++) {
+            c = this.bySection[ids[i]];
+            if (!c || !c.cfg) continue;
+            radio = document.querySelector('input[name="' + c.cfg.radioName + '"]:checked');
+            if (radio) {
+              preferred = c;
+              break;
+            }
+          }
+
+          var ordered = preferred ? [preferred] : ids.map(function (id) {
+            return window.AuraBundleCart.bySection[id];
+          });
+
+          for (i = 0; i < ordered.length; i++) {
+            c = ordered[i];
+            if (!c) continue;
+            t = c.resolve && c.resolve();
+            if (t && t.id && t.available) {
+              if (c.submit && c.submit()) return true;
+            }
+          }
+          return false;
+        },
+        addActiveAjax: function () {
+          var ids = Object.keys(this.bySection);
+          for (var i = 0; i < ids.length; i++) {
+            var c = this.bySection[ids[i]];
+            if (!c || !c.addAjax) continue;
+            var t = c.resolve && c.resolve();
+            if (t && t.id && t.available) return c.addAjax();
+          }
+          return Promise.reject(new Error('No bundle controller'));
+        }
+      };
+      window.AuraBundleCart.bySection[cfg.sectionId] = controller;
+    }
+
+    function tryInit() {
+      var form = document.getElementById(cfg.formId);
+      if (!form) {
+        tries += 1;
+        if (tries < maxTries) {
+          setTimeout(tryInit, 50);
+        }
+        return;
+      }
+      if (window.AuraBundleCart && window.AuraBundleCart.bySection[cfg.sectionId]) return;
+      register(buildController(form));
+    }
+
+    tryInit();
+  })();
+</script>

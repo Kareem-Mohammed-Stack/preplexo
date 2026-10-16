@@ -1,0 +1,424 @@
+{{ 'perplexo-faq.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    {%- if section.settings.bg_color != blank -%}
+      background-color: {{ section.settings.bg_color }};
+    {%- endif -%}
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  {%- if section.settings.text_color != blank -%}
+    .section-{{ section.id }}-padding .perplexo-faq__title {
+      color: {{ section.settings.text_color }};
+    }
+  {%- endif -%}
+{%- endstyle -%}
+
+<section class="perplexo-faq section-{{ section.id }}-padding" id="FaqSection-{{ section.id }}">
+  <div class="page-width">
+    
+    <!-- Section Header -->
+    {%- if section.settings.title != blank or section.settings.badge_text != blank -%}
+      <div class="perplexo-faq__header">
+        {%- if section.settings.badge_text != blank -%}
+          <span class="perplexo-faq__badge">{{ section.settings.badge_text | escape }}</span>
+        {%- endif -%}
+
+        {%- if section.settings.title != blank -%}
+          <h2 class="perplexo-faq__title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.sub_heading != blank -%}
+          <p class="perplexo-faq__sub-heading">{{ section.settings.sub_heading | escape }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <!-- Category Filter Tabs (UX Scannability Heuristic) -->
+    <div class="perplexo-faq__tabs" role="tablist" aria-label="FAQ Categories">
+      <button type="button" class="perplexo-faq__tab-btn is-active" data-category="all" role="tab" aria-selected="true">
+        All Questions
+      </button>
+      <button type="button" class="perplexo-faq__tab-btn" data-category="shipping" role="tab" aria-selected="false">
+        Shipping & Delivery
+      </button>
+      <button type="button" class="perplexo-faq__tab-btn" data-category="returns" role="tab" aria-selected="false">
+        Returns & 14-Day Guarantee
+      </button>
+      <button type="button" class="perplexo-faq__tab-btn" data-category="products" role="tab" aria-selected="false">
+        Products & Formulas
+      </button>
+      <button type="button" class="perplexo-faq__tab-btn" data-category="payments" role="tab" aria-selected="false">
+        Orders & Payments
+      </button>
+    </div>
+
+    <!-- Accordion Questions Container -->
+    <div class="perplexo-faq__accordion-container">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div class="perplexo-faq__item{% if forloop.first %} is-open{% endif %}" data-category="{{ block.settings.category | default: 'all' }}" {{ block.shopify_attributes }}>
+            <button type="button" class="perplexo-faq__trigger" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
+              <h3 class="perplexo-faq__question-text">{{ block.settings.question | escape }}</h3>
+              <span class="perplexo-faq__toggle-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </span>
+            </button>
+
+            <div class="perplexo-faq__answer-box">
+              <div class="perplexo-faq__answer-text">
+                {{ block.settings.answer }}
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Fallback Popular Questions (Empathetic UX Writing) -->
+        
+        <!-- Question 1: Shipping -->
+        <div class="perplexo-faq__item is-open" data-category="shipping">
+          <button type="button" class="perplexo-faq__trigger" aria-expanded="true">
+            <h3 class="perplexo-faq__question-text">How long does shipping take and how do I track my order?</h3>
+            <span class="perplexo-faq__toggle-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </span>
+          </button>
+          <div class="perplexo-faq__answer-box">
+            <div class="perplexo-faq__answer-text">
+              <p>Delivery takes <strong>3–5 business days</strong>. You will receive an email with a tracking link as soon as your package ships.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 2: Shipping -->
+        <div class="perplexo-faq__item" data-category="shipping">
+          <button type="button" class="perplexo-faq__trigger" aria-expanded="false">
+            <h3 class="perplexo-faq__question-text">Do you offer Free Shipping on orders?</h3>
+            <span class="perplexo-faq__toggle-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </span>
+          </button>
+          <div class="perplexo-faq__answer-box">
+            <div class="perplexo-faq__answer-text">
+              <p>Yes! We provide <strong>Free Express Shipping</strong> on all orders and curated bundles. No hidden fees at checkout.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 3: Returns -->
+        <div class="perplexo-faq__item" data-category="returns">
+          <button type="button" class="perplexo-faq__trigger" aria-expanded="false">
+            <h3 class="perplexo-faq__question-text">What is your 14-Day Money-Back Guarantee & Return Policy?</h3>
+            <span class="perplexo-faq__toggle-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </span>
+          </button>
+          <div class="perplexo-faq__answer-box">
+            <div class="perplexo-faq__answer-text">
+              <p>You can request a return within <strong>14 days</strong>. Contact <code>preplexo4@gmail.com</code> for a hassle-free exchange or full refund.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 4: Products -->
+        <div class="perplexo-faq__item" data-category="products">
+          <button type="button" class="perplexo-faq__trigger" aria-expanded="false">
+            <h3 class="perplexo-faq__question-text">Are Preplexo products suitable for sensitive skin?</h3>
+            <span class="perplexo-faq__toggle-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </span>
+          </button>
+          <div class="perplexo-faq__answer-box">
+            <div class="perplexo-faq__answer-text">
+              <p>Yes, all Preplexo formulas are dermatologist-tested, hypoallergenic, and formulated without harsh parabens or synthetic toxins. They are specially engineered to nourish and calm even the most sensitive skin types.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 5: Products -->
+        <div class="perplexo-faq__item" data-category="products">
+          <button type="button" class="perplexo-faq__trigger" aria-expanded="false">
+            <h3 class="perplexo-faq__question-text">Are your formulas 100% clean & cruelty-free?</h3>
+            <span class="perplexo-faq__toggle-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </span>
+          </button>
+          <div class="perplexo-faq__answer-box">
+            <div class="perplexo-faq__answer-text">
+              <p>Absolutely. We are proud to be 100% cruelty-free. None of our ingredients or finished products are ever tested on animals, and all packaging is sustainably crafted.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 6: Payments -->
+        <div class="perplexo-faq__item" data-category="payments">
+          <button type="button" class="perplexo-faq__trigger" aria-expanded="false">
+            <h3 class="perplexo-faq__question-text">What payment methods do you accept at checkout?</h3>
+            <span class="perplexo-faq__toggle-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </span>
+          </button>
+          <div class="perplexo-faq__answer-box">
+            <div class="perplexo-faq__answer-text">
+              <p>We accept all major credit cards (VISA, Mastercard, American Express), PayPal, Apple Pay, and Shop Pay for instant 1-click checkout.</p>
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- Reassurance Contact Help Banner -->
+    <div class="perplexo-faq__help-box">
+      <div class="perplexo-faq__help-info">
+        <div class="perplexo-faq__help-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </div>
+        <div>
+          <h3 class="perplexo-faq__help-title">Still Have Questions?</h3>
+          <p class="perplexo-faq__help-desc">Our dedicated Customer Care team is available 24/7 to assist you.</p>
+        </div>
+      </div>
+      <a href="mailto:{{ section.settings.support_email | default: 'preplexo4@gmail.com' }}" class="perplexo-faq__help-btn">
+        <span>Contact Customer Care</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Accordion & Tab Filtering JavaScript -->
+<script>
+  (function initPerplexoFaq() {
+    var section = document.getElementById('FaqSection-{{ section.id }}');
+    if (!section) return;
+
+    // Accordion expand/collapse
+    var triggers = section.querySelectorAll('.perplexo-faq__trigger');
+    triggers.forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var item = trigger.closest('.perplexo-faq__item');
+        var isOpen = item.classList.contains('is-open');
+
+        // Close siblings for clean focused view
+        var allItems = section.querySelectorAll('.perplexo-faq__item');
+        allItems.forEach(function(el) {
+          el.classList.remove('is-open');
+          var btn = el.querySelector('.perplexo-faq__trigger');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+
+        if (!isOpen) {
+          item.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Tab category filtering
+    var tabs = section.querySelectorAll('.perplexo-faq__tab-btn');
+    var items = section.querySelectorAll('.perplexo-faq__item');
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var category = tab.getAttribute('data-category');
+
+        tabs.forEach(function(t) {
+          t.classList.remove('is-active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-selected', 'true');
+
+        items.forEach(function(item) {
+          var itemCat = item.getAttribute('data-category');
+          if (category === 'all' || itemCat === category || itemCat === 'all') {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "FAQ & Store Policies",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Pill Text",
+      "default": "FREQUENTLY ASKED QUESTIONS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading",
+      "default": "Got Questions? We Have Answers."
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub-heading",
+      "default": "Everything you need to know about our products, shipping, returns, and satisfaction guarantees."
+    },
+    {
+      "type": "text",
+      "id": "support_email",
+      "label": "Support Email",
+      "default": "preplexo4@gmail.com"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#9c777a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Heading Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Question",
+      "settings": [
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Question Category",
+          "options": [
+            { "value": "all", "label": "All Questions" },
+            { "value": "shipping", "label": "Shipping & Delivery" },
+            { "value": "returns", "label": "Returns & 14-Day Guarantee" },
+            { "value": "products", "label": "Products & Formulas" },
+            { "value": "payments", "label": "Orders & Payments" }
+          ],
+          "default": "shipping"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question Text",
+          "default": "How long does shipping take and how do I track my order?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer Content",
+          "default": "<p>Delivery takes 3–5 business days. You will receive an email with a tracking link as soon as your package ships.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ & Store Policies",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "shipping",
+            "question": "How long does shipping take and how do I track my order?",
+            "answer": "<p>Delivery takes <strong>3–5 business days</strong>. You will receive an email with a tracking link as soon as your package ships.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "shipping",
+            "question": "Do you offer Free Shipping on orders?",
+            "answer": "<p>Yes! We provide <strong>Free Express Shipping</strong> on all orders and curated bundles. No hidden fees at checkout.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "returns",
+            "question": "What is your 14-Day Money-Back Guarantee & Return Policy?",
+            "answer": "<p>You can request a return within <strong>14 days</strong>. Email preplexo4@gmail.com for a hassle-free exchange or full refund.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "products",
+            "question": "Are Preplexo products suitable for sensitive skin?",
+            "answer": "<p>Yes, all Preplexo formulas are dermatologist-tested, hypoallergenic, and formulated without harsh parabens or synthetic toxins.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "products",
+            "question": "Are your formulas 100% clean & cruelty-free?",
+            "answer": "<p>Absolutely. We are proud to be 100% cruelty-free. None of our formulas are ever tested on animals, and packaging is sustainably crafted.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "payments",
+            "question": "What payment methods do you accept at checkout?",
+            "answer": "<p>We accept VISA, Mastercard, American Express, PayPal, Apple Pay, and Shop Pay for instant checkout.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

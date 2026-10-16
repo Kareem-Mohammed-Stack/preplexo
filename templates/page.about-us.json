@@ -1,0 +1,93 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text_hero": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_hero": {
+          "type": "heading",
+          "settings": {
+            "heading": "About Preplexo",
+            "heading_size": "h0"
+          }
+        },
+        "caption_hero": {
+          "type": "caption",
+          "settings": {
+            "caption": "From Beauty to You — Elevate Your Skincare Ritual. We curate scientifically proven, high-performance skincare essentials designed to nourish your skin barrier and enhance your authentic natural glow.",
+            "text_style": "subtitle",
+            "text_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "heading_hero",
+        "caption_hero"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 40
+      }
+    },
+    "perplexo_about_values": {
+      "type": "perplexo_about_values",
+      "settings": {
+        "title_1": "Clean & Potent Actives",
+        "text_1": "<p>Formulated with targeted peptides, low-molecular collagen, and botanical antioxidants to deeply nourish and restore skin elasticity.</p>",
+        "title_2": "The Glow Ritual",
+        "text_2": "<p>Our signature Glow Bundle and Dr. Melaxin Collagen Boost Set work synergistically to lock in deep hydration, tighten fine lines, and awaken youthful radiance.</p>",
+        "title_3": "Uncompromising Quality",
+        "text_3": "<p>Every Preplexo formula undergoes strict quality control to guarantee gentle, non-irritating, and deeply transformative skincare for every skin type.</p>"
+      }
+    },
+    "rich_text_dicEhW": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_KYhYf9": {
+          "type": "heading",
+          "settings": {
+            "heading": "Experience the Preplexo Difference",
+            "heading_size": "h1"
+          }
+        },
+        "caption_6p36dj": {
+          "type": "caption",
+          "settings": {
+            "caption": "Elevate your daily ritual with essentials designed to help your skin thrive. Have questions or need a personalized recommendation? Reach us at preplexo4@gmail.com.",
+            "text_style": "subtitle",
+            "text_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "heading_KYhYf9",
+        "caption_6p36dj"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "rich_text_hero",
+    "perplexo_about_values",
+    "rich_text_dicEhW"
+  ]
+}

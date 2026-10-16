@@ -1,0 +1,389 @@
+{% comment %}
+  Kieuo product video showcase — video-1.mp4 through video-4.mp4.
+{% endcomment %}
+
+<style id="aura-videos-styles">
+  #AuraVideos-{{ section.id }} {
+    --ink: #2a1f24;
+    --cream: #2a1f24;
+    --amber: #b86b7a;
+    --glow: #ffd9a0;
+    --hairline: rgba(42, 31, 36, 0.14);
+
+    position: relative;
+    padding: 64px 0;
+    background: #faf6f3;
+    color: var(--ink);
+    font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+    overflow: hidden;
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__container {
+    width: min(1280px, calc(100% - 2.5rem));
+    margin: 0 auto;
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 3rem;
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1.05rem;
+    border-radius: 999px;
+    border: 1px solid rgba(184, 107, 122, 0.3);
+    background: rgba(184, 107, 122, 0.08);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1rem;
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__pip {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 8px var(--amber);
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 42px;
+    font-weight: 550;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0 0 1rem;
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__subtitle {
+    font-size: 17px;
+    line-height: 1.55;
+    color: rgba(42, 31, 36, 0.62);
+    margin: 0;
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+
+  @media screen and (max-width: 1024px) {
+    #AuraVideos-{{ section.id }} .aura-videos__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    #AuraVideos-{{ section.id }} {
+      padding: clamp(2.75rem, 8vw, 4rem) 0;
+    }
+
+    #AuraVideos-{{ section.id }} .aura-videos__container {
+      width: min(1280px, calc(100% - 1.5rem));
+    }
+
+    #AuraVideos-{{ section.id }} .aura-videos__header {
+      margin-bottom: 1.75rem;
+      text-align: left;
+      max-width: none;
+    }
+
+    #AuraVideos-{{ section.id }} .aura-videos__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.15rem;
+      overflow: visible;
+      margin-inline: 0;
+      padding-inline: 0;
+      padding-bottom: 0;
+    }
+    #AuraVideos-{{ section.id }} .aura-videos__card {
+      flex: none;
+      width: 100%;
+      max-width: 420px;
+      margin-inline: auto;
+      aspect-ratio: 9 / 14;
+    }
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__card {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 9 / 15;
+    background: #f5ebe6;
+    border: 1px solid rgba(184, 107, 122, 0.18);
+    box-shadow: 0 16px 36px rgba(42, 31, 36, 0.08);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__card:hover {
+    transform: translateY(-6px);
+    border-color: var(--amber);
+    box-shadow: 0 20px 40px -12px rgba(42, 31, 36, 0.16), 0 0 20px rgba(184, 107, 122, 0.12);
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, transparent 40%, rgba(12, 10, 8, 0.85) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.1rem;
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__badge {
+    align-self: flex-start;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(14, 12, 10, 0.75);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(184, 107, 122, 0.3);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__card-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__card-desc {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.82);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__controls {
+    position: absolute;
+    top: 1.1rem;
+    right: 1.1rem;
+    z-index: 5;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__btn {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    border: 1px solid rgba(42, 31, 36, 0.25);
+    background: rgba(14, 12, 10, 0.7);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__btn:hover {
+    background: rgba(184, 107, 122, 0.3);
+    border-color: var(--amber);
+    transform: scale(1.08);
+  }
+
+  #AuraVideos-{{ section.id }} .aura-videos__btn svg {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+</style>
+
+<section id="AuraVideos-{{ section.id }}" class="aura-videos">
+  <div class="aura-videos__container">
+    <div class="aura-videos__header">
+      <span class="aura-videos__eyebrow">
+        <span class="aura-videos__pip"></span>
+        In real use
+      </span>
+      <h2 class="aura-videos__title">See Kieuo in action</h2>
+      <p class="aura-videos__subtitle">
+        Four looks at the daily toner ritual — fade dark spots, even your tone, and glow.
+      </p>
+    </div>
+
+    <div class="aura-videos__grid">
+      {%- comment -%} Video Card 1 {%- endcomment -%}
+      <div class="aura-videos__card">
+        <video
+          class="aura-videos__video"
+          src="{{ 'video-1.mp4' | asset_url }}"
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="metadata"
+        ></video>
+        <div class="aura-videos__controls">
+          <button type="button" class="aura-videos__btn aura-videos__mute-btn" aria-label="Toggle Mute">
+            <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/></svg>
+            <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          </button>
+        </div>
+        <div class="aura-videos__overlay">
+          <span class="aura-videos__badge">Daily ritual</span>
+          <div class="aura-videos__meta">
+            <h3 class="aura-videos__card-title">After cleanse</h3>
+            <p class="aura-videos__card-desc">Sweep on, then serum — 60 seconds</p>
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Video Card 2 {%- endcomment -%}
+      <div class="aura-videos__card">
+        <video
+          class="aura-videos__video"
+          src="{{ 'video-2.mp4' | asset_url }}"
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="metadata"
+        ></video>
+        <div class="aura-videos__controls">
+          <button type="button" class="aura-videos__btn aura-videos__mute-btn" aria-label="Toggle Mute">
+            <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/></svg>
+            <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          </button>
+        </div>
+        <div class="aura-videos__overlay">
+          <span class="aura-videos__badge">Fade</span>
+          <div class="aura-videos__meta">
+            <h3 class="aura-videos__card-title">Dark spots, evened</h3>
+            <p class="aura-videos__card-desc">Visible results in 2–3 weeks</p>
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Video Card 3 {%- endcomment -%}
+      <div class="aura-videos__card">
+        <video
+          class="aura-videos__video"
+          src="{{ 'video-3.mp4' | asset_url }}"
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="metadata"
+        ></video>
+        <div class="aura-videos__controls">
+          <button type="button" class="aura-videos__btn aura-videos__mute-btn" aria-label="Toggle Mute">
+            <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/></svg>
+            <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          </button>
+        </div>
+        <div class="aura-videos__overlay">
+          <span class="aura-videos__badge">Glow</span>
+          <div class="aura-videos__meta">
+            <h3 class="aura-videos__card-title">Glass-skin finish</h3>
+            <p class="aura-videos__card-desc">Hydrated, lit-from-within skin</p>
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Video Card 4 {%- endcomment -%}
+      <div class="aura-videos__card">
+        <video
+          class="aura-videos__video"
+          src="{{ 'video-4.mp4' | asset_url }}"
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="metadata"
+        ></video>
+        <div class="aura-videos__controls">
+          <button type="button" class="aura-videos__btn aura-videos__mute-btn" aria-label="Toggle Mute">
+            <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/></svg>
+            <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          </button>
+        </div>
+        <div class="aura-videos__overlay">
+          <span class="aura-videos__badge">Barrier-safe</span>
+          <div class="aura-videos__meta">
+            <h3 class="aura-videos__card-title">Gentle, every day</h3>
+            <p class="aura-videos__card-desc">Made for sensitive skin too</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    var section = document.getElementById('AuraVideos-{{ section.id }}');
+    if (!section) return;
+
+    var cards = section.querySelectorAll('.aura-videos__card');
+    cards.forEach(function(card) {
+      var video = card.querySelector('video');
+      var muteBtn = card.querySelector('.aura-videos__mute-btn');
+      if (!video) return;
+
+      // Click video or mute button to toggle sound
+      function toggleSound(e) {
+        if (e) e.stopPropagation();
+        video.muted = !video.muted;
+        var iconMuted = card.querySelector('.icon-muted');
+        var iconUnmuted = card.querySelector('.icon-unmuted');
+        if (iconMuted && iconUnmuted) {
+          iconMuted.style.display = video.muted ? 'block' : 'none';
+          iconUnmuted.style.display = video.muted ? 'none' : 'block';
+        }
+      }
+
+      if (muteBtn) muteBtn.addEventListener('click', toggleSound);
+      video.addEventListener('click', toggleSound);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aura Video Showcase",
+  "tag": "section",
+  "class": "section-aura-videos",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Aura Video Showcase"
+    }
+  ]
+}
+{% endschema %}

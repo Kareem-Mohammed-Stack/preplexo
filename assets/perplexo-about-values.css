@@ -1,0 +1,86 @@
+/* Preplexo About Us — value cards */
+.perplexo-about-values {
+  --about-primary: #85444c;
+  --about-blush: #ffe7ec;
+  --about-soft: #fff7f8;
+  --about-text: #1f1d24;
+  --about-muted: #5c5557;
+  background: linear-gradient(180deg, #fff 0%, var(--about-soft) 55%, #fff 100%);
+  padding: 1.6rem 0 3.2rem;
+}
+
+.perplexo-about-values__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.perplexo-about-values__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.perplexo-about-values__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.perplexo-about-values__media {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--about-blush);
+  box-shadow: 0 12px 28px rgba(133, 68, 76, 0.12);
+}
+
+.perplexo-about-values__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.perplexo-about-values__card:hover .perplexo-about-values__img {
+  transform: scale(1.03);
+}
+
+.perplexo-about-values__title {
+  margin: 0.4rem 0 0;
+  font-family: var(--font-heading-family, 'Plus Jakarta Sans', sans-serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--about-primary);
+}
+
+.perplexo-about-values__text {
+  margin: 0;
+  max-width: 36rem;
+  font-size: 1.45rem;
+  line-height: 1.55;
+  color: var(--about-muted);
+}
+
+.perplexo-about-values__text p {
+  margin: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .perplexo-about-values {
+    padding: 2rem 0 4rem;
+  }
+
+  .perplexo-about-values__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.4rem;
+  }
+
+  .perplexo-about-values__title {
+    font-size: 2.4rem;
+  }
+}

@@ -1,0 +1,459 @@
+{{ 'perplexo-testimonials.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    {%- if section.settings.bg_color != blank -%}
+      background-color: {{ section.settings.bg_color }};
+    {%- endif -%}
+    --marquee-speed: {{ section.settings.speed | default: 42 }}s;
+    --marquee-speed-mobile: {{ section.settings.speed | default: 42 | times: 1.3 | round: 0 }}s;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="perplexo-testimonials section-{{ section.id }}-padding" id="Testimonials-{{ section.id }}" data-section-id="{{ section.id }}">
+  <div class="page-width">
+    {%- if section.settings.title != blank or section.settings.badge != blank -%}
+      <div class="perplexo-testimonials__header scroll-trigger animate--slide-in">
+        {%- if section.settings.badge != blank -%}
+          <span class="perplexo-testimonials__badge">{{ section.settings.badge | escape }}</span>
+        {%- endif -%}
+
+        {%- if section.settings.title != blank -%}
+          <h2 class="perplexo-testimonials__heading">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.subheading != blank -%}
+          <p class="perplexo-testimonials__subheading">{{ section.settings.subheading | escape }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.rating_text != blank -%}
+          <div class="perplexo-testimonials__rating-summary">
+            <div class="perplexo-testimonials__stars" aria-label="5 out of 5 stars">
+              {%- for i in (1..5) -%}
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              {%- endfor -%}
+            </div>
+            <span>{{ section.settings.rating_text | escape }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <!-- Contained Continuous Infinite Loop Slider -->
+  <div class="perplexo-testimonials__container">
+    <div 
+      class="perplexo-testimonials__marquee-box" 
+      id="MarqueeBox-{{ section.id }}" 
+      role="region" 
+      aria-label="Customer Testimonials Marquee"
+    >
+      <div class="perplexo-testimonials__track" id="MarqueeTrack-{{ section.id }}">
+        <!-- Primary List of Testimonial Cards -->
+        <div class="perplexo-testimonials__list">
+          {%- if section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+              <div class="perplexo-testimonial-card" {{ block.shopify_attributes }}>
+                <div class="perplexo-testimonial-card__quote-mark">“</div>
+
+                <div class="perplexo-testimonial-card__top">
+                  <div class="perplexo-testimonial-card__stars-row" aria-label="{{ block.settings.rating }} stars">
+                    {%- assign stars_count = block.settings.rating | default: 5 -%}
+                    {%- for i in (1..stars_count) -%}
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    {%- endfor -%}
+                  </div>
+
+                  {%- if block.settings.verified -%}
+                    <div class="perplexo-testimonial-card__verified-badge">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span>Verified Buyer</span>
+                    </div>
+                  {%- endif -%}
+                </div>
+
+                <div class="perplexo-testimonial-card__content">
+                  {%- if block.settings.title != blank -%}
+                    <h3 class="perplexo-testimonial-card__title">{{ block.settings.title | escape }}</h3>
+                  {%- endif -%}
+
+                  {%- if block.settings.body != blank -%}
+                    <p class="perplexo-testimonial-card__body">{{ block.settings.body | escape }}</p>
+                  {%- endif -%}
+                </div>
+
+                <div class="perplexo-testimonial-card__footer">
+                  <div class="perplexo-testimonial-card__author">
+                    <div class="perplexo-testimonial-card__avatar">
+                      {%- if block.settings.avatar_image != blank -%}
+                        {{ block.settings.avatar_image | image_url: width: 100 | image_tag: loading: 'lazy', alt: block.settings.author_name }}
+                      {%- else -%}
+                        <span>{{ block.settings.avatar_initials | default: 'PR' | escape }}</span>
+                      {%- endif -%}
+                    </div>
+                    <div class="perplexo-testimonial-card__author-info">
+                      <strong class="perplexo-testimonial-card__name">{{ block.settings.author_name | escape }}</strong>
+                      {%- if block.settings.author_meta != blank -%}
+                        <span class="perplexo-testimonial-card__meta">{{ block.settings.author_meta | escape }}</span>
+                      {%- endif -%}
+                    </div>
+                  </div>
+
+                  {%- if block.settings.product_tag != blank -%}
+                    <div class="perplexo-testimonial-card__product-tag">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                      </svg>
+                      <span>{{ block.settings.product_tag | escape }}</span>
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+
+        <!-- Duplicated List for Seamless Infinite Loop -->
+        <div class="perplexo-testimonials__list" aria-hidden="true">
+          {%- if section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+              <div class="perplexo-testimonial-card">
+                <div class="perplexo-testimonial-card__quote-mark">“</div>
+
+                <div class="perplexo-testimonial-card__top">
+                  <div class="perplexo-testimonial-card__stars-row">
+                    {%- assign stars_count = block.settings.rating | default: 5 -%}
+                    {%- for i in (1..stars_count) -%}
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    {%- endfor -%}
+                  </div>
+
+                  {%- if block.settings.verified -%}
+                    <div class="perplexo-testimonial-card__verified-badge">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span>Verified Buyer</span>
+                    </div>
+                  {%- endif -%}
+                </div>
+
+                <div class="perplexo-testimonial-card__content">
+                  {%- if block.settings.title != blank -%}
+                    <h3 class="perplexo-testimonial-card__title">{{ block.settings.title | escape }}</h3>
+                  {%- endif -%}
+
+                  {%- if block.settings.body != blank -%}
+                    <p class="perplexo-testimonial-card__body">{{ block.settings.body | escape }}</p>
+                  {%- endif -%}
+                </div>
+
+                <div class="perplexo-testimonial-card__footer">
+                  <div class="perplexo-testimonial-card__author">
+                    <div class="perplexo-testimonial-card__avatar">
+                      {%- if block.settings.avatar_image != blank -%}
+                        {{ block.settings.avatar_image | image_url: width: 100 | image_tag: loading: 'lazy', alt: block.settings.author_name }}
+                      {%- else -%}
+                        <span>{{ block.settings.avatar_initials | default: 'PR' | escape }}</span>
+                      {%- endif -%}
+                    </div>
+                    <div class="perplexo-testimonial-card__author-info">
+                      <strong class="perplexo-testimonial-card__name">{{ block.settings.author_name | escape }}</strong>
+                      {%- if block.settings.author_meta != blank -%}
+                        <span class="perplexo-testimonial-card__meta">{{ block.settings.author_meta | escape }}</span>
+                      {%- endif -%}
+                    </div>
+                  </div>
+
+                  {%- if block.settings.product_tag != blank -%}
+                    <div class="perplexo-testimonial-card__product-tag">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                      </svg>
+                      <span>{{ block.settings.product_tag | escape }}</span>
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    function initMarqueeTouchToggle() {
+      const sectionId = "{{ section.id }}";
+      const box = document.getElementById("MarqueeBox-" + sectionId);
+      if (!box) return;
+
+      let resumeTimer = null;
+
+      box.addEventListener("click", function(e) {
+        const isPaused = box.classList.toggle("is-paused");
+        if (resumeTimer) clearTimeout(resumeTimer);
+        if (isPaused) {
+          resumeTimer = setTimeout(function() {
+            box.classList.remove("is-paused");
+          }, 7000);
+        }
+      });
+
+      box.addEventListener("touchstart", function() {
+        if (resumeTimer) clearTimeout(resumeTimer);
+        box.classList.add("is-paused");
+      }, { passive: true });
+
+      box.addEventListener("touchend", function() {
+        if (resumeTimer) clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(function() {
+          box.classList.remove("is-paused");
+        }, 5000);
+      }, { passive: true });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initMarqueeTouchToggle);
+    } else {
+      initMarqueeTouchToggle();
+    }
+
+    document.addEventListener("shopify:section:load", function(e) {
+      if (e.detail.sectionId === "{{ section.id }}") {
+        initMarqueeTouchToggle();
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Customer Testimonials",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge Text",
+      "default": "REAL REVIEWS, REAL RESULTS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading",
+      "default": "Loved by Thousands"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub-heading",
+      "default": "Discover why skincare lovers trust Preplexo for their daily routine and visible skin transformation."
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Summary Text",
+      "default": "4.9/5 from 3,200+ verified customers"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "s",
+      "label": "Marquee Loop Duration (Lower = Faster, Higher = Slower)",
+      "default": 42
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "rgba(255, 255, 255, 0.25)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial Card",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Star Rating",
+          "default": 5
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Show Verified Buyer Badge",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review Title",
+          "default": "Visibly Firmer in 10 Days"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Review Content",
+          "default": "Fine lines softened dramatically. My skin feels supple, calm, and deeply nourished from morning to night."
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Customer Name",
+          "default": "Elena Rostova"
+        },
+        {
+          "type": "text",
+          "id": "author_meta",
+          "label": "Author Details / Location",
+          "default": "Verified Buyer • Paris, France"
+        },
+        {
+          "type": "text",
+          "id": "avatar_initials",
+          "label": "Avatar Initials (if no image)",
+          "default": "ER"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar_image",
+          "label": "Avatar Photo (Optional)"
+        },
+        {
+          "type": "text",
+          "id": "product_tag",
+          "label": "Associated Product Tag",
+          "default": "Dr. Melaxin Collagen Boost Set"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "Visibly Firmer in 10 Days",
+            "body": "Fine lines softened dramatically. My skin feels supple, calm, and deeply nourished from morning to night.",
+            "author_name": "Elena Rostova",
+            "author_meta": "Verified Buyer • Paris, France",
+            "avatar_initials": "ER",
+            "product_tag": "Dr. Melaxin Collagen Boost Set"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "My Holy Grail Skincare",
+            "body": "Absorbs effortlessly without feeling greasy, leaving a dewy glass-skin glow that lasts all day.",
+            "author_name": "Sarah M.",
+            "author_meta": "Verified Buyer • New York, USA",
+            "avatar_initials": "SM",
+            "product_tag": "The Glow Bundle"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "Soothing & Ultra-Hydrating",
+            "body": "Calms redness instantly with a delicate Parisian rose aroma. Pure comfort for sensitive skin.",
+            "author_name": "Camille Dupont",
+            "author_meta": "Verified Buyer • Lyon, France",
+            "avatar_initials": "CD",
+            "product_tag": "Damask Rose Hydrating Cream"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "Clinical Dermatological Quality",
+            "body": "Stands shoulder to shoulder with top European dermatological brands. Truly noticeable results.",
+            "author_name": "Hannah Bergmann",
+            "author_meta": "Verified Buyer • Berlin, Germany",
+            "avatar_initials": "HB",
+            "product_tag": "Peptide Firming Complex"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "Deep Lasting Hydration",
+            "body": "No more midday dryness under makeup. My skin stays plump, radiant, and comfortable all day.",
+            "author_name": "Nour Al-Mansoor",
+            "author_meta": "Verified Buyer • Riyadh, KSA",
+            "avatar_initials": "NM",
+            "product_tag": "Pure Hyaluronic Serum"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

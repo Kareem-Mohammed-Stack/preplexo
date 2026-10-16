@@ -1,0 +1,417 @@
+{{ 'perplexo-bundles.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    {%- if section.settings.bg_color != blank -%}
+      background-color: {{ section.settings.bg_color }};
+    {%- endif -%}
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  {%- if section.settings.text_color != blank -%}
+    .section-{{ section.id }}-padding .perplexo-bundles__title {
+      color: {{ section.settings.text_color }};
+    }
+  {%- endif -%}
+{%- endstyle -%}
+
+<section class="perplexo-bundles section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.title != blank or section.settings.badge_text != blank -%}
+      <div class="perplexo-bundles__header">
+        {%- if section.settings.badge_text != blank -%}
+          <span class="perplexo-bundles__badge">{{ section.settings.badge_text | escape }}</span>
+        {%- endif -%}
+
+        {%- if section.settings.title != blank -%}
+          <h2 class="perplexo-bundles__title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.sub_heading != blank -%}
+          <p class="perplexo-bundles__sub-heading">{{ section.settings.sub_heading | escape }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="perplexo-bundles__grid{% if section.blocks.size <= 1 %} perplexo-bundles__grid--1-col{% endif %}">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign bundle_product = block.settings.product
+            assign is_featured = block.settings.is_featured
+            assign save_tag = block.settings.save_tag | default: 'SAVE 25%'
+            assign items_array = block.settings.included_items | split: ','
+          -%}
+
+          <div class="perplexo-bundle-card{% if is_featured %} perplexo-bundle-card--featured{% endif %}" {{ block.shopify_attributes }}>
+            {%- if is_featured -%}
+              <div class="perplexo-bundle-card__featured-banner">
+                {{ block.settings.featured_label | default: 'MOST POPULAR - BEST VALUE' }}
+              </div>
+            {%- endif -%}
+
+            {%- assign bundle_url = bundle_product.url | default: routes.all_products_collection_url -%}
+            <div class="perplexo-bundle-card__media-wrapper">
+              <span class="perplexo-bundle-card__save-badge">{{ save_tag }}</span>
+              <a href="{{ bundle_url }}" class="perplexo-bundle-card__link" aria-label="{{ block.settings.title | escape }}">
+                {%- if bundle_product != blank and bundle_product.featured_media != blank -%}
+                  {{ bundle_product.featured_media | image_url: width: 800 | image_tag: class: 'perplexo-bundle-card__img', loading: 'lazy', alt: block.settings.title }}
+                {%- else -%}
+                  {%- if block.settings.custom_image != blank -%}
+                    {{ block.settings.custom_image | image_url: width: 800 | image_tag: class: 'perplexo-bundle-card__img', loading: 'lazy', alt: block.settings.title }}
+                  {%- else -%}
+                    <img src="{{ 'prod_melaxin_1.png' | asset_url }}" class="perplexo-bundle-card__img" loading="lazy" alt="{{ block.settings.title | escape }}" width="800" height="800">
+                  {%- endif -%}
+                {%- endif -%}
+              </a>
+            </div>
+
+            <div class="perplexo-bundle-card__info">
+              <h3 class="perplexo-bundle-card__title">
+                <a href="{{ bundle_url }}" style="color: inherit; text-decoration: none;">{{ block.settings.title | escape }}</a>
+              </h3>
+              <p class="perplexo-bundle-card__subtitle">{{ block.settings.subtitle | escape }}</p>
+
+              <!-- Nielsen Heuristic #2 & #6: Included Items List -->
+              <ul class="perplexo-bundle-card__items-list">
+                {%- for item in items_array -%}
+                  {%- assign item_trimmed = item | strip -%}
+                  {%- if item_trimmed != blank -%}
+                    <li class="perplexo-bundle-card__item">
+                      <span class="perplexo-bundle-card__check-icon">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </span>
+                      <span>{{ item_trimmed }}</span>
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+
+              <!-- Pricing Display (Visibility of System Status) -->
+              <div class="perplexo-bundle-card__price-box">
+                {%- if bundle_product != blank -%}
+                  {%- if bundle_product.compare_at_price > bundle_product.price -%}
+                    <span class="perplexo-bundle-card__price-compare">{{ bundle_product.compare_at_price | money }}</span>
+                  {%- endif -%}
+                  <span class="perplexo-bundle-card__price-regular">{{ bundle_product.price | money }}</span>
+                {%- else -%}
+                  {%- if block.settings.compare_price != blank -%}
+                    <span class="perplexo-bundle-card__price-compare">{{ block.settings.compare_price }}</span>
+                  {%- endif -%}
+                  <span class="perplexo-bundle-card__price-regular">{{ block.settings.price }}</span>
+                {%- endif -%}
+              </div>
+              {%- if block.settings.savings_text != blank -%}
+                <div class="perplexo-bundle-card__savings-tag">{{ block.settings.savings_text }}</div>
+              {%- endif -%}
+
+              <!-- Primary Action Form -->
+              {%- if bundle_product != blank -%}
+                {%- assign variant = bundle_product.selected_or_first_available_variant -%}
+                <form method="post" action="/cart/add" class="perplexo-bundle-card__form" data-type="add-to-cart-form">
+                  <input type="hidden" name="id" value="{{ variant.id }}">
+                  <input type="hidden" name="return_to" value="/checkout">
+                  <button type="submit" name="add" class="perplexo-bundle-card__buy-btn" {% if variant.available == false %}disabled{% endif %}>
+                    <svg class="perplexo-bundle-card__buy-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                      <path d="M13 2L3 14h7v8l10-12h-7z"/>
+                    </svg>
+                    <span>{{ block.settings.btn_text | default: 'Buy Now' }} — {{ bundle_product.price | money }}</span>
+                  </button>
+                </form>
+              {%- else -%}
+                <a href="{{ routes.all_products_collection_url }}" class="perplexo-bundle-card__buy-btn">
+                  <svg class="perplexo-bundle-card__buy-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M13 2L3 14h7v8l10-12h-7z"/>
+                  </svg>
+                  <span>{{ block.settings.btn_text | default: 'Buy Now' }}</span>
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Featured DIY Charm Kit (single product) -->
+        {%- liquid
+          assign matched_prod = all_products['diy-k-pop-demon-hunters-inspired-charm-bracelet-kit']
+          if matched_prod == blank
+            for p in collections['all'].products
+              assign p_title = p.title | downcase
+              assign p_handle = p.handle | downcase
+              if p_title contains 'diy' or p_handle contains 'diy'
+                assign matched_prod = p
+                break
+              endif
+            endfor
+          endif
+          if matched_prod == blank
+            assign matched_prod = collections['all'].products.first
+          endif
+        -%}
+        {%- if matched_prod != blank -%}
+          {%- assign variant = matched_prod.selected_or_first_available_variant -%}
+          {%- assign target_variant_id = variant.id -%}
+          
+          {%- assign featured_bundle_url = matched_prod.url | default: routes.all_products_collection_url -%}
+          <div class="perplexo-bundle-card perplexo-bundle-card--featured">
+            <div class="perplexo-bundle-card__featured-banner">MOST POPULAR — DIY CHARM KIT</div>
+            
+            <div class="perplexo-bundle-card__media-wrapper">
+              <span class="perplexo-bundle-card__save-badge">DIY KIT</span>
+              <a href="{{ featured_bundle_url }}" class="perplexo-bundle-card__link" aria-label="{{ matched_prod.title | escape }}">
+                {%- if matched_prod.featured_media != blank -%}
+                  {{ matched_prod.featured_media | image_url: width: 800 | image_tag: class: 'perplexo-bundle-card__img', loading: 'lazy', alt: matched_prod.title }}
+                {%- else -%}
+                  <img src="{{ 'prod_melaxin_1.png' | asset_url }}" class="perplexo-bundle-card__img" loading="lazy" alt="{{ matched_prod.title | escape }}" width="800" height="800">
+                {%- endif -%}
+              </a>
+            </div>
+
+            <div class="perplexo-bundle-card__info">
+              <h3 class="perplexo-bundle-card__title">
+                <a href="{{ featured_bundle_url }}" style="color: inherit; text-decoration: none;">{{ matched_prod.title | escape }}</a>
+              </h3>
+              <p class="perplexo-bundle-card__subtitle">
+                {%- if matched_prod.description != blank -%}
+                  {{ matched_prod.description | strip_html | truncate: 120 }}
+                {%- else -%}
+                  Create your own fantasy K-Pop charm bracelet — a complete DIY kit, perfect for gifting.
+                {%- endif -%}
+              </p>
+
+              <ul class="perplexo-bundle-card__items-list">
+                <li class="perplexo-bundle-card__item">
+                  <span class="perplexo-bundle-card__check-icon">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  <span>Complete DIY fantasy charm bracelet kit</span>
+                </li>
+                <li class="perplexo-bundle-card__item">
+                  <span class="perplexo-bundle-card__check-icon">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  <span>Assorted K-Pop inspired charms & bracelet base</span>
+                </li>
+                <li class="perplexo-bundle-card__item">
+                  <span class="perplexo-bundle-card__check-icon">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  <span>Gift-ready packaging — perfect for everyone</span>
+                </li>
+              </ul>
+
+              <div class="perplexo-bundle-card__price-box">
+                {%- if matched_prod.compare_at_price > matched_prod.price -%}
+                  <span class="perplexo-bundle-card__price-compare">{{ matched_prod.compare_at_price | money }}</span>
+                {%- endif -%}
+                <span class="perplexo-bundle-card__price-regular">{{ matched_prod.price | money }}</span>
+              </div>
+              <div class="perplexo-bundle-card__savings-tag">🎨 Create Your Own Look</div>
+
+              <form method="post" action="/cart/add" class="perplexo-bundle-card__form">
+                <input type="hidden" name="id" value="{{ target_variant_id }}">
+                <input type="hidden" name="return_to" value="/checkout">
+                <button type="submit" class="perplexo-bundle-card__buy-btn" {% if variant.available == false %}disabled{% endif %}>
+                  <svg class="perplexo-bundle-card__buy-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13 2L3 14h7v8l10-12h-7z"/></svg>
+                  <span>BUY NOW — {{ matched_prod.price | money }}</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Curated Product Bundles",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Pill Text",
+      "default": "BUNDLE & SAVE MORE"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading",
+      "default": "Curated Skincare Routine Bundles"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub-heading",
+      "default": "Complete routines engineered to work synergistically for maximum results. Save up to 30% on curated sets."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#9c777a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Heading Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bundle_card",
+      "name": "Bundle Card",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Bundle Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom Bundle Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_featured",
+          "label": "Highlight as 'Best Value'",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "featured_label",
+          "label": "Featured Banner Text",
+          "default": "MOST POPULAR - BEST VALUE"
+        },
+        {
+          "type": "text",
+          "id": "save_tag",
+          "label": "Save Pill Badge Text",
+          "default": "SAVE 30%"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Bundle Title",
+          "default": "The Ultimate Collagen Trio"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Bundle Subtitle",
+          "default": "Complete 3-step collagen restoration system"
+        },
+        {
+          "type": "textarea",
+          "id": "included_items",
+          "label": "Included Items (comma-separated)",
+          "default": "Dr. Melaxin Collagen Boost Serum (50ml), Cellular Renewal Night Elixir (30ml), Organic Damask Rose Hydrating Cream (50ml)"
+        },
+        {
+          "type": "text",
+          "id": "compare_price",
+          "label": "Original Price (Strikethrough)",
+          "default": "135$"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Bundle Special Price",
+          "default": "95$"
+        },
+        {
+          "type": "text",
+          "id": "savings_text",
+          "label": "Savings Highlight Text",
+          "default": "🔥 You Save 40$ (Highest Savings)"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button Text",
+          "default": "Buy Now"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Curated Product Bundles",
+      "blocks": [
+        {
+          "type": "bundle_card",
+          "settings": {
+            "title": "The Collagen Essentials Duo",
+            "subtitle": "Everyday hydration & pore tightening essential set",
+            "save_tag": "SAVE 15%",
+            "compare_price": "75$",
+            "price": "60$",
+            "savings_text": "🎉 You Save 15$ Instant Discount",
+            "included_items": "Dr. Melaxin Collagen Boost Serum (50ml), Organic Damask Rose Hydrating Cream (50ml)"
+          }
+        },
+        {
+          "type": "bundle_card",
+          "settings": {
+            "is_featured": true,
+            "title": "The Ultimate Collagen Trio",
+            "subtitle": "Complete 3-step collagen restoration & firming system",
+            "save_tag": "SAVE 30%",
+            "compare_price": "135$",
+            "price": "95$",
+            "savings_text": "🔥 You Save 40$ (Highest Savings)",
+            "included_items": "Dr. Melaxin Collagen Boost Serum (50ml), Cellular Renewal Night Elixir (30ml), Organic Damask Rose Hydrating Cream (50ml)"
+          }
+        },
+        {
+          "type": "bundle_card",
+          "settings": {
+            "title": "The Complete Radiance Routine",
+            "subtitle": "4-piece full spectrum skincare & scent collection",
+            "save_tag": "SAVE 25%",
+            "compare_price": "180$",
+            "price": "135$",
+            "savings_text": "✨ You Save 45$ Instant Discount",
+            "included_items": "Dr. Melaxin Collagen Boost Set (Full Size), Botanical Brightening Essence (100ml), Signature Preplexo Silk Hair Oil (30ml)"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

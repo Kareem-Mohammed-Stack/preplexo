@@ -1,0 +1,382 @@
+{{ 'perplexo-videos.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    {%- if section.settings.bg_color != blank -%}
+      background-color: {{ section.settings.bg_color }};
+    {%- endif -%}
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="perplexo-videos section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <div class="perplexo-videos__header">
+        <h2 class="perplexo-videos__heading">{{ section.settings.title | escape }}</h2>
+        {%- if section.settings.sub_heading != blank -%}
+          <p class="perplexo-videos__sub-heading">{{ section.settings.sub_heading | escape }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="perplexo-videos__grid">
+      <!-- Video Card 1 -->
+      <div class="perplexo-video-card">
+        <div class="perplexo-video-card__media">
+          {%- assign product_1 = section.settings.product_1 -%}
+          {%- assign current_video_url_1 = section.settings.video_url_1 -%}
+          {%- if current_video_url_1 == blank or current_video_url_1 == 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4' -%}
+            {%- if product_1 != blank -%}
+              {%- for media in product_1.media -%}
+                {%- if media.media_type == 'video' -%}
+                  {%- for source in media.sources -%}
+                    {%- if source.format == 'mp4' -%}
+                      {%- assign current_video_url_1 = source.url -%}
+                      {%- break -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                  {%- if current_video_url_1 == blank or current_video_url_1 == 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4' -%}
+                    {%- assign current_video_url_1 = media.sources[0].url -%}
+                  {%- endif -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+          {%- endif -%}
+          {%- if current_video_url_1 == 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4' or current_video_url_1 == 'https://cdn.shopify.com/videos/c/o/v/fbb140fd46e3429eba459e1549dbbe38.mp4' -%}
+            {%- assign current_video_url_1 = blank -%}
+          {%- endif -%}
+
+          {%- if current_video_url_1 != blank -%}
+            <video 
+              id="perplexo-vid1-{{ section.id }}" 
+              class="perplexo-video-card__video" 
+              src="{{ current_video_url_1 }}" 
+              playsinline 
+              autoplay 
+              muted 
+              loop>
+            </video>
+          {%- else -%}
+            <img src="{{ 'collagen_boost.jpg' | asset_url }}" class="perplexo-video-card__video" style="object-fit: cover; width: 100%; height: 100%;" alt="Collagen Boost Routine">
+          {%- endif -%}
+          {%- assign link_1 = section.settings.btn_link_1 | default: product_1.url | default: routes.all_products_collection_url -%}
+          <a href="{{ link_1 }}" style="position: absolute; inset: 0; z-index: 2;" aria-label="{{ section.settings.video_title_1 | escape }}"></a>
+          <button 
+            type="button" 
+            class="perplexo-video-card__audio-btn" 
+            aria-label="Toggle Mute Video 1" 
+            onclick="var v = document.getElementById('perplexo-vid1-{{ section.id }}'); v.muted = !v.muted; this.querySelector('svg').style.opacity = v.muted ? '0.6' : '1';">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="perplexo-video-card__info">
+          {%- if section.settings.badge_1 != blank -%}
+            <span class="perplexo-video-card__badge">{{ section.settings.badge_1 | escape }}</span>
+          {%- endif -%}
+
+          {%- if section.settings.video_title_1 != blank -%}
+            <h3 class="perplexo-video-card__title">
+              <a href="{{ link_1 }}" style="color: inherit; text-decoration: none;">{{ section.settings.video_title_1 | default: product_1.title | escape }}</a>
+            </h3>
+          {%- endif -%}
+
+          {%- if section.settings.video_desc_1 != blank -%}
+            <p class="perplexo-video-card__description">{{ section.settings.video_desc_1 | escape }}</p>
+          {%- endif -%}
+
+          {%- if product_1 != blank -%}
+            <div class="perplexo-video-card__price" style="margin-top: -0.5rem; margin-bottom: 1rem; font-weight: 700; color: #121212;">
+              {{ product_1.price | money }}
+              {%- if product_1.compare_at_price > product_1.price -%}
+                <span style="text-decoration: line-through; color: #85444C; margin-left: 0.8rem; font-size: 0.9em;">{{ product_1.compare_at_price | money }}</span>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.btn_text_1 != blank -%}
+            {%- if product_1 != blank and section.settings.btn_link_1 == blank -%}
+              {%- assign variant_1 = product_1.selected_or_first_available_variant -%}
+              <form method="post" action="/cart/add" style="position: relative; z-index: 3;">
+                <input type="hidden" name="id" value="{{ variant_1.id }}">
+                <input type="hidden" name="return_to" value="/checkout">
+                <button type="submit" class="perplexo-video-card__btn" style="width: 100%; cursor: pointer;" {% if variant_1.available == false %}disabled{% endif %}>
+                  {%- if variant_1.available -%}
+                    {{ section.settings.btn_text_1 | escape }}
+                  {%- else -%}
+                    Sold Out
+                  {%- endif -%}
+                </button>
+              </form>
+            {%- else -%}
+              <a href="{{ link_1 }}" class="perplexo-video-card__btn" style="position: relative; z-index: 3;">
+                {{ section.settings.btn_text_1 | escape }}
+              </a>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Video Card 2 -->
+      <div class="perplexo-video-card">
+        <div class="perplexo-video-card__media">
+          {%- assign product_2 = section.settings.product_2 -%}
+          {%- assign current_video_url_2 = section.settings.video_url_2 -%}
+          {%- if current_video_url_2 == blank or current_video_url_2 == 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4' -%}
+            {%- if product_2 != blank -%}
+              {%- for media in product_2.media -%}
+                {%- if media.media_type == 'video' -%}
+                  {%- for source in media.sources -%}
+                    {%- if source.format == 'mp4' -%}
+                      {%- assign current_video_url_2 = source.url -%}
+                      {%- break -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                  {%- if current_video_url_2 == blank or current_video_url_2 == 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4' -%}
+                    {%- assign current_video_url_2 = media.sources[0].url -%}
+                  {%- endif -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+          {%- endif -%}
+          {%- if current_video_url_2 == 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4' or current_video_url_2 == 'https://cdn.shopify.com/videos/c/o/v/fbb140fd46e3429eba459e1549dbbe38.mp4' -%}
+            {%- assign current_video_url_2 = blank -%}
+          {%- endif -%}
+
+          {%- if current_video_url_2 != blank -%}
+            <video 
+              id="perplexo-vid2-{{ section.id }}" 
+              class="perplexo-video-card__video" 
+              src="{{ current_video_url_2 }}" 
+              playsinline 
+              autoplay 
+              muted 
+              loop>
+            </video>
+          {%- else -%}
+            <img src="{{ 'damask_rose.jpg' | asset_url }}" class="perplexo-video-card__video" style="object-fit: cover; width: 100%; height: 100%;" alt="Organic Damask Rose Serum">
+          {%- endif -%}
+          {%- assign link_2 = section.settings.btn_link_2 | default: product_2.url | default: routes.all_products_collection_url -%}
+          <a href="{{ link_2 }}" style="position: absolute; inset: 0; z-index: 2;" aria-label="{{ section.settings.video_title_2 | escape }}"></a>
+          <button 
+            type="button" 
+            class="perplexo-video-card__audio-btn" 
+            aria-label="Toggle Mute Video 2" 
+            onclick="var v = document.getElementById('perplexo-vid2-{{ section.id }}'); v.muted = !v.muted; this.querySelector('svg').style.opacity = v.muted ? '0.6' : '1';">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="perplexo-video-card__info">
+          {%- if section.settings.badge_2 != blank -%}
+            <span class="perplexo-video-card__badge">{{ section.settings.badge_2 | escape }}</span>
+          {%- endif -%}
+
+          {%- if section.settings.video_title_2 != blank -%}
+            <h3 class="perplexo-video-card__title">
+              <a href="{{ link_2 }}" style="color: inherit; text-decoration: none;">{{ section.settings.video_title_2 | default: product_2.title | escape }}</a>
+            </h3>
+          {%- endif -%}
+
+          {%- if section.settings.video_desc_2 != blank -%}
+            <p class="perplexo-video-card__description">{{ section.settings.video_desc_2 | escape }}</p>
+          {%- endif -%}
+
+          {%- if product_2 != blank -%}
+            <div class="perplexo-video-card__price" style="margin-top: -0.5rem; margin-bottom: 1rem; font-weight: 700; color: #121212;">
+              {{ product_2.price | money }}
+              {%- if product_2.compare_at_price > product_2.price -%}
+                <span style="text-decoration: line-through; color: #85444C; margin-left: 0.8rem; font-size: 0.9em;">{{ product_2.compare_at_price | money }}</span>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.btn_text_2 != blank -%}
+            {%- if product_2 != blank and section.settings.btn_link_2 == blank -%}
+              {%- assign variant_2 = product_2.selected_or_first_available_variant -%}
+              <form method="post" action="/cart/add" style="position: relative; z-index: 3;">
+                <input type="hidden" name="id" value="{{ variant_2.id }}">
+                <input type="hidden" name="return_to" value="/checkout">
+                <button type="submit" class="perplexo-video-card__btn" style="width: 100%; cursor: pointer;" {% if variant_2.available == false %}disabled{% endif %}>
+                  {%- if variant_2.available -%}
+                    {{ section.settings.btn_text_2 | escape }}
+                  {%- else -%}
+                    Sold Out
+                  {%- endif -%}
+                </button>
+              </form>
+            {%- else -%}
+              <a href="{{ link_2 }}" class="perplexo-video-card__btn" style="position: relative; z-index: 3;">
+                {{ section.settings.btn_text_2 | escape }}
+              </a>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Perplexo Videos",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading",
+      "default": "See Our Products in Action"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub-heading",
+      "default": "Watch how our signature skincare routine restores natural radiance & firmness."
+    },
+    {
+      "type": "header",
+      "content": "Video 1 Settings"
+    },
+    {
+      "type": "text",
+      "id": "video_url_1",
+      "label": "Video 1 MP4 URL",
+      "default": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+    },
+    {
+      "type": "text",
+      "id": "badge_1",
+      "label": "Video 1 Tag Badge",
+      "default": "FEATURED DEMO"
+    },
+    {
+      "type": "text",
+      "id": "video_title_1",
+      "label": "Video 1 Title",
+      "default": "Collagen Boost Application Routine"
+    },
+    {
+      "type": "textarea",
+      "id": "video_desc_1",
+      "label": "Video 1 Description",
+      "default": "Watch step-by-step application technique for maximum collagen absorption and skin tightening."
+    },
+    {
+      "type": "text",
+      "id": "btn_text_1",
+      "label": "Video 1 Button Text",
+      "default": "Shop This Routine"
+    },
+    {
+      "type": "product",
+      "id": "product_1",
+      "label": "Related Product 1"
+    },
+    {
+      "type": "url",
+      "id": "btn_link_1",
+      "label": "Video 1 Button Link (Overrides Product)"
+    },
+    {
+      "type": "header",
+      "content": "Video 2 Settings"
+    },
+    {
+      "type": "text",
+      "id": "video_url_2",
+      "label": "Video 2 MP4 URL",
+      "default": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+    },
+    {
+      "type": "text",
+      "id": "badge_2",
+      "label": "Video 2 Tag Badge",
+      "default": "REAL RESULTS"
+    },
+    {
+      "type": "text",
+      "id": "video_title_2",
+      "label": "Video 2 Title",
+      "default": "Organic Damask Rose Hydration"
+    },
+    {
+      "type": "textarea",
+      "id": "video_desc_2",
+      "label": "Video 2 Description",
+      "default": "Discover how pure botanical rose extracts replenish moisture reserves and calm sensitive skin."
+    },
+    {
+      "type": "text",
+      "id": "btn_text_2",
+      "label": "Video 2 Button Text",
+      "default": "Shop Botanical Set"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "Related Product 2"
+    },
+    {
+      "type": "url",
+      "id": "btn_link_2",
+      "label": "Video 2 Button Link (Overrides Product)"
+    },
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#9c777a"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Perplexo Videos"
+    }
+  ]
+}
+{% endschema %}

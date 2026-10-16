@@ -1,0 +1,15 @@
+{% doc %}
+  Formats a money amount in cents as a dollar string.
+  @param {number} amount - Price in cents
+  @param {boolean} [strip_zeros] - Drop trailing .00 when true
+  @example
+  {% render 'aura-money', amount: product.price %}
+{% enddoc %}
+{%- liquid
+  if strip_zeros or settings.currency_without_zero
+    assign aura_raw = amount | money_without_trailing_zeros | money_without_currency
+  else
+    assign aura_raw = amount | money_without_currency
+  endif
+  assign aura_raw = aura_raw | strip | replace: 'EGP', '' | replace: 'USD', '' | replace: 'L.E.', '' | replace: '$', '' | strip
+-%}${{ aura_raw -}}

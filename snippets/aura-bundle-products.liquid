@@ -1,0 +1,153 @@
+{% doc %}
+  Resolves live Shopify pack products for Bundle & Save.
+  Prefer a published bundles collection, otherwise match Buy 1–8 handles.
+  Use include so assigns leak into the parent section.
+{% enddoc %}
+{%- liquid
+  assign bundle_1 = nil
+  assign bundle_2 = nil
+  assign bundle_3 = nil
+  assign bundle_4 = nil
+  assign bundle_5 = nil
+  assign bundle_6 = nil
+  assign bundle_7 = nil
+  assign bundle_8 = nil
+  assign bundle_1_qty = 0
+  assign bundle_2_qty = 0
+  assign bundle_3_qty = 0
+  assign bundle_4_qty = 0
+  assign bundle_5_qty = 0
+  assign bundle_6_qty = 0
+  assign bundle_7_qty = 0
+  assign bundle_8_qty = 0
+  assign bundle_count = 0
+  assign default_bundle_qty = 0
+  assign used_ids = ','
+
+  assign pack_collection = collections['bundles']
+  if pack_collection == blank or pack_collection.products_count == 0
+    assign pack_collection = collections['bundle-save']
+  endif
+  if pack_collection == blank or pack_collection.products_count == 0
+    assign pack_collection = collections['bundle']
+  endif
+
+  if pack_collection != blank and pack_collection.products_count > 0
+    for pack in pack_collection.products
+      if pack.id == blank or pack.id == product.id
+        continue
+      endif
+      assign id_token = ',' | append: pack.id | append: ','
+      if used_ids contains id_token
+        continue
+      endif
+
+      assign pack_qty = 0
+      assign pack_title_down = pack.title | downcase | strip
+      for n in (1..8)
+        assign want = 'buy ' | append: n
+        if pack_title_down == want
+          assign pack_qty = n
+          break
+        endif
+      endfor
+      if pack_qty == 0
+        assign pack_qty = bundle_count | plus: 1
+      endif
+
+      assign bundle_count = bundle_count | plus: 1
+      case bundle_count
+        when 1
+          assign bundle_1 = pack
+          assign bundle_1_qty = pack_qty
+        when 2
+          assign bundle_2 = pack
+          assign bundle_2_qty = pack_qty
+        when 3
+          assign bundle_3 = pack
+          assign bundle_3_qty = pack_qty
+        when 4
+          assign bundle_4 = pack
+          assign bundle_4_qty = pack_qty
+        when 5
+          assign bundle_5 = pack
+          assign bundle_5_qty = pack_qty
+        when 6
+          assign bundle_6 = pack
+          assign bundle_6_qty = pack_qty
+        when 7
+          assign bundle_7 = pack
+          assign bundle_7_qty = pack_qty
+        when 8
+          assign bundle_8 = pack
+          assign bundle_8_qty = pack_qty
+      endcase
+      assign used_ids = used_ids | append: pack.id | append: ','
+    endfor
+  endif
+
+  if bundle_count == 0
+    assign candidate_handles = 'buy-1,buy-2,buy-3,buy-4,buy-6,buy-8,aura-light-bundle-2,aura-light-bundle-4,aura-light-bundle-6,aura-light-bundle-8,kieuo-bundle-2,kieuo-bundle-4,kieuo-bundle-6,kieuo-buy-1,kieuo-buy-2,kieuo-buy-3,kieuo-buy-4' | split: ','
+
+    for n in (1..8)
+      assign want = 'buy ' | append: n
+      for handle in candidate_handles
+        assign cand = all_products[handle]
+        if cand == blank or cand.id == blank or cand.id == product.id
+          continue
+        endif
+        assign id_token = ',' | append: cand.id | append: ','
+        if used_ids contains id_token
+          continue
+        endif
+        assign t = cand.title | downcase | strip
+        if t == want
+          assign bundle_count = bundle_count | plus: 1
+          case bundle_count
+            when 1
+              assign bundle_1 = cand
+              assign bundle_1_qty = n
+            when 2
+              assign bundle_2 = cand
+              assign bundle_2_qty = n
+            when 3
+              assign bundle_3 = cand
+              assign bundle_3_qty = n
+            when 4
+              assign bundle_4 = cand
+              assign bundle_4_qty = n
+            when 5
+              assign bundle_5 = cand
+              assign bundle_5_qty = n
+            when 6
+              assign bundle_6 = cand
+              assign bundle_6_qty = n
+            when 7
+              assign bundle_7 = cand
+              assign bundle_7_qty = n
+            when 8
+              assign bundle_8 = cand
+              assign bundle_8_qty = n
+          endcase
+          assign used_ids = used_ids | append: cand.id | append: ','
+          break
+        endif
+      endfor
+    endfor
+  endif
+
+  if bundle_2_qty == 2
+    assign default_bundle_qty = 2
+  elsif bundle_count >= 2
+    assign default_bundle_qty = bundle_2_qty
+  elsif bundle_count >= 1
+    assign default_bundle_qty = bundle_1_qty
+  else
+    assign default_bundle_qty = 2
+  endif
+
+  assign bundle_p2 = nil
+  assign bundle_p4 = nil
+  assign bundle_p6 = nil
+  assign bundle_p8 = nil
+-%}

@@ -1,0 +1,254 @@
+{{ 'perplexo-collections.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    {%- if section.settings.bg_color != blank -%}
+      background-color: {{ section.settings.bg_color }};
+    {%- endif -%}
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #Collections-{{ section.id }} {
+    --perplexo-collections-cols: {{ section.settings.columns_desktop }};
+  }
+
+  {%- if section.settings.text_color != blank -%}
+    #Collections-{{ section.id }} .perplexo-collections__heading,
+    #Collections-{{ section.id }} .perplexo-collections__title {
+      color: {{ section.settings.text_color }};
+    }
+
+    #Collections-{{ section.id }} .perplexo-collections__sub-heading {
+      color: {{ section.settings.text_color | color_modify: 'alpha', 0.65 }};
+    }
+  {%- endif -%}
+{%- endstyle -%}
+
+<section
+  class="perplexo-collections section-{{ section.id }}-padding"
+  id="Collections-{{ section.id }}"
+  data-section-id="{{ section.id }}"
+>
+  <div class="page-width">
+    {%- if section.settings.title != blank or section.settings.sub_heading != blank -%}
+      <div class="perplexo-collections__header scroll-trigger animate--slide-in">
+        {%- if section.settings.title != blank -%}
+          <h2 class="perplexo-collections__heading">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.sub_heading != blank -%}
+          <p class="perplexo-collections__sub-heading">{{ section.settings.sub_heading | escape }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="perplexo-collections__carousel-wrapper">
+        <div
+          class="perplexo-collections__carousel-viewport"
+          id="CollectionsViewport-{{ section.id }}"
+          tabindex="0"
+          role="region"
+          aria-label="Collections carousel"
+        >
+          <ul class="perplexo-collections__track" id="CollectionsTrack-{{ section.id }}" role="list">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign collection = block.settings.collection
+                if collection == blank
+                  continue
+                endif
+
+                assign card_title = block.settings.title
+                assign card_image = block.settings.image
+
+                if card_title == blank
+                  assign card_title = collection.title
+                endif
+
+                if card_image == blank
+                  assign card_image = collection.featured_image
+                endif
+
+                if card_image == blank and collection.products_count > 0
+                  assign card_image = collection.products.first.featured_image
+                endif
+
+                assign card_url = collection.url
+              -%}
+
+              <li
+                class="perplexo-collections__slide"
+                data-slide-index="{{ forloop.index0 }}"
+                role="group"
+                aria-roledescription="slide"
+                aria-label="{{ forloop.index }} of {{ forloop.length }}"
+                {{ block.shopify_attributes }}
+              >
+                <a class="perplexo-collections__card" href="{{ card_url }}">
+                  <div class="perplexo-collections__media">
+                    {%- if card_image != blank -%}
+                      {{
+                        card_image
+                        | image_url: width: 800
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '200, 300, 400, 500, 600, 800',
+                          sizes: '(min-width: 990px) 18vw, (min-width: 750px) 30vw, 70vw',
+                          alt: card_title,
+                          class: 'motion-reduce'
+                      }}
+                    {%- else -%}
+                      <div class="perplexo-collections__placeholder" aria-hidden="true">
+                        {{ 'collection-1' | placeholder_svg_tag }}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                  <h3 class="perplexo-collections__title">{{ card_title | escape }}</h3>
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+  (function () {
+    function initCollectionsCarousel() {
+      const sectionId = "{{ section.id }}";
+      const viewport = document.getElementById("CollectionsViewport-" + sectionId);
+      const track = document.getElementById("CollectionsTrack-" + sectionId);
+      if (!viewport || !track) return;
+
+      // Keep swipe/drag horizontal only
+      viewport.style.overscrollBehaviorX = "contain";
+      viewport.style.touchAction = "pan-x";
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initCollectionsCarousel);
+    } else {
+      initCollectionsCarousel();
+    }
+
+    document.addEventListener("shopify:section:load", function (e) {
+      if (e.detail.sectionId === "{{ section.id }}") {
+        initCollectionsCarousel();
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Perplexo Collections",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Collections"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub-heading"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 2,
+      "label": "Cards visible on desktop"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom image",
+          "info": "Optional. Uses the collection image if empty."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom title",
+          "info": "Optional. Uses the collection name if empty."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Perplexo Collections",
+      "blocks": [
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" }
+      ]
+    }
+  ]
+}
+{% endschema %}

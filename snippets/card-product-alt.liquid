@@ -1,0 +1,6 @@
+{% comment %}
+  Renders the Perplexo signature product card for catalog, search, and collection grids.
+{% endcomment %}
+
+{{ 'perplexo-products.css' | asset_url | stylesheet_tag }}
+{% render 'card-product-perplexo', card_product: card_product %}

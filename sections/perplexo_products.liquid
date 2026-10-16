@@ -1,0 +1,204 @@
+{{ 'perplexo-products.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    {%- if section.settings.bg_color != blank -%}
+      background-color: {{ section.settings.bg_color }};
+    {%- endif -%}
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  {%- if section.settings.text_color != blank -%}
+    .section-{{ section.id }}-padding .perplexo-products__heading {
+      color: {{ section.settings.text_color }};
+    }
+  {%- endif -%}
+{%- endstyle -%}
+
+<section class="perplexo-products section-{{ section.id }}-padding" id="Products-{{ section.id }}" data-section-id="{{ section.id }}">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <div class="perplexo-products__header scroll-trigger animate--slide-in">
+        <h2 class="perplexo-products__heading">{{ section.settings.title | escape }}</h2>
+        {%- if section.settings.sub_heading != blank -%}
+          <p class="perplexo-products__sub-heading">{{ section.settings.sub_heading | escape }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="perplexo-products__carousel-wrapper">
+      <div 
+        class="perplexo-products__carousel-viewport" 
+        id="ProductsViewport-{{ section.id }}"
+        tabindex="0"
+        role="region"
+        aria-label="Products Carousel"
+      >
+        <div class="perplexo-products__track" id="ProductsTrack-{{ section.id }}">
+          {%- assign featured_collection = section.settings.collection | default: collections['all'] -%}
+          {%- if featured_collection != blank and featured_collection.products_count > 0 -%}
+            {%- for product in featured_collection.products limit: section.settings.products_to_show -%}
+              <div class="perplexo-products__slide" data-slide-index="{{ forloop.index0 }}" role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} of {{ forloop.length }}">
+                {% render 'card-product-perplexo', card_product: product %}
+              </div>
+            {%- endfor -%}
+          {%- else -%}
+            <!-- Fallback sample product cards if store catalog is empty -->
+            {%- for i in (1..8) -%}
+              <div class="perplexo-products__slide" data-slide-index="{{ forloop.index0 }}" role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} of 8">
+                {% render 'card-product-perplexo', 
+                  default_vendor: 'Tarce Cosmatics', 
+                  default_title: 'Dr. Melaxin Collagen Boost Set', 
+                  default_price: '45$', 
+                  default_compare_price: '65$', 
+                  default_img1: 'prod_melaxin_1.png', 
+                  default_img2: 'prod_melaxin_2.png' 
+                %}
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- liquid
+        assign view_all_label = section.settings.view_all_label | default: 'view all'
+        assign view_all_url = section.settings.view_all_link
+        if view_all_url == blank
+          if featured_collection != blank and featured_collection.url != blank
+            assign view_all_url = featured_collection.url
+          else
+            assign view_all_url = routes.all_products_collection_url
+          endif
+        endif
+      -%}
+      <div class="perplexo-products__view-all">
+        <a href="{{ view_all_url }}" class="perplexo-products__view-all-link">{{ view_all_label }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    function initProductsCarousel() {
+      const sectionId = "{{ section.id }}";
+      const viewport = document.getElementById("ProductsViewport-" + sectionId);
+      if (!viewport) return;
+
+      // Keep swipe/drag horizontal only
+      viewport.style.overscrollBehaviorX = "contain";
+      viewport.style.touchAction = "pan-x";
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initProductsCarousel);
+    } else {
+      initProductsCarousel();
+    }
+
+    document.addEventListener("shopify:section:load", function(e) {
+      if (e.detail.sectionId === "{{ section.id }}") {
+        initProductsCarousel();
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Perplexo Product Carousel",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading",
+      "default": "Everything You Need"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub-heading"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#9c777a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Heading Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 16,
+      "step": 2,
+      "default": 8,
+      "label": "Products to Show"
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "View all label",
+      "default": "view all"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View all link"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Perplexo Product Carousel"
+    }
+  ]
+}
+{% endschema %}

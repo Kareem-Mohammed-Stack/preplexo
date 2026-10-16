@@ -1,0 +1,130 @@
+{% comment %}
+  Renders a Perplexo luxury product card with dual-image hover variant swap, red Sale pill badge, wishlist heart toggle, and compare price formatting.
+
+  Accepts:
+  - card_product: {Object} Shopify product object (optional)
+  - default_vendor: {String} Fallback vendor name
+  - default_title: {String} Fallback title
+  - default_price: {String} Fallback sale price
+  - default_compare_price: {String} Fallback original price
+  - default_img1: {String} Asset image filename 1
+  - default_img2: {String} Asset image filename 2
+{% endcomment %}
+
+{{ 'perplexo-products.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign current_title = card_product.title | default: default_title | default: 'Dr. Melaxin Collagen Boost Set'
+  assign current_price = default_price | default: '45$'
+  assign current_compare = default_compare_price | default: '65$'
+  
+  if card_product != blank
+    assign current_price = card_product.price | money
+    if card_product.compare_at_price > card_product.price
+      assign current_compare = card_product.compare_at_price | money
+    else
+      assign current_compare = blank
+    endif
+  endif
+-%}
+
+<div class="perplexo-card">
+  <div class="perplexo-card__media-wrapper">
+    <a href="{{ card_product.url | default: routes.all_products_collection_url }}" class="perplexo-card__link" aria-label="{{ current_title | escape }}">
+      <div class="perplexo-card__image-box">
+        {%- liquid
+          assign is_anua = false
+          assign prod_t_down = card_product.title | downcase
+          assign curr_t_down = current_title | downcase
+          if prod_t_down contains 'anua' or curr_t_down contains 'anua' or prod_t_down contains 'targeted skin serum' or curr_t_down contains 'targeted skin serum'
+            assign is_anua = true
+          endif
+        -%}
+        {%- if card_product != blank and card_product.featured_media != blank -%}
+          {{ card_product.featured_media | image_url: width: 800 | image_tag: class: 'perplexo-card__img perplexo-card__img--primary', loading: 'lazy', alt: card_product.title }}
+          {%- if card_product.media[1] != blank -%}
+            {{ card_product.media[1] | image_url: width: 800 | image_tag: class: 'perplexo-card__img perplexo-card__img--hover', loading: 'lazy', alt: card_product.title }}
+          {%- endif -%}
+        {%- else -%}
+          {%- if is_anua -%}
+            <img src="{{ default_img1 | default: 'prod_rose_1.png' | asset_url }}" class="perplexo-card__img perplexo-card__img--primary" loading="lazy" alt="{{ current_title | escape }}" width="800" height="800">
+            <img src="{{ default_img2 | default: 'prod_rose_2.png' | asset_url }}" class="perplexo-card__img perplexo-card__img--hover" loading="lazy" alt="{{ current_title | escape }}" width="800" height="800">
+          {%- else -%}
+            <img src="{{ default_img1 | default: 'prod_melaxin_1.png' | asset_url }}" class="perplexo-card__img perplexo-card__img--primary" loading="lazy" alt="{{ current_title | escape }}" width="800" height="800">
+            <img src="{{ default_img2 | default: 'prod_melaxin_2.png' | asset_url }}" class="perplexo-card__img perplexo-card__img--hover" loading="lazy" alt="{{ current_title | escape }}" width="800" height="800">
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    </a>
+
+    <!-- Top Left Red Sale Pill Badge -->
+    <div class="perplexo-card__badge-wrap">
+      <span class="perplexo-card__badge-sale">Sale</span>
+    </div>
+
+    <!-- Top Right Floating Wishlist Heart Button -->
+    <button type="button" class="perplexo-card__wishlist-btn" aria-label="Add to Wishlist" onclick="this.classList.toggle('is-active')">
+      <svg class="perplexo-card__heart-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div class="perplexo-card__info">
+    <h3 class="perplexo-card__title">
+      <a href="{{ card_product.url | default: routes.all_products_collection_url }}" class="full-unstyled-link">
+        {{ current_title | escape }}
+      </a>
+    </h3>
+
+    <div class="perplexo-card__price-box">
+      {%- if current_compare != blank -%}
+        <span class="perplexo-card__price-compare">{{ current_compare }}</span>
+      {%- endif -%}
+      <span class="perplexo-card__price-regular">{{ current_price }}</span>
+    </div>
+
+    <!-- Buy Now Action Button (Direct Checkout - Fitts's & Hick's Law) -->
+    <div class="perplexo-card__actions">
+      {%- if card_product != blank -%}
+        {%- assign variant = card_product.selected_or_first_available_variant -%}
+        {%- if card_product.variants.size > 1 -%}
+          <a href="{{ card_product.url }}" class="perplexo-card__buy-now-btn perplexo-card__buy-now-btn--options">
+            <svg class="perplexo-card__buy-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+              <path d="M13 2L3 14h7v8l10-12h-7z"/>
+            </svg>
+            <span>Buy Now</span>
+          </a>
+        {%- else -%}
+          <form method="post" action="/cart/add" class="perplexo-card__buy-form" data-type="add-to-cart-form">
+            <input type="hidden" name="id" value="{{ variant.id }}" {% if variant.available == false %}disabled{% endif %}>
+            <input type="hidden" name="return_to" value="/checkout">
+            <button
+              type="submit"
+              name="add"
+              class="perplexo-card__buy-now-btn"
+              {% if variant.available == false %}disabled{% endif %}
+              aria-label="Buy Now {{ current_title | escape }}"
+            >
+              {%- if variant.available -%}
+                <svg class="perplexo-card__buy-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                  <path d="M13 2L3 14h7v8l10-12h-7z"/>
+                </svg>
+                <span>Buy Now</span>
+              {%- else -%}
+                <span>Sold Out</span>
+              {%- endif -%}
+            </button>
+          </form>
+        {%- endif -%}
+      {%- else -%}
+        <a href="{{ routes.all_products_collection_url }}" class="perplexo-card__buy-now-btn">
+          <svg class="perplexo-card__buy-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+            <path d="M13 2L3 14h7v8l10-12h-7z"/>
+          </svg>
+          <span>Buy Now</span>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

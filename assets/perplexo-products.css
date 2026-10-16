@@ -1,0 +1,544 @@
+/* ==========================================================================
+   PERPLEXO FEATURED PRODUCTS & CARD COMPONENT STYLES
+   ========================================================================== */
+
+.perplexo-products {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-top: 1px solid rgba(133, 68, 76, 0.1);
+  border-bottom: 1px solid rgba(133, 68, 76, 0.1);
+  color: #85444C;
+}
+
+.perplexo-products__header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.perplexo-products__heading {
+  font-family: var(--font-heading-family, 'Transcity', serif);
+  font-size: 3.4rem;
+  font-weight: 500;
+  color: #85444C;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 750px) {
+  .perplexo-products__heading {
+    font-size: 4.4rem;
+  }
+}
+
+.perplexo-products__sub-heading {
+  font-family: var(--font-body-family, 'Transcity', sans-serif);
+  font-size: 1.8rem;
+  line-height: 1.6;
+  color: rgba(133, 68, 76, 0.85);
+  margin: 0 auto;
+  max-width: 720px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   PERPLEXO RESPONSIVE PRODUCT CAROUSEL (PEEK SLIDER)
+   Mobile: 1 card fully visible + small portion of next card peeking
+   Desktop: Smooth multi-card carousel with navigation
+   ========================================================================== */
+
+.perplexo-products__carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.perplexo-products__carousel-viewport {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
+  scrollbar-width: none;
+  padding: 1rem 0 2.5rem 0;
+  box-sizing: border-box;
+}
+
+.perplexo-products__carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.perplexo-products__track {
+  display: flex;
+  gap: 1.6rem;
+  width: max-content;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+.perplexo-products__slide {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0;
+}
+
+/* Desktop (min-width: 990px): exactly 4 centered cards + view all */
+@media screen and (min-width: 990px) {
+  .perplexo-products__carousel-viewport {
+    padding: 1rem 0 1.2rem 0;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .perplexo-products__track {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2.2rem;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .perplexo-products__slide {
+    flex: none;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    scroll-snap-align: unset;
+  }
+
+  .perplexo-products__slide:nth-child(n + 5) {
+    display: none !important;
+  }
+}
+
+.perplexo-products__view-all {
+  display: none;
+  text-align: center;
+  margin-top: 0.4rem;
+  padding-bottom: 0.5rem;
+}
+
+@media screen and (min-width: 990px) {
+  .perplexo-products__view-all {
+    display: block;
+  }
+}
+
+.perplexo-products__view-all-link {
+  display: inline-block;
+  font-family: var(--font-body-family, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  color: #85444C;
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.perplexo-products__view-all-link:hover {
+  color: #6c343b;
+  opacity: 0.9;
+}
+
+/* Tablet (750px - 989px) */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .perplexo-products__carousel-viewport {
+    padding: 1rem 0 2.5rem 0;
+  }
+
+  .perplexo-products__track {
+    gap: 1.6rem;
+  }
+
+  .perplexo-products__slide {
+    flex: 0 0 42vw;
+    width: 42vw;
+    max-width: 360px;
+    min-width: 280px;
+  }
+}
+
+/* Mobile: one full card — use vw (NOT % of max-content track) */
+@media screen and (max-width: 749px) {
+  .perplexo-products__carousel-wrapper {
+    margin: 0;
+  }
+
+  .perplexo-products__carousel-viewport {
+    padding: 0.8rem 0 2rem 0;
+  }
+
+  .perplexo-products__track {
+    gap: 1.2rem;
+  }
+
+  .perplexo-products__slide {
+    /* Match page-width content area; vw avoids % collapse on max-content track */
+    flex: 0 0 calc(100vw - 3rem);
+    width: calc(100vw - 3rem);
+    max-width: calc(100vw - 3rem);
+    min-width: calc(100vw - 3rem);
+  }
+
+  .perplexo-card {
+    border-radius: 18px;
+    padding: 1.2rem;
+    overflow: hidden;
+  }
+}
+
+/* Fallback grid styles */
+.perplexo-products__grid {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.perplexo-products__grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* Equal height only inside Perplexo product carousels/grids — do NOT force all theme grid items to 100% width */
+.perplexo-products__slide,
+.perplexo-products__grid-item {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  min-width: 0 !important;
+}
+
+.related-products .grid__item,
+.product-grid .grid__item,
+main-collection-product-grid .grid__item,
+.collection .grid__item {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: auto;
+}
+
+/* Card Component Container */
+.perplexo-card {
+  position: relative;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 1.8rem;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.perplexo-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+}
+
+/* Card Media Container */
+.perplexo-card__media-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #ffffff;
+  flex-shrink: 0;
+}
+
+.perplexo-card__link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.perplexo-card__image-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.perplexo-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.perplexo-card__img--primary {
+  opacity: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.perplexo-card__img--hover {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+/* Hover Variant Image Swap Effect */
+.perplexo-card:hover .perplexo-card__img--primary {
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+.perplexo-card:hover .perplexo-card__img--hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Top-Left Red Sale Pill Badge */
+.perplexo-card__badge-wrap {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.perplexo-card__badge-sale {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #85444c, #6c343b);
+  color: #ffffff;
+  padding: 0.5rem 1.4rem;
+  border-radius: 9999px;
+  font-family: var(--font-heading-family, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  box-shadow: 0 4px 10px rgba(133, 68, 76, 0.25);
+}
+
+/* Top-Right Floating Wishlist Heart Button */
+.perplexo-card__wishlist-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #85444C;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.perplexo-card__wishlist-btn:hover,
+.perplexo-card__wishlist-btn.is-active {
+  transform: scale(1.1);
+  background-color: #ffffff;
+}
+
+.perplexo-card__heart-icon {
+  transition: fill 0.25s ease, stroke 0.25s ease, transform 0.25s ease;
+}
+
+.perplexo-card__wishlist-btn:hover .perplexo-card__heart-icon,
+.perplexo-card__wishlist-btn.is-active .perplexo-card__heart-icon {
+  fill: #85444C;
+  stroke: #85444C;
+  transform: scale(1.1);
+}
+
+/* Card Information Below Image (Stretched Flex Alignment) */
+.perplexo-card__info {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  flex-grow: 1 !important;
+  height: 100% !important;
+  padding: 1.2rem 0.2rem 0.2rem 0.2rem;
+}
+
+.perplexo-card__vendor {
+  font-family: var(--font-heading-family, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #121212;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
+
+.perplexo-card__title {
+  font-family: var(--font-heading-family, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #121212;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin: 0 0 1rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.7em;
+  max-height: 2.7em;
+  text-align: center;
+  width: 100%;
+}
+
+.perplexo-card__title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.perplexo-card__title a:hover {
+  color: #85444C;
+}
+
+/* Price Display */
+.perplexo-card__price-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  min-height: 2.4rem;
+  width: 100%;
+}
+
+.perplexo-card__price-compare {
+  font-family: var(--font-heading-family, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.55rem;
+  color: #85444C;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  opacity: 0.7;
+}
+
+.perplexo-card__price-regular {
+  font-family: var(--font-heading-family, 'Plus Jakarta Sans', sans-serif);
+  font-size: 2rem;
+  font-weight: 800;
+  color: #121212;
+}
+
+/* Card Bottom Buy Action Locked to Bottom */
+.perplexo-card__actions,
+.perplexo-card__buy-form {
+  margin-top: auto !important;
+  width: 100%;
+}
+
+/* ==========================================================================
+   PERPLEXO CARD BUY NOW ACTION BUTTON (UX & UI LAWS IMPLEMENTATION)
+   - Fitts's Law: 44px+ min touch height & full container width target
+   - Hick's Law: Clear primary CTA contrast (#85444C / #121212)
+   - Doherty Threshold: Instant visual press feedback & hover micro-interactions
+   ========================================================================== */
+
+.perplexo-card__actions {
+  margin-top: 1.2rem;
+  width: 100%;
+}
+
+.perplexo-card__buy-form {
+  width: 100%;
+  margin: 0;
+}
+
+.perplexo-card__buy-now-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  min-height: 48px;
+  padding: 1.1rem 1.6rem;
+  background-color: var(--color-primary, #85444C);
+  color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-family: var(--font-body-family, 'Transcity', sans-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(133, 68, 76, 0.25);
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease, color 0.25s ease;
+}
+
+.perplexo-card__buy-now-btn:hover {
+  background-color: #6c343b;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(108, 52, 59, 0.35);
+}
+
+.perplexo-card__buy-now-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.perplexo-card__buy-now-btn[disabled] {
+  background-color: #e5e5e5;
+  color: #999999;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.perplexo-card__buy-now-btn--options {
+  background-color: transparent;
+  color: var(--color-primary, #85444C);
+  border: 1.5px solid var(--color-primary, #85444C);
+  box-shadow: none;
+}
+
+.perplexo-card__buy-now-btn--options:hover {
+  background-color: var(--color-primary, #85444C);
+  color: #ffffff;
+  border-color: var(--color-primary, #85444C);
+}
+
+.perplexo-card__buy-icon {
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.perplexo-card__buy-now-btn:hover .perplexo-card__buy-icon {
+  transform: scale(1.15) rotate(-6deg);
+}
+

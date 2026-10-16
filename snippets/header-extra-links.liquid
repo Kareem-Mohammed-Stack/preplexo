@@ -1,0 +1,45 @@
+{% doc %}
+  Renders Accessories and Beauty collection links in the header.
+  @param {string} [variant] - inline or drawer
+{% enddoc %}
+
+{%- liquid
+  assign accessories_url = '/collections/accessories'
+  assign beauty_url = '/collections/beauty'
+  if collections['accessories'] != blank and collections['accessories'].url != blank
+    assign accessories_url = collections['accessories'].url
+  endif
+  if collections['beauty'] != blank and collections['beauty'].url != blank
+    assign beauty_url = collections['beauty'].url
+  endif
+
+  assign id_prefix = 'HeaderMenu'
+  assign item_class = 'header__menu-item list-menu__item link link--text focus-inset'
+  assign active_class = 'header__active-menu-item'
+  if variant == 'drawer'
+    assign id_prefix = 'HeaderDrawer'
+    assign item_class = 'menu-drawer__menu-item list-menu__item link link--text focus-inset'
+    assign active_class = 'menu-drawer__menu-item--active'
+  endif
+-%}
+
+<li>
+  <a
+    id="{{ id_prefix }}-accessories"
+    href="{{ accessories_url }}"
+    class="{{ item_class }}{% if request.path contains '/collections/accessories' %} {{ active_class }}{% endif %}"
+    {% if request.path contains '/collections/accessories' %}aria-current="page"{% endif %}
+  >
+    <span>Accessories</span>
+  </a>
+</li>
+<li>
+  <a
+    id="{{ id_prefix }}-beauty"
+    href="{{ beauty_url }}"
+    class="{{ item_class }}{% if request.path contains '/collections/beauty' %} {{ active_class }}{% endif %}"
+    {% if request.path contains '/collections/beauty' %}aria-current="page"{% endif %}
+  >
+    <span>Beauty</span>
+  </a>
+</li>

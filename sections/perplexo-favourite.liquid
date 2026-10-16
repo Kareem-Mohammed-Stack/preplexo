@@ -1,0 +1,249 @@
+{{ 'perplexo-favourite.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    {%- if section.settings.bg_color != blank -%}
+      background-color: {{ section.settings.bg_color }};
+    {%- endif -%}
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="perplexo-favourite section-{{ section.id }}-padding">
+  <div class="page-width perplexo-favourite__inner">
+    <!-- Top Timer & Offers Banner -->
+    <div class="perplexo-favourite__timer-banner scroll-trigger animate--slide-in">
+      <div class="perplexo-favourite__timer-left">
+        {%- if section.settings.timer_label != blank -%}
+          <span class="perplexo-favourite__timer-label">{{ section.settings.timer_label | escape }}</span>
+        {%- endif -%}
+        <span class="perplexo-favourite__timer-digits" id="perplexo-timer-{{ section.id }}">
+          22 : 08 : 58 : 07
+        </span>
+      </div>
+
+      {%- if section.settings.timer_btn_text != blank -%}
+        <a href="{{ section.settings.timer_btn_link | default: routes.all_products_collection_url }}" class="perplexo-favourite__timer-btn">
+          {{ section.settings.timer_btn_text | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- assign fav_product = section.settings.product | default: collections['all'].products.first -%}
+
+    <!-- Main Favourite Product Spotlight Card -->
+    <div class="perplexo-favourite__card scroll-trigger animate--slide-in" data-cascade style="--animation-order: 1;">
+      <div class="perplexo-favourite__grid">
+        <!-- Left Text Info Column -->
+        <div class="perplexo-favourite__info">
+          {%- if section.settings.subheading != blank -%}
+            <h3 class="perplexo-favourite__subheading">{{ section.settings.subheading | escape }}</h3>
+          {%- endif -%}
+
+          <h2 class="perplexo-favourite__title">
+            <a href="{{ fav_product.url | default: section.settings.buy_btn_link | default: routes.all_products_collection_url }}" style="color: inherit; text-decoration: none;">
+              {%- if fav_product != blank -%}
+                {{ fav_product.title | escape }}
+              {%- else -%}
+                {{ section.settings.title | default: 'Dr. Melaxin Collagen Boost Set' | escape }}
+              {%- endif -%}
+            </a>
+          </h2>
+
+          <p class="perplexo-favourite__description">
+            {%- if fav_product != blank and fav_product.description != blank -%}
+              {{ fav_product.description | strip_html | truncate: 260 }}
+            {%- else -%}
+              {{ section.settings.description | escape }}
+            {%- endif -%}
+          </p>
+        </div>
+
+        <!-- Right Product Media & Buy Column -->
+        <div class="perplexo-favourite__media-column">
+          <a href="{{ fav_product.url | default: section.settings.buy_btn_link | default: routes.all_products_collection_url }}" class="perplexo-favourite__image-link" aria-label="{{ fav_product.title | default: section.settings.title | escape }}">
+            <div class="perplexo-favourite__image-box">
+              {%- if fav_product != blank and fav_product.featured_media != blank -%}
+                {{ fav_product.featured_media | image_url: width: 800 | image_tag: class: 'perplexo-favourite__img', loading: 'lazy', alt: fav_product.title }}
+              {%- elsif section.settings.product_image != blank -%}
+                {{ section.settings.product_image | image_url: width: 800 | image_tag: class: 'perplexo-favourite__img', loading: 'lazy', alt: section.settings.title }}
+              {%- else -%}
+                <img src="{{ 'prod_melaxin_1.png' | asset_url }}" class="perplexo-favourite__img" loading="lazy" alt="Dr. Melaxin Collagen Boost Set" width="800" height="500">
+              {%- endif -%}
+            </div>
+          </a>
+
+          {%- if fav_product != blank -%}
+            {%- assign fav_variant = fav_product.selected_or_first_available_variant -%}
+            <form method="post" action="/cart/add" class="perplexo-favourite__buy-form">
+              <input type="hidden" name="id" value="{{ fav_variant.id }}">
+              <input type="hidden" name="return_to" value="/checkout">
+              <button type="submit" class="perplexo-favourite__buy-btn" {% if fav_variant.available == false %}disabled{% endif %}>
+                <span>⚡ {{ section.settings.buy_btn_text | default: 'Buy Now' | escape }} — {{ fav_product.price | money }}</span>
+              </button>
+            </form>
+          {%- elsif section.settings.buy_btn_text != blank -%}
+            <a href="{{ section.settings.buy_btn_link | default: routes.all_products_collection_url }}" class="perplexo-favourite__buy-btn">
+              {{ section.settings.buy_btn_text | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function initPerplexoTimer() {
+    var timerEl = document.getElementById('perplexo-timer-{{ section.id }}');
+    if (!timerEl) return;
+
+    var days = 22;
+    var hours = 8;
+    var minutes = 58;
+    var seconds = 7;
+
+    setInterval(function() {
+      if (seconds > 0) {
+        seconds--;
+      } else {
+        seconds = 59;
+        if (minutes > 0) {
+          minutes--;
+        } else {
+          minutes = 59;
+          if (hours > 0) {
+            hours--;
+          } else {
+            hours = 23;
+            if (days > 0) days--;
+          }
+        }
+      }
+
+      var dStr = days < 10 ? '0' + days : days;
+      var hStr = hours < 10 ? '0' + hours : hours;
+      var mStr = minutes < 10 ? '0' + minutes : minutes;
+      var sStr = seconds < 10 ? '0' + seconds : seconds;
+
+      timerEl.textContent = dStr + ' : ' + hStr + ' : ' + mStr + ' : ' + sStr;
+    }, 1000);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Perplexo Favourite",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Timer Banner Settings"
+    },
+    {
+      "type": "text",
+      "id": "timer_label",
+      "label": "Timer Label",
+      "default": "Limitted Offers Ends soon in"
+    },
+    {
+      "type": "text",
+      "id": "timer_btn_text",
+      "label": "Timer Button Text",
+      "default": "View all offers"
+    },
+    {
+      "type": "url",
+      "id": "timer_btn_link",
+      "label": "Timer Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Spotlight Product Card Settings"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Our Favourit Product"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Product Title",
+      "default": "Dr. Melaxin Collagen Boost Set"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Ideal for anyone experiencing loss of firmness, enlarged pores, or dull, dehydrated skin. Suitable for all skin types, including sensitive skin. Formulated without harsh chemicals — clean, conscious, and effective. Elevate your routine. Invest in skin that speaks for itself."
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "buy_btn_text",
+      "label": "Buy Button Text",
+      "default": "Buy Now"
+    },
+    {
+      "type": "url",
+      "id": "buy_btn_link",
+      "label": "Buy Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#9c777a"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Perplexo Favourite Product"
+    }
+  ]
+}
+{% endschema %}

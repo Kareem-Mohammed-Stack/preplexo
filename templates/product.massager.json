@@ -1,0 +1,1322 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "breadcrumbs_mhcn3t": {
+          "type": "breadcrumbs",
+          "settings": {
+            "title_home": "Home",
+            "padding_top": 0,
+            "padding_top_mb": 0,
+            "padding_bottom": 0,
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "testimonial_images_dwVMnc": {
+          "type": "testimonial-images",
+          "settings": {
+            "image_size": 0.8,
+            "image_space": -18,
+            "image": "shopify://shop_images/Testimonial_Image_Review_5.jpg",
+            "hide_img_2": false,
+            "image_2": "shopify://shop_images/Testimonial_Image_Review_3.jpg",
+            "hide_img_3": false,
+            "image_3": "shopify://shop_images/Testimonial_Image_Review_3.jpg",
+            "hide_img_4": false,
+            "image_4": "shopify://shop_images/Testimonial_Image_Review_1.jpg",
+            "hide_img_5": false,
+            "image_5": "shopify://shop_images/Testimonial_Image_Review_4.jpg",
+            "text_block": "<p>★★★★★ Excellent 4.8</p>",
+            "text_size": 13,
+            "text_style": "body"
+          }
+        },
+        "2fead2d5-7a3f-49d9-bacf-1d813be9861e": {
+          "type": "review",
+          "disabled": true,
+          "settings": {
+            "lrw_text": "<strong>4.8 - 1356 Reviews</strong>",
+            "text_size": 14,
+            "star_style": "star",
+            "star_size": 0.7,
+            "star_rating": 4.5,
+            "lrw_star_color": "#000000",
+            "lrw_star_color_disable": "#eeeeee",
+            "lrw_color": "#d50000",
+            "margin_top": 15,
+            "margin_bottom": 10
+          }
+        },
+        "title_JizAxD": {
+          "type": "title",
+          "settings": {
+            "title_size": 31,
+            "title_height": 120,
+            "text_transform": "none"
+          }
+        },
+        "8f8d8903-27e7-4cac-99c4-ec1b60b7f309": {
+          "type": "fomo",
+          "settings": {
+            "fomo_text_before": "<strong>(x) people are looking at this!</strong>",
+            "text_style": "uppercase",
+            "text_size": 10,
+            "color_scheme": "accent-2",
+            "fomo_border_activate": false,
+            "fomo_border": 0,
+            "fomo_border_color": "#ffffff",
+            "pill_color": "#0fe449",
+            "fomo_min": 8,
+            "fomo_max": 16,
+            "fomo_speed": 3,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "margin_top": 16,
+            "margin_bottom": 0
+          }
+        },
+        "auto_tabs_epeaKh": {
+          "type": "auto_tabs",
+          "disabled": true,
+          "settings": {
+            "tabs_color_scheme": "scheme-c8c05c75-1914-4148-9446-95aa92ade006",
+            "compact": false,
+            "auto_tab_heading": 13,
+            "padding_top": 16,
+            "padding_bottom": 16
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "price_style": "price",
+            "price_size": 20,
+            "badge_text_1": 13,
+            "price_first": true,
+            "badge_bg_1": "#d50000",
+            "badge_price_1": "#ffffff",
+            "price_size_2": 1,
+            "badge_price": "#8b8d8f",
+            "price_bold_2": false,
+            "sale_price_color": "#d50000",
+            "regular_price_color": "#212121",
+            "price_bold": true,
+            "badge_hide": false,
+            "taxes_hide": false,
+            "shipping_hide": true,
+            "padding_top": 4,
+            "padding_bottom": 4
+          }
+        },
+        "description_7rxnqF": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "label_style": "body",
+            "font_size": 14,
+            "font_style": "normal",
+            "swatchType": "color",
+            "optionName": "Color",
+            "swatchStyle": "round",
+            "swatchSize": 30,
+            "swatchHeight": 30,
+            "size_trigger": "Size",
+            "chart_id": "Size Chart",
+            "size_page": ""
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+            "enable_quantity_discounts": true,
+            "headline": "Choose your offer",
+            "txt_size_head_qb": 18,
+            "sub_headline": "This offer is for limited time only",
+            "txt_size_subhead_qb": 12,
+            "background_top_qb": "#ffffff",
+            "background_top_text_qb": "#212121",
+            "background_qb": "#ffffff",
+            "border_qb": "#000000",
+            "check_bg_qb": "#e9ecef",
+            "check_border_qb": "#000000",
+            "check_dot": "#000000",
+            "hover_bg_qb": "#ffffff",
+            "hover_border_qb": "#000000",
+            "badge_qb": "#000000",
+            "badge_qb_text": "#ffffff",
+            "compare_price": "#000000",
+            "qb_border_wd": 2,
+            "qb_border": 4,
+            "padding_top": 20,
+            "padding_bottom": 20,
+            "preselected": "option_1",
+            "display_badge": "none",
+            "badge_text": "Most Popular",
+            "option_1_quantity": 1,
+            "option_1_label": "",
+            "option_1_benefit": "",
+            "option_1_caption": "You save [amount]",
+            "option_1_discount_type": "none",
+            "option_1_percentage_off": 0,
+            "option_1_fixed_amount_off": "0",
+            "option_2_quantity": 2,
+            "option_2_label": "",
+            "option_2_benefit": "",
+            "option_2_caption": "Only [item_price] per Item",
+            "option_2_discount_type": "none",
+            "option_2_percentage_off": 0,
+            "option_2_fixed_amount_off": "0",
+            "option_3_quantity": 3,
+            "option_3_label": "",
+            "option_3_benefit": "",
+            "option_3_caption": "You save [amount]",
+            "option_3_discount_type": "none",
+            "option_3_percentage_off": 0,
+            "option_3_fixed_amount_off": "0",
+            "option_4_quantity": 4,
+            "option_4_label": "",
+            "option_4_benefit": "",
+            "option_4_caption": "You save [amount]",
+            "option_4_discount_type": "none",
+            "option_4_percentage_off": 0,
+            "option_4_fixed_amount_off": "0"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_full_button": true,
+            "lm_main_button": "#000000",
+            "lm_main_button_gr": "",
+            "lm_main_text": "#ffffff",
+            "lm_button_animation": "soft",
+            "show_gift_card_recipient": true,
+            "skip_cart": true,
+            "cart_text": ""
+          }
+        },
+        "payment_XYDqqb": {
+          "type": "payment",
+          "settings": {
+            "original": "custom",
+            "payment_icon": "visa,master,paypal,apple_pay,shopify-pay,google-pay",
+            "payment_content_alignment": "center"
+          }
+        },
+        "promo_slide_8CpDYK": {
+          "type": "promo-slide",
+          "disabled": true,
+          "settings": {
+            "block_heading": "Nourished and youthful!",
+            "text_1": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store. ★★★★★</p>",
+            "show_slide_2": true,
+            "block_heading_2": "Smooth and refreshed.",
+            "text_2": "<p>This product has transformed my skin! It’s never felt so smooth and refreshed.</p>",
+            "show_slide_3": true,
+            "block_heading_3": "Game-changer",
+            "text_3": "<p>A game-changer for my skincare routine. My complexion is brighter and clearer.</p>",
+            "color_scheme": "accent-2",
+            "slide_padding": 20,
+            "show_border": true,
+            "border_color": "#e4e4e4",
+            "slide_wrapper_radius": 6,
+            "slide_img_size": 60,
+            "slide_img_radius": 100,
+            "head_size": 12,
+            "text_size": 12,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        },
+        "ad4a2bc2-8dd2-4105-9923-5bd7d66f77f3": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "color_scheme": "background-1",
+            "icon_font_size": 11,
+            "icon_1": "box",
+            "heading_1": "<strong>FREE SHIPPING GLOBLY</strong>",
+            "icon_2": "return",
+            "heading_2": "<strong>14 DAY RETURNS</strong>",
+            "icon_3": "chat_bubble",
+            "heading_3": "<strong>24/7 Customer Support</strong>"
+          }
+        },
+        "eb02bfdc-836f-40fa-bc36-a93ccbb6f998": {
+          "type": "collapsible_tab",
+          "settings": {
+            "open_first_collapsible_row": false,
+            "heading": "Specifications",
+            "icon": "clipboard",
+            "content": "<p><strong>Product Type:</strong> Cervical massager</p><p><strong>Model:</strong> YM-N8</p><p><strong>Weight:</strong> 715g</p><p><strong>Power Source:</strong> Rechargeable battery</p><p><strong>Functions: </strong>Heat therapy, massage</p><p><strong>Color Options:</strong> Green spray paint</p><p><strong>Applicable Scenarios:</strong> Household use</p><p><strong>Materials:</strong> Plastic, electronic components</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_w8pxxn": {
+          "type": "collapsible_tab",
+          "settings": {
+            "open_first_collapsible_row": false,
+            "heading": "Packing List",
+            "icon": "box",
+            "content": "<p>Shoulder neck massager*1</p><p>USB charging cable*1</p><p>User manual*1</p>",
+            "page": ""
+          }
+        },
+        "d3e392fa-572e-4895-a7d3-dd12277627ff": {
+          "type": "collapsible_tab",
+          "settings": {
+            "open_first_collapsible_row": false,
+            "heading": "Global Tracked Shipping",
+            "icon": "truck",
+            "content": "<p>Get <strong>Free Tracked Worldwide Shipping</strong> on all orders. Delivery takes <strong>3–5 business days</strong>.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_NENjgt": {
+          "type": "collapsible_tab",
+          "settings": {
+            "open_first_collapsible_row": false,
+            "heading": "Love It Or Your Money Back",
+            "icon": "heart",
+            "content": "<p>Here at <strong>TRENDORA</strong>, we are so confident in our products that if you are still not satisfied with your <strong>Hand-shaped Trapezius Massager with Heat Therapy</strong> within 14 days, simply return it, and we'll <strong>process your refund without any hassle</strong>.</p><p>Seriously, we're committed to ensuring you get the product you deserve.</p>",
+            "page": ""
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "breadcrumbs_mhcn3t",
+        "testimonial_images_dwVMnc",
+        "2fead2d5-7a3f-49d9-bacf-1d813be9861e",
+        "title_JizAxD",
+        "8f8d8903-27e7-4cac-99c4-ec1b60b7f309",
+        "auto_tabs_epeaKh",
+        "price",
+        "description_7rxnqF",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "payment_XYDqqb",
+        "promo_slide_8CpDYK",
+        "ad4a2bc2-8dd2-4105-9923-5bd7d66f77f3",
+        "eb02bfdc-836f-40fa-bc36-a93ccbb6f998",
+        "collapsible_tab_w8pxxn",
+        "d3e392fa-572e-4895-a7d3-dd12277627ff",
+        "collapsible_tab_NENjgt",
+        "share"
+      ],
+      "custom_css": [],
+      "settings": {
+        "enable_sticky_info": true,
+        "show_feature_media": false,
+        "color_scheme": "",
+        "show_container": true,
+        "container_radius": 10,
+        "container_padding": 30,
+        "container_color": "#ffffff",
+        "container_border_color": "#744c26",
+        "container_text": "",
+        "container_text_bg": "#212121",
+        "container_text_txt": "#ffffff",
+        "show_container_mb": true,
+        "container_padding_mb": 20,
+        "container_radius_mb": 8,
+        "container_color_mb": "#ffffff",
+        "container_border_color_mb": "#000000",
+        "media_size": "medium",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail",
+        "thumbnail_size": 70,
+        "thumbnail_radius": 4,
+        "media_position": "left",
+        "image_zoom": "none",
+        "mobile_thumbnails": "show",
+        "show_full_image": true,
+        "first_image_size": 100,
+        "second_image_size": 0,
+        "hide_variants": true,
+        "enable_video_looping": true,
+        "padding_top": 8,
+        "padding_bottom": 76,
+        "padding_top_mb": 0,
+        "padding_bottom_mb": 36
+      }
+    },
+    "ebd38537-357b-4b9d-94d3-8480c1f8694b": {
+      "type": "random-number",
+      "settings": {
+        "layout": "full_bleed",
+        "color_scheme": "background-2",
+        "pill_color": "#60bc00",
+        "fomo_border": 6,
+        "fomo_border_color": "#000000",
+        "fomo_min": 19,
+        "fomo_max": 16,
+        "fomo_speed": 3,
+        "fomo_text_before": "<strong>[Limited stock]</strong>",
+        "number_bold": true,
+        "fomo_text_after": "Peoples are checking out right now",
+        "text_alignment": "center",
+        "padding_top": 12,
+        "padding_bottom": 12,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "41eff030-bfe6-4439-9af3-bc24e7cb0559": {
+      "type": "custom-fonts",
+      "blocks": {
+        "abd19213-10d7-45b5-b8e0-532450e7ddab": {
+          "type": "image",
+          "settings": {
+            "name": "customfont",
+            "custom_font_weight": "none",
+            "custom_font_style": "none",
+            "custom_font_url": "",
+            "apply_h1": true,
+            "apply_h2": true,
+            "apply_h3": true,
+            "apply_h4": true,
+            "apply_h5": true,
+            "apply_h6": true,
+            "apply_span": true,
+            "apply_p": true,
+            "apply_custom": ""
+          }
+        }
+      },
+      "block_order": [
+        "abd19213-10d7-45b5-b8e0-532450e7ddab"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable": true
+      }
+    },
+    "multicolumn_ax9CUA": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_dMrDj9": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DH6.jpg",
+            "title": "⭐⭐⭐⭐⭐",
+            "text": "<p>“This bracelet is even cuter in real life! The charms are detailed and colorful, and it feels really sturdy. I love that I can style it with different outfits.”</p><p><em><strong>- Mia L.</strong></em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_JWe3FX": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DH4.jpg",
+            "title": "⭐⭐⭐⭐⭐",
+            "text": "<p>“I bought this as a gift and ended up ordering one for myself too. The design is fun, unique, and perfect for fans who love creative accessories.”</p><p><em><strong>- Hannah R.</strong></em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_EjHHAp": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/DH2.jpg",
+            "title": "⭐⭐⭐⭐⭐",
+            "text": "<p>“The quality surprised me in the best way. It looks adorable, fits comfortably, and the charms don’t feel cheap at all. Definitely a favorite in my collection.”</p><p><em><strong>- Sophie K.</strong></em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_dMrDj9",
+        "column_JWe3FX",
+        "column_EjHHAp"
+      ],
+      "disabled": true,
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "<strong>What Our Happy Customers Are Saying</strong>",
+        "heading_size": "h1",
+        "heading_center": "center",
+        "image_width": "full",
+        "image_ratio": "portrait",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "navigation_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "scroll_text_CJBaLQ": {
+      "type": "scroll-text",
+      "blocks": {
+        "text_zM6pmY": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>✦ SALE ENDS AT MIDNIGHT ✦</strong>",
+            "url": "",
+            "icon": "none",
+            "outline_all": false,
+            "outline_text": "scrolling",
+            "text_color": "#121212",
+            "text_size": 20,
+            "text_size_mobile": 18,
+            "text_height": 130,
+            "text_mr": 50,
+            "text_mr_mobile": 40
+          }
+        },
+        "text_zLCeTJ": {
+          "type": "text",
+          "settings": {
+            "text": "✦ SALE ENDS AT MIDNIGHT ✦",
+            "url": "",
+            "icon": "none",
+            "outline_all": false,
+            "outline_text": "scrolling",
+            "text_color": "#121212",
+            "text_size": 20,
+            "text_size_mobile": 18,
+            "text_height": 130,
+            "text_mr": 50,
+            "text_mr_mobile": 40
+          }
+        }
+      },
+      "block_order": [
+        "text_zM6pmY",
+        "text_zLCeTJ"
+      ],
+      "disabled": true,
+      "name": "Scrolling text",
+      "settings": {
+        "reverse_direction": false,
+        "pause_hover": true,
+        "lazy": true,
+        "scrolling_velocity": 50,
+        "scrolling_velocity_mobile": 54,
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "padding_horizontal": 0,
+        "padding_horizontal_mobile": 0,
+        "full_width": true,
+        "content_width": 120,
+        "border_thickness": 0,
+        "section_radius": 0
+      }
+    },
+    "image_with_text_KnRfUR": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_8Ugf4E": {
+          "type": "heading",
+          "settings": {
+            "heading": "Relieve Neck & Shoulder Tension in Minutes",
+            "heading_size": "h1"
+          }
+        },
+        "text_K6mrJp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Deep-kneading massage with soothing heat to help relax tight muscles and restore comfort anytime, anywhere.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_pp3qRw": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://products/hand-shaped-trapezius-massager-with-heat-therapy",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_8Ugf4E",
+        "text_K6mrJp",
+        "button_pp3qRw"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/c28ec066-dae1-4c0b-b4bf-b836e87bb845_1.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_j7zxWc": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_iec489": {
+          "type": "heading",
+          "settings": {
+            "heading": "Deep Muscle Relief That Works",
+            "heading_size": "h1"
+          }
+        },
+        "text_UqFwPW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Combining soothing heat and shiatsu massage to help relax tight muscles, improve circulation, and support faster recovery.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_8qPbDU": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://products/hand-shaped-trapezius-massager-with-heat-therapy",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_iec489",
+        "text_UqFwPW",
+        "button_8qPbDU"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Frame_2147227132_c62b284a-a998-4e56-ba53-f5690984b15b.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "scroll_text_Xd7x6V": {
+      "type": "scroll-text",
+      "blocks": {
+        "text_rRyWVX": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>✦ SALE ENDS SOON ✦</strong>",
+            "url": "",
+            "icon": "none",
+            "outline_all": false,
+            "outline_text": "scrolling",
+            "text_color": "#121212",
+            "text_size": 20,
+            "text_size_mobile": 18,
+            "text_height": 130,
+            "text_mr": 50,
+            "text_mr_mobile": 40
+          }
+        },
+        "text_hWchyA": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>✦ LIMITED TIME OFFER ✦</strong>",
+            "url": "",
+            "icon": "none",
+            "outline_all": false,
+            "outline_text": "scrolling",
+            "text_color": "#121212",
+            "text_size": 20,
+            "text_size_mobile": 18,
+            "text_height": 130,
+            "text_mr": 50,
+            "text_mr_mobile": 40
+          }
+        }
+      },
+      "block_order": [
+        "text_rRyWVX",
+        "text_hWchyA"
+      ],
+      "disabled": true,
+      "name": "Scrolling text",
+      "settings": {
+        "reverse_direction": false,
+        "pause_hover": true,
+        "lazy": true,
+        "scrolling_velocity": 50,
+        "scrolling_velocity_mobile": 54,
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "padding_horizontal": 0,
+        "padding_horizontal_mobile": 0,
+        "full_width": true,
+        "content_width": 120,
+        "border_thickness": 0,
+        "section_radius": 0
+      }
+    },
+    "trust_badges_azrwnC": {
+      "type": "trust-badges",
+      "blocks": {
+        "image_CEAAnD": {
+          "type": "image",
+          "settings": {
+            "feature_title": "<strong>Simulates Real Hand Massage</strong>",
+            "feature_text": "",
+            "feature_image": "shopify://shop_images/1_62051581-4f87-47c2-a1a3-3865e61a59a0.webp",
+            "feature_url": "",
+            "hide_image": false
+          }
+        },
+        "image_WVanwd": {
+          "type": "image",
+          "settings": {
+            "feature_title": "<strong>Hot Compress Function</strong>",
+            "feature_text": "",
+            "feature_image": "shopify://shop_images/fire_7677560.webp",
+            "feature_url": "",
+            "hide_image": false
+          }
+        },
+        "image_pdRAHK": {
+          "type": "image",
+          "settings": {
+            "feature_title": "<strong>Multi-Area Use</strong>",
+            "feature_text": "",
+            "feature_image": "shopify://shop_images/4_8fcbc6bd-7fd4-4edb-b0ad-241b4138e4f9.webp",
+            "feature_url": "",
+            "hide_image": false
+          }
+        },
+        "image_9rxxEg": {
+          "type": "image",
+          "settings": {
+            "feature_title": "<strong>Electric Powered</strong>",
+            "feature_text": "",
+            "feature_image": "shopify://shop_images/3_8a947342-6a1b-462d-bb0a-f3b4cd29b7df.webp",
+            "feature_url": "",
+            "hide_image": false
+          }
+        },
+        "image_NxgxhB": {
+          "type": "image",
+          "settings": {
+            "feature_title": "<strong>Ergonomic Design</strong>",
+            "feature_text": "",
+            "feature_image": "shopify://shop_images/2_7122d4b4-7d80-453d-9663-1fc7bc266ab2.webp",
+            "feature_url": "",
+            "hide_image": false
+          }
+        }
+      },
+      "block_order": [
+        "image_CEAAnD",
+        "image_WVanwd",
+        "image_pdRAHK",
+        "image_9rxxEg",
+        "image_NxgxhB"
+      ],
+      "name": "Feature Blocks",
+      "settings": {
+        "feature_row": 5,
+        "feature_row_mobile": 2,
+        "feature_gap": 20,
+        "feature_gap_mobile": 20,
+        "feature_padding_horizontal": 0,
+        "feature_padding_vertical": 0,
+        "feature_radius": 16,
+        "feature_border_thickness": 0,
+        "feature_shadow": false,
+        "feature_heading_size": 14,
+        "feature_heading_size_mobile": 12,
+        "feature_heading_height": 130,
+        "feature_heading_mt": 8,
+        "feature_text_size": 12,
+        "feature_text_size_mobile": 12,
+        "feature_text_height": 130,
+        "feature_text_mt": 4,
+        "feature_icon_size": 86,
+        "feature_icon_size_mobile": 52,
+        "feature_bg": "#ffffff",
+        "feature_border_color": "#000000",
+        "feature_shadow_color": "#000000",
+        "feature_heading_color": "#000000",
+        "feature_text_color": "#000000",
+        "feature_icon_color": "#000000",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 24,
+        "margin_bottom": 24,
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "full_width": false,
+        "content_width": 120,
+        "border_thickness": 0,
+        "lazy": true
+      }
+    },
+    "multicolumn_yGb6XU": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_R9aat9": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/3ef1f640-d36c-4d9d-9638-c54a328ea117.webp",
+            "title": "",
+            "text": "<p>✅Strong motor power high-speed operation</p><p>✅High precision sensor, strong force without jamming</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_MHPaAJ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/e54288fc-d99f-4e7a-83de-fc91b24042fe.webp",
+            "title": "",
+            "text": "<p><strong>Two gear palm red light hot compress</strong></p><p>2 levels of hot compress at around 40° C / 45° C, quickly warming and relaxing muscles</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_R9aat9",
+        "column_MHPaAJ"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Powerful Massage Performance",
+        "heading_size": "h1",
+        "heading_center": "center",
+        "image_width": "full",
+        "image_ratio": "square",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "navigation_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_BYdrFK": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_iMqnYc": {
+          "type": "heading",
+          "settings": {
+            "heading": "Say Goodbye to Daily Pain, Tension & Stress — Anytime, Anywhere",
+            "heading_size": "h1"
+          }
+        },
+        "text_KcA6BU": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If you struggle with neck stiffness, shoulder tension, cervical discomfort, headaches, or upper-back tightness, you’re not alone. Long hours at a desk, poor posture, stress, and daily strain all build up — leaving your muscles sore, stiff, and exhausted.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_JebTHj": {
+          "type": "button",
+          "settings": {
+            "button_label": "Get Yours",
+            "button_link": "shopify://products/hand-shaped-trapezius-massager-with-heat-therapy",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_iMqnYc",
+        "text_KcA6BU",
+        "button_JebTHj"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/V4_Green_Massager_7_gif.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "comparison_table_tdmPY3": {
+      "type": "comparison-table",
+      "blocks": {
+        "row_DCywwH": {
+          "type": "row",
+          "settings": {
+            "benefit": "Relieves neck stiffness and shoulder fatigue.",
+            "us": true,
+            "others": false
+          }
+        },
+        "row_CrK6mg": {
+          "type": "row",
+          "settings": {
+            "benefit": "Improves circulation and reduces tension headaches.",
+            "us": true,
+            "others": false
+          }
+        },
+        "row_ch6Wkd": {
+          "type": "row",
+          "settings": {
+            "benefit": "Combines massage + heat for therapeutic results.",
+            "us": true,
+            "others": false
+          }
+        },
+        "row_p7mzin": {
+          "type": "row",
+          "settings": {
+            "benefit": "Portable design makes it perfect for daily use.",
+            "us": true,
+            "others": false
+          }
+        }
+      },
+      "block_order": [
+        "row_DCywwH",
+        "row_CrK6mg",
+        "row_ch6Wkd",
+        "row_p7mzin"
+      ],
+      "name": "Comparison table",
+      "settings": {
+        "title": "The Clear Choice for Real Muscle Relief",
+        "heading_size": "h1",
+        "text": "",
+        "button_label": "",
+        "link": "",
+        "button_style_secondary": false,
+        "layout": "table_second",
+        "color_scheme": "",
+        "logo_width": 90,
+        "mobile_logo_width": 60,
+        "us_label": "",
+        "others_label": "Others",
+        "benefit_color_scheme": "",
+        "checkmark_color": "#53af01",
+        "icon_cells_color_scheme": "",
+        "table_corner_radius": 0,
+        "table_shadow_opacity": 15,
+        "table_shadow_horizontal_offset": 0,
+        "table_shadow_vertical_offset": 0,
+        "table_shadow_blur": 0,
+        "table_border_thickness": 1,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_Y3DJqM": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_AryV7t": {
+          "type": "heading",
+          "settings": {
+            "heading": "14-Day Return Window",
+            "heading_size": "h1"
+          }
+        },
+        "text_kaE3zY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If for any reason, you aren't 100% happy with your order, we'll do absolutely everything in our power to make it right.<br/></p><p>We're offering a <strong>14-day money-back guarantee </strong>so you can comfortably try <strong>Hand-shaped Trapezius Massager</strong> out.</p>"
+          }
+        },
+        "button_d3iUEH": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://products/hand-shaped-trapezius-massager-with-heat-therapy",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_AryV7t",
+        "text_kaE3zY",
+        "button_d3iUEH"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "wave_Y8ndwU": {
+      "type": "wave",
+      "disabled": true,
+      "name": "Wave",
+      "settings": {
+        "wave_height": 300,
+        "wave_curvature": 250,
+        "wave_style": "less",
+        "wave_side": "180",
+        "animation": true,
+        "animation_duration": 5,
+        "background_color": "#ffffff",
+        "wave_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": -100,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_horizontal": 0,
+        "padding_horizontal_mobile": 0,
+        "full_width": true,
+        "content_width": 120
+      }
+    },
+    "collapsible_content_3UiDhf": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_jrHLGw": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can it be used without heat?",
+            "icon": "none",
+            "row_content": "<p>Yes, you can use massage only, with or without heat.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_YwhPpB": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is it safe for daily use?",
+            "icon": "none",
+            "row_content": "<p>Yes, it’s designed for regular relaxation sessions.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_cbxYV9": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Does it require batteries?",
+            "icon": "none",
+            "row_content": "<p>No, it’s electric-powered for consistent performance.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_pbzyqe": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can it be used on other body parts?",
+            "icon": "none",
+            "row_content": "<p>Yes, it also works for the upper back, waist, and legs.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_jrHLGw",
+        "collapsible_row_YwhPpB",
+        "collapsible_row_cbxYV9",
+        "collapsible_row_pbzyqe"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "FAQ",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "lumin_review_8EHAak": {
+      "type": "Lumin-review",
+      "blocks": {
+        "review_L9RJxn": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Michael R.",
+            "date_text": "",
+            "review_head": "“Feels like a real massage.”",
+            "review_text": "I use this after work almost every day. The heat and kneading massage feel amazing on my neck and shoulders. Definitely worth it.",
+            "like_size": 67,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_aYbRBB": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Jessica L.",
+            "date_text": "",
+            "review_head": "“Perfect for daily stress relief.”",
+            "review_text": "I sit at a desk all day and my neck gets really tight. This massager helps me relax in just a few minutes.",
+            "like_size": 62,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_66zkDk": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "David K.",
+            "date_text": "",
+            "review_head": "“Great quality and powerful.”",
+            "review_text": "The massage is strong but comfortable, and the heat feature makes it even better. It really helps with muscle tension.",
+            "like_size": 46,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_d8JiUJ": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Lily K.",
+            "date_text": "",
+            "review_head": "“My favorite way to unwind.”",
+            "review_text": "After workouts my shoulders are always sore. This helps loosen everything up and makes recovery much easier.",
+            "like_size": 53,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_bQjjVi": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Ryan T.",
+            "date_text": "",
+            "review_head": "“Portable and easy to use.”",
+            "review_text": "I like that I can use it while watching TV or even at my desk. Very simple and super relaxing.",
+            "like_size": 59,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_HnXDzi": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Laura M.",
+            "date_text": "",
+            "review_head": "“Relieves neck pain quickly.”",
+            "review_text": "Within a few minutes I can feel my muscles relaxing. The heat combined with the massage works really well.",
+            "like_size": 36,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        }
+      },
+      "block_order": [
+        "review_L9RJxn",
+        "review_aYbRBB",
+        "review_66zkDk",
+        "review_d8JiUJ",
+        "review_bQjjVi",
+        "review_HnXDzi"
+      ],
+      "name": "Lumin Review",
+      "settings": {
+        "editing": true,
+        "color_scheme": "",
+        "header_text": "what our customers say about us",
+        "show_top": true,
+        "rating_text": "4.8",
+        "rating_range": 4.5,
+        "rating_count": "",
+        "review_column_mobile": "1",
+        "review_column_tab": "1",
+        "review_column_desk": "1",
+        "review_load": "4",
+        "load_text": "Load More",
+        "rw_img_size": 140,
+        "rw_img_radius": 0,
+        "block_name_size": 20,
+        "date_size": 16,
+        "block_head_size": 20,
+        "block_text_size": 14,
+        "star_style": "star_bg",
+        "star_size": 1,
+        "feature_svg_color": "#dff80b",
+        "inactive_star_color": "#e2e2e2",
+        "show_border": true,
+        "rw_border": "#f2f2f2",
+        "border_radius": 0,
+        "section_bg3": "#000000",
+        "section_bg2": "#3889b9",
+        "verify_text": "Verified Buyer",
+        "review_bg": "#ffffff",
+        "feature_acc_color": "#000000",
+        "review_pd": 20,
+        "review_pd_m": 20,
+        "show_footer": true,
+        "show_product": true,
+        "like_text": "Was this helpful?",
+        "rw_margin": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_Jkxaf3": {
+      "type": "featured-collection",
+      "disabled": true,
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Featured collection",
+        "description": "",
+        "collection_text_alignment": "center",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "frontpage",
+        "show_collection_image": false,
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "navigation_on_desk": true,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_no_crop": true,
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_scroll_tags": false,
+        "enable_quick_desc": false,
+        "quick_desc_legth": 90,
+        "quick_desc_size": 14,
+        "enable_quick_add": false,
+        "show_secondary_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "navigation_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "collection_text_alignment": "center",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "image_no_crop": true,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_desc": true,
+        "quick_desc_legth": 90,
+        "quick_desc_size": 13,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "1755084724d90f8696": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ebd38537-357b-4b9d-94d3-8480c1f8694b",
+    "41eff030-bfe6-4439-9af3-bc24e7cb0559",
+    "multicolumn_ax9CUA",
+    "scroll_text_CJBaLQ",
+    "image_with_text_KnRfUR",
+    "image_with_text_j7zxWc",
+    "scroll_text_Xd7x6V",
+    "trust_badges_azrwnC",
+    "multicolumn_yGb6XU",
+    "image_with_text_BYdrFK",
+    "comparison_table_tdmPY3",
+    "rich_text_Y3DJqM",
+    "wave_Y8ndwU",
+    "collapsible_content_3UiDhf",
+    "lumin_review_8EHAak",
+    "featured_collection_Jkxaf3",
+    "related-products",
+    "1755084724d90f8696"
+  ]
+}

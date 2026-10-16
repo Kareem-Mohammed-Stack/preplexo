@@ -1,0 +1,286 @@
+{{ 'perplexo-footer.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | default: 60 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | default: 30 }}px;
+  }
+{%- endstyle -%}
+
+<footer class="perplexo-footer section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="perplexo-footer__inner">
+      
+      <!-- Column 1: Brand Info & Socials -->
+      <div class="perplexo-footer__col perplexo-footer__col--brand">
+        <a href="{{ routes.root_url }}" class="perplexo-footer__logo-wrap" aria-label="Preplexo Homepage">
+          {% render 'icon-logo-perplexo' %}
+          <span class="perplexo-footer__logo-text">{{ section.settings.brand_name | default: 'preplexo' }}</span>
+        </a>
+
+        <p class="perplexo-footer__bio">
+          {{ section.settings.brand_bio | default: 'From Beauty to You — Elevate Your Skincare Ritual. Thoughtfully curated essentials to nourish your skin and enhance your natural glow.' }}
+        </p>
+
+        <!-- White Circular Social Buttons -->
+        <div class="perplexo-footer__socials">
+          {%- if section.settings.facebook_url != blank or section.settings.show_socials -%}
+            <a href="{{ section.settings.facebook_url | default: 'https://facebook.com' }}" target="_blank" rel="noopener" class="perplexo-footer__social-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+          {%- endif -%}
+
+          {%- if section.settings.instagram_url != blank or section.settings.show_socials -%}
+            <a href="{{ section.settings.instagram_url | default: 'https://www.instagram.com/preplexostore' }}" target="_blank" rel="noopener" class="perplexo-footer__social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="2"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2"></line>
+              </svg>
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Column 2: Information -->
+      <div class="perplexo-footer__col">
+        <h3 class="perplexo-footer__heading">{{ section.settings.info_heading | default: 'Information' }}</h3>
+        <ul class="perplexo-footer__menu">
+          <li class="perplexo-footer__menu-item"><a href="/pages/about-us">About Us</a></li>
+          <li class="perplexo-footer__menu-item"><a href="{{ routes.policies_privacy_policy_url | default: '/policies/privacy-policy' }}">Privacy Policy</a></li>
+          <li class="perplexo-footer__menu-item"><a href="{{ routes.policies_refund_policy_url | default: '/policies/refund-policy' }}">Refund Policy</a></li>
+          <li class="perplexo-footer__menu-item"><a href="{{ routes.policies_terms_of_service_url | default: '/policies/terms-of-service' }}">Terms of Service</a></li>
+          <li class="perplexo-footer__menu-item"><a href="{{ routes.policies_shipping_policy_url | default: '/policies/shipping-policy' }}">Shipping Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Shop -->
+      <div class="perplexo-footer__col">
+        {%- liquid
+          assign glow_bundle_url = routes.root_url | append: '#perplexo-bundles'
+          assign melaxin_product = all_products['dr-melaxin-collagen-boost-set']
+          if melaxin_product != blank
+            assign melaxin_url = melaxin_product.url
+          else
+            assign melaxin_url = routes.root_url | append: 'products/dr-melaxin-collagen-boost-set'
+          endif
+          for p in collections['all'].products
+            assign p_title = p.title | downcase
+            if p_title contains 'glow' and p_title contains 'bundle'
+              assign glow_bundle_url = p.url
+              break
+            endif
+          endfor
+          if glow_bundle_url contains '#perplexo-bundles'
+            for p in collections['all'].products
+              assign p_title = p.title | downcase
+              assign p_handle = p.handle | downcase
+              if p_handle contains 'glow-bundle' or p_handle contains 'the-glow' or p_title == 'the glow bundle'
+                assign glow_bundle_url = p.url
+                break
+              endif
+            endfor
+          endif
+        -%}
+        <h3 class="perplexo-footer__heading">{{ section.settings.shop_heading | default: 'Shop' }}</h3>
+        <ul class="perplexo-footer__menu">
+          <li class="perplexo-footer__menu-item"><a href="{{ routes.root_url }}">Home</a></li>
+          <li class="perplexo-footer__menu-item"><a href="{{ routes.all_products_collection_url }}">Catalog</a></li>
+          <li class="perplexo-footer__menu-item"><a href="/pages/contact">Contact</a></li>
+          <li class="perplexo-footer__menu-item"><a href="{{ glow_bundle_url }}">The Glow Bundle</a></li>
+          <li class="perplexo-footer__menu-item"><a href="{{ melaxin_url }}">SHOP TO Preplexo Dr. Melaxin Collagen Boost Set</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Get in touch -->
+      <div class="perplexo-footer__col">
+        <h3 class="perplexo-footer__heading">{{ section.settings.contact_heading | default: 'Get in touch' }}</h3>
+        <p class="perplexo-footer__contact-desc">
+          Have questions or need assistance? Reach out to our dedicated skincare team:
+        </p>
+        <a href="mailto:{{ section.settings.contact_email | default: 'preplexo4@gmail.com' }}" class="perplexo-footer__email-link">
+          {{ section.settings.contact_email | default: 'preplexo4@gmail.com' }}
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar: Copyright & Payment Badges (Online Payments Only - No COD) -->
+    <div class="perplexo-footer__bottom">
+      <p class="perplexo-footer__copyright">
+        @2026 <strong>{{ section.settings.brand_name | default: 'preplexo' }}</strong> · Powered by <a href="https://orcaad.com/" target="_blank" rel="noopener" class="perplexo-footer__orca-link">OrcaAd</a>
+      </p>
+
+      <div class="perplexo-footer__payments" title="100% Encrypted & Secure Online Checkout">
+        {%- if shop.enabled_payment_types.size > 0 -%}
+          {%- for type in shop.enabled_payment_types -%}
+            {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+          {%- endfor -%}
+        {%- else -%}
+          <span class="perplexo-footer__payment-badge perplexo-footer__payment-badge--visa">VISA</span>
+          <div class="perplexo-footer__payment-badge perplexo-footer__payment-badge--mastercard">
+            <div class="perplexo-footer__mastercard-circles">
+              <span class="perplexo-footer__mastercard-circle-1"></span>
+              <span class="perplexo-footer__mastercard-circle-2"></span>
+            </div>
+          </div>
+          <span class="perplexo-footer__payment-badge perplexo-footer__payment-badge--paypal">PayPal</span>
+          <span class="perplexo-footer__payment-badge" style="background:#000; color:#fff; font-weight:700; padding:0.3rem 0.8rem; border-radius:6px; font-size:1.1rem;">Apple Pay</span>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function initFooterSearch() {
+    function triggerSearchOpen(e) {
+      if (e) e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Look for header search modal (desktop or mobile)
+      var searchModals = document.querySelectorAll('details-modal.header__search, header details-modal, .header details-modal');
+      var opened = false;
+
+      searchModals.forEach(function(modal) {
+        if (opened) return;
+        var summary = modal.querySelector('summary');
+        var details = modal.querySelector('details');
+        if (details && !details.hasAttribute('open')) {
+          if (summary) {
+            summary.click();
+            opened = true;
+          }
+        } else if (details && details.hasAttribute('open')) {
+          opened = true;
+        }
+      });
+
+      // If no details-modal found, try standard search toggle buttons in header
+      if (!opened) {
+        var headerSearchBtn = document.querySelector('.header__icon--search, [aria-label*="search" i], [aria-label*="Search" i]');
+        if (headerSearchBtn && !headerSearchBtn.closest('.perplexo-footer')) {
+          headerSearchBtn.click();
+        }
+      }
+
+      setTimeout(function() {
+        var input = document.querySelector('.header__search input[type="search"], .search-modal input[type="search"], header input[type="search"]');
+        if (input) {
+          input.focus();
+        }
+      }, 350);
+    }
+
+    var searchLinks = document.querySelectorAll('[data-footer-search], .perplexo-footer a[href*="/search"]');
+    searchLinks.forEach(function(link) {
+      link.addEventListener('click', triggerSearchOpen);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Perplexo Luxury Footer",
+  "tag": "footer",
+  "class": "section-footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand Name",
+      "default": "Preplexo"
+    },
+    {
+      "type": "textarea",
+      "id": "brand_bio",
+      "label": "Brand Bio Text",
+      "default": "From Beauty to You — Elevate Your Skincare Ritual. Thoughtfully curated essentials to nourish your skin and enhance your natural glow."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_socials",
+      "label": "Show Social Media Buttons",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "text",
+      "id": "info_heading",
+      "label": "Info Column Heading",
+      "default": "Information"
+    },
+    {
+      "type": "link_list",
+      "id": "info_menu",
+      "label": "Info Menu"
+    },
+    {
+      "type": "text",
+      "id": "shop_heading",
+      "label": "Shop Column Heading",
+      "default": "Shop"
+    },
+    {
+      "type": "link_list",
+      "id": "shop_menu",
+      "label": "Shop Menu"
+    },
+    {
+      "type": "text",
+      "id": "contact_heading",
+      "label": "Contact Column Heading",
+      "default": "Need to Get in Touch?"
+    },
+    {
+      "type": "text",
+      "id": "contact_text",
+      "label": "Contact Subtitle",
+      "default": "Have a question about Preplexo?"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact Email",
+      "default": "preplexo4@gmail.com"
+    },
+    {
+      "type": "text",
+      "id": "copyright_subtext",
+      "label": "Copyright Powered Text",
+      "default": "Powered by OrcaAd"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 32
+    }
+  ]
+}
+{% endschema %}

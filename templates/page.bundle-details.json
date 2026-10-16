@@ -1,0 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "bundle_pdp": {
+      "type": "perplexo_bundle_pdp",
+      "settings": {
+        "title": "The Collagen Essentials Duo",
+        "subtitle": "Everyday hydration & pore tightening essential set",
+        "price": "60$",
+        "compare_price": "75$",
+        "savings_badge": "SAVE 15%"
+      }
+    },
+    "why_us": {
+      "type": "perplexo_why_us",
+      "settings": {}
+    },
+    "faq": {
+      "type": "perplexo_faq",
+      "settings": {}
+    }
+  },
+  "order": [
+    "bundle_pdp",
+    "why_us",
+    "faq"
+  ]
+}

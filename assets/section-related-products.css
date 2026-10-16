@@ -1,0 +1,45 @@
+.related-products {
+  display: block;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.related-products__heading {
+  margin: 0 0 3rem;
+  text-align: center !important;
+  width: 100%;
+}
+
+.related-products .product-grid,
+.related-products .lumin-grid {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.related-products .grid__item {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.related-products .perplexo-card {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media screen and (max-width: 749px) {
+  .related-products.page-width {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .related-products .product-grid {
+    column-gap: 1rem;
+    row-gap: 1.4rem;
+  }
+
+  .related-products .perplexo-card {
+    padding: 1.2rem;
+    border-radius: 18px;
+  }
+}

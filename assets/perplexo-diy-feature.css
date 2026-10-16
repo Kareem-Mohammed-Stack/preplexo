@@ -1,0 +1,174 @@
+/* ==========================================================================
+   Perplexo DIY Feature — image + text (PDP, after testimonials)
+   ========================================================================== */
+
+.perplexo-diy-feature {
+  --diy-feat-primary: #85444C;
+  --diy-feat-text: #1f1d24;
+  --diy-feat-muted: #5c5557;
+  background: #ffffff;
+  width: 100%;
+}
+
+.perplexo-diy-feature__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.4rem;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.perplexo-diy-feature__media {
+  width: 100%;
+  min-width: 0;
+}
+
+.perplexo-diy-feature__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 20px;
+  background: #f7f0f1;
+}
+
+.perplexo-diy-feature__img--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.perplexo-diy-feature__img--placeholder svg {
+  width: 60%;
+  height: auto;
+  opacity: 0.35;
+}
+
+.perplexo-diy-feature__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+  min-width: 0;
+  text-align: left;
+}
+
+.perplexo-diy-feature__eyebrow {
+  margin: 0;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--diy-feat-primary);
+  line-height: 1.3;
+}
+
+.perplexo-diy-feature__heading {
+  margin: 0;
+  font-family: var(--font-heading-family, Georgia, 'Times New Roman', serif);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--diy-feat-text);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.perplexo-diy-feature__text {
+  margin: 0;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 1.55rem;
+  font-weight: 400;
+  color: var(--diy-feat-muted);
+  line-height: 1.55;
+  max-width: 42rem;
+}
+
+@media screen and (min-width: 750px) {
+  .perplexo-diy-feature__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 4rem 5rem;
+  }
+
+  .perplexo-diy-feature__grid--reverse {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  }
+
+  .perplexo-diy-feature__grid--reverse .perplexo-diy-feature__media {
+    order: 2;
+  }
+
+  .perplexo-diy-feature__grid--reverse .perplexo-diy-feature__content {
+    order: 1;
+  }
+
+  .perplexo-diy-feature__heading {
+    font-size: 3.6rem;
+  }
+
+  .perplexo-diy-feature__text {
+    font-size: 1.6rem;
+  }
+
+  .perplexo-diy-feature__img {
+    border-radius: 24px;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .perplexo-diy-feature__grid {
+    gap: 4.5rem 6rem;
+  }
+
+  .perplexo-diy-feature__heading {
+    font-size: 4rem;
+  }
+
+  .perplexo-diy-feature__content {
+    gap: 1.4rem;
+    padding-right: 1rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .perplexo-diy-feature__grid {
+    gap: 1.8rem;
+  }
+
+  .perplexo-diy-feature__grid--reverse .perplexo-diy-feature__media {
+    order: -1;
+  }
+
+  .perplexo-diy-feature__grid--reverse .perplexo-diy-feature__content {
+    order: 0;
+  }
+
+  .perplexo-diy-feature__content {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .perplexo-diy-feature__eyebrow,
+  .perplexo-diy-feature__heading,
+  .perplexo-diy-feature__text {
+    text-align: center !important;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .perplexo-diy-feature__heading {
+    font-size: 2.6rem;
+  }
+
+  .perplexo-diy-feature__text {
+    font-size: 1.45rem;
+  }
+
+  .perplexo-diy-feature__img {
+    border-radius: 16px;
+  }
+}

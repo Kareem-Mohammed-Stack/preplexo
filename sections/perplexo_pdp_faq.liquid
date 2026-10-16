@@ -1,0 +1,261 @@
+{{ 'perplexo-pdp-faq.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    {%- if section.settings.bg_color != blank -%}
+      background-color: {{ section.settings.bg_color }};
+    {%- endif -%}
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="perplexo-pdp-faq section-{{ section.id }}-padding" id="PdpFaq-{{ section.id }}" data-section-id="{{ section.id }}">
+  <div class="perplexo-pdp-faq__container">
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="perplexo-pdp-faq__header scroll-trigger animate--slide-in">
+        {%- if section.settings.title != blank -%}
+          <h2 class="perplexo-pdp-faq__title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.subtitle != blank -%}
+          <p class="perplexo-pdp-faq__subtitle">{{ section.settings.subtitle | escape }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="perplexo-pdp-faq__list" id="PdpFaqList-{{ section.id }}">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div 
+            class="perplexo-pdp-faq-card {% if forloop.first and section.settings.open_first %}is-open{% endif %}" 
+            id="FaqCard-{{ block.id }}"
+            {{ block.shopify_attributes }}
+          >
+            <button 
+              type="button" 
+              class="perplexo-pdp-faq-card__trigger" 
+              id="FaqTrigger-{{ block.id }}"
+              aria-expanded="{% if forloop.first and section.settings.open_first %}true{% else %}false{% endif %}"
+              aria-controls="FaqContent-{{ block.id }}"
+            >
+              <h3 class="perplexo-pdp-faq-card__question">{{ block.settings.question | escape }}</h3>
+              
+              <span class="perplexo-pdp-faq-card__icon-btn" aria-hidden="true">
+                <svg class="perplexo-pdp-faq-card__icon-svg" viewBox="0 0 24 24" fill="none">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </span>
+            </button>
+
+            <div 
+              class="perplexo-pdp-faq-card__content" 
+              id="FaqContent-{{ block.id }}" 
+              role="region" 
+              aria-labelledby="FaqTrigger-{{ block.id }}"
+            >
+              <div class="perplexo-pdp-faq-card__inner">
+                <div class="perplexo-pdp-faq-card__divider"></div>
+                <div class="perplexo-pdp-faq-card__answer rte">
+                  {{ block.settings.answer }}
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Collapse Chevron Button as seen in reference image -->
+            <button 
+              type="button" 
+              class="perplexo-pdp-faq-card__bottom-collapse" 
+              aria-label="Collapse answer"
+              data-target="FaqCard-{{ block.id }}"
+            >
+              <svg viewBox="0 0 24 24">
+                <polyline points="18 15 12 9 6 15"></polyline>
+              </svg>
+            </button>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    function initPdpFaq() {
+      const sectionId = "{{ section.id }}";
+      const sectionElem = document.getElementById("PdpFaq-" + sectionId);
+      if (!sectionElem) return;
+
+      const cards = sectionElem.querySelectorAll(".perplexo-pdp-faq-card");
+
+      cards.forEach((card) => {
+        const trigger = card.querySelector(".perplexo-pdp-faq-card__trigger");
+        const bottomBtn = card.querySelector(".perplexo-pdp-faq-card__bottom-collapse");
+
+        function toggleCard() {
+          const isOpen = card.classList.contains("is-open");
+          if (isOpen) {
+            card.classList.remove("is-open");
+            trigger.setAttribute("aria-expanded", "false");
+          } else {
+            card.classList.add("is-open");
+            trigger.setAttribute("aria-expanded", "true");
+          }
+        }
+
+        function closeCard() {
+          card.classList.remove("is-open");
+          trigger.setAttribute("aria-expanded", "false");
+          trigger.focus();
+        }
+
+        if (trigger) {
+          trigger.addEventListener("click", toggleCard);
+        }
+
+        if (bottomBtn) {
+          bottomBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            closeCard();
+          });
+        }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initPdpFaq);
+    } else {
+      initPdpFaq();
+    }
+
+    document.addEventListener("shopify:section:load", function(e) {
+      if (e.detail.sectionId === "{{ section.id }}") {
+        initPdpFaq();
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product FAQ Accordion",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sub-heading",
+      "default": "Have questions? Everything you need to know about our products & service."
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Keep First Question Open by Default",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 56
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Question Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How long does shipping take?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Delivery takes 3–5 business days. You will receive an email with a tracking link as soon as your package ships.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product FAQ Accordion",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Delivery takes 3–5 business days. You will receive an email with a tracking link as soon as your package ships.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I track my order?",
+            "answer": "<p>Once your order has shipped, you will receive an email confirmation with your unique tracking number and direct tracking link to follow your parcel in real-time.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return & refund policy?",
+            "answer": "<p>You can request a return within 14 days. If you are not completely satisfied, contact preplexo4@gmail.com for a hassle-free exchange or full refund.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are payments safe and secure?",
+            "answer": "<p>Yes, absolutely! We use bank-level 256-bit SSL encryption to ensure that all personal and payment information is 100% protected and secure.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I contact customer support?",
+            "answer": "<p>Our dedicated support team is available 24/7. You can reach out directly via our Contact Us page or email us at preplexo4@gmail.com for prompt assistance.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

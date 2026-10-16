@@ -1,0 +1,427 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+{%- style -%}
+  #AuraReviews-{{ section.id }} {
+    --ink: #2a1f24;
+    --rose: #b86b7a;
+    --cream: #faf6f3;
+    padding: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px 0 {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    background: radial-gradient(90% 80% at 50% 0%, #fff7f3 0%, #faf6f3 55%, #f3ebe6 100%);
+    overflow: hidden;
+  }
+
+  @media screen and (min-width: 750px) {
+    #AuraReviews-{{ section.id }} {
+      padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__head {
+    width: min(760px, calc(100% - 32px));
+    margin: 0 auto 2rem;
+    text-align: center;
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__kicker {
+    margin: 0 0 0.7rem;
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rose);
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__title {
+    margin: 0 0 0.55rem;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(32px, 5vw, 48px) !important;
+    font-weight: 600;
+    line-height: 1.12 !important;
+    letter-spacing: -0.03em;
+    color: var(--ink) !important;
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__sub {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.5;
+    color: rgba(42, 31, 36, 0.62);
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__marquee {
+    position: relative;
+    --fade: #faf6f3;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__track {
+    display: flex;
+    width: max-content;
+    animation: aura-rev-marquee-{{ section.id }} 48s linear infinite;
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__set {
+    display: flex;
+    gap: 1.15rem;
+    padding-right: 1.15rem;
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__marquee:hover .aura-rev__track {
+    animation-play-state: paused;
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__card {
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: 168px 1fr;
+    width: min(520px, 86vw);
+    min-height: 188px;
+    overflow: hidden;
+    border-radius: 22px;
+    background: #fff;
+    border: 1px solid rgba(184, 107, 122, 0.16);
+    box-shadow: 0 18px 40px -24px rgba(42, 31, 36, 0.35);
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__photo {
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+    background: #eddcd4;
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 1.15rem 1.2rem 1.2rem;
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__stars {
+    display: flex;
+    gap: 0.18rem;
+    color: var(--rose);
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__stars svg {
+    width: 13px;
+    height: 13px;
+    fill: currentColor;
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__quote-title {
+    margin: 0;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink) !important;
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__quote {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.5;
+    color: rgba(42, 31, 36, 0.72);
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__quote p {
+    margin: 0;
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 0.65rem;
+    margin-top: 0.2rem;
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #3d8a5a;
+  }
+
+  #AuraReviews-{{ section.id }} .aura-rev__verified svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  @media screen and (max-width: 749px) {
+    #AuraReviews-{{ section.id }} .aura-rev__card {
+      grid-template-columns: 1fr;
+      width: min(300px, 82vw);
+    }
+
+    #AuraReviews-{{ section.id }} .aura-rev__photo {
+      height: 220px;
+    }
+
+    #AuraReviews-{{ section.id }} .aura-rev__track {
+      animation-duration: 36s;
+    }
+  }
+
+  @keyframes aura-rev-marquee-{{ section.id }} {
+    to { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #AuraReviews-{{ section.id }} .aura-rev__track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: auto;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  }
+{%- endstyle -%}
+
+<section id="AuraReviews-{{ section.id }}" aria-label="{{ section.settings.title | default: 'Customer reviews' | escape }}">
+  <div class="aura-rev__head">
+    <p class="aura-rev__kicker">Real skin. Real results.</p>
+    {%- if section.settings.title != blank -%}
+      <h2 class="aura-rev__title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+    <p class="aura-rev__sub">4.9 average from glow-getters who made Kieuo part of their daily ritual.</p>
+  </div>
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="aura-rev__marquee">
+      <div class="aura-rev__track">
+        {%- for pass in (1..2) -%}
+          <div class="aura-rev__set">
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign photo_i = forloop.index | modulo: 5
+              if photo_i == 0
+                assign photo_i = 5
+              endif
+              assign photo_file = 'testim-' | append: photo_i | append: '.png'
+              assign quote_plain = block.settings.text | strip_html | strip
+            -%}
+            <article class="aura-rev__card" {{ block.shopify_attributes }}>
+              <div class="aura-rev__photo">
+                {%- if block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 600
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '300, 400, 600',
+                      sizes: '168px',
+                      alt: block.settings.customer_name
+                  }}
+                {%- else -%}
+                  <img
+                    src="{{ photo_file | asset_url }}"
+                    alt="{{ block.settings.customer_name | default: 'Kieuo customer' | escape }}"
+                    width="400"
+                    height="400"
+                    loading="lazy"
+                  >
+                {%- endif -%}
+              </div>
+              <div class="aura-rev__body">
+                <span class="aura-rev__stars" aria-label="5 out of 5 stars">
+                  {%- for i in (1..5) -%}
+                    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L1.5 7.7l5.9-.9L10 1.5z"/></svg>
+                  {%- endfor -%}
+                </span>
+                {%- if block.settings.title != blank -%}
+                  <h3 class="aura-rev__quote-title">{{ block.settings.title | escape }}</h3>
+                {%- endif -%}
+                {%- if quote_plain != blank -%}
+                  <div class="aura-rev__quote">{{ quote_plain | escape }}</div>
+                {%- endif -%}
+                <div class="aura-rev__meta">
+                  {%- if block.settings.customer_name != blank -%}
+                    <span class="aura-rev__name">{{ block.settings.customer_name | escape }}</span>
+                  {%- endif -%}
+                  <span class="aura-rev__verified">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    Verified
+                  </span>
+                </div>
+              </div>
+            </article>
+          {%- endfor -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Aura reviews",
+  "tag": "section",
+  "class": "section-aura-reviews",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Loved by thousands",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Large" }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "select",
+      "id": "heading_center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center",
+      "label": "Heading alignment"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3,
+      "label": "Columns on desktop"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "1",
+      "label": "Columns on mobile"
+    },
+    {
+      "type": "checkbox",
+      "id": "swipe_on_mobile",
+      "default": true,
+      "label": "Enable swipe on mobile"
+    },
+    {
+      "type": "color",
+      "id": "color_star",
+      "label": "Star color",
+      "default": "#b86b7a"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 56
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo (optional — uses testim-1.png to testim-5.png if empty)"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "default": "Review",
+          "label": "Headline"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Pair text with an image to focus on your chosen product.</p>",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Customer name",
+          "default": "Customer Name"
+        },
+        {
+          "type": "text",
+          "id": "city_name",
+          "label": "Secondary line",
+          "default": "Verified buyer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aura reviews",
+      "blocks": [
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" }
+      ]
+    }
+  ]
+}
+{% endschema %}

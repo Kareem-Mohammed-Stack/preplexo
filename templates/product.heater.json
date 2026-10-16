@@ -1,0 +1,977 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "breadcrumbs_mhcn3t": {
+          "type": "breadcrumbs",
+          "settings": {
+            "title_home": "Home",
+            "padding_top": 0,
+            "padding_top_mb": 0,
+            "padding_bottom": 0,
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "testimonial_images_dwVMnc": {
+          "type": "testimonial-images",
+          "settings": {
+            "image_size": 0.8,
+            "image_space": -18,
+            "image": "shopify://shop_images/Testimonial_Image_Review_5.jpg",
+            "hide_img_2": false,
+            "image_2": "shopify://shop_images/Testimonial_Image_Review_3.jpg",
+            "hide_img_3": false,
+            "image_3": "shopify://shop_images/Testimonial_Image_Review_3.jpg",
+            "hide_img_4": false,
+            "image_4": "shopify://shop_images/Testimonial_Image_Review_1.jpg",
+            "hide_img_5": false,
+            "image_5": "shopify://shop_images/Testimonial_Image_Review_4.jpg",
+            "text_block": "<p>★★★★★ Excellent 4.8</p>",
+            "text_size": 13,
+            "text_style": "body"
+          }
+        },
+        "2fead2d5-7a3f-49d9-bacf-1d813be9861e": {
+          "type": "review",
+          "disabled": true,
+          "settings": {
+            "lrw_text": "<strong>4.8 - 1356 Reviews</strong>",
+            "text_size": 14,
+            "star_style": "star",
+            "star_size": 0.7,
+            "star_rating": 4.5,
+            "lrw_star_color": "#000000",
+            "lrw_star_color_disable": "#eeeeee",
+            "lrw_color": "#d50000",
+            "margin_top": 15,
+            "margin_bottom": 10
+          }
+        },
+        "title_JizAxD": {
+          "type": "title",
+          "settings": {
+            "title_size": 41,
+            "title_height": 120,
+            "text_transform": "none"
+          }
+        },
+        "8f8d8903-27e7-4cac-99c4-ec1b60b7f309": {
+          "type": "fomo",
+          "settings": {
+            "fomo_text_before": "<strong>(x) people are looking at this!</strong>",
+            "text_style": "uppercase",
+            "text_size": 10,
+            "color_scheme": "accent-2",
+            "fomo_border_activate": false,
+            "fomo_border": 0,
+            "fomo_border_color": "#ffe7ec",
+            "pill_color": "#33e90d",
+            "fomo_min": 8,
+            "fomo_max": 16,
+            "fomo_speed": 3,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "margin_top": 16,
+            "margin_bottom": 0
+          }
+        },
+        "auto_tabs_epeaKh": {
+          "type": "auto_tabs",
+          "disabled": true,
+          "settings": {
+            "tabs_color_scheme": "scheme-c8c05c75-1914-4148-9446-95aa92ade006",
+            "compact": false,
+            "auto_tab_heading": 13,
+            "padding_top": 16,
+            "padding_bottom": 16
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "price_style": "price",
+            "price_size": 20,
+            "badge_text_1": 13,
+            "price_first": true,
+            "badge_bg_1": "#d50000",
+            "badge_price_1": "#ffffff",
+            "price_size_2": 1,
+            "badge_price": "#8b8d8f",
+            "price_bold_2": false,
+            "sale_price_color": "#d50000",
+            "regular_price_color": "#212121",
+            "price_bold": true,
+            "badge_hide": false,
+            "taxes_hide": false,
+            "shipping_hide": false,
+            "padding_top": 4,
+            "padding_bottom": 4
+          }
+        },
+        "description_7rxnqF": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "label_style": "body",
+            "font_size": 14,
+            "font_style": "normal",
+            "swatchType": "color",
+            "optionName": "Color",
+            "swatchStyle": "round",
+            "swatchSize": 30,
+            "swatchHeight": 30,
+            "size_trigger": "Size",
+            "chart_id": "Size Chart",
+            "size_page": ""
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+            "enable_quantity_discounts": true,
+            "headline": "Choose your offer",
+            "txt_size_head_qb": 18,
+            "sub_headline": "This offer is for limited time only",
+            "txt_size_subhead_qb": 12,
+            "background_top_qb": "#ffffff",
+            "background_top_text_qb": "#212121",
+            "background_qb": "#ffffff",
+            "border_qb": "#000000",
+            "check_bg_qb": "#e9ecef",
+            "check_border_qb": "#000000",
+            "check_dot": "#000000",
+            "hover_bg_qb": "#ffffff",
+            "hover_border_qb": "#000000",
+            "badge_qb": "#000000",
+            "badge_qb_text": "#ffffff",
+            "compare_price": "#000000",
+            "qb_border_wd": 2,
+            "qb_border": 4,
+            "padding_top": 20,
+            "padding_bottom": 20,
+            "preselected": "option_1",
+            "display_badge": "none",
+            "badge_text": "Most Popular",
+            "option_1_quantity": 1,
+            "option_1_label": "",
+            "option_1_benefit": "",
+            "option_1_caption": "You save [amount]",
+            "option_1_discount_type": "none",
+            "option_1_percentage_off": 0,
+            "option_1_fixed_amount_off": "0",
+            "option_2_quantity": 2,
+            "option_2_label": "",
+            "option_2_benefit": "",
+            "option_2_caption": "Only [item_price] per Item",
+            "option_2_discount_type": "none",
+            "option_2_percentage_off": 0,
+            "option_2_fixed_amount_off": "0",
+            "option_3_quantity": 3,
+            "option_3_label": "",
+            "option_3_benefit": "",
+            "option_3_caption": "You save [amount]",
+            "option_3_discount_type": "none",
+            "option_3_percentage_off": 0,
+            "option_3_fixed_amount_off": "0",
+            "option_4_quantity": 4,
+            "option_4_label": "",
+            "option_4_benefit": "",
+            "option_4_caption": "You save [amount]",
+            "option_4_discount_type": "none",
+            "option_4_percentage_off": 0,
+            "option_4_fixed_amount_off": "0"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_full_button": true,
+            "lm_main_button": "#000000",
+            "lm_main_button_gr": "",
+            "lm_main_text": "#ffffff",
+            "lm_button_animation": "soft",
+            "show_gift_card_recipient": true,
+            "skip_cart": true,
+            "cart_text": ""
+          }
+        },
+        "payment_cRYbTR": {
+          "type": "payment",
+          "settings": {
+            "original": "custom",
+            "payment_icon": "visa,master,paypal,apple_pay,shopify-pay,google-pay",
+            "payment_content_alignment": "center"
+          }
+        },
+        "promo_slide_8CpDYK": {
+          "type": "promo-slide",
+          "disabled": true,
+          "settings": {
+            "block_heading": "Nourished and youthful!",
+            "text_1": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store. ★★★★★</p>",
+            "show_slide_2": true,
+            "block_heading_2": "Smooth and refreshed.",
+            "text_2": "<p>This product has transformed my skin! It’s never felt so smooth and refreshed.</p>",
+            "show_slide_3": true,
+            "block_heading_3": "Game-changer",
+            "text_3": "<p>A game-changer for my skincare routine. My complexion is brighter and clearer.</p>",
+            "color_scheme": "accent-2",
+            "slide_padding": 20,
+            "show_border": true,
+            "border_color": "#e4e4e4",
+            "slide_wrapper_radius": 6,
+            "slide_img_size": 60,
+            "slide_img_radius": 100,
+            "head_size": 12,
+            "text_size": 12,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        },
+        "ad4a2bc2-8dd2-4105-9923-5bd7d66f77f3": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "color_scheme": "background-1",
+            "icon_font_size": 11,
+            "icon_1": "box",
+            "heading_1": "<strong>FREE SHIPPING GLOBLY</strong>",
+            "icon_2": "return",
+            "heading_2": "<strong>14 DAY RETURNS</strong>",
+            "icon_3": "chat_bubble",
+            "heading_3": "<strong>24/7 Customer Support</strong>"
+          }
+        },
+        "d3e392fa-572e-4895-a7d3-dd12277627ff": {
+          "type": "collapsible_tab",
+          "settings": {
+            "open_first_collapsible_row": false,
+            "heading": "Global Tracked Shipping",
+            "icon": "truck",
+            "content": "<p>Get <strong>Free Tracked Worldwide Shipping</strong> on all orders. Delivery takes <strong>3–5 business days</strong>.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_NENjgt": {
+          "type": "collapsible_tab",
+          "settings": {
+            "open_first_collapsible_row": false,
+            "heading": "Love It Or Your Money Back",
+            "icon": "heart",
+            "content": "<p>Here at <strong>TRENDORA</strong>, we are so confident in our products that if you are still not satisfied with your Handy Heater Turbo 800 within 14 days, simply return it, and we'll <strong>process your refund without any hassle</strong>.</p><p>Seriously, we're committed to ensuring you get the product you deserve.</p>",
+            "page": ""
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "breadcrumbs_mhcn3t",
+        "testimonial_images_dwVMnc",
+        "2fead2d5-7a3f-49d9-bacf-1d813be9861e",
+        "title_JizAxD",
+        "8f8d8903-27e7-4cac-99c4-ec1b60b7f309",
+        "auto_tabs_epeaKh",
+        "price",
+        "description_7rxnqF",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "payment_cRYbTR",
+        "promo_slide_8CpDYK",
+        "ad4a2bc2-8dd2-4105-9923-5bd7d66f77f3",
+        "d3e392fa-572e-4895-a7d3-dd12277627ff",
+        "collapsible_tab_NENjgt",
+        "share"
+      ],
+      "custom_css": [],
+      "settings": {
+        "enable_sticky_info": true,
+        "show_feature_media": false,
+        "color_scheme": "",
+        "show_container": true,
+        "container_radius": 10,
+        "container_padding": 30,
+        "container_color": "#ffffff",
+        "container_border_color": "#744c26",
+        "container_text": "",
+        "container_text_bg": "#212121",
+        "container_text_txt": "#ffffff",
+        "show_container_mb": true,
+        "container_padding_mb": 20,
+        "container_radius_mb": 8,
+        "container_color_mb": "#ffffff",
+        "container_border_color_mb": "#000000",
+        "media_size": "medium",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail",
+        "thumbnail_size": 70,
+        "thumbnail_radius": 4,
+        "media_position": "left",
+        "image_zoom": "none",
+        "mobile_thumbnails": "show",
+        "show_full_image": true,
+        "first_image_size": 100,
+        "second_image_size": 0,
+        "hide_variants": true,
+        "enable_video_looping": true,
+        "padding_top": 8,
+        "padding_bottom": 76,
+        "padding_top_mb": 0,
+        "padding_bottom_mb": 36
+      }
+    },
+    "ebd38537-357b-4b9d-94d3-8480c1f8694b": {
+      "type": "random-number",
+      "settings": {
+        "layout": "full_bleed",
+        "color_scheme": "scheme-c8c05c75-1914-4148-9446-95aa92ade006",
+        "pill_color": "#84f210",
+        "fomo_border": 6,
+        "fomo_border_color": "#744c26",
+        "fomo_min": 8,
+        "fomo_max": 16,
+        "fomo_speed": 3,
+        "fomo_text_before": "<strong>[Limited stock]</strong>",
+        "number_bold": true,
+        "fomo_text_after": "Peoples are checking out right now",
+        "text_alignment": "center",
+        "padding_top": 12,
+        "padding_bottom": 12,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "41eff030-bfe6-4439-9af3-bc24e7cb0559": {
+      "type": "custom-fonts",
+      "blocks": {
+        "abd19213-10d7-45b5-b8e0-532450e7ddab": {
+          "type": "image",
+          "settings": {
+            "name": "customfont",
+            "custom_font_weight": "none",
+            "custom_font_style": "none",
+            "custom_font_url": "",
+            "apply_h1": true,
+            "apply_h2": true,
+            "apply_h3": true,
+            "apply_h4": true,
+            "apply_h5": true,
+            "apply_h6": true,
+            "apply_span": true,
+            "apply_p": true,
+            "apply_custom": ""
+          }
+        }
+      },
+      "block_order": [
+        "abd19213-10d7-45b5-b8e0-532450e7ddab"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable": true
+      }
+    },
+    "multicolumn_ax9CUA": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_dMrDj9": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/T1_19910946-c388-4f31-ba1f-8ba716509ab6.webp",
+            "title": "⭐⭐⭐⭐⭐",
+            "text": "<h3>Heats my room in minutes!</h3><p>“I was shocked how fast this tiny heater works. I plug it in before bed and the room gets warm so quickly without any noise. Totally worth it!”</p><p><em><strong>- Sarah M.</strong></em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_JWe3FX": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/T2.jpg",
+            "title": "⭐⭐⭐⭐⭐",
+            "text": "<h3>Small but powerful.</h3><p>“I use it in my home office and it keeps the whole space cozy. No cords, no clutter — just plug and go. Super convenient!”</p><p><em><strong>- Daniel R.</strong></em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_EjHHAp": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/T3_890ccd08-f674-408e-800b-33b8e097a789.jpg",
+            "title": "⭐⭐⭐⭐⭐",
+            "text": "<h3>Saves me money on bills.</h3><p>“Instead of heating the whole apartment, I only warm the area I'm using. My electricity bill actually went down. Highly recommend!”</p><p><em><strong>- Emily K.</strong></em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_dMrDj9",
+        "column_JWe3FX",
+        "column_EjHHAp"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Heat that wins hearts",
+        "heading_size": "h1",
+        "heading_center": "center",
+        "image_width": "full",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "navigation_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_P3mRpX": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_Md3nkt": {
+          "type": "heading",
+          "settings": {
+            "heading": "Compact Power, Zero Clutter",
+            "heading_size": "h1"
+          }
+        },
+        "text_aUJLDm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Plugs directly into the wall — no cords, no mess, just clean and powerful warmth.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_PTzdNV": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/handy-heater-turbo-800",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_Md3nkt",
+        "text_aUJLDm",
+        "button_PTzdNV"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/I1_665039c2-47d0-489b-b07f-d1061ee5b6a6.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_RBJLiC": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_PpQEec": {
+          "type": "heading",
+          "settings": {
+            "heading": "Safe Heat You Can Trust",
+            "heading_size": "h1"
+          }
+        },
+        "text_QhwbNF": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Built-in auto shut-off and overheat protection keep your home warm and worry-free.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_B74Epx": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/handy-heater-turbo-800",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_PpQEec",
+        "text_QhwbNF",
+        "button_B74Epx"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/I2_fd1c108a-bd31-492f-8fc0-bb924d64a906.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_Wmckn9": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_TETNqj": {
+          "type": "heading",
+          "settings": {
+            "heading": "Instant Warmth, Anytime",
+            "heading_size": "h1"
+          }
+        },
+        "text_t8YRVP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Feel the heat in seconds with fast, efficient ceramic heating designed for small spaces.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_kdKii3": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/handy-heater-turbo-800",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_TETNqj",
+        "text_t8YRVP",
+        "button_kdKii3"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/I3.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_Y3DJqM": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_AryV7t": {
+          "type": "heading",
+          "settings": {
+            "heading": "14-Day Return Window",
+            "heading_size": "h1"
+          }
+        },
+        "text_kaE3zY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If for any reason, you aren't 100% happy with your order, we'll do absolutely everything in our power to make it right.<br/></p><p>We're offering a <strong>14-day money-back guarantee </strong>so you can comfortably try <strong>Handy Heater Turbo</strong> out.</p>"
+          }
+        },
+        "button_d3iUEH": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://products/handy-heater-turbo-800",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_AryV7t",
+        "text_kaE3zY",
+        "button_d3iUEH"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-c8c05c75-1914-4148-9446-95aa92ade006",
+        "full_width": true,
+        "padding_top": 44,
+        "padding_bottom": 48
+      }
+    },
+    "wave_Y8ndwU": {
+      "type": "wave",
+      "disabled": true,
+      "name": "Wave",
+      "settings": {
+        "wave_height": 300,
+        "wave_curvature": 250,
+        "wave_style": "less",
+        "wave_side": "180",
+        "animation": true,
+        "animation_duration": 5,
+        "background_color": "#ffffff",
+        "wave_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": -100,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_horizontal": 0,
+        "padding_horizontal_mobile": 0,
+        "full_width": true,
+        "content_width": 120
+      }
+    },
+    "lumin_review_8EHAak": {
+      "type": "Lumin-review",
+      "blocks": {
+        "review_atbEdY": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "— Lara D.",
+            "date_text": "January 2025",
+            "review_head": "Surprisingly powerful!",
+            "review_text": "“Didn’t expect this small heater to warm my room so fast. Perfect for winter nights.”",
+            "like_size": 70,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_69rGQa": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "— Omar H.",
+            "date_text": "January 2025",
+            "review_head": "Really quiet.",
+            "review_text": "“I keep it next to my bed and it doesn’t make any noise. Best purchase this season.”",
+            "like_size": 88,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_mmwK9n": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "— Kimberly T.",
+            "date_text": "February 2025",
+            "review_head": "Great for the office.",
+            "review_text": "“My workspace is always cold, but this fixed it instantly. Super convenient.”",
+            "like_size": 78,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_Q4wjiT": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "— Jason M.",
+            "date_text": "March 2025",
+            "review_head": "Perfect size.",
+            "review_text": "“I love that it plugs into the wall and doesn’t take up any space. Compact and effective.”",
+            "like_size": 56,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_L9RJxn": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "— Ana V.",
+            "date_text": "April 2025",
+            "review_head": "Worth every dollar.",
+            "review_text": "“The heat output is amazing for the size. I bought two more for other rooms.”",
+            "like_size": 64,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_XpQUF7": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "— Michael S.",
+            "date_text": "June 2025",
+            "review_head": "Energy saver.",
+            "review_text": "“I noticed my electric bill went down because I’m only heating the area I use.”",
+            "like_size": 60,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_izdRUH": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "— Nadia P.",
+            "date_text": "July 2025",
+            "review_head": "Easy to use.",
+            "review_text": "“Just plug it in, set the temperature, and that’s it. Very user-friendly.”",
+            "like_size": 62,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_LFXpwD": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "— Rania E.",
+            "date_text": "August 2025",
+            "review_head": "Keeps my kids’ room warm.",
+            "review_text": "“Safe, quiet, and perfect for keeping the bedroom warm at night.”",
+            "like_size": 69,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_MyKUMG": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "— Chris J.",
+            "date_text": "August 2025",
+            "review_head": "Fast delivery & great quality.",
+            "review_text": "“Came well-packed and works exactly as described. Highly recommended.”",
+            "like_size": 82,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        }
+      },
+      "block_order": [
+        "review_atbEdY",
+        "review_69rGQa",
+        "review_mmwK9n",
+        "review_Q4wjiT",
+        "review_L9RJxn",
+        "review_XpQUF7",
+        "review_izdRUH",
+        "review_LFXpwD",
+        "review_MyKUMG"
+      ],
+      "name": "Lumin Review",
+      "settings": {
+        "editing": true,
+        "color_scheme": "",
+        "header_text": "what our customers say about us",
+        "show_top": true,
+        "rating_text": "4.8",
+        "rating_range": 4.5,
+        "rating_count": "",
+        "review_column_mobile": "1",
+        "review_column_tab": "1",
+        "review_column_desk": "1",
+        "review_load": "4",
+        "load_text": "Load More",
+        "rw_img_size": 140,
+        "rw_img_radius": 0,
+        "block_name_size": 20,
+        "date_size": 16,
+        "block_head_size": 20,
+        "block_text_size": 14,
+        "star_style": "star_bg",
+        "star_size": 1,
+        "feature_svg_color": "#dff80b",
+        "inactive_star_color": "#e2e2e2",
+        "show_border": true,
+        "rw_border": "#f2f2f2",
+        "border_radius": 0,
+        "section_bg3": "#000000",
+        "section_bg2": "#3889b9",
+        "verify_text": "Verified Buyer",
+        "review_bg": "#ffffff",
+        "feature_acc_color": "#000000",
+        "review_pd": 20,
+        "review_pd_m": 20,
+        "show_footer": true,
+        "show_product": true,
+        "like_text": "Was this helpful?",
+        "rw_margin": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collapsible_content_3UiDhf": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_U8zDz7": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How quickly does it heat a room?",
+            "icon": "none",
+            "row_content": "<p>The Handy Heater Turbo 800 warms small spaces in just a few minutes, providing instant comfort.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_QNi4hr": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is it safe to use unattended?",
+            "icon": "none",
+            "row_content": "<p>Yes! It features auto shut-off and overheat protection for worry-free use.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_4b3NeT": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I use it in a bathroom?",
+            "icon": "none",
+            "row_content": "<p>It’s safe for dry areas, but avoid direct contact with water or high humidity.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_GVMWKA": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Does it make noise?",
+            "icon": "none",
+            "row_content": "<p>No, it operates quietly, making it perfect for bedrooms and offices.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_jrHLGw": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What kind of power source does it use?",
+            "icon": "none",
+            "row_content": "<p>It plugs directly into any standard wall outlet (110V), no extra cables needed.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_YwhPpB": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is it energy-efficient?",
+            "icon": "none",
+            "row_content": "<p>Absolutely. It focuses heat on the area you need, using less electricity than full-room heaters.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_cbxYV9": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I adjust the temperature?",
+            "icon": "none",
+            "row_content": "<p>Yes, it comes with an adjustable thermostat and a built-in timer for customized comfort.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_U8zDz7",
+        "collapsible_row_QNi4hr",
+        "collapsible_row_4b3NeT",
+        "collapsible_row_GVMWKA",
+        "collapsible_row_jrHLGw",
+        "collapsible_row_YwhPpB",
+        "collapsible_row_cbxYV9"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "Frequently Asked Questions",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "collection_text_alignment": "center",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "image_no_crop": true,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_desc": true,
+        "quick_desc_legth": 90,
+        "quick_desc_size": 13,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "1755084724d90f8696": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ebd38537-357b-4b9d-94d3-8480c1f8694b",
+    "41eff030-bfe6-4439-9af3-bc24e7cb0559",
+    "multicolumn_ax9CUA",
+    "image_with_text_P3mRpX",
+    "image_with_text_RBJLiC",
+    "image_with_text_Wmckn9",
+    "rich_text_Y3DJqM",
+    "wave_Y8ndwU",
+    "lumin_review_8EHAak",
+    "collapsible_content_3UiDhf",
+    "related-products",
+    "1755084724d90f8696"
+  ]
+}

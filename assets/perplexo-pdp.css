@@ -1,0 +1,652 @@
+/* ==========================================================================
+   PERPLEXO LUXURY PRODUCT DETAILS PAGE (PDP) STYLES
+   - Fitts's Law, Hick's Law, Trust Badges, Accordions, Sticky Mobile Bar
+   ========================================================================== */
+
+/* Signature Blush Gradient PDP Page Background */
+.product,
+.section-main-product,
+body.template-product,
+body.template-product #MainContent {
+  background-color: transparent !important;
+}
+
+/* Fix mobile PDP gallery: keep a horizontal swipe carousel (not stacked cropped cards) */
+@media screen and (max-width: 749px) {
+  .product__media-wrapper {
+    padding-bottom: 0.5rem;
+  }
+
+  .product__media-wrapper slider-component:not(.thumbnail-slider) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .product__media-list.slider.slider--mobile,
+  .product__media-list.lumin-slider.slider.slider--mobile {
+    display: flex;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    align-items: stretch;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    margin-left: 0 !important;
+    margin-bottom: 1rem;
+    width: 100% !important;
+    max-width: 100%;
+    column-gap: 0;
+    row-gap: 0;
+    padding: 0;
+  }
+
+  .product__media-list.slider.slider--mobile .product__media-item,
+  .product__media-list.lumin-slider .product__media-item {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    margin: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+  }
+
+  .product__media-list .product-media-container,
+  .product__media-list .global-media-settings {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    background: transparent;
+  }
+
+  .product__media-list .media > img,
+  .product-media-container.media-fit-contain .media > img {
+    object-fit: contain !important;
+    object-position: center center;
+  }
+
+  .product__media-list .media {
+    background: transparent;
+  }
+}
+
+/* Honor media_fit: contain on all breakpoints (theme default was cover) */
+.product-media-container.media-fit-contain .media > img {
+  object-fit: contain;
+  object-position: center center;
+}
+
+.perplexo-pdp-buybox {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: center;
+  gap: 1.4rem;
+  padding: 0.5rem 0;
+  width: 100%;
+}
+
+/* Center breadcrumbs + standard product info on all PDPs */
+.product .breadcrumbs,
+.product .breadcrumbs__list,
+.product__info-container,
+.product__title,
+.product__text,
+.product__vendor,
+.product .caption-with-letter-spacing,
+.product .price {
+  text-align: center !important;
+}
+
+.product .breadcrumbs__list {
+  width: 100%;
+}
+
+.product__info-container > * {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 1. Header & Rating Badge */
+.perplexo-pdp__title {
+  font-family: var(--font-heading-family, 'Plus Jakarta Sans', sans-serif);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #85444C;
+  line-height: 1.25;
+  margin: 0;
+  letter-spacing: -0.01em;
+  text-align: center;
+  width: 100%;
+}
+
+@media screen and (min-width: 750px) {
+  .perplexo-pdp__title {
+    font-size: 3.4rem;
+  }
+}
+
+.perplexo-pdp-buybox .perplexo-card__vendor {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+.perplexo-pdp__rating-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: rgba(133, 68, 76, 0.07);
+  padding: 0.5rem 1.4rem;
+  border-radius: 9999px;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--color-primary, #85444C);
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.perplexo-pdp__stars {
+  color: #ffb400;
+  letter-spacing: 2px;
+}
+
+/* 2. Price Display Box */
+.perplexo-pdp__price-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 0.2rem;
+  width: 100%;
+}
+
+.perplexo-pdp__price-main {
+  font-family: var(--font-heading-family, 'Transcity', serif);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-primary, #85444C);
+}
+
+.perplexo-pdp__price-compare {
+  font-size: 1.9rem;
+  text-decoration: line-through;
+  color: #888888;
+}
+
+.perplexo-pdp__save-badge {
+  background: linear-gradient(135deg, #85444c, #6c343b);
+  color: #ffffff;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  padding: 0.4rem 1.2rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 8px rgba(133, 68, 76, 0.25);
+}
+
+/* 3. Urgency Stock Ticker Pill */
+.perplexo-pdp__urgency-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  background: #fff5f6;
+  border: 1px solid #ffccd3;
+  color: var(--color-primary, #85444C);
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 0.8rem 1.6rem;
+  border-radius: 12px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.perplexo-pdp__urgency-pulse {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-primary, #85444C);
+  box-shadow: 0 0 0 0 rgba(133, 68, 76, 0.7);
+  animation: pulsePdp 1.8s infinite;
+}
+
+@keyframes pulsePdp {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(133, 68, 76, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(133, 68, 76, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(133, 68, 76, 0); }
+}
+
+/* 4. Action Buttons (Fitts's & Hick's Law) */
+.perplexo-pdp__form {
+  width: 100%;
+  align-self: stretch;
+  position: relative;
+  z-index: 2;
+}
+
+.perplexo-pdp__qb-slot {
+  width: 100%;
+  align-self: stretch;
+  margin: 0.4rem 0 1.2rem;
+  text-align: left;
+}
+
+.perplexo-pdp__qb-slot:empty {
+  display: none;
+  margin: 0;
+}
+
+.perplexo-pdp__qb-slot .quantity-breaks-container {
+  display: flex !important;
+  flex-direction: column;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  align-self: stretch;
+}
+
+/* Never show the pre-move / duplicate "Choose your offer" above the buybox */
+.product__info-container > .quantity-breaks-container,
+.product__info-container > .perplexo-qb-source,
+.perplexo-qb-source {
+  display: none !important;
+}
+
+.perplexo-pdp__qb-slot .quantity-breaks__top-bar,
+.perplexo-pdp__qb-slot .quantity-breaks__title,
+.perplexo-pdp__qb-slot .qb-subheading {
+  text-align: center;
+}
+
+.perplexo-pdp__qb-slot .quantity-break {
+  text-align: left;
+}
+
+.perplexo-pdp__qb-slot .quantity-break__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.perplexo-pdp__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.perplexo-pdp__btn-buy-now {
+  min-height: 52px;
+  background-color: var(--color-primary, #85444C);
+  color: #ffffff;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  width: 100%;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(133, 68, 76, 0.28);
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.perplexo-pdp__btn-buy-now:hover {
+  background-color: #6c343b;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(133, 68, 76, 0.38);
+}
+
+.perplexo-pdp__btn-add-cart {
+  min-height: 48px;
+  background: transparent;
+  color: var(--color-primary, #85444C);
+  border: 2px solid var(--color-primary, #85444C);
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  width: 100%;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.perplexo-pdp__btn-add-cart:hover {
+  background-color: rgba(133, 68, 76, 0.08);
+}
+
+/* 5. Trust Badges Grid */
+.perplexo-pdp__trust-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem 1rem;
+  margin-top: 1rem;
+  padding: 1.6rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  background: #ffe7ec;
+  border-radius: 18px;
+  border: 1px solid #f0d0d6;
+}
+
+.perplexo-pdp__trust-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.85rem;
+  min-width: 0;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #85444C;
+  text-align: left;
+  line-height: 1.35;
+}
+
+.perplexo-pdp__trust-item span {
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+}
+
+.perplexo-pdp__trust-icon {
+  width: 24px;
+  height: 24px;
+  color: #85444C;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .perplexo-pdp__trust-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.2rem 1.1rem;
+    border-radius: 16px;
+  }
+
+  .perplexo-pdp__trust-item {
+    font-size: 1.35rem;
+    gap: 1rem;
+    padding: 0.15rem 0;
+  }
+
+  .perplexo-pdp__trust-icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .perplexo-pdp__trust-grid {
+    gap: 1rem 0.85rem;
+    padding: 1.4rem 1.2rem;
+  }
+
+  .perplexo-pdp__trust-item {
+    font-size: 1.3rem;
+  }
+}
+
+/* 6. Product Detail Accordions */
+.perplexo-pdp__accordions {
+  border-top: 1px solid #eef0f2;
+  margin-top: 1.5rem;
+  padding-top: 0.5rem;
+}
+
+.perplexo-pdp__accordion-item {
+  border-bottom: 1px solid #eef0f2;
+}
+
+.perplexo-pdp__accordion-trigger {
+  width: 100%;
+  min-height: 48px;
+  padding: 1.4rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-family: var(--font-heading-family, 'Transcity', serif);
+  font-size: 1.85rem;
+  font-weight: 600;
+  color: #121212;
+  position: relative;
+}
+
+.perplexo-pdp__accordion-trigger::before {
+  content: "";
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.perplexo-pdp__accordion-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(133, 68, 76, 0.08);
+  color: var(--color-primary, #85444C);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.perplexo-pdp__accordion-item.is-open .perplexo-pdp__accordion-icon {
+  transform: rotate(45deg);
+  background: var(--color-primary, #85444C);
+  color: #ffffff;
+}
+
+.perplexo-pdp__accordion-content {
+  display: none;
+  padding-bottom: 1.6rem;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 20px;
+  line-height: 1.65;
+  color: #555555;
+  text-align: center;
+}
+
+.perplexo-pdp__accordion-content p {
+  font-size: 20px !important;
+}
+
+.perplexo-pdp__accordion-item.is-open .perplexo-pdp__accordion-content {
+  display: block;
+  animation: fadeInPdp 0.3s ease forwards;
+}
+
+@keyframes fadeInPdp {
+  from { opacity: 0; transform: translateY(-3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 7. Sticky PDP Add-to-Cart Bar (Fixed to Viewport Bottom on 40% Scroll) */
+.perplexo-pdp__sticky-bar {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  z-index: 2147483647 !important; /* Maximum z-index: stays above all elements */
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  padding: 1.2rem 2rem !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.16) !important;
+  transform: translateY(120%) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+
+.perplexo-pdp__sticky-bar.is-visible {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  /* Only the controls capture clicks — bar chrome must not block PDP ATC */
+  pointer-events: none !important;
+}
+
+.perplexo-pdp__sticky-bar.is-visible .perplexo-pdp__sticky-container {
+  pointer-events: auto !important;
+}
+
+.perplexo-pdp__sticky-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.perplexo-pdp__sticky-info {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.perplexo-pdp__sticky-img {
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.perplexo-pdp__sticky-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.perplexo-pdp__sticky-title {
+  font-family: var(--font-heading-family, 'Transcity', serif);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #121212;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 260px;
+}
+
+@media screen and (max-width: 749px) {
+  .perplexo-pdp__sticky-bar {
+    padding: 1rem 1.4rem calc(1rem + env(safe-area-inset-bottom, 0px)) 1.4rem;
+  }
+
+  .perplexo-pdp__sticky-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .perplexo-pdp__sticky-img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .perplexo-pdp__sticky-title {
+    max-width: 135px;
+    font-size: 1.45rem;
+  }
+
+  .perplexo-pdp__sticky-price {
+    font-size: 1.65rem;
+  }
+
+  .perplexo-pdp__sticky-btn {
+    min-height: 44px;
+    padding: 0.8rem 1.8rem;
+    font-size: 1.45rem;
+  }
+}
+
+.perplexo-pdp__sticky-price {
+  font-family: var(--font-heading-family, 'Transcity', serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary, #85444C);
+}
+
+.perplexo-pdp__sticky-btn {
+  min-height: 48px;
+  padding: 0.9rem 2.6rem;
+  background: linear-gradient(135deg, #85444c, #6c343b);
+  color: #ffffff !important;
+  border-radius: 9999px;
+  font-family: var(--font-heading-family, 'Transcity', sans-serif);
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(133, 68, 76, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.perplexo-pdp__sticky-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(133, 68, 76, 0.4);
+}
+
+/* 8. Zero Padding for Landing Section */
+.section-template--27680608059688__custom_liquid_QCj3TA-padding,
+[class*="__custom_liquid_QCj3TA-padding"] {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding: 0 !important;
+}

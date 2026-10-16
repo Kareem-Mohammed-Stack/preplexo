@@ -1,0 +1,337 @@
+/* ==========================================================================
+   PERPLEXO CREATIVE LUXURY FOOTER COMPONENT
+   ========================================================================== */
+
+.perplexo-footer {
+  position: relative;
+  background: linear-gradient(90deg, #7c4c52 0%, #9a6970 50%, #6e3e44 100%);
+  color: #ffffff;
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+  overflow: hidden;
+}
+
+.perplexo-footer__inner {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3.5rem;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+  .perplexo-footer__inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3.5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .perplexo-footer__inner {
+    grid-template-columns: 1.3fr 1fr 1fr 1.1fr;
+    gap: 3.5rem;
+  }
+}
+
+/* Column 1: Brand Info & Socials */
+.perplexo-footer__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.perplexo-footer__col--brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.perplexo-footer__logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+.perplexo-footer__logo-icon,
+.perplexo-footer__logo-wrap .icon-logo-perplexo {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  color: var(--color-primary, #85444C);
+  fill: var(--color-primary, #85444C);
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 7px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.perplexo-footer__logo-wrap:hover .icon-logo-perplexo {
+  transform: rotate(6deg) scale(1.08);
+}
+
+.perplexo-footer__logo-wrap svg path,
+.perplexo-footer__logo-wrap .perplexo-st0 {
+  fill: var(--color-primary, #85444C) !important;
+}
+
+.perplexo-footer__logo-text {
+  font-family: var(--font-heading-family, 'Transcity', serif);
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.perplexo-footer__bio {
+  font-family: var(--font-body-family, 'Transcity', sans-serif);
+  font-size: 1.6rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 auto 2rem;
+  max-width: 380px;
+  text-align: center;
+}
+
+/* White Circular Social Buttons (Slightly Reduced Size) */
+.perplexo-footer__socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.perplexo-footer__social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #121212;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.perplexo-footer__social-btn:hover {
+  transform: translateY(-3px) scale(1.08);
+  background-color: #ffffff;
+  color: #85444C;
+}
+
+.perplexo-footer__social-btn svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+/* Column Headings (Transcity Serif Font) */
+.perplexo-footer__heading {
+  font-family: var(--font-heading-family, 'Transcity', serif);
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0 0 2rem 0;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+/* Navigation Lists */
+.perplexo-footer__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.perplexo-footer__menu-item a,
+.perplexo-footer__menu a {
+  font-family: var(--font-body-family, 'Transcity', sans-serif);
+  font-size: 17px !important;
+  color: #ffffff !important;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.perplexo-footer__menu-item a:hover,
+.perplexo-footer__menu a:hover {
+  color: #ffffff !important;
+  opacity: 0.85;
+  transform: none;
+}
+
+/* Column 4: Contact & Email */
+.perplexo-footer__contact-desc {
+  font-family: var(--font-body-family, 'Transcity', sans-serif);
+  font-size: 1.6rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.perplexo-footer__email-link {
+  display: inline-block;
+  font-family: var(--font-body-family, 'Transcity', sans-serif);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1.5px solid transparent;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+  text-align: center;
+}
+
+.perplexo-footer__email-link:hover {
+  border-color: #ffffff;
+  opacity: 0.9;
+}
+
+/* Bottom Bar: Copyright & Payment Badges */
+.perplexo-footer__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 2rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@media screen and (min-width: 750px) {
+  .perplexo-footer__bottom {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.perplexo-footer__copyright {
+  font-family: var(--font-body-family, 'Transcity', sans-serif);
+  font-size: 15px !important;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.perplexo-footer__copyright strong {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px !important;
+}
+
+.perplexo-footer__orca-link {
+  color: #ffffff;
+  text-decoration: underline;
+  font-weight: 700;
+  font-size: 16px !important;
+  transition: opacity 0.2s ease;
+}
+
+.perplexo-footer__orca-link:hover {
+  opacity: 0.85;
+}
+
+.perplexo-footer__policies {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.perplexo-footer__policies a {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.3rem;
+  text-decoration: none;
+  font-family: var(--font-body-family, sans-serif);
+  transition: color 0.2s ease;
+}
+
+.perplexo-footer__policies a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.perplexo-footer__payments {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Payment Icons Badges matching photo */
+.perplexo-footer__payment-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 1.5rem;
+  border-radius: 6px;
+  font-family: var(--font-body-family, sans-serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.perplexo-footer__payment-badge--visa {
+  background-color: #0057b8;
+  color: #ffffff;
+  font-style: italic;
+  font-size: 1.5rem;
+}
+
+.perplexo-footer__payment-badge--mastercard {
+  background-color: #000000;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  padding: 0 1.5rem;
+}
+
+.perplexo-footer__mastercard-circles {
+  display: flex;
+  align-items: center;
+}
+
+.perplexo-footer__mastercard-circle-1 {
+  width: 16px;
+  height: 16px;
+  background-color: #eb001b;
+  border-radius: 50%;
+}
+
+.perplexo-footer__mastercard-circle-2 {
+  width: 16px;
+  height: 16px;
+  background-color: #f79e1b;
+  border-radius: 50%;
+  margin-left: -8px;
+  opacity: 0.9;
+}
+
+.perplexo-footer__payment-badge--paypal {
+  background-color: #70d2ff;
+  color: #003087;
+  font-size: 1.4rem;
+  font-weight: 800;
+  font-style: italic;
+}

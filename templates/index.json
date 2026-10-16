@@ -1,0 +1,261 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "perplexo_hero": {
+      "type": "perplexo_hero",
+      "settings": {
+        "brand_title": "Preplexo",
+        "sub_tagline": "Signature Skin care",
+        "heading": "Find Every Skin Care Here",
+        "description": "Crafted for the woman who defines her own legacy. Timeless silhouettes, refined finishes, and effortless elegance—made to be lived in.",
+        "button_label": "Shop The Collection",
+        "button_link": "shopify://collections/all",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "perplexo_ticker": {
+      "type": "perplexo_ticker",
+      "blocks": {
+        "announcement_1": {
+          "type": "announcement",
+          "settings": {
+            "text": "Sale 25% On All Products Buy Now and you will find special offer",
+            "show_separator": true
+          }
+        },
+        "announcement_2": {
+          "type": "announcement",
+          "settings": {
+            "text": "Buy Two Get One For Free",
+            "show_separator": true
+          }
+        },
+        "announcement_3": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free Express Shipping On All Orders",
+            "show_separator": true
+          }
+        }
+      },
+      "block_order": [
+        "announcement_1",
+        "announcement_2",
+        "announcement_3"
+      ],
+      "settings": {
+        "bg_color": "#85444C",
+        "text_color": "#EED5B6",
+        "speed": 24,
+        "pause_on_hover": true,
+        "padding_top": 14,
+        "padding_bottom": 14
+      }
+    },
+    "perplexo_collections": {
+      "type": "perplexo_collections",
+      "blocks": {
+        "collection_accessories": {
+          "type": "collection",
+          "settings": {
+            "collection": "accessories"
+          }
+        },
+        "collection_beauty": {
+          "type": "collection",
+          "settings": {
+            "collection": "beauty"
+          }
+        }
+      },
+      "block_order": [
+        "collection_accessories",
+        "collection_beauty"
+      ],
+      "settings": {
+        "title": "Collections",
+        "sub_heading": "",
+        "bg_color": "#ffffff",
+        "text_color": "#111111",
+        "columns_desktop": 2,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "perplexo_products": {
+      "type": "perplexo_products",
+      "settings": {
+        "title": "Everything You Need",
+        "sub_heading": "",
+        "bg_color": "#85444C",
+        "text_color": "#85444C",
+        "products_to_show": 8,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "perplexo_favourite": {
+      "type": "perplexo_favourite",
+      "settings": {
+        "timer_label": "Limitted Offers Ends soon in",
+        "timer_btn_text": "View all offers",
+        "subheading": "Our Favourit Product",
+        "title": "Dr. Melaxin Collagen Boost Set",
+        "description": "Ideal for anyone experiencing loss of firmness, enlarged pores, or dull, dehydrated skin. Suitable for all skin types, including sensitive skin. Formulated without harsh chemicals — clean, conscious, and effective. Elevate your routine. Invest in skin that speaks for itself.",
+        "buy_btn_text": "Buy Now",
+        "bg_color": "#85444C",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "perplexo_videos": {
+      "type": "perplexo_videos",
+      "settings": {
+        "title": "See Our Products in Action",
+        "sub_heading": "Watch how our signature skincare routine restores natural radiance & firmness.",
+        "badge_1": "FEATURED DEMO",
+        "video_title_1": "Collagen Boost Application Routine",
+        "video_desc_1": "Watch step-by-step application technique for maximum collagen absorption and skin tightening.",
+        "btn_text_1": "Shop This Routine",
+        "badge_2": "REAL RESULTS",
+        "video_title_2": "Organic Damask Rose Hydration",
+        "video_desc_2": "Discover how pure botanical rose extracts replenish moisture reserves and calm sensitive skin.",
+        "btn_text_2": "Shop Botanical Set",
+        "bg_color": "#85444C",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "perplexo_why_us": {
+      "type": "perplexo_why_us",
+      "settings": {
+        "badge_text": "WHY CHOOSE PERPLEXO",
+        "title": "Uncompromising Quality for Your Skin & Self",
+        "sub_heading": "Experience luxury skincare crafted with clean botanicals, clinical precision, and conscious elegance.",
+        "bg_color": "#85444C",
+        "text_color": "#ffffff",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "perplexo_testimonials": {
+      "type": "perplexo_testimonials",
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "Visibly Firmer in 10 Days",
+            "body": "Fine lines softened dramatically. My skin feels supple, calm, and deeply nourished from morning to night.",
+            "author_name": "Elena Rostova",
+            "author_meta": "Verified Buyer • Paris, France",
+            "avatar_initials": "ER",
+            "product_tag": "Dr. Melaxin Collagen Boost Set"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "My Holy Grail Skincare",
+            "body": "Absorbs effortlessly without feeling greasy, leaving a dewy glass-skin glow that lasts all day.",
+            "author_name": "Sarah M.",
+            "author_meta": "Verified Buyer • New York, USA",
+            "avatar_initials": "SM",
+            "product_tag": "The Glow Bundle"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "Soothing & Ultra-Hydrating",
+            "body": "Calms redness instantly with a delicate Parisian rose aroma. Pure comfort for sensitive skin.",
+            "author_name": "Camille Dupont",
+            "author_meta": "Verified Buyer • Lyon, France",
+            "avatar_initials": "CD",
+            "product_tag": "Damask Rose Hydrating Cream"
+          }
+        },
+        "testimonial_4": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "verified": true,
+            "title": "Clinical Dermatological Quality",
+            "body": "Stands shoulder to shoulder with top European dermatological brands. Truly noticeable results.",
+            "author_name": "Hannah Bergmann",
+            "author_meta": "Verified Buyer • Berlin, Germany",
+            "avatar_initials": "HB",
+            "product_tag": "Peptide Firming Complex"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3",
+        "testimonial_4"
+      ],
+      "settings": {
+        "badge": "REAL REVIEWS, REAL RESULTS",
+        "title": "Loved by Thousands",
+        "subheading": "Discover why skincare lovers trust Preplexo for their daily routine and visible skin transformation.",
+        "rating_text": "4.9/5 from 3,200+ verified customers",
+        "speed": 42,
+        "bg_color": "rgba(255, 255, 255, 0.25)",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "perplexo_bundles": {
+      "type": "perplexo_bundles",
+      "settings": {
+        "badge_text": "DIY CHARM KIT",
+        "title": "Featured DIY Charm Kit",
+        "sub_heading": "Create your own fantasy K-Pop charm bracelet — a complete DIY kit, perfect for gifting.",
+        "bg_color": "#85444C",
+        "text_color": "#85444C",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "perplexo_faq": {
+      "type": "perplexo_faq",
+      "settings": {
+        "badge_text": "FREQUENTLY ASKED QUESTIONS",
+        "title": "Got Questions? We Have Answers.",
+        "sub_heading": "Everything you need to know about our products, shipping, returns, and satisfaction guarantees.",
+        "support_email": "preplexo4@gmail.com",
+        "bg_color": "#85444C",
+        "text_color": "#85444C",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": [
+    "perplexo_hero",
+    "perplexo_ticker",
+    "perplexo_collections",
+    "perplexo_products",
+    "perplexo_favourite",
+    "perplexo_videos",
+    "perplexo_why_us",
+    "perplexo_testimonials",
+    "perplexo_bundles",
+    "perplexo_faq"
+  ]
+}

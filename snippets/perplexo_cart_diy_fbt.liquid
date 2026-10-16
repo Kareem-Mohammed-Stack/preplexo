@@ -1,0 +1,109 @@
+{% comment %}
+  Cart drawer DIY FBT — same pink frame as PDP, button below the frame.
+  Shows when DIY kit is in cart and storybook is not.
+{% endcomment %}
+
+{%- liquid
+  assign diy_in_cart = false
+  assign companion_in_cart = false
+  assign diy_line_item = nil
+  assign diy_product = all_products['diy-k-pop-demon-hunters-inspired-charm-bracelet-kit']
+  assign companion = all_products['storybook-favourites-advent-calendar']
+
+  for item in cart.items
+    assign item_title = item.product.title | downcase
+    assign item_handle = item.product.handle | downcase
+    if item_handle == 'diy-k-pop-demon-hunters-inspired-charm-bracelet-kit' or item_title contains 'diy' or item_handle contains 'diy'
+      assign diy_in_cart = true
+      assign diy_line_item = item
+      if diy_product == blank
+        assign diy_product = item.product
+      endif
+    endif
+    if item_handle == 'storybook-favourites-advent-calendar' or item_title contains 'storybook' or item_handle contains 'storybook'
+      assign companion_in_cart = true
+    endif
+  endfor
+
+  assign companion_variant = companion.selected_or_first_available_variant
+  assign diy_variant = diy_product.selected_or_first_available_variant
+  if diy_line_item != blank
+    assign diy_variant = diy_line_item.variant
+  endif
+
+  assign diy_image = diy_product.featured_image
+  if diy_line_item != blank and diy_line_item.image != blank
+    assign diy_image = diy_line_item.image
+  endif
+  assign companion_image = companion.featured_image
+  if companion_image == blank and companion.images.size > 0
+    assign companion_image = companion.images.first
+  endif
+-%}
+
+{%- if cart != empty and diy_in_cart and companion_in_cart == false and companion != blank and diy_product != blank and companion_variant != blank -%}
+  {%- liquid
+    assign bundle_sum = diy_variant.price | plus: companion_variant.price
+    assign bundle_price = bundle_sum | times: 83 | divided_by: 100
+  -%}
+
+  {{ 'perplexo-diy-offers.css' | asset_url | stylesheet_tag }}
+
+  <div
+    class="perplexo-cart-fbt perplexo-diy__fbt-wrap"
+    data-perplexo-cart-fbt
+    data-money-format="{{ shop.money_format | escape }}"
+  >
+    <div class="perplexo-diy__fbt">
+      <p class="perplexo-diy__fbt-heading">People usually buy these two together</p>
+
+      <div class="perplexo-diy__fbt-row">
+        <div class="perplexo-diy__fbt-media">
+          {%- if diy_image != blank -%}
+            {{ diy_image | image_url: width: 200 | image_tag: class: 'perplexo-diy__fbt-img', loading: 'lazy', alt: diy_product.title }}
+          {%- endif -%}
+          <span class="perplexo-diy__fbt-plus" aria-hidden="true">+</span>
+          {%- if companion_image != blank -%}
+            {{ companion_image | image_url: width: 200 | image_tag: class: 'perplexo-diy__fbt-img', loading: 'lazy', alt: companion.title }}
+          {%- else -%}
+            <div class="perplexo-diy__fbt-img perplexo-cart-fbt__img-placeholder" aria-hidden="true"></div>
+          {%- endif -%}
+        </div>
+        <div class="perplexo-diy__fbt-info">
+          <p class="perplexo-diy__fbt-title">Charm kit + storybook calendar</p>
+          <p class="perplexo-diy__fbt-price" data-bundle-price>{{ bundle_price | money }}</p>
+        </div>
+      </div>
+
+      {%- if companion.variants.size > 1 -%}
+        <div class="perplexo-diy__fbt-variants" role="group" aria-label="Storybook style">
+          {%- for variant in companion.variants -%}
+            {%- assign pill_sum = diy_variant.price | plus: variant.price -%}
+            {%- assign pill_bundle = pill_sum | times: 83 | divided_by: 100 -%}
+            <button
+              type="button"
+              class="perplexo-diy__variant-pill{% if forloop.first %} is-active{% endif %}"
+              data-variant-id="{{ variant.id }}"
+              data-bundle-price="{{ pill_bundle }}"
+              {% unless variant.available %}disabled{% endunless %}
+            >
+              {{ variant.title | escape }}
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <button
+      type="button"
+      class="perplexo-diy__btn perplexo-diy__btn--bundle"
+      data-add-both
+      data-diy-in-cart="1"
+      data-main-variant="{{ diy_variant.id }}"
+      data-companion-variant="{{ companion_variant.id }}"
+      {% if companion_variant.available == false %}disabled{% endif %}
+    >
+      ADD BOTH TO CART
+    </button>
+  </div>
+{%- endif -%}

@@ -1,0 +1,291 @@
+{{ 'perplexo-why-us.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    {%- if section.settings.bg_color != blank -%}
+      background-color: {{ section.settings.bg_color }};
+    {%- endif -%}
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  {%- if section.settings.text_color != blank -%}
+    .section-{{ section.id }}-padding .perplexo-why-us__title {
+      color: {{ section.settings.text_color }};
+    }
+  {%- endif -%}
+{%- endstyle -%}
+
+<section class="perplexo-why-us section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.title != blank or section.settings.badge_text != blank -%}
+      <div class="perplexo-why-us__header scroll-trigger animate--slide-in">
+        {%- if section.settings.badge_text != blank -%}
+          <span class="perplexo-why-us__badge">{{ section.settings.badge_text | escape }}</span>
+        {%- endif -%}
+
+        {%- if section.settings.title != blank -%}
+          <h2 class="perplexo-why-us__title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.sub_heading != blank -%}
+          <p class="perplexo-why-us__sub-heading">{{ section.settings.sub_heading | escape }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="perplexo-why-us__grid">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <a href="{{ routes.all_products_collection_url }}" class="perplexo-why-us__card scroll-trigger animate--slide-in" data-cascade style="color: inherit; text-decoration: none; display: flex; flex-direction: column; --animation-order: {{ forloop.index }};" {{ block.shopify_attributes }}>
+            <div class="perplexo-why-us__card-top">
+              <div class="perplexo-why-us__icon-box">
+                {%- case block.settings.icon -%}
+                  {%- when 'leaf' -%}
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                      <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                    </svg>
+                  {%- when 'sparkles' -%}
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                      <path d="M5 3v4"></path>
+                      <path d="M19 17v4"></path>
+                      <path d="M3 5h4"></path>
+                      <path d="M17 19h4"></path>
+                    </svg>
+                  {%- when 'shield' -%}
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                      <path d="m9 12 2 2 4-4"></path>
+                    </svg>
+                  {%- when 'truck' -%}
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="1" y="3" width="15" height="13"></rect>
+                      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                      <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                      <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                    </svg>
+                  {%- else -%}
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                {%- endcase -%}
+              </div>
+              <span class="perplexo-why-us__number">0{{ forloop.index }}</span>
+            </div>
+
+            {%- if block.settings.title != blank -%}
+              <h3 class="perplexo-why-us__card-title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+
+            {%- if block.settings.description != blank -%}
+              <p class="perplexo-why-us__card-desc">{{ block.settings.description | escape }}</p>
+            {%- endif -%}
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Default 4 Feature Cards -->
+        <a href="{{ routes.all_products_collection_url }}" class="perplexo-why-us__card" style="color: inherit; text-decoration: none; display: flex; flex-direction: column;">
+          <div class="perplexo-why-us__card-top">
+            <div class="perplexo-why-us__icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+              </svg>
+            </div>
+            <span class="perplexo-why-us__number">01</span>
+          </div>
+          <h3 class="perplexo-why-us__card-title">Clean Botanical Formulas</h3>
+          <p class="perplexo-why-us__card-desc">Formulated without harsh parabens or toxins. Pure, conscious ingredients crafted for radiant skin health.</p>
+        </a>
+
+        <a href="{{ routes.all_products_collection_url }}" class="perplexo-why-us__card" style="color: inherit; text-decoration: none; display: flex; flex-direction: column;">
+          <div class="perplexo-why-us__card-top">
+            <div class="perplexo-why-us__icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                <path d="M5 3v4"></path>
+                <path d="M19 17v4"></path>
+                <path d="M3 5h4"></path>
+                <path d="M17 19h4"></path>
+              </svg>
+            </div>
+            <span class="perplexo-why-us__number">02</span>
+          </div>
+          <h3 class="perplexo-why-us__card-title">Clinical Collagen Boost</h3>
+          <p class="perplexo-why-us__card-desc">Dermatologist tested formulas engineered for deep cellular hydration, elasticity, and visible firmness.</p>
+        </a>
+
+        <a href="{{ routes.all_products_collection_url }}" class="perplexo-why-us__card" style="color: inherit; text-decoration: none; display: flex; flex-direction: column;">
+          <div class="perplexo-why-us__card-top">
+            <div class="perplexo-why-us__icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+            </div>
+            <span class="perplexo-why-us__number">03</span>
+          </div>
+          <h3 class="perplexo-why-us__card-title">100% Cruelty Free</h3>
+          <p class="perplexo-why-us__card-desc">Ethically sourced, never tested on animals, and packaged in eco-friendly sustainable materials.</p>
+        </a>
+
+        <a href="{{ routes.all_products_collection_url }}" class="perplexo-why-us__card" style="color: inherit; text-decoration: none; display: flex; flex-direction: column;">
+          <div class="perplexo-why-us__card-top">
+            <div class="perplexo-why-us__icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+              </svg>
+            </div>
+            <span class="perplexo-why-us__number">04</span>
+          </div>
+          <h3 class="perplexo-why-us__card-title">Fast Express Shipping</h3>
+          <p class="perplexo-why-us__card-desc">Delivery takes 3–5 business days, with 24/7 support and a 14-day return window.</p>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Choose Preplexo",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Pill Text",
+      "default": "WHY CHOOSE PERPLEXO"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading",
+      "default": "Uncompromising Quality for Your Skin & Self"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub-heading",
+      "default": "Experience luxury skincare crafted with clean botanicals, clinical precision, and conscious elegance."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#9c777a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Heading Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_card",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Select Icon",
+          "options": [
+            { "value": "leaf", "label": "Botanical Leaf" },
+            { "value": "sparkles", "label": "Sparkles / Clinical" },
+            { "value": "shield", "label": "Shield / Guarantee" },
+            { "value": "truck", "label": "Delivery Truck" }
+          ],
+          "default": "leaf"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "Clean Botanical Formulas"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Feature Description",
+          "default": "Formulated without harsh parabens or toxins. Pure, conscious ingredients crafted for radiant skin health."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose Preplexo",
+      "blocks": [
+        {
+          "type": "feature_card",
+          "settings": {
+            "icon": "leaf",
+            "title": "Clean Botanical Formulas",
+            "description": "Formulated without harsh parabens or toxins. Pure, conscious ingredients crafted for radiant skin health."
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "icon": "sparkles",
+            "title": "Clinical Collagen Boost",
+            "description": "Dermatologist tested formulas engineered for deep cellular hydration, elasticity, and visible firmness."
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "icon": "shield",
+            "title": "100% Cruelty Free",
+            "description": "Ethically sourced, never tested on animals, and packaged in eco-friendly sustainable materials."
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "icon": "truck",
+            "title": "Fast Express Shipping",
+            "description": "Delivery takes 3–5 business days, with 24/7 support and a 14-day return window."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

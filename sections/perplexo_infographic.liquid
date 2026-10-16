@@ -1,0 +1,286 @@
+{{ 'perplexo-infographic.css' | asset_url | stylesheet_tag }}
+
+<section class="perplexo-info" id="perplexo-info-{{ section.id }}">
+  <div class="perplexo-info__inner">
+
+    <!-- 1. Hero Section -->
+    <div class="perplexo-info__hero">
+      <div class="perplexo-info__hero-text">
+        <h2 class="perplexo-info__hero-title">{{ section.settings.title }}</h2>
+        <h3 class="perplexo-info__hero-subtitle">{{ section.settings.subtitle }}</h3>
+        <p class="perplexo-info__hero-desc">{{ section.settings.description }}</p>
+      </div>
+      <div class="perplexo-info__hero-img">
+        {%- if section.settings.hero_image != blank -%}
+          {{ section.settings.hero_image | image_url: width: 1000 | image_tag: loading: 'lazy' }}
+        {%- else -%}
+          <!-- Placeholder if no image -->
+          <img src="{{ 'hero_card1.png' | asset_url }}" alt="Hero Products" loading="lazy" width="1000" height="1000">
+        {%- endif -%}
+      </div>
+    </div>
+
+    <!-- 2. Features Row -->
+    <div class="perplexo-info__features">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'feature' -%}
+          <div class="perplexo-info__feature" {{ block.shopify_attributes }}>
+            <div class="perplexo-info__feature-icon">
+              <!-- Using simple placeholder SVGs based on block title, in reality user would pick icons -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            </div>
+            <div class="perplexo-info__feature-text">{{ block.settings.title | escape }}</div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <!-- 3. Our Products -->
+    <div class="perplexo-info__products-wrapper">
+      <h3 class="perplexo-info__section-title">Our Products</h3>
+      <div class="perplexo-info__products">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'product' -%}
+            <div class="perplexo-info__product" {{ block.shopify_attributes }}>
+              <div class="perplexo-info__product-img">
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: 300 | image_tag: loading: 'lazy' }}
+                {%- else -%}
+                  <img src="{{ 'prod_melaxin_1.png' | asset_url }}" loading="lazy" alt="Product" width="300" height="300">
+                {%- endif -%}
+              </div>
+              <h4 class="perplexo-info__product-title">{{ block.settings.title | escape }}</h4>
+              <p class="perplexo-info__product-desc">{{ block.settings.description | escape }}</p>
+              {%- if block.settings.badge != blank -%}
+                <span class="perplexo-info__product-badge">{{ block.settings.badge | escape }}</span>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <!-- 4. Details Grid (Ingredients + How To Use) -->
+    <div class="perplexo-info__details">
+      <!-- Key Ingredients -->
+      <div class="perplexo-info__details-col">
+        <h3 class="perplexo-info__section-title" style="text-align: left;">Key Ingredients</h3>
+        <div class="perplexo-info__ingredients">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'ingredient' -%}
+              <div class="perplexo-info__ingredient" {{ block.shopify_attributes }}>
+                <div class="perplexo-info__ingredient-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                </div>
+                <div>
+                  <h4 class="perplexo-info__ingredient-title">{{ block.settings.title | escape }}</h4>
+                  <p class="perplexo-info__ingredient-desc">{{ block.settings.description | escape }}</p>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <!-- How To Use -->
+      <div class="perplexo-info__details-col">
+        <h3 class="perplexo-info__section-title" style="text-align: left;">How To Use</h3>
+        <div class="perplexo-info__steps">
+          {%- assign step_count = 1 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'step' -%}
+              <div class="perplexo-info__step" {{ block.shopify_attributes }}>
+                <div class="perplexo-info__step-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20V10M12 20L8 16M12 20L16 16M12 4v2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h4 class="perplexo-info__step-title">{{ step_count }}. {{ block.settings.title | escape }}</h4>
+                <p class="perplexo-info__step-desc">{{ block.settings.description | escape }}</p>
+              </div>
+              {%- assign step_count = step_count | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <div class="perplexo-info__suitable">
+          <h4 class="perplexo-info__suitable-title">Suitable For</h4>
+          <ul class="perplexo-info__suitable-list">
+            <li class="perplexo-info__suitable-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              All skin types
+            </li>
+            <li class="perplexo-info__suitable-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              Daily use
+            </li>
+            <li class="perplexo-info__suitable-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              Especially dull, uneven skin
+            </li>
+            <li class="perplexo-info__suitable-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              Morning & night
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Footer Badges -->
+    <div class="perplexo-info__footer">
+      <div class="perplexo-info__footer-badge">
+        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <span class="perplexo-info__footer-text">Dermatologically Tested</span>
+      </div>
+      <div class="perplexo-info__footer-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+        <span class="perplexo-info__footer-text">Paraben Free</span>
+      </div>
+      <div class="perplexo-info__footer-badge">
+        <svg viewBox="0 0 24 24"><path d="M20 12H4m8-8v16" /></svg>
+        <span class="perplexo-info__footer-text">Artificial Color Free</span>
+      </div>
+      <div class="perplexo-info__footer-badge">
+        <svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+        <span class="perplexo-info__footer-text">Cruelty Free</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Infographic Long-Scroll",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Hero Title",
+      "default": "Dr.Melaxin Calcium CX"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Hero Subtitle",
+      "default": "Science-Backed Care For Stronger, Brighter Skin"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Hero Description",
+      "default": "Dr.Melaxin Calcium CX combines the power of Calcium and advanced active ingredients to help restore elasticity, even skin tone and healthy radiance."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image (Products Group)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "Strengthens Skin Barrier"
+        }
+      ]
+    },
+    {
+      "type": "product",
+      "name": "Product Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Product Title",
+          "default": "CYANO PINK SPICULE SERUM"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Brightening dual serum with Vitamin B12 and spicules to revitalize dull skin."
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Pill Badge Text",
+          "default": "10,000ppm"
+        }
+      ]
+    },
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Ingredient Name",
+          "default": "Calcium"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Helps strengthen the skin barrier and support healthy skin function."
+        }
+      ]
+    },
+    {
+      "type": "step",
+      "name": "How To Use Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title",
+          "default": "SERUM"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Apply appropriate amount of serum and gently pat into skin."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Infographic Long-Scroll",
+      "blocks": [
+        { "type": "feature", "settings": { "title": "Strengthens Skin Barrier" } },
+        { "type": "feature", "settings": { "title": "Improves Elasticity & Firmness" } },
+        { "type": "feature", "settings": { "title": "Evens Skin Tone & Brightens" } },
+        { "type": "feature", "settings": { "title": "Deep Hydration & Nourishment" } },
+        { "type": "feature", "settings": { "title": "Dermatologically Tested" } },
+        { "type": "product", "settings": { "title": "CYANO PINK SPICULE SERUM", "description": "Brightening dual serum with Vitamin B12 and spicules to revitalize dull skin.", "badge": "10,000ppm" } },
+        { "type": "product", "settings": { "title": "PICOTONICS PIGMENTATION SERUM", "description": "Targets dark spots and discoloration for a more even skin tone.", "badge": "10,900ppm" } },
+        { "type": "product", "settings": { "title": "EX VOLUME FIRMING CREAM", "description": "Hydrolyzed Elastin and Rebornic help improve elasticity and firm the skin.", "badge": "18,000ppm" } },
+        { "type": "product", "settings": { "title": "VOLUME CREAM", "description": "Nourishing cream that enhances volume and leaves skin smooth and plump.", "badge": "10,000ppm" } },
+        { "type": "product", "settings": { "title": "VOLUME MULTI BALM", "description": "Multi-use balm that helps smooth and firm areas anytime, anywhere.", "badge": "10,000ppm" } },
+        { "type": "ingredient", "settings": { "title": "Calcium", "description": "Helps strengthen the skin barrier and support healthy skin function." } },
+        { "type": "ingredient", "settings": { "title": "Rebornic", "description": "Patented ingredient that improves elasticity and skin resilience." } },
+        { "type": "ingredient", "settings": { "title": "Hydrolyzed Elastin", "description": "Helps firm and plump for youthful-looking skin." } },
+        { "type": "ingredient", "settings": { "title": "Vitamin B12", "description": "Brightens and revitalizes tired, dull skin." } },
+        { "type": "step", "settings": { "title": "SERUM", "description": "Apply appropriate amount of serum and gently pat into skin." } },
+        { "type": "step", "settings": { "title": "TREAT", "description": "Apply targeted treatment serum to areas of concern." } },
+        { "type": "step", "settings": { "title": "MOISTURIZE", "description": "Take an adequate amount of cream and apply evenly to face." } },
+        { "type": "step", "settings": { "title": "BALM", "description": "Use multi balm on areas that need extra care and firming." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

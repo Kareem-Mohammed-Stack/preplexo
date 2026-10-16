@@ -1,0 +1,179 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+/*
+ * ------------------------------------------------------------
+ * Kieuo Dark Spot & Glow Toner product landing page.
+ * Assign this template to the product in Shopify admin.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "aura-product",
+      "settings": {
+        "brand": "KIEUO",
+        "show_rating": true,
+        "rating_label": "4.9 · 1,356 verified reviews",
+        "lead": "Fade dark spots and even your tone in 2–3 weeks — a daily toner for glass-skin glow, without irritation.",
+        "feature_1": "Fades dark spots",
+        "feature_2": "Evens skin tone",
+        "feature_3": "Barrier-safe glow",
+        "feature_4": "14-day trial",
+        "cta_label": "Add to cart",
+        "show_dynamic_checkout": true,
+        "trust_1": "14-day money-back guarantee",
+        "trust_2": "Dermatologist-inspired formula",
+        "trust_3": "Free worldwide shipping",
+        "details": "<ul><li><strong>Targets dark spots</strong> — visibly fades hyperpigmentation and uneven patches</li><li><strong>Glass-skin glow</strong> — hydrates and brightens for a lit-from-within finish</li><li><strong>Barrier-safe</strong> — gentle enough for daily use, including sensitive skin</li><li><strong>Simple ritual</strong> — apply after cleansing, before serum</li><li><strong>All skin types</strong> — vegan and cruelty-free</li></ul>",
+        "shipping_info": "<p>Free worldwide shipping. Delivery takes 3–5 business days. You can request a return within 14 days for a full refund.</p>",
+        "specs": "<p>Dark spot &amp; glow toner · All skin types · Vegan · Cruelty-free · Daily use after cleansing.</p>",
+        "padding_top": 32,
+        "padding_bottom": 64,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "aura_videos": {
+      "type": "aura-videos",
+      "settings": {}
+    },
+    "aura_testimonials": {
+      "type": "aura-reviews",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "title": "My dark spots faded in 3 weeks!",
+            "text": "<p>I've tried so many toners. Kieuo is the first one that actually faded my sun spots without irritating my skin.</p>",
+            "customer_name": "Layla M.",
+            "city_name": "Purchased: Kieuo Dark Spot & Glow Toner"
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "title": "Finally going bare-faced with confidence.",
+            "text": "<p>The glass-skin glow is real. My skin feels hydrated, smooth, and looks brighter every morning.</p>",
+            "customer_name": "Nadia K.",
+            "city_name": "Purchased: Kieuo Dark Spot & Glow Toner"
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "title": "Gentle but actually works.",
+            "text": "<p>Sensitive skin here — no redness, no stinging. Just clearer, more even skin after a few weeks.</p>",
+            "customer_name": "Sarah H.",
+            "city_name": "Purchased: Kieuo Dark Spot & Glow Toner"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3"
+      ],
+      "settings": {
+        "title": "Loved by Thousands of Glow-Getters",
+        "heading_size": "h1",
+        "heading_center": "center",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "color_star": "#b86b7a",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "aura_faq": {
+      "type": "aura-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "item",
+          "settings": {
+            "question": "How do I use Kieuo toner?",
+            "answer": "<p>After cleansing, sweep onto face and neck with a cotton pad or your palms. Follow with serum and moisturizer. Use morning and night.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "item",
+          "settings": {
+            "question": "How long until I see results?",
+            "answer": "<p>Most people notice a brighter, more even look in 2–3 weeks with daily use. Dark spots continue to fade with consistent use.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "item",
+          "settings": {
+            "question": "Is it suitable for sensitive skin?",
+            "answer": "<p>Yes. The formula is barrier-safe and designed for daily use, including sensitive skin. Patch-test if your skin is reactive.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "item",
+          "settings": {
+            "question": "Is it vegan and cruelty-free?",
+            "answer": "<p>Yes. Kieuo Dark Spot &amp; Glow Toner is vegan and cruelty-free, and made for all skin types.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "item",
+          "settings": {
+            "question": "What’s your returns policy?",
+            "answer": "<p>You can request a return within 14 days for a full refund.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "settings": {
+        "eyebrow": "QUESTIONS",
+        "title": "Kieuo FAQ",
+        "open_first": true,
+        "padding_top": 56,
+        "padding_bottom": 40
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "collection_text_alignment": "center",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "image_no_crop": true,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_desc": true,
+        "quick_desc_legth": 90,
+        "quick_desc_size": 13,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "aura_videos",
+    "aura_testimonials",
+    "aura_faq",
+    "related-products"
+  ]
+}

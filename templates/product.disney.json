@@ -1,0 +1,1070 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "breadcrumbs_mhcn3t": {
+          "type": "breadcrumbs",
+          "settings": {
+            "title_home": "Home",
+            "padding_top": 0,
+            "padding_top_mb": 0,
+            "padding_bottom": 0,
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "testimonial_images_dwVMnc": {
+          "type": "testimonial-images",
+          "settings": {
+            "image_size": 0.8,
+            "image_space": -18,
+            "image": "shopify://shop_images/Testimonial_Image_Review_5.jpg",
+            "hide_img_2": false,
+            "image_2": "shopify://shop_images/Testimonial_Image_Review_3.jpg",
+            "hide_img_3": false,
+            "image_3": "shopify://shop_images/Testimonial_Image_Review_3.jpg",
+            "hide_img_4": false,
+            "image_4": "shopify://shop_images/Testimonial_Image_Review_1.jpg",
+            "hide_img_5": false,
+            "image_5": "shopify://shop_images/Testimonial_Image_Review_4.jpg",
+            "text_block": "<p>★★★★★ Excellent 4.8</p>",
+            "text_size": 13,
+            "text_style": "body"
+          }
+        },
+        "2fead2d5-7a3f-49d9-bacf-1d813be9861e": {
+          "type": "review",
+          "disabled": true,
+          "settings": {
+            "lrw_text": "<strong>4.8 - 1356 Reviews</strong>",
+            "text_size": 14,
+            "star_style": "star",
+            "star_size": 0.7,
+            "star_rating": 4.5,
+            "lrw_star_color": "#000000",
+            "lrw_star_color_disable": "#eeeeee",
+            "lrw_color": "#d50000",
+            "margin_top": 15,
+            "margin_bottom": 10
+          }
+        },
+        "title_JizAxD": {
+          "type": "title",
+          "settings": {
+            "title_size": 31,
+            "title_height": 120,
+            "text_transform": "none"
+          }
+        },
+        "8f8d8903-27e7-4cac-99c4-ec1b60b7f309": {
+          "type": "fomo",
+          "settings": {
+            "fomo_text_before": "<strong>(x) people are looking at this!</strong>",
+            "text_style": "uppercase",
+            "text_size": 10,
+            "color_scheme": "accent-2",
+            "fomo_border_activate": false,
+            "fomo_border": 0,
+            "fomo_border_color": "#ffe7ec",
+            "pill_color": "#3889b9",
+            "fomo_min": 8,
+            "fomo_max": 16,
+            "fomo_speed": 3,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "margin_top": 16,
+            "margin_bottom": 0
+          }
+        },
+        "auto_tabs_epeaKh": {
+          "type": "auto_tabs",
+          "disabled": true,
+          "settings": {
+            "tabs_color_scheme": "scheme-c8c05c75-1914-4148-9446-95aa92ade006",
+            "compact": false,
+            "auto_tab_heading": 13,
+            "padding_top": 16,
+            "padding_bottom": 16
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "price_style": "price",
+            "price_size": 20,
+            "badge_text_1": 13,
+            "price_first": true,
+            "badge_bg_1": "#d50000",
+            "badge_price_1": "#ffffff",
+            "price_size_2": 1,
+            "badge_price": "#8b8d8f",
+            "price_bold_2": false,
+            "sale_price_color": "#d50000",
+            "regular_price_color": "#212121",
+            "price_bold": true,
+            "badge_hide": false,
+            "taxes_hide": false,
+            "shipping_hide": false,
+            "padding_top": 4,
+            "padding_bottom": 4
+          }
+        },
+        "description_7rxnqF": {
+          "type": "description",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "label_style": "body",
+            "font_size": 14,
+            "font_style": "normal",
+            "swatchType": "color",
+            "optionName": "Color",
+            "swatchStyle": "round",
+            "swatchSize": 30,
+            "swatchHeight": 30,
+            "size_trigger": "Size",
+            "chart_id": "Size Chart",
+            "size_page": ""
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+            "enable_quantity_discounts": true,
+            "headline": "Choose your offer",
+            "txt_size_head_qb": 18,
+            "sub_headline": "This offer is for limited time only",
+            "txt_size_subhead_qb": 12,
+            "background_top_qb": "#ffffff",
+            "background_top_text_qb": "#212121",
+            "background_qb": "#ffffff",
+            "border_qb": "#000000",
+            "check_bg_qb": "#e9ecef",
+            "check_border_qb": "#000000",
+            "check_dot": "#000000",
+            "hover_bg_qb": "#ffffff",
+            "hover_border_qb": "#000000",
+            "badge_qb": "#000000",
+            "badge_qb_text": "#ffffff",
+            "compare_price": "#000000",
+            "qb_border_wd": 2,
+            "qb_border": 4,
+            "padding_top": 20,
+            "padding_bottom": 20,
+            "preselected": "option_1",
+            "display_badge": "none",
+            "badge_text": "Most Popular",
+            "option_1_quantity": 1,
+            "option_1_label": "",
+            "option_1_benefit": "",
+            "option_1_caption": "You save [amount]",
+            "option_1_discount_type": "none",
+            "option_1_percentage_off": 0,
+            "option_1_fixed_amount_off": "0",
+            "option_2_quantity": 2,
+            "option_2_label": "",
+            "option_2_benefit": "",
+            "option_2_caption": "Only [item_price] per Item",
+            "option_2_discount_type": "none",
+            "option_2_percentage_off": 0,
+            "option_2_fixed_amount_off": "0",
+            "option_3_quantity": 3,
+            "option_3_label": "",
+            "option_3_benefit": "",
+            "option_3_caption": "You save [amount]",
+            "option_3_discount_type": "none",
+            "option_3_percentage_off": 0,
+            "option_3_fixed_amount_off": "0",
+            "option_4_quantity": 4,
+            "option_4_label": "",
+            "option_4_benefit": "",
+            "option_4_caption": "You save [amount]",
+            "option_4_discount_type": "none",
+            "option_4_percentage_off": 0,
+            "option_4_fixed_amount_off": "0"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_full_button": true,
+            "lm_main_button": "#000000",
+            "lm_main_button_gr": "",
+            "lm_main_text": "#ffffff",
+            "lm_button_animation": "soft",
+            "show_gift_card_recipient": true,
+            "skip_cart": true,
+            "cart_text": ""
+          }
+        },
+        "promo_slide_8CpDYK": {
+          "type": "promo-slide",
+          "disabled": true,
+          "settings": {
+            "block_heading": "Nourished and youthful!",
+            "text_1": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store. ★★★★★</p>",
+            "show_slide_2": true,
+            "block_heading_2": "Smooth and refreshed.",
+            "text_2": "<p>This product has transformed my skin! It’s never felt so smooth and refreshed.</p>",
+            "show_slide_3": true,
+            "block_heading_3": "Game-changer",
+            "text_3": "<p>A game-changer for my skincare routine. My complexion is brighter and clearer.</p>",
+            "color_scheme": "accent-2",
+            "slide_padding": 20,
+            "show_border": true,
+            "border_color": "#e4e4e4",
+            "slide_wrapper_radius": 6,
+            "slide_img_size": 60,
+            "slide_img_radius": 100,
+            "head_size": 12,
+            "text_size": 12,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        },
+        "ad4a2bc2-8dd2-4105-9923-5bd7d66f77f3": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "color_scheme": "background-1",
+            "icon_font_size": 11,
+            "icon_1": "box",
+            "heading_1": "<strong>FREE SHIPPING GLOBLY</strong>",
+            "icon_2": "return",
+            "heading_2": "<strong>14 DAY RETURNS</strong>",
+            "icon_3": "chat_bubble",
+            "heading_3": "<strong>24/7 Customer Support</strong>"
+          }
+        },
+        "eb02bfdc-836f-40fa-bc36-a93ccbb6f998": {
+          "type": "collapsible_tab",
+          "settings": {
+            "open_first_collapsible_row": false,
+            "heading": "Description",
+            "icon": "clipboard",
+            "content": "<p>Discover the magic of the holiday season with the Disney Favourites Advent Calendar. This expertly curated collection features 24 enchanting pieces inspired by beloved Disney characters, perfect for adding a touch of whimsy to your jewelry collection. Each day reveals a unique charm or accessory, crafted with attention to detail and quality. Ideal for Disney fans and collectors, this advent calendar offers a delightful countdown experience that combines festive excitement with timeless elegance.</p>",
+            "page": ""
+          }
+        },
+        "d3e392fa-572e-4895-a7d3-dd12277627ff": {
+          "type": "collapsible_tab",
+          "settings": {
+            "open_first_collapsible_row": false,
+            "heading": "Global Tracked Shipping",
+            "icon": "truck",
+            "content": "<p>Get <strong>Free Tracked Worldwide Shipping</strong> on all orders. Delivery takes <strong>3–5 business days</strong>.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_NENjgt": {
+          "type": "collapsible_tab",
+          "settings": {
+            "open_first_collapsible_row": false,
+            "heading": "Love It Or Your Money Back",
+            "icon": "heart",
+            "content": "<p>Here at <strong>TRENDORA</strong>, we are so confident in our products that if you are still not satisfied with your Disney Favourites Advent Calendar within 14 days, simply return it, and we'll <strong>process your refund without any hassle</strong>.</p><p>Seriously, we're committed to ensuring you get the product you deserve.</p>",
+            "page": ""
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "breadcrumbs_mhcn3t",
+        "testimonial_images_dwVMnc",
+        "2fead2d5-7a3f-49d9-bacf-1d813be9861e",
+        "title_JizAxD",
+        "8f8d8903-27e7-4cac-99c4-ec1b60b7f309",
+        "auto_tabs_epeaKh",
+        "price",
+        "description_7rxnqF",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "promo_slide_8CpDYK",
+        "ad4a2bc2-8dd2-4105-9923-5bd7d66f77f3",
+        "eb02bfdc-836f-40fa-bc36-a93ccbb6f998",
+        "d3e392fa-572e-4895-a7d3-dd12277627ff",
+        "collapsible_tab_NENjgt",
+        "share"
+      ],
+      "custom_css": [],
+      "settings": {
+        "enable_sticky_info": true,
+        "show_feature_media": false,
+        "color_scheme": "",
+        "show_container": true,
+        "container_radius": 10,
+        "container_padding": 30,
+        "container_color": "#ffffff",
+        "container_border_color": "#744c26",
+        "container_text": "",
+        "container_text_bg": "#212121",
+        "container_text_txt": "#ffffff",
+        "show_container_mb": true,
+        "container_padding_mb": 20,
+        "container_radius_mb": 8,
+        "container_color_mb": "#ffffff",
+        "container_border_color_mb": "#000000",
+        "media_size": "medium",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "thumbnail_size": 70,
+        "thumbnail_radius": 4,
+        "media_position": "left",
+        "image_zoom": "none",
+        "mobile_thumbnails": "show",
+        "show_full_image": true,
+        "first_image_size": 100,
+        "second_image_size": 0,
+        "hide_variants": true,
+        "enable_video_looping": true,
+        "padding_top": 8,
+        "padding_bottom": 76,
+        "padding_top_mb": 0,
+        "padding_bottom_mb": 36
+      }
+    },
+    "ebd38537-357b-4b9d-94d3-8480c1f8694b": {
+      "type": "random-number",
+      "settings": {
+        "layout": "full_bleed",
+        "color_scheme": "scheme-a5804aff-65ef-4d98-9b3d-fee032a22621",
+        "pill_color": "#84f210",
+        "fomo_border": 6,
+        "fomo_border_color": "#744c26",
+        "fomo_min": 8,
+        "fomo_max": 16,
+        "fomo_speed": 3,
+        "fomo_text_before": "<strong>[Limited stock]</strong>",
+        "number_bold": true,
+        "fomo_text_after": "Peoples are checking out right now",
+        "text_alignment": "center",
+        "padding_top": 12,
+        "padding_bottom": 12,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "41eff030-bfe6-4439-9af3-bc24e7cb0559": {
+      "type": "custom-fonts",
+      "blocks": {
+        "abd19213-10d7-45b5-b8e0-532450e7ddab": {
+          "type": "image",
+          "settings": {
+            "name": "customfont",
+            "custom_font_weight": "none",
+            "custom_font_style": "none",
+            "custom_font_url": "",
+            "apply_h1": true,
+            "apply_h2": true,
+            "apply_h3": true,
+            "apply_h4": true,
+            "apply_h5": true,
+            "apply_h6": true,
+            "apply_span": true,
+            "apply_p": true,
+            "apply_custom": ""
+          }
+        }
+      },
+      "block_order": [
+        "abd19213-10d7-45b5-b8e0-532450e7ddab"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable": true
+      }
+    },
+    "multicolumn_ax9CUA": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_dMrDj9": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/t1.webp",
+            "title": "⭐⭐⭐⭐⭐",
+            "text": "<p>\"My girlfriend has been a big stitch fan since she was a kid as you can see from the drawing hahah. She loved this and cracked it open as she couldn't wait. The charms looked great and she couldn't be happier. Happy girl happy world ;)\"</p><p><em><strong>- Justin H.</strong></em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_JWe3FX": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/t2.webp",
+            "title": "⭐⭐⭐⭐⭐",
+            "text": "<p>\"I bought this for my daughter who loves Stitch and Lilo! I'm looking forward to opening this each day of Christmas with her. Shipping was fast though!\"</p><p><em><strong>- James P.</strong></em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_EjHHAp": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/t3.jpg",
+            "title": "⭐⭐⭐⭐⭐",
+            "text": "<p>\"I bought two sets, one for myself and the other for my boyfriend. I had to take a sneak peak at the charms and I can't wait to open them in December! Got Winnie the Pooh for my man and Stitch for me. They look superrr good &lt;3\"</p><p><em><strong>- Nicole V.</strong></em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_dMrDj9",
+        "column_JWe3FX",
+        "column_EjHHAp"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "<strong>What Our Disney Fans Have To Say!</strong>",
+        "heading_size": "h1",
+        "heading_center": "center",
+        "image_width": "full",
+        "image_ratio": "portrait",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "navigation_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "scroll_text_CJBaLQ": {
+      "type": "scroll-text",
+      "blocks": {
+        "text_zM6pmY": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>✦ SALE ENDS AT MIDNIGHT ✦</strong>",
+            "url": "",
+            "icon": "none",
+            "outline_all": false,
+            "outline_text": "scrolling",
+            "text_color": "#121212",
+            "text_size": 20,
+            "text_size_mobile": 18,
+            "text_height": 130,
+            "text_mr": 50,
+            "text_mr_mobile": 40
+          }
+        },
+        "text_zLCeTJ": {
+          "type": "text",
+          "settings": {
+            "text": "✦ SALE ENDS AT MIDNIGHT ✦",
+            "url": "",
+            "icon": "none",
+            "outline_all": false,
+            "outline_text": "scrolling",
+            "text_color": "#121212",
+            "text_size": 20,
+            "text_size_mobile": 18,
+            "text_height": 130,
+            "text_mr": 50,
+            "text_mr_mobile": 40
+          }
+        }
+      },
+      "block_order": [
+        "text_zM6pmY",
+        "text_zLCeTJ"
+      ],
+      "name": "Scrolling text",
+      "settings": {
+        "reverse_direction": false,
+        "pause_hover": true,
+        "lazy": true,
+        "scrolling_velocity": 50,
+        "scrolling_velocity_mobile": 54,
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "padding_horizontal": 0,
+        "padding_horizontal_mobile": 0,
+        "full_width": true,
+        "content_width": 120,
+        "border_thickness": 0,
+        "section_radius": 0
+      }
+    },
+    "image_with_text_KnRfUR": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_8Ugf4E": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Discover a Disney adventure every day!💙</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_K6mrJp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Discover the magic of Stitch in a <strong>Unique Advent Calendar!</strong> Each day in December, open a box and find a New Component to build an enchanting Stitch-inspired bracelet. With high quality <strong>Charm and Chain</strong>, you can create a <strong>Special Jewel</strong> and carry it with you all year long!</p>",
+            "text_style": "body"
+          }
+        },
+        "button_pp3qRw": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://products/disney-favourites-advent-calendar",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_8Ugf4E",
+        "text_K6mrJp",
+        "button_pp3qRw"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/i1.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_j7zxWc": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_iec489": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Fitting Every Wrist</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_UqFwPW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Celebrate the holidays with the <strong>Disney Favourites Advent Calendar</strong> — featuring <strong>24 surprise charms and accessories</strong> inspired by beloved Disney characters like Mickey, Stitch, and Pooh. Build your own magical bracelet day by day and enjoy a touch of Disney joy all season long.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_8qPbDU": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://products/disney-favourites-advent-calendar",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_iec489",
+        "text_UqFwPW",
+        "button_8qPbDU"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/i2.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "scroll_text_Xd7x6V": {
+      "type": "scroll-text",
+      "blocks": {
+        "text_rRyWVX": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>✦ SALE ENDS AT MIDNIGHT ✦</strong>",
+            "url": "",
+            "icon": "none",
+            "outline_all": false,
+            "outline_text": "scrolling",
+            "text_color": "#121212",
+            "text_size": 20,
+            "text_size_mobile": 18,
+            "text_height": 130,
+            "text_mr": 50,
+            "text_mr_mobile": 40
+          }
+        },
+        "text_hWchyA": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>✦ SALE ENDS AT MIDNIGHT ✦</strong>",
+            "url": "",
+            "icon": "none",
+            "outline_all": false,
+            "outline_text": "scrolling",
+            "text_color": "#121212",
+            "text_size": 20,
+            "text_size_mobile": 18,
+            "text_height": 130,
+            "text_mr": 50,
+            "text_mr_mobile": 40
+          }
+        }
+      },
+      "block_order": [
+        "text_rRyWVX",
+        "text_hWchyA"
+      ],
+      "name": "Scrolling text",
+      "settings": {
+        "reverse_direction": false,
+        "pause_hover": true,
+        "lazy": true,
+        "scrolling_velocity": 50,
+        "scrolling_velocity_mobile": 54,
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "padding_horizontal": 0,
+        "padding_horizontal_mobile": 0,
+        "full_width": true,
+        "content_width": 120,
+        "border_thickness": 0,
+        "section_radius": 0
+      }
+    },
+    "rich_text_Y3DJqM": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_AryV7t": {
+          "type": "heading",
+          "settings": {
+            "heading": "14-Day Return Window",
+            "heading_size": "h1"
+          }
+        },
+        "text_kaE3zY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If for any reason, you aren't 100% happy with your order, we'll do absolutely everything in our power to make it right.<br/></p><p>We're offering a <strong>14-day money-back guarantee </strong>so you can comfortably try <strong>Disney Favourites Advent Calendar</strong> out.</p>"
+          }
+        },
+        "button_d3iUEH": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://products/disney-favourites-advent-calendar",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_AryV7t",
+        "text_kaE3zY",
+        "button_d3iUEH"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-a5804aff-65ef-4d98-9b3d-fee032a22621",
+        "full_width": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "wave_Y8ndwU": {
+      "type": "wave",
+      "disabled": true,
+      "name": "Wave",
+      "settings": {
+        "wave_height": 300,
+        "wave_curvature": 250,
+        "wave_style": "less",
+        "wave_side": "180",
+        "animation": true,
+        "animation_duration": 5,
+        "background_color": "#ffffff",
+        "wave_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": -100,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_horizontal": 0,
+        "padding_horizontal_mobile": 0,
+        "full_width": true,
+        "content_width": 120
+      }
+    },
+    "lumin_review_8EHAak": {
+      "type": "Lumin-review",
+      "blocks": {
+        "review_atbEdY": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Jacob T.",
+            "date_text": "January 2025",
+            "review_head": "So Magical!",
+            "review_text": "Absolutely adorable! The tiny surprises are perfect and very well crafted. Highly recommend!",
+            "like_size": 72,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_69rGQa": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Sophia M.",
+            "date_text": "January 2025",
+            "review_head": "Kids Loved It",
+            "review_text": "My daughter couldn't wait each morning to open a new window. So much joy and excitement!",
+            "like_size": 62,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_mmwK9n": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Jane B.",
+            "date_text": "February 2025",
+            "review_head": "Perfect for Disney Lovers!",
+            "review_text": "This calendar made our Christmas countdown extra special. Each day brought a smile to my kids' faces!",
+            "like_size": 82,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_Q4wjiT": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Mason L.",
+            "date_text": "March 2025",
+            "review_head": "Great Quality",
+            "review_text": "Great build quality and lovely details. You can tell effort was put into it.",
+            "like_size": 81,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_L9RJxn": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Sam S.",
+            "date_text": "April 2025",
+            "review_head": "A Must-Have for Fans",
+            "review_text": "So happy I bought this. Made December so much fun!",
+            "like_size": 49,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_aYbRBB": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Noah P.",
+            "date_text": "June 2025",
+            "review_head": "Good Value for Money",
+            "review_text": "Very colorful, sturdy, and packed with Disney magic. Worth every penny!",
+            "like_size": 21,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_66zkDk": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Amelia S.",
+            "date_text": "July 2025",
+            "review_head": "Disney Magic in a Box",
+            "review_text": "Perfect for Disney fans of all ages. My 8-year-old and I both enjoyed it!",
+            "like_size": 54,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_d8JiUJ": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Liam D.",
+            "date_text": "August 2025",
+            "review_head": "Great Gift Idea",
+            "review_text": "I got this as a gift for my niece, and she absolutely adored it. Beautifully packaged too.",
+            "like_size": 53,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        },
+        "review_bQjjVi": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "name_text": "Johan D.",
+            "date_text": "September 2025",
+            "review_head": "Nice Product",
+            "review_text": "Nice Product. I'm happy with my purchase.",
+            "like_size": 45,
+            "dislike_size": 0,
+            "feature_font_size": 16
+          }
+        }
+      },
+      "block_order": [
+        "review_atbEdY",
+        "review_69rGQa",
+        "review_mmwK9n",
+        "review_Q4wjiT",
+        "review_L9RJxn",
+        "review_aYbRBB",
+        "review_66zkDk",
+        "review_d8JiUJ",
+        "review_bQjjVi"
+      ],
+      "name": "Lumin Review",
+      "settings": {
+        "editing": true,
+        "color_scheme": "",
+        "header_text": "what our customers say about us",
+        "show_top": true,
+        "rating_text": "4.8",
+        "rating_range": 4.5,
+        "rating_count": "",
+        "review_column_mobile": "1",
+        "review_column_tab": "1",
+        "review_column_desk": "1",
+        "review_load": "4",
+        "load_text": "Load More",
+        "rw_img_size": 140,
+        "rw_img_radius": 0,
+        "block_name_size": 20,
+        "date_size": 16,
+        "block_head_size": 20,
+        "block_text_size": 14,
+        "star_style": "star_bg",
+        "star_size": 1,
+        "feature_svg_color": "#dff80b",
+        "inactive_star_color": "#e2e2e2",
+        "show_border": true,
+        "rw_border": "#f2f2f2",
+        "border_radius": 0,
+        "section_bg3": "#000000",
+        "section_bg2": "#3889b9",
+        "verify_text": "Verified Buyer",
+        "review_bg": "#ffffff",
+        "feature_acc_color": "#000000",
+        "review_pd": 20,
+        "review_pd_m": 20,
+        "show_footer": true,
+        "show_product": true,
+        "like_text": "Was this helpful?",
+        "rw_margin": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collapsible_content_3UiDhf": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_U8zDz7": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is included in the Disney Favourites Advent Calendar 2025?",
+            "icon": "none",
+            "row_content": "<p>Each calendar contains <strong>24 surprises </strong>— one for each day of December leading up to Christmas. Inside, you’ll find Disney-inspired charms and accessories designed to create a festive bracelet.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_QNi4hr": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Which characters or themes are available?",
+            "icon": "none",
+            "row_content": "<p>Currently, we offer at least <strong>three styles</strong>:</p><ul><li><strong>Stitch</strong></li><li><strong>Mickey</strong></li><li><strong>Pooh</strong><br/><br/>(Availability may vary depending on stock.)</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_4b3NeT": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How big is the calendar?",
+            "icon": "none",
+            "row_content": "<p>The calendar is designed as a <strong>compact box with 24 numbered compartments</strong>, each holding one surprise item.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_GVMWKA": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What age group is this suitable for?",
+            "icon": "none",
+            "row_content": "<p>Recommended for <strong>ages 6+ </strong>due to small parts. Not suitable for children under 3 years.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_jrHLGw": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you ship internationally?",
+            "icon": "none",
+            "row_content": "<p>Yes! We provide <strong>worldwide shipping</strong>. Delivery takes <strong>3–5 business days</strong>, depending on your location.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_YwhPpB": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is shipping free?",
+            "icon": "none",
+            "row_content": "<p>Yes —<strong>free shipping and free returns worldwidev</strong>are included with this product.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_cbxYV9": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is your return policy?",
+            "icon": "none",
+            "row_content": "<p>You can return your item within <strong>14 days</strong>if it is unused, in its original condition, and with tags/labels attached. Faulty or incorrect items are fully refundable.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_pbzyqe": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How many are left in stock?",
+            "icon": "none",
+            "row_content": "<p>Stock is limited! Availability changes quickly, especially during the holiday season.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_U8zDz7",
+        "collapsible_row_QNi4hr",
+        "collapsible_row_4b3NeT",
+        "collapsible_row_GVMWKA",
+        "collapsible_row_jrHLGw",
+        "collapsible_row_YwhPpB",
+        "collapsible_row_cbxYV9",
+        "collapsible_row_pbzyqe"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "FAQ",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "collection_text_alignment": "center",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "image_no_crop": true,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_desc": true,
+        "quick_desc_legth": 90,
+        "quick_desc_size": 13,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "1755084724d90f8696": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ebd38537-357b-4b9d-94d3-8480c1f8694b",
+    "41eff030-bfe6-4439-9af3-bc24e7cb0559",
+    "multicolumn_ax9CUA",
+    "scroll_text_CJBaLQ",
+    "image_with_text_KnRfUR",
+    "image_with_text_j7zxWc",
+    "scroll_text_Xd7x6V",
+    "rich_text_Y3DJqM",
+    "wave_Y8ndwU",
+    "lumin_review_8EHAak",
+    "collapsible_content_3UiDhf",
+    "related-products",
+    "1755084724d90f8696"
+  ]
+}

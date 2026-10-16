@@ -1,0 +1,1539 @@
+{% comment %}
+  Kieuo product detail — cream gallery + buy box.
+  Matches aura-header / aura-hero tokens and typography.
+{% endcomment %}
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign product_form_id = 'product-form-' | append: section.id
+  assign brand = section.settings.brand | default: 'KIEUO'
+  assign rating_label = section.settings.rating_label | default: '4.9 · 1,356 verified reviews'
+  assign lead = section.settings.lead
+  if lead == blank
+    assign lead = product.description | strip_html | truncate: 160
+  endif
+  assign cta_label = section.settings.cta_label | default: 'Add to cart'
+  assign swatchColors = settings.swatchColors | newline_to_br | split: '<br />'
+-%}
+
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'aura-product.js' | asset_url }}" defer="defer"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,550;9..144,700&display=swap" rel="stylesheet">
+
+{%- style -%}
+  body.template-product-kieuo {
+    background: #faf6f3;
+  }
+
+  #AuraProduct-{{ section.id }} {
+    --ink: #2a1f24;
+    --cream: #2a1f24;
+    --amber: #b86b7a;
+    --glow: #ffd9a0;
+    --muted: rgba(42, 31, 36, 0.62);
+    --hairline: rgba(42, 31, 36, 0.14);
+    --surface: #ffffff;
+
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    color: var(--cream);
+    background: radial-gradient(95% 70% at 18% 18%, #f5ebe6 0%, #f5ebe6 42%, #faf6f3 100%);
+    font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  @media screen and (max-width: 749px) {
+    #AuraProduct-{{ section.id }} {
+      padding-bottom: calc({{ section.settings.padding_bottom }}px + 5.5rem);
+    }
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__aurora {
+    position: absolute;
+    inset: -18%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(36% 32% at 72% 22%, rgba(184, 107, 122, 0.16), transparent 65%),
+      radial-gradient(28% 36% at 12% 78%, rgba(120, 78, 44, 0.18), transparent 68%);
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__grain {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.28;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+    width: min(1240px, calc(100% - 2.5rem));
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  #AuraProduct-{{ section.id }}[data-aura-product].is-ready .aura-pdp {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ---------- gallery ---------- */
+
+  #AuraProduct-{{ section.id }} .aura-pdp__gallery {
+    position: sticky;
+    top: 1.25rem;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__stage {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #f5ebe6;
+    border: 1px solid rgba(184, 107, 122, 0.18);
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__slide {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    animation: aura-pdp-fade-{{ section.id }} 0.45s ease;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__slide[hidden] {
+    display: none;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__slide img,
+  #AuraProduct-{{ section.id }} .aura-pdp__slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 0;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 0.9rem;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__thumb {
+    flex: 0 0 auto;
+    width: 72px;
+    height: 72px;
+    padding: 0;
+    border: 1px solid rgba(184, 107, 122, 0.16);
+    border-radius: 12px;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.25s ease, opacity 0.25s ease;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 0;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__thumb.is-active,
+  #AuraProduct-{{ section.id }} .aura-pdp__thumb:hover {
+    border-color: rgba(184, 107, 122, 0.7);
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__thumb:not(.is-active) {
+    opacity: 0.72;
+  }
+
+  /* ---------- buy box ---------- */
+
+  #AuraProduct-{{ section.id }} .aura-pdp__info {
+    padding-top: 0.35rem;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0 0 1rem;
+    font-size: 17px;
+    letter-spacing: 0.04em;
+    color: var(--amber);
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__stars {
+    display: inline-flex;
+    gap: 0.12rem;
+    color: var(--amber);
+    font-size: 18px;
+    letter-spacing: 0.08em;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__brand {
+    margin: 0 0 0.55rem;
+    font-size: clamp(15px, 1.6vw, 18px);
+    font-weight: 650;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__title {
+    margin: 0 0 1rem;
+    font-family: Fraunces, Georgia, serif;
+    font-size: 42px;
+    font-weight: 550;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__price-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem 1rem;
+    margin-bottom: 1.1rem;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__price .price {
+    margin: 0;
+    color: var(--cream);
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__price .price-item {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--cream) !important;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__price .price__sale .price-item--regular,
+  #AuraProduct-{{ section.id }} .aura-pdp__price s.price-item {
+    color: var(--muted) !important;
+    font-size: 16px;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__price .price__badge-sale {
+    display: none;
+    margin-left: 0.35rem;
+    padding: 5px 10px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(184, 107, 122, 0.16);
+    color: var(--amber);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__price .price--on-sale .price__badge-sale {
+    display: inline-block;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__price .price__badge-sold-out {
+    display: none;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__price .price--sold-out .price__badge-sold-out {
+    display: inline-block;
+    margin-left: 0.35rem;
+    padding: 5px 10px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(42, 31, 36, 0.08);
+    color: rgba(42, 31, 36, 0.55);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__lead {
+    margin: 0 0 1.35rem;
+    max-width: 36rem;
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem 1.1rem;
+    margin: 0 0 1.75rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 22px !important;
+    line-height: 1.35;
+    letter-spacing: 0.01em;
+    color: rgba(42, 31, 36, 0.78);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__features li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    margin-top: 0.45rem;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 0 3px rgba(184, 107, 122, 0.16);
+  }
+
+  @media screen and (max-width: 480px) {
+    #AuraProduct-{{ section.id }} .aura-pdp__features {
+      grid-template-columns: 1fr;
+      gap: 0.55rem;
+    }
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__divider {
+    height: 1px;
+    margin: 0 0 1.5rem;
+    background: linear-gradient(90deg, var(--hairline), transparent 85%);
+  }
+
+  /* variants */
+
+  #AuraProduct-{{ section.id }} variant-radios {
+    display: block;
+    margin-bottom: 1.35rem;
+  }
+
+  #AuraProduct-{{ section.id }} .product-form__input {
+    border: 0;
+    margin: 0 0 1.15rem;
+    padding: 0;
+  }
+
+  #AuraProduct-{{ section.id }} .form__label {
+    display: block;
+    margin: 0 0 0.85rem;
+    font-size: clamp(16px, 1.8vw, 18px);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(42, 31, 36, 0.9);
+  }
+
+  #AuraProduct-{{ section.id }} .form__label [data-selected-value] {
+    color: var(--amber);
+    font-weight: 700;
+  }
+
+  #AuraProduct-{{ section.id }} .product-form__input input[type='radio'] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  #AuraProduct-{{ section.id }} .product-form__input input[type='radio'] + label.color-swatch {
+    position: relative;
+    display: inline-block;
+    width: 2.35rem;
+    height: 2.35rem;
+    min-width: 2.35rem;
+    margin: 0 0.55rem 0.35rem 0;
+    padding: 0 !important;
+    border: 1px solid rgba(42, 31, 36, 0.28);
+    border-radius: 50%;
+    font-size: 0;
+    line-height: 0;
+    background-color: var(--swatch-color, #d0d0d0);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    box-shadow: inset 0 0 0 2px #0f0d0b;
+    color: transparent;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  #AuraProduct-{{ section.id }} .product-form__input input[type='radio'] + label.color-swatch:before,
+  #AuraProduct-{{ section.id }} .product-form__input input[type='radio'] + label.color-swatch:after {
+    content: none !important;
+    display: none !important;
+  }
+
+  #AuraProduct-{{ section.id }} .product-form__input input[type='radio']:checked + label.color-swatch {
+    border-color: var(--cream);
+    box-shadow:
+      inset 0 0 0 2px #0f0d0b,
+      0 0 0 1px var(--cream);
+  }
+
+  #AuraProduct-{{ section.id }} .product-form__input input[type='radio'].disabled + label.color-swatch,
+  #AuraProduct-{{ section.id }} .product-form__input input[type='radio']:disabled + label.color-swatch {
+    opacity: 1 !important;
+  }
+
+  #AuraProduct-{{ section.id }} .product-form__input input[type='radio'].disabled + label.color-swatch:after,
+  #AuraProduct-{{ section.id }} .product-form__input input[type='radio']:disabled + label.color-swatch:after {
+    content: '' !important;
+    display: block !important;
+    position: absolute;
+    top: 50%;
+    left: 12%;
+    width: 76%;
+    height: 1.5px;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.55);
+    transform: translateY(-50%) rotate(-45deg);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  #AuraProduct-{{ section.id }} .product-form__input input[type='radio'] + label:not(.color-swatch) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 4.5rem;
+    min-height: 2.75rem;
+    margin: 0 0.5rem 0.55rem 0;
+    padding: 0.7rem 1.05rem;
+    border: 1.5px solid rgba(42, 31, 36, 0.42);
+    border-radius: 8px;
+    background: rgba(42, 31, 36, 0.06);
+    color: var(--cream);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  #AuraProduct-{{ section.id }} .product-form__input input[type='radio'] + label:not(.color-swatch):hover {
+    border-color: rgba(184, 107, 122, 0.75);
+    background: rgba(184, 107, 122, 0.12);
+    color: #fff;
+  }
+
+  #AuraProduct-{{ section.id }} .product-form__input input[type='radio']:checked + label:not(.color-swatch) {
+    border-color: var(--amber);
+    background: linear-gradient(135deg, #d4a0ab 0%, #b86b7a 45%, #9a5568 100%);
+    color: #2a1f24;
+    box-shadow: 0 4px 14px rgba(184, 107, 122, 0.35);
+  }
+
+  /* qty + ATC */
+
+  #AuraProduct-{{ section.id }} .aura-pdp__purchase {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__qty {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--hairline);
+    background: #fff;
+    border-radius: 12px;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__qty button {
+    width: 2.6rem;
+    height: 3.25rem;
+    border: 0;
+    background: transparent;
+    color: var(--cream);
+    font-size: 1.15rem;
+    cursor: pointer;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__qty input {
+    width: 2.4rem;
+    height: 3.25rem;
+    border: 0;
+    background: transparent;
+    color: var(--cream);
+    text-align: center;
+    font: inherit;
+    font-weight: 600;
+    -moz-appearance: textfield;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__qty input::-webkit-outer-spin-button,
+  #AuraProduct-{{ section.id }} .aura-pdp__qty input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  #AuraProduct-{{ section.id }} .product-form__submit {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 3.25rem;
+    padding: 0.85rem 1.4rem;
+    border: 0;
+    background: linear-gradient(135deg, #d4a0ab 0%, #b86b7a 45%, #9a5568 100%);
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.25s ease, filter 0.25s ease, opacity 0.25s ease;
+  }
+
+  #AuraProduct-{{ section.id }} .product-form__submit:hover:not([disabled]) {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+  }
+
+  #AuraProduct-{{ section.id }} .product-form__submit[disabled] {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  #AuraProduct-{{ section.id }} .product-form__submit .loading__spinner {
+    position: absolute;
+    right: 1rem;
+  }
+
+  #AuraProduct-{{ section.id }} .shopify-payment-button {
+    margin-top: 0.65rem;
+  }
+
+  #AuraProduct-{{ section.id }} .shopify-payment-button__button--unbranded,
+  #AuraProduct-{{ section.id }} .shopify-payment-button__button {
+    min-height: 3rem !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    border: 1px solid var(--hairline) !important;
+    color: var(--cream) !important;
+    font-family: inherit !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+  }
+
+  #AuraProduct-{{ section.id }} .shopify-payment-button__button:hover {
+    background: rgba(42, 31, 36, 0.06) !important;
+  }
+
+  #AuraProduct-{{ section.id }} .product-form__error-message-wrapper {
+    margin-bottom: 0.75rem;
+    color: #ffb4a8;
+    font-size: 0.9rem;
+  }
+
+  /* trust */
+
+  #AuraProduct-{{ section.id }} .aura-pdp__trust {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin: 1.35rem 0 1.75rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__trust span {
+    display: block;
+    font-size: 16px !important;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.4;
+    color: rgba(42, 31, 36, 0.85);
+  }
+
+  /* accordion */
+
+  #AuraProduct-{{ section.id }} .aura-pdp__acc {
+    border-top: 1px solid var(--hairline);
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__acc details {
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__acc summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.05rem 0;
+    list-style: none;
+    cursor: pointer;
+    font-size: 16px !important;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__acc summary::-webkit-details-marker {
+    display: none;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__acc summary::after {
+    content: '+';
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--amber);
+    transition: transform 0.25s ease;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__acc details[open] summary::after {
+    content: '–';
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__acc .aura-pdp__acc-body,
+  #AuraProduct-{{ section.id }} .aura-pdp__acc .aura-pdp__acc-body *,
+  #AuraProduct-{{ section.id }} .aura-pdp__acc .aura-pdp__acc-body p,
+  #AuraProduct-{{ section.id }} .aura-pdp__acc .aura-pdp__acc-body li,
+  #AuraProduct-{{ section.id }} .aura-pdp__acc .aura-pdp__acc-body span,
+  #AuraProduct-{{ section.id }} .aura-pdp__acc .aura-pdp__acc-body div {
+      font-size: 16px !important;
+      line-height: 1.65 !important;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__acc .aura-pdp__acc-body {
+    padding: 0 0 1.15rem;
+    color: rgba(42, 31, 36, 0.88) !important;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__acc .aura-pdp__acc-body p {
+    margin: 0 0 0.85rem;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__acc .aura-pdp__acc-body ul {
+    margin: 0;
+    padding: 0 0 0 1.15rem;
+    list-style: disc;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__acc .aura-pdp__acc-body li {
+    margin: 0 0 0.65rem;
+    padding-left: 0.15rem;
+  }
+
+  #AuraProduct-{{ section.id }} .aura-pdp__acc .aura-pdp__acc-body li:last-child {
+    margin-bottom: 0;
+  }
+
+  @keyframes aura-pdp-fade-{{ section.id }} {
+    from { opacity: 0; transform: scale(0.985); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @media screen and (max-width: 989px) {
+    #AuraProduct-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    #AuraProduct-{{ section.id }} .aura-pdp {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+
+    #AuraProduct-{{ section.id }} .aura-pdp__gallery {
+      position: static;
+    }
+
+    #AuraProduct-{{ section.id }} .aura-pdp__stage {
+      aspect-ratio: 1 / 1;
+      margin-inline: -1.25rem;
+      width: calc(100% + 2.5rem);
+      border-radius: 0;
+      border-left: 0;
+      border-right: 0;
+    }
+
+    #AuraProduct-{{ section.id }} .aura-pdp__trust {
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+      text-align: left;
+    }
+
+    #AuraProduct-{{ section.id }} .aura-pdp__trust span {
+      text-align: left;
+    }
+
+    #AuraProduct-{{ section.id }} .aura-pdp__purchase {
+      grid-template-columns: 1fr;
+    }
+
+    #AuraProduct-{{ section.id }} .aura-pdp__qty {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+{%- endstyle -%}
+
+<section
+  id="AuraProduct-{{ section.id }}"
+  data-aura-product
+  data-section="{{ section.id }}"
+>
+  <div class="aura-pdp__aurora" aria-hidden="true"></div>
+  <div class="aura-pdp__grain" aria-hidden="true"></div>
+
+  <div class="aura-pdp">
+    <div class="aura-pdp__gallery">
+      <div class="aura-pdp__stage" data-aura-stage>
+        {%- if product.media.size > 0 -%}
+          {%- for media in product.media -%}
+            {%- liquid
+              assign is_active = false
+              if current_variant.featured_media and media.id == current_variant.featured_media.id
+                assign is_active = true
+              elsif current_variant.featured_media == blank and forloop.first
+                assign is_active = true
+              endif
+            -%}
+            <div
+              class="aura-pdp__slide"
+              data-aura-slide="{{ media.id }}"
+              {% unless is_active %}hidden{% endunless %}
+            >
+              {%- if media.media_type == 'image' -%}
+                {%- assign media_alt = media.alt | default: product.title -%}
+                {{
+                  media
+                  | image_url: width: 1600
+                  | image_tag:
+                    loading: 'eager',
+                    widths: '400, 600, 800, 1000, 1200, 1600',
+                    sizes: '(min-width: 990px) 55vw, 100vw',
+                    alt: media_alt
+                }}
+              {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
+                {{ media | media_tag: image_size: '1200x', autoplay: true, loop: true, controls: false, muted: true }}
+              {%- else -%}
+                {{ media | media_tag: image_size: '1200x' }}
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        {%- elsif product.featured_media -%}
+          <div class="aura-pdp__slide" data-aura-slide="{{ product.featured_media.id }}">
+            {{
+              product.featured_media
+              | image_url: width: 1600
+              | image_tag: loading: 'eager', alt: product.title
+            }}
+          </div>
+        {%- else -%}
+          {%- for i in (1..6) -%}
+            {%- assign fallback_file = 'kieuo-prod-' | append: i | append: '.webp' -%}
+            <div
+              class="aura-pdp__slide"
+              data-aura-slide="kieuo-fallback-{{ i }}"
+              {% unless forloop.first %}hidden{% endunless %}
+            >
+              <img
+                src="{{ fallback_file | asset_url }}"
+                alt="{{ product.title | default: 'Kieuo Dark Spot & Glow Toner' | escape }}"
+                width="1023"
+                height="1023"
+                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+              >
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+
+      {%- if product.media.size > 1 -%}
+        <div class="aura-pdp__thumbs" role="list">
+          {%- for media in product.media -%}
+            {%- liquid
+              assign is_active = false
+              if current_variant.featured_media and media.id == current_variant.featured_media.id
+                assign is_active = true
+              elsif current_variant.featured_media == blank and forloop.first
+                assign is_active = true
+              endif
+            -%}
+            <button
+              type="button"
+              class="aura-pdp__thumb{% if is_active %} is-active{% endif %}"
+              data-aura-thumb="{{ media.id }}"
+              aria-label="{{ media.alt | default: product.title | escape }} {{ forloop.index }}"
+              aria-current="{% if is_active %}true{% else %}false{% endif %}"
+            >
+              {%- if media.preview_image -%}
+                {{ media.preview_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}
+              {%- endif -%}
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- elsif product.media.size == 0 -%}
+        <div class="aura-pdp__thumbs" role="list">
+          {%- for i in (1..6) -%}
+            {%- assign fallback_file = 'kieuo-prod-' | append: i | append: '.webp' -%}
+            <button
+              type="button"
+              class="aura-pdp__thumb{% if forloop.first %} is-active{% endif %}"
+              data-aura-thumb="kieuo-fallback-{{ i }}"
+              aria-label="{{ product.title | default: 'Kieuo' | escape }} {{ i }}"
+              aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+            >
+              <img src="{{ fallback_file | asset_url }}" alt="" width="160" height="160" loading="lazy">
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <product-info
+      id="ProductInfo-{{ section.id }}"
+      class="aura-pdp__info"
+      data-section="{{ section.id }}"
+      data-url="{{ product.url }}"
+    >
+      {%- if section.settings.show_rating -%}
+        <p class="aura-pdp__rating">
+          <span class="aura-pdp__stars" aria-hidden="true">★★★★★</span>
+          <span>{{ rating_label }}</span>
+        </p>
+      {%- endif -%}
+
+      <p class="aura-pdp__brand">{{ brand }}</p>
+      <h1 class="aura-pdp__title">{{ product.title }}</h1>
+
+      <div class="aura-pdp__price-row">
+        <div id="price-{{ section.id }}" class="aura-pdp__price">
+          {%- render 'price',
+            product: product,
+            use_variant: true,
+            show_badges: true,
+            price_class: 'price--large'
+          -%}
+        </div>
+      </div>
+
+      {%- if lead != blank -%}
+        <p class="aura-pdp__lead">{{ lead }}</p>
+      {%- endif -%}
+
+      {%- liquid
+        assign feature_count = 0
+        if section.settings.feature_1 != blank
+          assign feature_count = feature_count | plus: 1
+        endif
+        if section.settings.feature_2 != blank
+          assign feature_count = feature_count | plus: 1
+        endif
+        if section.settings.feature_3 != blank
+          assign feature_count = feature_count | plus: 1
+        endif
+        if section.settings.feature_4 != blank
+          assign feature_count = feature_count | plus: 1
+        endif
+      -%}
+      {%- if feature_count > 0 -%}
+        <ul class="aura-pdp__features">
+          {%- if section.settings.feature_1 != blank -%}<li>{{ section.settings.feature_1 }}</li>{%- endif -%}
+          {%- if section.settings.feature_2 != blank -%}<li>{{ section.settings.feature_2 }}</li>{%- endif -%}
+          {%- if section.settings.feature_3 != blank -%}<li>{{ section.settings.feature_3 }}</li>{%- endif -%}
+          {%- if section.settings.feature_4 != blank -%}<li>{{ section.settings.feature_4 }}</li>{%- endif -%}
+        </ul>
+      {%- endif -%}
+
+      <div class="aura-pdp__divider" aria-hidden="true"></div>
+
+      {%- unless product.has_only_default_variant -%}
+        <variant-radios
+          id="variant-radios-{{ section.id }}"
+          class="no-js-hidden"
+          data-section="{{ section.id }}"
+          data-url="{{ product.url }}"
+        >
+          {%- for option in product.options_with_values -%}
+            {%- liquid
+              assign option_downcase = option.name | downcase
+              assign is_color = false
+              if option_downcase == 'color' or option_downcase == 'colour' or option_downcase contains 'finish'
+                assign is_color = true
+              endif
+            -%}
+            <fieldset class="js product-form__input">
+              <legend class="form__label">
+                {{ option.name }}:
+                <span data-selected-value>{{ option.selected_value }}</span>
+              </legend>
+
+              {%- for value in option.values -%}
+                {%- liquid
+                  assign value_name = value.name | default: value
+                  assign value_string = value_name | append: ''
+                  assign val_downcase = value_string | downcase | strip
+                  assign option_disabled = true
+
+                  for variant in product.variants
+                    assign match = false
+                    case option.position
+                      when 1
+                        if variant.option1 == value_string or variant.option1 == value_name
+                          assign match = true
+                        endif
+                      when 2
+                        if variant.option1 == product.selected_or_first_available_variant.option1
+                          if variant.option2 == value_string or variant.option2 == value_name
+                            assign match = true
+                          endif
+                        endif
+                      when 3
+                        if variant.option1 == product.selected_or_first_available_variant.option1 and variant.option2 == product.selected_or_first_available_variant.option2
+                          if variant.option3 == value_string or variant.option3 == value_name
+                            assign match = true
+                          endif
+                        endif
+                    endcase
+                    if match
+                      assign option_disabled = false
+                      break
+                    endif
+                  endfor
+                -%}
+
+                <input
+                  type="radio"
+                  id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                  name="{{ option.name }}"
+                  value="{{ value_string | escape }}"
+                  form="{{ product_form_id }}"
+                  {% if option.selected_value == value_string or option.selected_value == value %}
+                    checked
+                  {% endif %}
+                  {% if option_disabled %}
+                    class="disabled"
+                  {% endif %}
+                >
+
+                {%- if is_color -%}
+                  {%- liquid
+                    assign swatch_bg_style = ''
+                    assign swatch_color_value = ''
+
+                    if value.swatch.color != blank
+                      assign swatch_color_value = value.swatch.color
+                      assign swatch_bg_style = 'background-color: ' | append: swatch_color_value
+                    elsif value.swatch.image != blank
+                      assign swatch_image_url = value.swatch.image | image_url: width: 80
+                      assign swatch_bg_style = 'background-image: url(' | append: swatch_image_url | append: '); background-size: cover'
+                      assign swatch_color_value = 'transparent'
+                    else
+                      for colorData in swatchColors
+                        assign colorDataArr = colorData | split: ':'
+                        assign ruleName = colorDataArr[0] | strip | downcase
+                        if val_downcase == ruleName
+                          assign rawColor = colorDataArr[1] | strip
+                          if rawColor contains '#'
+                            assign swatch_bg_style = 'background-color: ' | append: rawColor
+                            assign swatch_color_value = rawColor
+                          else
+                            assign swatch_bg_style = 'background-color: #' | append: rawColor
+                            assign swatch_color_value = '#' | append: rawColor
+                          endif
+                          break
+                        endif
+                      endfor
+                    endif
+
+                    if swatch_bg_style == blank
+                      case val_downcase
+                        when 'clear', 'transparent', 'crystal'
+                          assign swatch_color_value = '#e8eef5'
+                          assign swatch_bg_style = 'background: linear-gradient(135deg, #ffffff 40%, #cfd8e3 100%)'
+                        when 'white', 'off white', 'off-white', 'pearl white'
+                          assign swatch_color_value = '#f5f1ea'
+                          assign swatch_bg_style = 'background-color: #f5f1ea'
+                        when 'black', 'matte black'
+                          assign swatch_color_value = '#12100e'
+                          assign swatch_bg_style = 'background-color: #12100e'
+                        when 'gold', 'brass', 'lucent brass'
+                          assign swatch_color_value = '#d4a359'
+                          assign swatch_bg_style = 'background-color: #d4a359'
+                        else
+                          assign swatch_color_value = '#d0d0d0'
+                          assign swatch_bg_style = 'background-color: #d0d0d0'
+                      endcase
+                    endif
+                  -%}
+                  <label
+                    class="color-swatch round"
+                    for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                    title="{{ value_string | escape }}"
+                    style="--swatch-color: {{ swatch_color_value }}; {{ swatch_bg_style }};"
+                  >
+                    <span class="visually-hidden">{{ value_string }}</span>
+                  </label>
+                {%- else -%}
+                  <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                    {{ value_string }}
+                  </label>
+                {%- endif -%}
+              {%- endfor -%}
+            </fieldset>
+          {%- endfor -%}
+
+          <script type="application/json">
+            {{ product.variants | json }}
+          </script>
+        </variant-radios>
+      {%- endunless -%}
+
+      <product-form
+        class="product-form"
+        data-section-id="{{ section.id }}"
+      >
+        <div class="product-form__error-message-wrapper" role="alert" hidden>
+          <span class="product-form__error-message"></span>
+        </div>
+
+        {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+          <input
+            type="hidden"
+            name="id"
+            value="{{ current_variant.id }}"
+            class="product-variant-id"
+          >
+
+          <!-- Aura Bundle & Save Stack -->
+          <style id="aura-bundle-dark-styles-pdp">
+            .aura-bundle-picker-container-pdp {
+              width: 100%;
+              margin-top: 0.8rem;
+              margin-bottom: 1.25rem;
+            }
+            .aura-bundle-header-divider-pdp {
+              display: flex;
+              align-items: center;
+              text-align: center;
+              margin-bottom: 1.1rem;
+            }
+            .aura-bundle-header-divider-pdp::before,
+            .aura-bundle-header-divider-pdp::after {
+              content: '';
+              flex: 1;
+              border-bottom: 1px solid rgba(42, 31, 36, 0.2);
+            }
+            .aura-bundle-header-title-pdp {
+              padding: 0 1.1rem;
+              font-family: 'Fraunces', Georgia, serif;
+              font-size: 26px;
+              font-weight: 600;
+              letter-spacing: -0.01em;
+              color: var(--cream, #2a1f24);
+            }
+            .aura-bundle-stack-pdp {
+              display: flex;
+              flex-direction: column;
+              gap: 0.8rem;
+              width: 100%;
+            }
+            .aura-bundle-card-wrapper-pdp {
+              position: relative;
+              width: 100%;
+            }
+            .aura-bundle-radio-input-pdp {
+              position: absolute;
+              opacity: 0;
+              width: 0;
+              height: 0;
+              pointer-events: none;
+            }
+            .aura-bundle-card-label-pdp {
+              position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 1rem 1.15rem;
+              border-radius: 12px;
+              border: 1.5px solid rgba(42, 31, 36, 0.16);
+              background: rgba(42, 31, 36, 0.05);
+              color: var(--cream, #2a1f24);
+              cursor: pointer;
+              user-select: none;
+              transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+            .aura-bundle-card-label-pdp:hover {
+              border-color: rgba(184, 107, 122, 0.5);
+              background: rgba(184, 107, 122, 0.08);
+            }
+            .aura-bundle-radio-input-pdp:checked + .aura-bundle-card-label-pdp {
+              border-color: var(--amber, #b86b7a);
+              background: linear-gradient(135deg, rgba(184, 107, 122, 0.16) 0%, rgba(184, 107, 122, 0.05) 100%);
+              box-shadow: 0 0 24px -4px rgba(184, 107, 122, 0.35), inset 0 0 0 1px var(--amber, #b86b7a);
+            }
+            .aura-bundle-card-left-pdp {
+              display: flex;
+              align-items: center;
+              gap: 0.85rem;
+            }
+            .aura-bundle-radio-circle-pdp {
+              width: 1.2rem;
+              height: 1.2rem;
+              flex-shrink: 0;
+              border-radius: 50%;
+              border: 1.8px solid rgba(42, 31, 36, 0.4);
+              display: grid;
+              place-items: center;
+              background: transparent;
+              transition: border-color 0.25s ease;
+            }
+            .aura-bundle-radio-input-pdp:checked + .aura-bundle-card-label-pdp .aura-bundle-radio-circle-pdp {
+              border-color: var(--amber, #b86b7a);
+            }
+            .aura-bundle-radio-dot-pdp {
+              width: 0.55rem;
+              height: 0.55rem;
+              border-radius: 50%;
+              background: var(--amber, #b86b7a);
+              transform: scale(0);
+              transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+              box-shadow: 0 0 8px var(--amber, #b86b7a);
+            }
+            .aura-bundle-radio-input-pdp:checked + .aura-bundle-card-label-pdp .aura-bundle-radio-dot-pdp {
+              transform: scale(1);
+            }
+            .aura-bundle-info-pdp {
+              display: flex;
+              flex-direction: column;
+              gap: 0.15rem;
+            }
+            .aura-bundle-title-row-pdp {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              flex-wrap: wrap;
+            }
+            .aura-bundle-title-pdp {
+              font-size: 22px;
+              font-weight: 700;
+              line-height: 1.2;
+              color: var(--cream, #2a1f24);
+            }
+            .aura-bundle-inline-badge-pdp {
+              display: inline-block;
+              padding: 0.18rem 0.5rem;
+              border-radius: 5px;
+              background: #b86b7a;
+              color: #ffffff;
+              font-size: 17px;
+              font-weight: 600;
+              letter-spacing: 0.02em;
+              white-space: nowrap;
+            }
+            .aura-bundle-subtext-pdp {
+              font-size: 19px !important;
+              font-weight: 500;
+              color: rgba(42, 31, 36, 0.8);
+            }
+            .aura-bundle-card-right-pdp {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-end;
+              text-align: right;
+              gap: 0.1rem;
+            }
+            .aura-bundle-price-pdp {
+              font-size: 28px !important;
+              font-weight: 700;
+              color: var(--cream, #2a1f24);
+              letter-spacing: -0.01em;
+            }
+            .aura-bundle-compare-price-pdp {
+              font-size: 20px !important;
+              font-weight: 500;
+              color: rgba(42, 31, 36, 0.65) !important;
+              text-decoration: line-through;
+            }
+            .aura-bundle-corner-ribbon-pdp {
+              position: absolute;
+              top: -8px;
+              right: 12px;
+              z-index: 2;
+              padding: 0.2rem 0.65rem;
+              border-radius: 5px;
+              background: #b86b7a;
+              color: #ffffff;
+              font-size: 17px;
+              font-weight: 700;
+              letter-spacing: 0.03em;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+              white-space: nowrap;
+            }
+          </style>
+
+          <div class="aura-bundle-picker-container-pdp">
+            <div class="aura-bundle-header-divider-pdp">
+              <span class="aura-bundle-header-title-pdp">Bundle &amp; Save</span>
+            </div>
+
+            {%- liquid
+              assign unit_price = product.selected_or_first_available_variant.price
+              assign unit_compare = product.selected_or_first_available_variant.compare_at_price | default: unit_price
+              if unit_compare <= unit_price
+                assign unit_compare = unit_price
+              endif
+            -%}
+            {% include 'aura-bundle-products' %}
+
+            <div class="aura-bundle-stack-pdp">
+              {%- assign ns = '-pdp' -%}
+              {%- assign radio_name = 'aura_bundle_product_select_pdp' -%}
+              {%- assign id_prefix = 'pdp-bundle-card' -%}
+              {% include 'aura-bundle-cards' %}
+            </div>
+
+            <input
+              type="hidden"
+              name="quantity"
+              id="Quantity-{{ section.id }}"
+              value="1"
+              form="{{ product_form_id }}"
+            >
+          </div>
+
+          {%- render 'aura-bundle-cart-sync',
+            section: section,
+            product: product,
+            product_form_id: product_form_id,
+            radio_name: 'aura_bundle_product_select_pdp',
+            cta_label: cta_label,
+            bundle_1: bundle_1,
+            bundle_2: bundle_2,
+            bundle_3: bundle_3,
+            bundle_4: bundle_4,
+            bundle_5: bundle_5,
+            bundle_6: bundle_6,
+            bundle_7: bundle_7,
+            bundle_8: bundle_8,
+            default_bundle_qty: default_bundle_qty
+          -%}
+
+          <div class="aura-pdp__purchase">
+            <button
+              id="ProductSubmitButton-{{ section.id }}"
+              type="submit"
+              name="add"
+              class="product-form__submit"
+            >
+              <span>{{ cta_label }}</span>
+              {%- render 'loading-spinner' -%}
+            </button>
+          </div>
+
+          {%- if section.settings.show_dynamic_checkout -%}
+            {{ form | payment_button }}
+          {%- endif -%}
+        {%- endform -%}
+      </product-form>
+
+      <div class="aura-pdp__trust">
+        <span>{{ section.settings.trust_1 | default: '14-day money-back guarantee' }}</span>
+        <span>{{ section.settings.trust_2 | default: 'Dermatologist-inspired formula' }}</span>
+        <span>{{ section.settings.trust_3 | default: 'Free worldwide shipping' }}</span>
+      </div>
+
+      <div class="aura-pdp__acc">
+        <details data-aura-accordion>
+          <summary>{{ 'products.product.description' | t }}</summary>
+          <div class="aura-pdp__acc-body">
+            {%- if section.settings.details != blank -%}
+              {{ section.settings.details }}
+            {%- else -%}
+              {{ product.description }}
+            {%- endif -%}
+          </div>
+        </details>
+        {%- if section.settings.shipping_info != blank -%}
+          <details data-aura-accordion>
+            <summary>Shipping &amp; returns</summary>
+            <div class="aura-pdp__acc-body">{{ section.settings.shipping_info }}</div>
+          </details>
+        {%- endif -%}
+        {%- if section.settings.specs != blank -%}
+          <details data-aura-accordion>
+            <summary>Specs</summary>
+            <div class="aura-pdp__acc-body">{{ section.settings.specs }}</div>
+          </details>
+        {%- endif -%}
+      </div>
+    </product-info>
+  </div>
+
+  {%- liquid
+    if product.selected_or_first_available_variant.featured_media
+      assign seo_media = product.selected_or_first_available_variant.featured_media
+    else
+      assign seo_media = product.featured_media
+    endif
+  -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": {{ product.title | json }},
+      "url": {{ request.origin | append: product.url | json }},
+      {% if seo_media -%}
+        "image": [
+          {{ seo_media | image_url: width: 1920 | prepend: "https:" | json }}
+        ],
+      {%- endif %}
+      "description": {{ product.description | strip_html | json }},
+      {% if product.selected_or_first_available_variant.sku != blank -%}
+        "sku": {{ product.selected_or_first_available_variant.sku | json }},
+      {%- endif %}
+      "brand": {
+        "@type": "Brand",
+        "name": {{ product.vendor | default: brand | json }}
+      },
+      {%- if product.metafields.reviews.rating.value != blank -%}
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": {{ product.metafields.reviews.rating.value.rating | json }},
+          "bestRating": {{ product.metafields.reviews.rating.value.scale_max | json }},
+          "ratingCount": {{ product.metafields.reviews.rating_count | default: 1 | json }}
+        },
+      {%- endif -%}
+      "offers": [
+        {%- for variant in product.variants -%}
+          {
+            "@type": "Offer",
+            {%- if variant.sku != blank -%}
+              "sku": {{ variant.sku | json }},
+            {%- endif -%}
+            {%- if variant.barcode.size == 12 -%}
+              "gtin12": {{ variant.barcode | json }},
+            {%- endif -%}
+            {%- if variant.barcode.size == 13 -%}
+              "gtin13": {{ variant.barcode | json }},
+            {%- endif -%}
+            {%- if variant.barcode.size == 14 -%}
+              "gtin14": {{ variant.barcode | json }},
+            {%- endif -%}
+            "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+            "itemCondition": "https://schema.org/NewCondition",
+            "price": {{ variant.price | divided_by: 100.00 | json }},
+            "priceCurrency": {{ cart.currency.iso_code | json }},
+            "url": {{ request.origin | append: variant.url | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+</section>
+
+<script>
+  (function () {
+    var root = document.getElementById('AuraProduct-{{ section.id }}');
+    if (!root) return;
+    var qty = root.querySelector('#Quantity-Form-{{ section.id }}');
+    if (!qty) return;
+    var input = qty.querySelector('.quantity__input');
+    qty.querySelector('[name="minus"]')?.addEventListener('click', function () {
+      var min = parseInt(input.min || '1', 10);
+      var next = Math.max(min, (parseInt(input.value, 10) || min) - 1);
+      input.value = next;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+    qty.querySelector('[name="plus"]')?.addEventListener('click', function () {
+      var max = input.max ? parseInt(input.max, 10) : null;
+      var next = (parseInt(input.value, 10) || 1) + 1;
+      if (max && next > max) next = max;
+      input.value = next;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aura product",
+  "tag": "section",
+  "class": "section-aura-product",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand",
+      "label": "Brand label",
+      "default": "KIEUO"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show rating row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "rating_label",
+      "label": "Rating label",
+      "default": "4.9 · 1,356 verified reviews"
+    },
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "Lead sentence",
+      "default": "Fade dark spots and even your tone in 2–3 weeks — a daily toner for glass-skin glow, without irritation."
+    },
+    {
+      "type": "text",
+      "id": "feature_1",
+      "label": "Feature 1",
+      "default": "Fades dark spots"
+    },
+    {
+      "type": "text",
+      "id": "feature_2",
+      "label": "Feature 2",
+      "default": "Evens skin tone"
+    },
+    {
+      "type": "text",
+      "id": "feature_3",
+      "label": "Feature 3",
+      "default": "Barrier-safe glow"
+    },
+    {
+      "type": "text",
+      "id": "feature_4",
+      "label": "Feature 4",
+      "default": "14-day trial"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Add to cart label",
+      "default": "Add to cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dynamic_checkout",
+      "label": "Show dynamic checkout buttons",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trust_1",
+      "label": "Trust line 1",
+      "default": "14-day money-back guarantee"
+    },
+    {
+      "type": "text",
+      "id": "trust_2",
+      "label": "Trust line 2",
+      "default": "Dermatologist-inspired formula"
+    },
+    {
+      "type": "text",
+      "id": "trust_3",
+      "label": "Trust line 3",
+      "default": "Free worldwide shipping"
+    },
+    {
+      "type": "richtext",
+      "id": "details",
+      "label": "Details accordion (optional override)"
+    },
+    {
+      "type": "richtext",
+      "id": "shipping_info",
+      "label": "Shipping & returns",
+      "default": "<p>Free worldwide shipping. Delivery takes 3–5 business days. You can request a return within 14 days for a full refund.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "specs",
+      "label": "Specs",
+      "default": "<p>Dark spot &amp; glow toner · All skin types · Vegan · Cruelty-free · Daily use after cleansing.</p>"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top (mobile)",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom (mobile)",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aura product"
+    }
+  ]
+}
+{% endschema %}
